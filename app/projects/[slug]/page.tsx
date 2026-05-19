@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Home, Calendar, Layers } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
@@ -47,11 +48,13 @@ export default async function ProjectDetailPage({ params }: Props) {
     <>
       {/* Hero */}
       <div className="relative h-[60vh] min-h-[400px] bg-primary overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${project.image}')`,
-          }}
+        <Image
+          src={project.image}
+          alt={project.name}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-12">
@@ -137,10 +140,12 @@ export default async function ProjectDetailPage({ params }: Props) {
                       key={i}
                       className="relative overflow-hidden group aspect-[4/3] bg-primary/5 border border-border"
                     >
-                      <img
+                      <Image
                         src={img}
                         alt={`${project.name} Gallery ${i + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
                     </div>

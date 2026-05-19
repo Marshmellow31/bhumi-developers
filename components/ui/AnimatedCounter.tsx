@@ -23,6 +23,7 @@ export default function AnimatedCounter({
   useEffect(() => {
     if (!isInView) return;
 
+    let frameId: number;
     const startTime = performance.now();
     const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
@@ -30,10 +31,16 @@ export default function AnimatedCounter({
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       setCount(Math.floor(easeOut(progress) * target));
-      if (progress < 1) requestAnimationFrame(tick);
+      if (progress < 1) {
+        frameId = requestAnimationFrame(tick);
+      }
     };
 
-    requestAnimationFrame(tick);
+    frameId = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
   }, [isInView, target, duration]);
 
   return (

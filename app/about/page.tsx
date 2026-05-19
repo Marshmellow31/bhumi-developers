@@ -98,22 +98,24 @@ export default function AboutPage() {
             <SectionHeading eyebrow="Our Journey" title="Milestones That Define Us" />
           </div>
           <div className="relative">
-            <div className="absolute left-1/2 -translate-x-px top-0 bottom-0 w-px bg-border" />
+            <div className="absolute md:left-1/2 md:-translate-x-px left-1.5 top-0 bottom-0 w-px bg-border" />
             <div className="flex flex-col gap-12">
               {milestones.map((m, i) => (
                 <div
                   key={i}
-                  className={`flex items-start gap-8 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
+                  className={`flex md:items-start gap-6 md:gap-8 flex-row ${
+                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
                 >
-                  <div className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                    <div className="inline-block bg-white border border-border px-6 py-4">
+                  <div className={`flex-1 ${i % 2 === 0 ? "md:text-right" : "md:text-left"} text-left`}>
+                    <div className="inline-block bg-white border border-border px-6 py-4 w-full md:w-auto">
                       <p className="text-muted text-xs tracking-[0.25em] uppercase font-semibold font-body mb-1">{m.year}</p>
                       <h4 className="text-primary font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{m.title}</h4>
                       <p className="text-muted text-sm font-body leading-relaxed">{m.desc}</p>
                     </div>
                   </div>
-                  <div className="relative z-10 w-3 h-3 bg-primary border-4 border-surface mt-4 shrink-0" />
-                  <div className="flex-1" />
+                  <div className="relative z-10 w-3 h-3 bg-primary border-4 border-surface mt-4 shrink-0 order-first md:order-none" />
+                  <div className="hidden md:block flex-1" />
                 </div>
               ))}
             </div>

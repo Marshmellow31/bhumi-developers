@@ -13,7 +13,7 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 opacity-25"
         style={{
           backgroundImage:
-            "url('/images/solitaire-plaza/Tavra Corner Day-a .jpg')",
+            "url('/images/solitaire-plaza/Tavra Corner Day-a.jpg')",
         }}
       />
 

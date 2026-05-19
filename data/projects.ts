@@ -220,7 +220,7 @@ export const projects: Project[] = [
       "/images/central-square/Pacnhbatti 505 Gallary Closeup_Cam01-a.jpg",
       "/images/central-square/Pacnhbatti 505 Gate_Cam01-a.jpg",
       "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.jpg",
-      "/images/central-square/Pacnhbatti 505 Left Corner_Cam01-a..jpg",
+      "/images/central-square/Pacnhbatti 505 Left Corner_Cam01-a.jpg",
       "/images/central-square/Pacnhbatti 505 Right_Cam.jpg",
       "/images/central-square/Pacnhbatti 505 Shops Closeup_Cam01-a.jpg"
     ],
@@ -251,9 +251,9 @@ export const projects: Project[] = [
     area: "2400–4500 sq ft",
     priceRange: { min: 8500000, max: 24000000 },
     completionYear: 2027,
-    image: "/images/solitaire-plaza/Tavra Corner Day-a .jpg",
+    image: "/images/solitaire-plaza/Tavra Corner Day-a.jpg",
     gallery: [
-      "/images/solitaire-plaza/Tavra Corner Day-a .jpg",
+      "/images/solitaire-plaza/Tavra Corner Day-a.jpg",
       "/images/solitaire-plaza/Tavra Foyer Entry_Cam-a.jpg",
       "/images/solitaire-plaza/Tavra Gate Night Cam-a.jpg",
       "/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.jpg",
