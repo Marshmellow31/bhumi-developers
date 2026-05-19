@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, ZoomIn } from "lucide-react";
 import { type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
+import GalleryModal from "@/components/ui/GalleryModal";
 
 const statusStyles: Record<string, string> = {
   Ongoing: "bg-white text-primary",
@@ -17,26 +19,47 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  return (
-    <Link href={`/projects/${project.slug}`} className="block group">
-      <motion.article
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.3 }}
-        className="bg-white border border-border hover:border-primary/20 hover:shadow-xl transition-all duration-300 overflow-hidden"
-      >
-        {/* Image */}
-        <div className="relative h-64 overflow-hidden bg-surface">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-            style={{
-              backgroundImage: `url('${project.image}')`,
-              filter: "grayscale(30%)",
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
+  const galleryImages = project.gallery.length > 0 ? project.gallery : [project.image];
 
-          {/* Status badge */}
-          <div className="absolute top-4 left-4">
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsGalleryOpen(true);
+  };
+
+  return (
+    <>
+      <Link href={`/projects/${project.slug}`} className="block group">
+        <motion.article
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.3 }}
+          className="bg-white border border-border hover:border-primary/20 hover:shadow-xl transition-all duration-300 overflow-hidden"
+        >
+          {/* Image */}
+          <div className="relative h-64 overflow-hidden bg-surface cursor-pointer" onClick={handleImageClick}>
+            <div
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              style={{
+                backgroundImage: `url('${project.image}')`,
+                filter: "grayscale(30%)",
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
+
+            {/* Zoom Indicator */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileHover={{ opacity: 1, scale: 1 }}
+              className="absolute inset-0 flex items-center justify-center bg-black/40 pointer-events-none"
+            >
+              <div className="flex flex-col items-center gap-2">
+                <ZoomIn size={32} className="text-white" />
+                <p className="text-white text-xs tracking-widest uppercase font-semibold font-body">View Gallery</p>
+              </div>
+            </motion.div>
+
+            {/* Status badge */}
+            <div className="absolute top-4 left-4">
             <span
               className={`text-xs tracking-[0.15em] uppercase font-semibold px-3 py-1.5 font-body ${
                 statusStyles[project.status]
@@ -84,6 +107,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
       </motion.article>
-    </Link>
+      </Link>
+
+      <GalleryModal isOpen={isGalleryOpen} images={galleryImages} onClose={() => setIsGalleryOpen(false)} />
+    </>
   );
 }

@@ -7,6 +7,8 @@ import { formatPrice } from "@/lib/utils";
 import CTABanner from "@/components/home/CTABanner";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import ProjectGallerySection from "@/components/projects/ProjectGallerySection";
+import ProjectGalleryGrid from "@/components/projects/ProjectGalleryGrid";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -27,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const statusColors: Record<string, string> = {
-  Ongoing: "bg-emerald-500 text-white",
-  Completed: "bg-blue-500 text-white",
-  Upcoming: "bg-amber-500 text-primary",
+  Ongoing: "bg-white text-primary",
+  Completed: "bg-white text-primary",
+  Upcoming: "bg-white/10 text-white border border-white/20",
 };
 
 export default async function ProjectDetailPage({ params }: Props) {
@@ -46,39 +48,14 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[60vh] min-h-[400px] bg-primary overflow-hidden">
-        <Image
-          src={project.image}
-          alt={project.name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-12">
-          <div className="relative z-10">
-            <span
-              className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-4 font-body ${
-                statusColors[project.status]
-              }`}
-            >
-              {project.status}
-            </span>
-            <h1
-              className="text-4xl md:text-6xl font-bold text-white mb-3"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              {project.name}
-            </h1>
-            <p className="text-white/70 text-lg font-body flex items-center gap-2">
-              <MapPin size={16} className="text-white/40" />
-              {project.location}
-            </p>
-          </div>
-        </div>
-      </div>
+      <ProjectGallerySection
+        image={project.image}
+        gallery={project.gallery}
+        status={project.status}
+        name={project.name}
+        location={project.location}
+        statusColors={statusColors}
+      />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -134,23 +111,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 >
                   Project Gallery
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.gallery.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative overflow-hidden group aspect-[4/3] bg-primary/5 border border-border"
-                    >
-                      <Image
-                        src={img}
-                        alt={`${project.name} Gallery ${i + 1}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                    </div>
-                  ))}
-                </div>
+                <ProjectGalleryGrid gallery={project.gallery} projectName={project.name} />
               </div>
             )}
 
