@@ -9,7 +9,7 @@ import Button from "@/components/ui/Button";
 import { ArrowRight } from "lucide-react";
 
 export default function FeaturedProjects() {
-  const featured = getFeaturedProjects().slice(0, 3);
+  const featured = getFeaturedProjects().slice(0, 4);
 
   return (
     <section className="py-24 md:py-32 bg-background">
@@ -28,7 +28,7 @@ export default function FeaturedProjects() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {featured.map((project, i) => (
             <motion.div
               key={project.id}

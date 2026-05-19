@@ -50,8 +50,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=80')",
+            backgroundImage: `url('${project.image}')`,
           }}
         />
         <div className="absolute inset-0 bg-primary/70" />
@@ -71,7 +70,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               {project.name}
             </h1>
             <p className="text-white/70 text-lg font-body flex items-center gap-2">
-              <MapPin size={16} className="text-accent" />
+              <MapPin size={16} className="text-white/40" />
               {project.location}
             </p>
           </div>
@@ -85,7 +84,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="lg:col-span-2 flex flex-col gap-10">
             {/* Tagline */}
             <p
-              className="text-2xl text-accent font-semibold italic"
+              className="text-2xl text-primary/40 font-light italic"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               &ldquo;{project.tagline}&rdquo;
@@ -116,7 +115,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     key={i}
                     className="flex items-center gap-3 bg-background border border-border px-4 py-3 text-sm font-body text-charcoal"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    <span className="w-px h-3 bg-primary/30 shrink-0" />
                     {h}
                   </div>
                 ))}
@@ -152,7 +151,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 Price Range
               </p>
               <p
-                className="text-3xl font-bold text-accent mb-1"
+                className="text-3xl font-bold text-white mb-1"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {formatPrice(project.priceRange.min)}
@@ -195,7 +194,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               {details.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center justify-between text-sm font-body">
                   <div className="flex items-center gap-2 text-muted">
-                    <Icon size={14} className="text-accent" />
+                    <Icon size={14} className="text-primary/40" />
                     {label}
                   </div>
                   <span className="text-charcoal font-medium">{value}</span>

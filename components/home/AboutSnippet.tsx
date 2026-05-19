@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const pillars = [
   "Transparent dealings & clear documentation",
@@ -27,38 +27,40 @@ export default function AboutSnippet() {
             className="relative"
           >
             {/* Main image */}
-            <div className="relative h-[500px] bg-primary-light overflow-hidden">
+            <div className="relative h-[500px] overflow-hidden">
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
                   backgroundImage:
                     "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80')",
+                  filter: "grayscale(100%)",
                 }}
               />
-              <div className="absolute inset-0 bg-primary/20" />
+              <div className="absolute inset-0 bg-primary/10" />
             </div>
 
-            {/* Floating stat card */}
+            {/* Floating stat card — black on black section */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="absolute -bottom-8 -right-8 bg-accent text-primary p-8 shadow-2xl w-44"
+              className="absolute -bottom-8 -right-8 bg-primary text-white p-8 shadow-2xl w-44"
             >
               <p
-                className="text-5xl font-bold leading-none mb-1"
+                className="text-5xl font-bold leading-none mb-1 text-white"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 20
               </p>
-              <p className="text-primary/70 text-xs tracking-widest uppercase font-body mt-2">
+              <div className="w-6 h-px bg-white/20 my-3" />
+              <p className="text-white/40 text-xs tracking-[0.25em] uppercase font-body">
                 Years of Trust
               </p>
             </motion.div>
 
-            {/* Decorative element */}
-            <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-accent/30 z-0" />
+            {/* Decorative corner */}
+            <div className="absolute -top-5 -left-5 w-20 h-20 border border-primary/10 z-0" />
           </motion.div>
 
           {/* Text Column */}
@@ -75,14 +77,14 @@ export default function AboutSnippet() {
               align="left"
             />
 
-            <p className="text-muted leading-relaxed font-body">
+            <p className="text-muted leading-relaxed font-body text-sm">
               Founded in 2005, Bhumi Developers has grown from a small family enterprise into
               South Gujarat&rsquo;s most respected real estate developer. With over 50 completed
               projects and 5,000+ satisfied families, our commitment to quality, transparency,
               and timely delivery sets us apart.
             </p>
 
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3 mt-2">
               {pillars.map((point, i) => (
                 <motion.li
                   key={i}
@@ -92,17 +94,21 @@ export default function AboutSnippet() {
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                   className="flex items-start gap-3 text-sm text-charcoal font-body"
                 >
-                  <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
+                  <span className="w-px h-4 bg-primary/30 shrink-0 mt-0.5" />
                   {point}
                 </motion.li>
               ))}
             </ul>
 
-            <div className="mt-2">
+            <div className="mt-4">
               <Link href="/about">
-                <Button size="md" variant="primary">
+                <Button
+                  size="md"
+                  variant="secondary"
+                  className="border-primary"
+                >
                   Our Story
-                  <ArrowRight size={15} />
+                  <ArrowRight size={14} />
                 </Button>
               </Link>
             </div>

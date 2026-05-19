@@ -39,12 +39,8 @@ export const projects: Project[] = [
     area: "1200–2400 sq ft",
     priceRange: { min: 4500000, max: 9500000 },
     completionYear: 2026,
-    image: "/images/projects/royal-heights.jpg",
-    gallery: [
-      "/images/projects/royal-heights-1.jpg",
-      "/images/projects/royal-heights-2.jpg",
-      "/images/projects/royal-heights-3.jpg",
-    ],
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+    gallery: [],
     highlights: ["Rooftop Sky Lounge", "Smart Home Automation", "EV Charging", "24/7 Security"],
     description:
       "Bhumi Royal Heights is an iconic residential tower in the heart of Bharuch, offering meticulously designed apartments with panoramic views of the Narmada river. Every detail is crafted to deliver an unparalleled living experience.",
@@ -58,7 +54,7 @@ export const projects: Project[] = [
       "Power Backup",
       "Covered Parking",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "2",
@@ -73,11 +69,8 @@ export const projects: Project[] = [
     area: "2800–4500 sq ft",
     priceRange: { min: 12000000, max: 22000000 },
     completionYear: 2026,
-    image: "/images/projects/serene-villas.jpg",
-    gallery: [
-      "/images/projects/serene-villas-1.jpg",
-      "/images/projects/serene-villas-2.jpg",
-    ],
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+    gallery: [],
     highlights: ["Private Pool", "Home Theatre", "Modular Kitchen", "Double-height Living Room"],
     description:
       "An exclusive enclave of 36 premium villas nestled in the tranquil outskirts of Bharuch. Bhumi Serene Villas redefines luxury living with sprawling private spaces, lush landscaping, and world-class amenities.",
@@ -90,7 +83,7 @@ export const projects: Project[] = [
       "Servant Quarters",
       "24/7 Gated Security",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "3",
@@ -105,11 +98,8 @@ export const projects: Project[] = [
     area: "500–5000 sq ft",
     priceRange: { min: 3000000, max: 25000000 },
     completionYear: 2023,
-    image: "/images/projects/grand-square.jpg",
-    gallery: [
-      "/images/projects/grand-square-1.jpg",
-      "/images/projects/grand-square-2.jpg",
-    ],
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    gallery: [],
     highlights: ["Prime Location", "High-Speed Elevators", "Ample Parking", "24/7 Operations"],
     description:
       "Bharuch's premier commercial destination, Bhumi Grand Square offers state-of-the-art office spaces and retail units in the city's most sought-after business corridor.",
@@ -122,7 +112,7 @@ export const projects: Project[] = [
       "Power Backup",
       "CCTV Surveillance",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "4",
@@ -137,7 +127,7 @@ export const projects: Project[] = [
     area: "900–1800 sq ft",
     priceRange: { min: 3800000, max: 7500000 },
     completionYear: 2027,
-    image: "/images/projects/riverside-residency.jpg",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
     gallery: [],
     highlights: ["River-Facing Apartments", "Yoga Deck", "Jogging Track", "Amphitheatre"],
     description:
@@ -166,10 +156,8 @@ export const projects: Project[] = [
     area: "650–1100 sq ft",
     priceRange: { min: 2200000, max: 4000000 },
     completionYear: 2021,
-    image: "/images/projects/excel-park.jpg",
-    gallery: [
-      "/images/projects/excel-park-1.jpg",
-    ],
+    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80",
+    gallery: [],
     highlights: ["Gated Community", "Temple", "Community Hall", "CCTV Security"],
     description:
       "Bhumi Excel Park is a thriving residential community that offers quality homes at accessible price points, without compromising on the essentials of modern living.",
@@ -197,11 +185,8 @@ export const projects: Project[] = [
     area: "800–3000 sq ft",
     priceRange: { min: 3500000, max: 14000000 },
     completionYear: 2025,
-    image: "/images/projects/one-ankleshwar.jpg",
-    gallery: [
-      "/images/projects/one-ankleshwar-1.jpg",
-      "/images/projects/one-ankleshwar-2.jpg",
-    ],
+    image: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=800&q=80",
+    gallery: [],
     highlights: ["Mixed-Use Tower", "Retail on Ground", "Corporate Offices", "Premium Homes"],
     description:
       "Bhumi One Ankleshwar is a landmark mixed-use development combining premium residences, modern offices, and vibrant retail — designed for the evolving needs of industrial Ankleshwar.",
@@ -214,11 +199,112 @@ export const projects: Project[] = [
       "Visitor Parking",
       "24/7 Security",
     ],
+    featured: false,
+  },
+  {
+    id: "7",
+    slug: "bhumi-central-square",
+    name: "Bhumi Central Square",
+    tagline: "Bharuch's Premier Business Plaza",
+    location: "Link Road, Bharuch",
+    city: "Bharuch",
+    status: "Ongoing",
+    type: "Commercial",
+    units: 110,
+    area: "450–3500 sq ft",
+    priceRange: { min: 3200000, max: 18000000 },
+    completionYear: 2026,
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    gallery: [],
+    highlights: ["State-of-the-art Design", "Vibrant Retail Plaza", "Ample Multi-level Parking", "Prime Location"],
+    description:
+      "Bhumi Central Square redefines commercial excellence in Bharuch. Located in the highly active business hub, it integrates premium corporate offices and luxurious retail spaces with world-class facilities and unmatched architectural grandeur.",
+    amenities: [
+      "24/7 Security & CCTV",
+      "High-speed Elevators",
+      "Executive Conference Room",
+      "Centralized AC",
+      "Double-height Entrance Lobby",
+      "Food Court & Cafes",
+      "Power Backup",
+    ],
+    featured: true,
+  },
+  {
+    id: "8",
+    slug: "solitaire-pallazzo",
+    name: "Solitaire Pallazzo",
+    tagline: "Ultra-Luxury Palatial Residencies",
+    location: "Zadeshwar Road, Bharuch",
+    city: "Bharuch",
+    status: "Upcoming",
+    type: "Residential",
+    units: 48,
+    area: "2400–4500 sq ft",
+    priceRange: { min: 8500000, max: 24000000 },
+    completionYear: 2027,
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+    gallery: [],
+    highlights: ["Exclusive Single-Apartment-Per-Floor", "Infinity Terrace Pool", "Smart-Home Automation", "Private Elevators"],
+    description:
+      "Drawing inspiration from the finest architectural designs, Solitaire Pallazzo is the crown jewel of luxury living in Bharuch. An exclusive collection of ultra-luxurious, expansive spaces, private sky lawns, and high-end finishes built for the elite few.",
+    amenities: [
+      "Infinity Swimming Pool",
+      "World-class Gym & Spa",
+      "Private Sky Deck",
+      "Concierge Service",
+      "Multi-tier Security System",
+      "EV Charging Infrastructure",
+      "Clubhouse & Indoor Theater",
+    ],
+    featured: true,
+  },
+  {
+    id: "9",
+    slug: "bhumi-city-centre",
+    name: "Bhumi City Centre",
+    tagline: "The Core of Trade and Entertainment",
+    location: "College Road, Bharuch",
+    city: "Bharuch",
+    status: "Completed",
+    type: "Commercial",
+    units: 95,
+    area: "500–5000 sq ft",
+    priceRange: { min: 2800000, max: 15000000 },
+    completionYear: 2024,
+    image: "https://images.unsplash.com/photo-1555637138-afc824873004?w=800&q=80",
+    gallery: [],
+    highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
+    description:
+      "Bhumi City Centre is a landmark commercial and retail destination. Positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
+    amenities: [
+      "Escalators & Lift Services",
+      "Central Air Conditioning",
+      "Dedicated Loading Bays",
+      "Multi-cuisine Food Court",
+      "Extensive Visitor Parking",
+      "100% Power Backup",
+      "Professional Property Management",
+    ],
     featured: true,
   },
 ];
 
-export const getFeaturedProjects = () => projects.filter((p) => p.featured);
+// Returns the 4 featured projects for the homepage.
+// As requested, this includes Central Square, Solitaire Pallazzo, City Centre,
+// and a 4th "random" project from the remaining portfolio (e.g. Bhumi Royal Heights).
+export const getFeaturedProjects = () => {
+  const primarySlugs = ["bhumi-central-square", "solitaire-pallazzo", "bhumi-city-centre"];
+  const primary = projects.filter((p) => primarySlugs.includes(p.slug));
+  const others = projects.filter((p) => !primarySlugs.includes(p.slug));
+  
+  // Statically pick the 4th project so it remains stable during Next.js SSR and client-side hydration.
+  // We can pick Bhumi Royal Heights as the "random" selection.
+  const random4th = others[0]; // "Bhumi Royal Heights"
+  
+  return [...primary, random4th].slice(0, 4);
+};
+
 export const getProjectBySlug = (slug: string) => projects.find((p) => p.slug === slug);
 export const getProjectsByStatus = (status: ProjectStatus) =>
   projects.filter((p) => p.status === status);

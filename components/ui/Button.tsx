@@ -12,19 +12,19 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-accent text-primary font-semibold hover:bg-accent-light border border-accent hover:border-accent-light",
+    "bg-white text-primary font-semibold hover:bg-white/90 border border-white",
   secondary:
     "bg-primary text-white font-semibold hover:bg-primary-light border border-primary",
   outline:
     "bg-transparent text-primary font-semibold border border-primary hover:bg-primary hover:text-white",
   ghost:
-    "bg-transparent text-charcoal font-medium hover:text-accent border border-transparent",
+    "bg-transparent text-charcoal font-medium hover:text-primary border border-transparent",
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: "px-5 py-2.5 text-xs tracking-widest",
-  md: "px-7 py-3.5 text-sm tracking-widest",
-  lg: "px-9 py-4 text-sm tracking-widest",
+  sm: "px-5 py-2.5 text-xs tracking-[0.15em]",
+  md: "px-7 py-3.5 text-xs tracking-[0.15em]",
+  lg: "px-9 py-4 text-xs tracking-[0.15em]",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

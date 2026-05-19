@@ -32,20 +32,18 @@ export default function Navbar() {
     : "bg-primary shadow-lg";
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex flex-col leading-tight">
             <span
-              className="text-accent font-heading text-2xl font-bold tracking-wide"
+              className="text-white font-heading text-2xl font-bold tracking-wide"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Bhumi
             </span>
-            <span className="text-white text-xs font-body tracking-[0.25em] uppercase">
+            <span className="text-white/40 text-xs font-body tracking-[0.3em] uppercase">
               Developers
             </span>
           </Link>
@@ -56,10 +54,10 @@ export default function Navbar() {
               <Link
                 key={href}
                 href={href}
-                className={`text-sm tracking-widest uppercase font-body transition-colors duration-200 ${
+                className={`text-xs tracking-[0.2em] uppercase font-body transition-colors duration-200 ${
                   pathname === href
-                    ? "text-accent"
-                    : "text-white/80 hover:text-accent"
+                    ? "text-white"
+                    : "text-white/50 hover:text-white"
                 }`}
               >
                 {label}
@@ -67,10 +65,10 @@ export default function Navbar() {
             ))}
             <a
               href="tel:+912642000000"
-              className="flex items-center gap-2 bg-accent text-primary px-5 py-2.5 text-sm font-semibold tracking-wide hover:bg-accent-light transition-colors duration-200"
+              className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-200"
             >
-              <Phone size={14} />
-              Enquire Now
+              <Phone size={13} />
+              Enquire
             </a>
           </nav>
 
@@ -80,7 +78,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -101,8 +99,8 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setIsOpen(false)}
-                  className={`text-base tracking-wider uppercase font-body py-2 border-b border-white/10 ${
-                    pathname === href ? "text-accent" : "text-white/80"
+                  className={`text-sm tracking-[0.2em] uppercase font-body py-2 border-b border-white/10 ${
+                    pathname === href ? "text-white" : "text-white/50"
                   }`}
                 >
                   {label}
@@ -110,9 +108,9 @@ export default function Navbar() {
               ))}
               <a
                 href="tel:+912642000000"
-                className="mt-2 flex items-center justify-center gap-2 bg-accent text-primary px-5 py-3 text-sm font-semibold tracking-wide"
+                className="mt-2 flex items-center justify-center gap-2 bg-white text-primary px-5 py-3 text-xs font-semibold tracking-[0.15em] uppercase"
               >
-                <Phone size={14} />
+                <Phone size={13} />
                 Enquire Now
               </a>
             </nav>

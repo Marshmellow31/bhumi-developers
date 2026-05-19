@@ -33,16 +33,16 @@ export default function ProjectGrid() {
   return (
     <div>
       {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-12">
+      <div className="flex flex-col sm:flex-row gap-3 mb-12">
         <div className="flex flex-wrap gap-2">
           {statusFilters.map(({ label, value }) => (
             <button
               key={value}
               onClick={() => setActiveStatus(value)}
-              className={`px-4 py-2 text-xs tracking-widest uppercase font-semibold border transition-colors duration-200 font-body ${
+              className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold border transition-colors duration-200 font-body ${
                 activeStatus === value
                   ? "bg-primary text-white border-primary"
-                  : "bg-white text-charcoal border-border hover:border-primary hover:text-primary"
+                  : "bg-white text-muted border-border hover:border-primary hover:text-primary"
               }`}
             >
               {label}
@@ -54,10 +54,10 @@ export default function ProjectGrid() {
             <button
               key={value}
               onClick={() => setActiveType(value)}
-              className={`px-4 py-2 text-xs tracking-widest uppercase font-semibold border transition-colors duration-200 font-body ${
+              className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold border transition-colors duration-200 font-body ${
                 activeType === value
-                  ? "bg-accent text-primary border-accent"
-                  : "bg-white text-charcoal border-border hover:border-accent hover:text-accent"
+                  ? "bg-primary text-white border-primary"
+                  : "bg-white text-muted border-border hover:border-primary hover:text-primary"
               }`}
             >
               {label}
@@ -67,17 +67,14 @@ export default function ProjectGrid() {
       </div>
 
       {/* Count */}
-      <p className="text-sm text-muted font-body mb-8">
-        Showing {filtered.length} project{filtered.length !== 1 ? "s" : ""}
+      <p className="text-xs text-muted tracking-[0.2em] uppercase font-body mb-8">
+        {filtered.length} Project{filtered.length !== 1 ? "s" : ""}
       </p>
 
       {/* Grid */}
       <AnimatePresence mode="popLayout">
         {filtered.length > 0 ? (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((project) => (
               <motion.div
                 key={project.id}
@@ -95,7 +92,7 @@ export default function ProjectGrid() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-muted font-body text-center py-16"
+            className="text-muted font-body text-center py-16 tracking-wide"
           >
             No projects found for the selected filters.
           </motion.p>

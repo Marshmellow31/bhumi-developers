@@ -34,7 +34,7 @@ export default function SectionHeading({
       {eyebrow && (
         <span
           className={`text-xs tracking-[0.3em] uppercase font-semibold font-body ${
-            light ? "text-accent" : "text-accent"
+            light ? "text-white/50" : "text-muted"
           }`}
         >
           {eyebrow}
@@ -50,7 +50,7 @@ export default function SectionHeading({
       </h2>
       {eyebrow && (
         <div
-          className={`w-12 h-0.5 bg-accent ${
+          className={`w-10 h-px ${light ? "bg-white/30" : "bg-primary/30"} ${
             align === "center" ? "self-center" : align === "right" ? "self-end" : "self-start"
           }`}
         />
@@ -58,7 +58,7 @@ export default function SectionHeading({
       {subtitle && (
         <p
           className={`text-base md:text-lg max-w-2xl leading-relaxed font-body mt-2 ${
-            light ? "text-white/70" : "text-muted"
+            light ? "text-white/50" : "text-muted"
           }`}
         >
           {subtitle}

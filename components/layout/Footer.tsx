@@ -34,10 +34,10 @@ const socialLinks = [
 ];
 
 const projects = [
+  { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
+  { href: "/projects/bhumi-central-square", label: "Central Square" },
+  { href: "/projects/bhumi-city-centre", label: "City Centre" },
   { href: "/projects/bhumi-royal-heights", label: "Royal Heights" },
-  { href: "/projects/bhumi-serene-villas", label: "Serene Villas" },
-  { href: "/projects/bhumi-grand-square", label: "Grand Square" },
-  { href: "/projects/bhumi-one-ankleshwar", label: "One Ankleshwar" },
 ];
 
 const quickLinks = [
@@ -57,24 +57,24 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="mb-6">
               <span
-                className="text-accent text-3xl font-bold block"
+                className="text-white text-3xl font-bold block"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 Bhumi
               </span>
-              <span className="text-white/60 text-xs tracking-[0.3em] uppercase">Developers</span>
+              <span className="text-white/30 text-xs tracking-[0.3em] uppercase">Developers</span>
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-6">
+            <p className="text-white/40 text-sm leading-relaxed mb-6">
               Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
               developer since 2005.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map(({ label, href, icon }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/60 hover:border-accent hover:text-accent transition-colors duration-200"
+                  className="w-9 h-9 border border-white/15 flex items-center justify-center text-white/30 hover:border-white hover:text-white transition-colors duration-200"
                 >
                   {icon}
                 </a>
@@ -84,7 +84,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-accent text-xs tracking-[0.25em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -92,7 +92,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-white/60 text-sm hover:text-accent transition-colors duration-200"
+                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -103,7 +103,7 @@ export default function Footer() {
 
           {/* Projects */}
           <div>
-            <h4 className="text-accent text-xs tracking-[0.25em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Our Projects
             </h4>
             <ul className="space-y-3">
@@ -111,7 +111,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-white/60 text-sm hover:text-accent transition-colors duration-200"
+                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -122,12 +122,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-accent text-xs tracking-[0.25em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Get In Touch
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-white/60 text-sm">
-                <MapPin size={16} className="text-accent mt-0.5 shrink-0" />
+              <li className="flex items-start gap-3 text-white/40 text-sm">
+                <MapPin size={15} className="text-white/40 mt-0.5 shrink-0" />
                 <span>
                   Bhumi House, Station Road,
                   <br />
@@ -137,18 +137,18 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+912642000000"
-                  className="flex items-center gap-3 text-white/60 text-sm hover:text-accent transition-colors"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
-                  <Phone size={16} className="text-accent" />
+                  <Phone size={15} className="shrink-0" />
                   +91 2642 000000
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:contact@bhumidevelopers.com"
-                  className="flex items-center gap-3 text-white/60 text-sm hover:text-accent transition-colors"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
-                  <Mail size={16} className="text-accent" />
+                  <Mail size={15} className="shrink-0" />
                   contact@bhumidevelopers.com
                 </a>
               </li>
@@ -159,9 +159,9 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/20 tracking-wide">
           <p>© {new Date().getFullYear()} Bhumi Developers. All rights reserved.</p>
-          <p>Designed with care in Bharuch, Gujarat</p>
+          <p>Bharuch, Gujarat, India</p>
         </div>
       </div>
     </footer>

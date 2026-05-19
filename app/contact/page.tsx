@@ -83,13 +83,13 @@ export default function ContactPage() {
               >
                 Our Office
               </h2>
-              <div className="w-10 h-0.5 bg-accent" />
+              <div className="w-10 h-px bg-primary/30 mt-3" />
             </div>
             <div className="flex flex-col gap-5">
               {contactInfo.map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0">
-                    <Icon size={16} className="text-accent" />
+                    <Icon size={16} className="text-white" />
                   </div>
                   <div>
                     <p className="text-xs tracking-widest uppercase font-semibold text-muted font-body mb-1">
@@ -98,7 +98,7 @@ export default function ContactPage() {
                     {href ? (
                       <a
                         href={href}
-                        className="text-charcoal font-body text-sm hover:text-accent transition-colors"
+                        className="text-charcoal font-body text-sm hover:text-primary transition-colors"
                       >
                         {value}
                       </a>

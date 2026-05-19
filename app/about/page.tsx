@@ -40,21 +40,21 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Stats */}
-      <div className="bg-accent py-14">
+      {/* Stats — black section */}
+      <div className="bg-primary border-t border-white/5 py-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-white/5 text-center">
             {[
               { value: 20, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
               { value: 5000, suffix: "+", label: "Families" },
               { value: 12, suffix: "M+", label: "Sq Ft Built" },
             ].map((s, i) => (
-              <div key={i}>
-                <p className="text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
+              <div key={i} className="py-8 lg:py-0 lg:px-8">
+                <p className="text-4xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
                   <AnimatedCounter target={s.value} suffix={s.suffix} />
                 </p>
-                <p className="text-primary/60 text-xs tracking-widest uppercase font-body mt-1">{s.label}</p>
+                <p className="text-white/25 text-xs tracking-[0.3em] uppercase font-body mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -62,25 +62,27 @@ export default function AboutPage() {
       </div>
 
       {/* Mission & Vision */}
-      <div className="py-24 bg-background">
+      <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white border border-border p-10">
-              <span className="text-accent text-xs tracking-widest uppercase font-semibold font-body">Our Mission</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+            <div className="bg-white p-12">
+              <span className="text-muted text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Mission</span>
               <h3 className="text-2xl font-bold text-primary mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Building More Than Homes
               </h3>
-              <p className="text-muted font-body leading-relaxed">
+              <div className="w-8 h-px bg-primary/20 mb-6" />
+              <p className="text-muted font-body leading-relaxed text-sm">
                 To create thoughtfully designed spaces that enrich lives — with unwavering commitment
                 to quality, transparency, and timely delivery. Every Bhumi project is a promise kept.
               </p>
             </div>
-            <div className="bg-primary p-10">
-              <span className="text-accent text-xs tracking-widest uppercase font-semibold font-body">Our Vision</span>
+            <div className="bg-primary p-12">
+              <span className="text-white/30 text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Vision</span>
               <h3 className="text-2xl font-bold text-white mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Gujarat&apos;s Most Trusted Builder
               </h3>
-              <p className="text-white/60 font-body leading-relaxed">
+              <div className="w-8 h-px bg-white/20 mb-6" />
+              <p className="text-white/40 font-body leading-relaxed text-sm">
                 To be recognized across Gujarat for building spaces that stand the test of time —
                 where engineering excellence meets architectural beauty, creating legacies for generations.
               </p>
@@ -90,7 +92,7 @@ export default function AboutPage() {
       </div>
 
       {/* Timeline */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-surface">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <SectionHeading eyebrow="Our Journey" title="Milestones That Define Us" />
@@ -104,13 +106,13 @@ export default function AboutPage() {
                   className={`flex items-start gap-8 ${i % 2 === 0 ? "flex-row" : "flex-row-reverse"}`}
                 >
                   <div className={`flex-1 ${i % 2 === 0 ? "text-right" : "text-left"}`}>
-                    <div className="inline-block bg-background border border-border px-6 py-4">
-                      <p className="text-accent text-xs tracking-widest uppercase font-semibold font-body mb-1">{m.year}</p>
-                      <h4 className="text-primary font-bold font-heading text-lg mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{m.title}</h4>
-                      <p className="text-muted text-sm font-body">{m.desc}</p>
+                    <div className="inline-block bg-white border border-border px-6 py-4">
+                      <p className="text-muted text-xs tracking-[0.25em] uppercase font-semibold font-body mb-1">{m.year}</p>
+                      <h4 className="text-primary font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{m.title}</h4>
+                      <p className="text-muted text-sm font-body leading-relaxed">{m.desc}</p>
                     </div>
                   </div>
-                  <div className="relative z-10 w-4 h-4 rounded-full bg-accent border-4 border-white shadow-md mt-4 shrink-0" />
+                  <div className="relative z-10 w-3 h-3 bg-primary border-4 border-surface mt-4 shrink-0" />
                   <div className="flex-1" />
                 </div>
               ))}
@@ -120,24 +122,24 @@ export default function AboutPage() {
       </div>
 
       {/* Leadership */}
-      <div className="py-24 bg-background">
+      <div className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <SectionHeading eyebrow="Leadership" title="The People Behind Bhumi" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {team.map((member, i) => (
-              <div key={i} className="bg-white border border-border p-8 text-center">
-                <div className="w-20 h-20 rounded-full bg-primary-light mx-auto mb-5 flex items-center justify-center">
-                  <span className="text-accent text-2xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
+              <div key={i} className="bg-white p-8 text-center">
+                <div className="w-16 h-16 bg-primary mx-auto mb-5 flex items-center justify-center">
+                  <span className="text-white text-2xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
                     {member.name.charAt(0)}
                   </span>
                 </div>
-                <h4 className="text-primary font-bold font-heading mb-1" style={{ fontFamily: "var(--font-playfair)" }}>
+                <h4 className="text-primary font-bold mb-1 text-base" style={{ fontFamily: "var(--font-playfair)" }}>
                   {member.name}
                 </h4>
-                <p className="text-accent text-xs tracking-wider uppercase font-body mb-2">{member.role}</p>
-                <p className="text-muted text-xs font-body">With Bhumi since {member.since}</p>
+                <p className="text-muted text-xs tracking-[0.2em] uppercase font-body mb-2">{member.role}</p>
+                <p className="text-muted/60 text-xs font-body">Since {member.since}</p>
               </div>
             ))}
           </div>
