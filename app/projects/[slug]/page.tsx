@@ -122,6 +122,33 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
             </div>
 
+            {/* Gallery */}
+            {project.gallery && project.gallery.length > 0 && (
+              <div>
+                <h2
+                  className="text-xl font-bold text-primary mb-4"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  Project Gallery
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.gallery.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative overflow-hidden group aspect-[4/3] bg-primary/5 border border-border"
+                    >
+                      <img
+                        src={img}
+                        alt={`${project.name} Gallery ${i + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Amenities */}
             <div>
               <h2

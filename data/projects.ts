@@ -272,8 +272,8 @@ export const projects: Project[] = [
     area: "500–5000 sq ft",
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2024,
-    image: "https://images.unsplash.com/photo-1555637138-afc824873004?w=800&q=80",
-    gallery: [],
+    image: "/images/city-centre.jpg",
+    gallery: ["/images/city-centre.jpg"],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
       "Bhumi City Centre is a landmark commercial and retail destination. Positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",

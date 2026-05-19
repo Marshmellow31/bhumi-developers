@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -36,16 +37,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col leading-tight">
-            <span
-              className="text-white font-heading text-2xl font-bold tracking-wide"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              Bhumi
-            </span>
-            <span className="text-white/40 text-xs font-body tracking-[0.3em] uppercase">
-              Developers
-            </span>
+          <Link href="/" className="flex items-center">
+            <Logo className="h-14 w-auto" light={false} />
           </Link>
 
           {/* Desktop Nav */}

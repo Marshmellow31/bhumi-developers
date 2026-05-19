@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import Logo from "@/components/ui/Logo";
 
 const socialLinks = [
   {
@@ -55,14 +56,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="mb-6">
-              <span
-                className="text-white text-3xl font-bold block"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Bhumi
-              </span>
-              <span className="text-white/30 text-xs tracking-[0.3em] uppercase">Developers</span>
+            <div className="mb-6 -ml-2">
+              <Logo className="h-16 w-auto" light={false} />
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-6">
               Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
