@@ -203,8 +203,8 @@ export const projects: Project[] = [
   },
   {
     id: "7",
-    slug: "bhumi-central-square",
-    name: "Bhumi Central Square",
+    slug: "central-square",
+    name: "Central Square",
     tagline: "Bharuch's Premier Business Plaza",
     location: "Link Road, Bharuch",
     city: "Bharuch",
@@ -261,8 +261,8 @@ export const projects: Project[] = [
   },
   {
     id: "9",
-    slug: "bhumi-city-centre",
-    name: "Bhumi City Centre",
+    slug: "city-centre",
+    name: "City Centre",
     tagline: "The Core of Trade and Entertainment",
     location: "College Road, Bharuch",
     city: "Bharuch",
@@ -294,14 +294,14 @@ export const projects: Project[] = [
 // As requested, this includes Central Square, Solitaire Pallazzo, City Centre,
 // and a 4th "random" project from the remaining portfolio (e.g. Bhumi Royal Heights).
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["bhumi-central-square", "solitaire-pallazzo", "bhumi-city-centre"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-centre"];
   const primary = projects.filter((p) => primarySlugs.includes(p.slug));
   const others = projects.filter((p) => !primarySlugs.includes(p.slug));
-  
+
   // Statically pick the 4th project so it remains stable during Next.js SSR and client-side hydration.
   // We can pick Bhumi Royal Heights as the "random" selection.
   const random4th = others[0]; // "Bhumi Royal Heights"
-  
+
   return [...primary, random4th].slice(0, 4);
 };
 

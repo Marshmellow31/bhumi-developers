@@ -35,8 +35,8 @@ const socialLinks = [
 
 const projects = [
   { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
-  { href: "/projects/bhumi-central-square", label: "Central Square" },
-  { href: "/projects/bhumi-city-centre", label: "City Centre" },
+  { href: "/projects/central-square", label: "Central Square" },
+  { href: "/projects/city-centre", label: "City Centre" },
   { href: "/projects/bhumi-royal-heights", label: "Royal Heights" },
 ];
 
