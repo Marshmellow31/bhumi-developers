@@ -29,8 +29,33 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🚀 Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is fully optimized and configured for seamless deployment on [Vercel](https://vercel.com). Follow the steps below to deploy your app:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 1. Push Your Changes to GitHub
+Ensure all the Vercel configuration files, package updates, and environment setups are pushed to your remote repository:
+```bash
+git add .
+git commit -m "Configure project for professional Vercel deployment"
+git push origin master
+```
+
+### 2. Import into Vercel
+1. Go to the [Vercel Dashboard](https://vercel.com) and click **Add New** > **Project**.
+2. Select and import your GitHub repository: `bhumi-developers`.
+3. Vercel will automatically detect **Next.js** as the framework and configure the optimal build command (`next build`) and output directory.
+
+### 3. Configure Environment Variables
+Before clicking **Deploy**, expand the **Environment Variables** section in the Vercel project configuration and add the following keys from your `.env.example` file:
+
+| Variable Name | Example Value | Description |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_SITE_NAME` | `Bhumi Developers` | The name of your site shown across titles and components. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | `contact@bhumidevelopers.com` | The default email address used for contact and enquiry actions. |
+
+### 4. Deploy!
+Click **Deploy**. Vercel will build the application using Node.js 22, compile all TypeScript, generate static pages, and serve your app globally via their high-performance edge CDN!
+
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more advanced details.
+
