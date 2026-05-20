@@ -18,7 +18,7 @@ const milestones = [
 ];
 
 const team = [
-  { name: "Rajesh Patel", role: "Chairman & Founder", since: "1991" },
+  { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
   { name: "Mihir Patel", role: "Managing Director", since: "2010" },
   { name: "Priya Shah", role: "Head of Design", since: "2015" },
   { name: "Kunal Desai", role: "Chief Sales Officer", since: "2018" },
