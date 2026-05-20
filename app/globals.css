@@ -126,8 +126,8 @@ body.cursor-active * {
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: #f59e0b;
+  height: 3px;
+  background: #ffffff;
   transform-origin: left;
   z-index: 60;
 }

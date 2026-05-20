@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420">
+  <!-- Warm cream background -->
+  <rect width="420" height="420" rx="28" fill="#F0EDE7"/>
+  <!-- Inner border -->
+  <rect x="14" y="14" width="392" height="392" rx="18" fill="none" stroke="#0A0A0A" stroke-width="3"/>
+
+  <!-- House silhouette (geometric, bold) -->
+  <!-- Roof -->
+  <polygon points="210,68 316,158 104,158" fill="#0A0A0A"/>
+  <!-- Walls -->
+  <rect x="132" y="156" width="156" height="100" fill="#0A0A0A"/>
+  <!-- Door cutout -->
+  <rect x="186" y="206" width="48" height="50" rx="3" fill="#F0EDE7"/>
+
+  <!-- Gold horizontal rule -->
+  <line x1="105" y1="275" x2="315" y2="275" stroke="#B8935A" stroke-width="2"/>
+
+  <!-- PRITAM -->
+  <text
+    x="210" y="336"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Arial Black', Arial, sans-serif"
+    font-weight="900"
+    font-size="70"
+    fill="#0A0A0A"
+    textLength="306"
+    lengthAdjust="spacingAndGlyphs"
+  >PRITAM</text>
+
+  <!-- RESIDENCY -->
+  <text
+    x="210" y="388"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="Arial, sans-serif"
+    font-size="21"
+    fill="#7A7570"
+    letter-spacing="7"
+  >RESIDENCY</text>
+</svg>

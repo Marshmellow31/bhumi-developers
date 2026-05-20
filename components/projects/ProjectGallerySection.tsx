@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { MapPin, ZoomIn } from "lucide-react";
 import { motion } from "framer-motion";
 import GalleryModal from "@/components/ui/GalleryModal";
@@ -13,7 +12,6 @@ interface ProjectGallerySectionProps {
   name: string;
   location: string;
   tagline?: string;
-  logo?: string;
   statusColors: Record<string, string>;
 }
 
@@ -24,7 +22,6 @@ export default function ProjectGallerySection({
   name,
   location,
   tagline,
-  logo,
   statusColors,
 }: ProjectGallerySectionProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
@@ -63,23 +60,6 @@ export default function ProjectGallerySection({
 
             {/* Left: logo crest → divider → badge → title → location */}
             <div>
-              {logo && (
-                <div className="mb-6">
-                  <Image
-                    src={logo}
-                    alt={`${name} logo`}
-                    width={140}
-                    height={105}
-                    className="object-contain"
-                    priority
-                  />
-                  <div className="mt-5 flex items-center gap-3">
-                    <span className="block w-10 h-px bg-amber-500" />
-                    <span className="block w-2 h-2 rounded-full bg-amber-500/60" />
-                    <span className="block flex-1 h-px bg-white/10" />
-                  </div>
-                </div>
-              )}
               <span
                 className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-5 font-body ${statusColors[status]}`}
               >

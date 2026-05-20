@@ -43,7 +43,7 @@ export default function RootLayout({
         {/* Cinematic grain overlay — fixed, z-indexed below cursor */}
         <div className="grain-overlay" aria-hidden="true" />
 
-        {/* Amber scroll-progress bar */}
+        {/* Premium white scroll-progress bar */}
         <ScrollProgress />
 
         {/* First-load cinematic loader */}

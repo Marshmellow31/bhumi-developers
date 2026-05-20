@@ -8,6 +8,7 @@ import { type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 import GalleryModal from "@/components/ui/GalleryModal";
 
+
 const statusStyles: Record<string, string> = {
   Ongoing:   "bg-white text-primary",
   Completed: "bg-white/10 text-white border border-white/20",

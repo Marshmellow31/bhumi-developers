@@ -72,7 +72,7 @@ export default function PageLoader() {
             {/* Progress bar */}
             <div className="w-40 h-px bg-white/10 overflow-hidden">
               <motion.div
-                className="h-full bg-amber-500"
+                className="h-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 2.0, ease: "easeInOut", delay: 0.2 }}

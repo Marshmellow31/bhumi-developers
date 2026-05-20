@@ -43,6 +43,7 @@ export default function ProjectGrid() {
               const formattedNumber = String(index + 1).padStart(2, "0");
               const isHovered = hoveredIndex === index;
               const isVertical = windowWidth >= 768 && hoveredIndex !== null && !isHovered;
+
               
               return (
                 <motion.div
@@ -116,20 +117,22 @@ export default function ProjectGrid() {
                         {formattedNumber}
                       </motion.span>
 
-                      {/* Status Tag (Fades in when expanded) */}
-                      <AnimatePresence>
-                        {isHovered && (
-                          <motion.span
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                            className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 font-body"
-                          >
-                            {project.status}
-                          </motion.span>
-                        )}
-                      </AnimatePresence>
+                      {/* Right side group: Status Tag */}
+                      <div className="flex flex-col items-end gap-3">
+                        <AnimatePresence>
+                          {isHovered && (
+                            <motion.span
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.8 }}
+                              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                              className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 font-body"
+                            >
+                              {project.status}
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </div>
                     </div>
 
                     {/* Bottom Info Stack */}

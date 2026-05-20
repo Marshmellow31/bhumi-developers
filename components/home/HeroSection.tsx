@@ -221,13 +221,13 @@ export default function HeroSection() {
             </Button>
           </Link>
           <Link href="/contact" data-cursor-label="VISIT">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white hover:text-primary"
+            <motion.div
+              whileHover={{ backgroundColor: "#ffffff", color: "#0A0A0A" }}
+              transition={{ duration: 0.2 }}
+              className="inline-flex items-center justify-center gap-2 uppercase font-body font-semibold px-9 py-4 text-xs tracking-[0.15em] border border-white/20 text-white active:scale-95 cursor-pointer"
             >
               Schedule a Visit
-            </Button>
+            </motion.div>
           </Link>
         </motion.div>
       </motion.div>

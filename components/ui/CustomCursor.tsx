@@ -81,7 +81,12 @@ export default function CustomCursor() {
       >
         <motion.div
           className="rounded-full bg-white"
-          animate={{ width: hovering ? 6 : 8, height: hovering ? 6 : 8 }}
+          animate={{
+            width: hovering ? 6 : 8,
+            height: hovering ? 6 : 8,
+            opacity: label ? 0 : 1,
+            scale: label ? 0 : 1,
+          }}
           transition={{ duration: 0.15 }}
         />
       </motion.div>
@@ -94,13 +99,14 @@ export default function CustomCursor() {
         <motion.div
           className="rounded-full flex items-center justify-center"
           animate={{
-            width:           hovering ? 58  : 32,
-            height:          hovering ? 58  : 32,
+            width:           hovering ? 64  : 32,
+            height:          hovering ? 64  : 32,
             opacity:         visible  ? 1   : 0,
-            borderColor:     hovering ? "rgba(245,158,11,0.9)"  : "rgba(255,255,255,0.35)",
-            backgroundColor: hovering ? "rgba(245,158,11,0.08)" : "rgba(0,0,0,0)",
+            borderColor:     hovering ? "rgba(245,158,11,0.85)" : "rgba(255,255,255,0.35)",
+            backgroundColor: hovering ? "rgba(245,158,11,0.12)" : "rgba(0, 0, 0, 0.04)",
+            backdropFilter:  hovering ? "blur(3px)" : "blur(0px)",
           }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
           style={{ border: "1px solid" }}
         >
           {hovering && label && (
