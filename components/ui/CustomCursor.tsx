@@ -104,7 +104,6 @@ export default function CustomCursor() {
             opacity:         visible  ? 1   : 0,
             borderColor:     hovering ? "rgba(245,158,11,0.85)" : "rgba(255,255,255,0.35)",
             backgroundColor: hovering ? "rgba(245,158,11,0.12)" : "rgba(0, 0, 0, 0.04)",
-            backdropFilter:  hovering ? "blur(3px)" : "blur(0px)",
           }}
           transition={{ duration: 0.22, ease: "easeOut" }}
           style={{ border: "1px solid" }}

@@ -70,7 +70,7 @@ export default function HeroSection() {
       <motion.div
         className="absolute inset-[-8%] bg-cover bg-center bg-no-repeat z-0"
         style={{
-          backgroundImage: "url('/images/solitaire-plaza/Tavra Corner Day-a.jpg')",
+          backgroundImage: "url('/images/background.png')",
           x: bgX,
           y: bgY,
           opacity: 0.22,

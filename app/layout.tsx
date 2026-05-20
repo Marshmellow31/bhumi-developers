@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
 import PageLoader from "@/components/ui/PageLoader";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import ContactPopup from "@/components/ui/ContactPopup";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -42,6 +43,9 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
         {/* Premium white scroll-progress bar */}
         <ScrollProgress />
+
+        {/* Lead Generation Popup */}
+        <ContactPopup />
 
         {/* First-load cinematic loader */}
         <PageLoader />
