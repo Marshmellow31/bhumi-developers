@@ -40,9 +40,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
-        {/* Cinematic grain overlay — fixed, z-indexed below cursor */}
-        <div className="grain-overlay" aria-hidden="true" />
-
         {/* Premium white scroll-progress bar */}
         <ScrollProgress />
 
