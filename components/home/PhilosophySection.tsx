@@ -83,9 +83,11 @@ const slides: SlideData[] = [
 export default function PhilosophySection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Detect screen size to switch between mobile normal scroll and desktop sticky scroll-animation
   useEffect(() => {
+    setIsMounted(true);
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -96,7 +98,7 @@ export default function PhilosophySection() {
 
   // Framer Motion hooks for desktop scroll animation
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: isMounted && !isMobile ? containerRef : undefined,
   });
 
   // Calculate dynamic scroll distance in pixels to align the last card perfectly
