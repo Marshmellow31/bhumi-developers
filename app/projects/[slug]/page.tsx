@@ -1,16 +1,18 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import Image from "next/image";
 import { MapPin, Home, Calendar, Layers } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 import CTABanner from "@/components/home/CTABanner";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+import ProjectGallerySection from "@/components/projects/ProjectGallerySection";
+import ProjectGalleryGrid from "@/components/projects/ProjectGalleryGrid";
 
 const PROJECT_LOGOS: Record<string, string> = {
   "central-square": "/images/central-square-logo.png",
   "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
+  "city-centre": "/images/city-center-logo.png",
 };
 
 interface Props {
@@ -32,9 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const statusColors: Record<string, string> = {
-  Ongoing: "bg-emerald-500 text-white",
-  Completed: "bg-blue-500 text-white",
-  Upcoming: "bg-amber-500 text-primary",
+  Ongoing: "bg-white text-primary",
+  Completed: "bg-white text-primary",
+  Upcoming: "bg-white/10 text-white border border-white/20",
 };
 
 export default async function ProjectDetailPage({ params }: Props) {
@@ -51,66 +53,16 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <>
-      {/* Hero */}
-      <div className="relative h-[75vh] min-h-[520px] bg-primary overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
-          style={{ backgroundImage: `url('${project.image}')` }}
-        />
-        {/* Gradient: image visible at top, deep dark at bottom for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/10" />
-
-        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-16">
-          <div className="relative z-10 w-full flex items-end justify-between gap-8">
-
-            {/* Left: logo crest → divider → badge → title → location */}
-            <div>
-              {PROJECT_LOGOS[project.slug] && (
-                <div className="mb-6">
-                  <Image
-                    src={PROJECT_LOGOS[project.slug]}
-                    alt={`${project.name} logo`}
-                    width={140}
-                    height={105}
-                    className="object-contain"
-                    priority
-                  />
-                  <div className="mt-5 flex items-center gap-3">
-                    <span className="block w-10 h-px bg-amber-500" />
-                    <span className="block w-2 h-2 rounded-full bg-amber-500/60" />
-                    <span className="block flex-1 h-px bg-white/10" />
-                  </div>
-                </div>
-              )}
-              <span
-                className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-5 font-body ${
-                  statusColors[project.status]
-                }`}
-              >
-                {project.status}
-              </span>
-              <h1
-                className="text-5xl md:text-7xl font-bold text-white mb-4 leading-none"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                {project.name}
-              </h1>
-              <p className="text-white/60 text-base font-body flex items-center gap-2 tracking-wide">
-                <MapPin size={14} className="text-amber-500/70 shrink-0" />
-                {project.location}
-              </p>
-            </div>
-
-            {/* Right: tagline watermark on large screens */}
-            <p
-              className="hidden lg:block text-right text-white/20 text-xs tracking-[0.3em] uppercase font-body self-end pb-1 max-w-[160px] leading-relaxed"
-            >
-              {project.tagline}
-            </p>
-
-          </div>
-        </div>
-      </div>
+      <ProjectGallerySection
+        image={project.image}
+        gallery={project.gallery}
+        status={project.status}
+        name={project.name}
+        location={project.location}
+        tagline={project.tagline}
+        logo={PROJECT_LOGOS[project.slug]}
+        statusColors={statusColors}
+      />
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -166,21 +118,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 >
                   Project Gallery
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.gallery.map((img, i) => (
-                    <div
-                      key={i}
-                      className="relative overflow-hidden group aspect-[4/3] bg-primary/5 border border-border"
-                    >
-                      <img
-                        src={img}
-                        alt={`${project.name} Gallery ${i + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                    </div>
-                  ))}
-                </div>
+                <ProjectGalleryGrid gallery={project.gallery} projectName={project.name} />
               </div>
             )}
 

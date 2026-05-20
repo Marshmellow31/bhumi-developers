@@ -35,14 +35,14 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "h-20" : "h-28 md:h-32"}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Logo className="h-14 w-auto" light={false} />
+          <Link href="/" className="flex items-center h-full">
+            <Logo className={`w-auto transition-all duration-500 ${scrolled ? "h-14" : "h-20 md:h-24"}`} light={false} />
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 h-full">
             {navLinks.map(({ href, label }) => (
               <Link
                 key={href}
@@ -67,7 +67,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 flex items-center self-center"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

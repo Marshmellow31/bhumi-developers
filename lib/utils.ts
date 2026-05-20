@@ -14,7 +14,13 @@ export function slugify(str: string): string {
 }
 
 export function formatPrice(price: number): string {
-  if (price >= 10000000) return `₹${(price / 10000000).toFixed(1)} Cr`;
-  if (price >= 100000) return `₹${(price / 100000).toFixed(0)} L`;
+  if (price >= 10000000) {
+    const crVal = price / 10000000;
+    return `₹${crVal % 1 === 0 ? crVal.toFixed(0) : crVal.toFixed(1)} Cr`;
+  }
+  if (price >= 100000) {
+    const lakhVal = price / 100000;
+    return `₹${lakhVal % 1 === 0 ? lakhVal.toFixed(0) : lakhVal.toFixed(1)} L`;
+  }
   return `₹${price.toLocaleString("en-IN")}`;
 }

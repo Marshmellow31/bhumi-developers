@@ -219,7 +219,7 @@ export default function ContactPage() {
 
                 <Button
                   type="submit"
-                  variant="primary"
+                  variant="secondary"
                   size="lg"
                   disabled={isSubmitting}
                   className="mt-2 w-full justify-center"
