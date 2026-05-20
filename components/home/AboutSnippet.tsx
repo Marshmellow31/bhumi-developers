@@ -75,13 +75,18 @@ export default function AboutSnippet() {
             />
 
             <div className="flex flex-col gap-4 mt-2">
-              <p className="text-primary/80 leading-relaxed font-body text-sm italic pl-4 border-l-2 border-primary/20">
-                &ldquo;Our journey began in 1991 with a single core value: Trust. Over the last 35+ years, we have focused not just on building brick-and-mortar structures, but on crafting legacies and nurturing relationships. Every landmark we deliver is a testament to our dedication to quality and community.&rdquo;
-              </p>
-              
+              <div className="text-primary/80 leading-relaxed font-body text-sm italic pl-4 border-l-2 border-primary/20 flex flex-col gap-3">
+                <p>
+                  &ldquo;With over 35 years in construction and engineering, building industries across India alongside some of the country&apos;s top MNCs has been more than a career — it has been a calling. As the founder of BD Buildcon LLP, I have had the privilege of leaving a mark on this nation&apos;s industrial landscape, one structure at a time.&rdquo;
+                </p>
+                <p>
+                  &ldquo;But my roots have always been here — in Bharuch. This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back. A promise to bring world-class construction quality, complete transparency, and projects that truly reflect Bharuch&apos;s growing potential — creating spaces where families can live with pride and businesses can grow with confidence.&rdquo;
+                </p>
+              </div>
+
               <div className="flex flex-col gap-0.5 mt-2">
                 <span className="font-heading text-lg font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
-                  Rajesh Patel
+                  Kiran Majmudar
                 </span>
                 <span className="text-muted text-xs tracking-widest uppercase font-semibold font-body">
                   Chairman & Founder
