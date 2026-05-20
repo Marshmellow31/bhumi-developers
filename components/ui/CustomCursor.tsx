@@ -70,7 +70,7 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", onOver);
       document.body.classList.remove("cursor-active");
     };
-  }, []); // stable: rawX/rawY are MotionValues (never change), refs never change
+  }, [rawX, rawY]); // MotionValues have stable identity — listed only to satisfy lint
 
   return (
     <>

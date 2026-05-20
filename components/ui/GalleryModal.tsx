@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -19,9 +19,19 @@ export default function GalleryModal({
 }: GalleryModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
+  // Reset the index when the gallery is opened or initialIndex changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentIndex(initialIndex);
   }, [initialIndex, isOpen]);
+
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
+
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -38,15 +48,7 @@ export default function GalleryModal({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, currentIndex, images.length]);
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [isOpen, goToNext, goToPrevious, onClose]);
 
   return (
     <AnimatePresence>
@@ -113,7 +115,7 @@ export default function GalleryModal({
 
             {/* Keyboard hint */}
             <div className="absolute top-4 left-4 text-white/40 text-xs font-body hidden sm:block">
-              <p>ESC to close • ← → to navigate</p>
+              <p>ESC to close &bull; &larr; &rarr; to navigate</p>
             </div>
           </motion.div>
         </motion.div>

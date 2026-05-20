@@ -14,6 +14,9 @@ export default function PageLoader() {
     const seen = sessionStorage.getItem("bhumi_loaded");
     if (seen) return;
 
+    // Initial render is empty so SSR/client match — show the loader only after
+    // confirming first-time visit on the client.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShow(true);
 
     // Start exit after 2.2 s
