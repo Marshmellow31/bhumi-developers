@@ -236,7 +236,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     </Button>
                   </a>
                 )}
-                <a href="tel:+912642000000">
+                <a href="tel:+919879100355">
                   <Button
                     variant="outline"
                     size="md"

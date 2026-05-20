@@ -22,19 +22,19 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Address",
-    value: "Bhumi House, Station Road, Bharuch — 392 001, Gujarat, India",
+    value: "1ST FLOOR, Millennium Arcade, College Rd, opp. SVMIT ENG. COLLEGE, Friends Colony, Bholav, Bharuch — 392 001, Gujarat, India",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 2642 000000",
-    href: "tel:+912642000000",
+    value: "+91 98791 00355",
+    href: "tel:+919879100355",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "contact@bhumidevelopers.com",
-    href: "mailto:contact@bhumidevelopers.com",
+    value: "contact@bhumidevelopers.co.in",
+    href: "mailto:contact@bhumidevelopers.co.in",
   },
   {
     icon: Clock,
@@ -110,9 +110,24 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-4 h-48 bg-primary/10 border border-border flex items-center justify-center">
-              <p className="text-muted text-sm font-body">Map embed goes here</p>
+            {/* Map */}
+            <div className="mt-8 flex flex-col gap-4">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3711.2464730606994!2d72.99788277598816!3d21.710967980119853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be020b174ea303f%3A0x3d58094e951d1872!2sBhumi%20House%2C%20Station%20Road%2C%20Bharuch%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1716200000000"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="border border-border"
+              />
+              <a href="https://maps.app.goo.gl/MA1FPwTGTEpoPFp16" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="md" className="w-full justify-center">
+                  Get Directions
+                  <MapPin size={14} />
+                </Button>
+              </a>
             </div>
           </div>
 

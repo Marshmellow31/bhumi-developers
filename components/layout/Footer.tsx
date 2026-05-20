@@ -125,27 +125,27 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-white/40 text-sm">
                 <MapPin size={15} className="text-white/40 mt-0.5 shrink-0" />
                 <span>
-                  Bhumi House, Station Road,
+                  1ST FLOOR, Millennium Arcade, College Rd,
                   <br />
-                  Bharuch — 392 001, Gujarat
+                  opp. SVMIT ENG. COLLEGE, Bholav, Bharuch, Gujarat 392001
                 </span>
               </li>
               <li>
                 <a
-                  href="tel:+912642000000"
+                  href="tel:+919879100355"
                   className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
                   <Phone size={15} className="shrink-0" />
-                  +91 2642 000000
+                  +91 98791 00355
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:contact@bhumidevelopers.com"
+                  href="mailto:contact@bhumidevelopers.co.in"
                   className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
                   <Mail size={15} className="shrink-0" />
-                  contact@bhumidevelopers.com
+                  contact@bhumidevelopers.co.in
                 </a>
               </li>
             </ul>
