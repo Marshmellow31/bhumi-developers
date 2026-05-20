@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 const pillars = [
   "Transparent dealings & clear documentation",
   "RERA registered projects across Gujarat",
-  "On-time delivery — 20+ years track record",
+  "On-time delivery — 35+ years track record",
   "Post-possession support & maintenance",
 ];
 
@@ -31,12 +31,9 @@ export default function AboutSnippet() {
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80')",
-                  filter: "grayscale(100%)",
+                  backgroundImage: "url('/images/owner.jpeg')",
                 }}
               />
-              <div className="absolute inset-0 bg-primary/10" />
             </div>
 
             {/* Floating stat card — black on black section */}
@@ -51,7 +48,7 @@ export default function AboutSnippet() {
                 className="text-5xl font-bold leading-none mb-1 text-white"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                20
+                35+
               </p>
               <div className="w-6 h-px bg-white/20 my-3" />
               <p className="text-white/40 text-xs tracking-[0.25em] uppercase font-body">
@@ -78,7 +75,7 @@ export default function AboutSnippet() {
             />
 
             <p className="text-muted leading-relaxed font-body text-sm">
-              Founded in 2005, Bhumi Developers has grown from a small family enterprise into
+              With a legacy of over 35 years, Bhumi Developers has grown from a small family enterprise into
               South Gujarat&rsquo;s most respected real estate developer. With over 50 completed
               projects and 5,000+ satisfied families, our commitment to quality, transparency,
               and timely delivery sets us apart.
