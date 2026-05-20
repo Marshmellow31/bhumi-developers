@@ -1,11 +1,17 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Home, Calendar, Layers } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 import CTABanner from "@/components/home/CTABanner";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
+
+const PROJECT_LOGOS: Record<string, string> = {
+  "central-square": "/images/central-square-logo.png",
+  "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
+};
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -46,33 +52,62 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <>
       {/* Hero */}
-      <div className="relative h-[60vh] min-h-[400px] bg-primary overflow-hidden">
+      <div className="relative h-[75vh] min-h-[520px] bg-primary overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('${project.image}')`,
-          }}
+          className="absolute inset-0 bg-cover bg-center scale-105"
+          style={{ backgroundImage: `url('${project.image}')` }}
         />
-        <div className="absolute inset-0 bg-primary/70" />
-        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-12">
-          <div className="relative z-10">
-            <span
-              className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-4 font-body ${
-                statusColors[project.status]
-              }`}
+        {/* Gradient: image visible at top, deep dark at bottom for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/10" />
+
+        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-16">
+          <div className="relative z-10 w-full flex items-end justify-between gap-8">
+
+            {/* Left: logo crest → divider → badge → title → location */}
+            <div>
+              {PROJECT_LOGOS[project.slug] && (
+                <div className="mb-6">
+                  <Image
+                    src={PROJECT_LOGOS[project.slug]}
+                    alt={`${project.name} logo`}
+                    width={140}
+                    height={105}
+                    className="object-contain"
+                    priority
+                  />
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="block w-10 h-px bg-amber-500" />
+                    <span className="block w-2 h-2 rounded-full bg-amber-500/60" />
+                    <span className="block flex-1 h-px bg-white/10" />
+                  </div>
+                </div>
+              )}
+              <span
+                className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-5 font-body ${
+                  statusColors[project.status]
+                }`}
+              >
+                {project.status}
+              </span>
+              <h1
+                className="text-5xl md:text-7xl font-bold text-white mb-4 leading-none"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                {project.name}
+              </h1>
+              <p className="text-white/60 text-base font-body flex items-center gap-2 tracking-wide">
+                <MapPin size={14} className="text-amber-500/70 shrink-0" />
+                {project.location}
+              </p>
+            </div>
+
+            {/* Right: tagline watermark on large screens */}
+            <p
+              className="hidden lg:block text-right text-white/20 text-xs tracking-[0.3em] uppercase font-body self-end pb-1 max-w-[160px] leading-relaxed"
             >
-              {project.status}
-            </span>
-            <h1
-              className="text-4xl md:text-6xl font-bold text-white mb-3"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              {project.name}
-            </h1>
-            <p className="text-white/70 text-lg font-body flex items-center gap-2">
-              <MapPin size={16} className="text-white/40" />
-              {project.location}
+              {project.tagline}
             </p>
+
           </div>
         </div>
       </div>
