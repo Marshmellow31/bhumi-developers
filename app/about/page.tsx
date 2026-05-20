@@ -6,11 +6,11 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Bhumi Developers — over 20 years of building premium real estate in Bharuch and South Gujarat.",
+    "Learn about Bhumi Developers — over 35 years of building premium real estate in Bharuch and South Gujarat.",
 };
 
 const milestones = [
-  { year: "2005", title: "Founded", desc: "Bhumi Developers was established in Bharuch with a vision to redefine real estate." },
+  { year: "1991", title: "Founded", desc: "Bhumi Developers was established in Bharuch with a vision to redefine real estate." },
   { year: "2010", title: "First Landmark", desc: "Delivered our first major residential project — Bhumi Excel Park with 300 homes." },
   { year: "2015", title: "Commercial Expansion", desc: "Entered the commercial segment with Bhumi Grand Square in the heart of Bharuch." },
   { year: "2020", title: "5,000 Families", desc: "Crossed the milestone of housing 5,000+ satisfied families across South Gujarat." },
@@ -18,7 +18,7 @@ const milestones = [
 ];
 
 const team = [
-  { name: "Rajesh Patel", role: "Chairman & Founder", since: "2005" },
+  { name: "Rajesh Patel", role: "Chairman & Founder", since: "1991" },
   { name: "Mihir Patel", role: "Managing Director", since: "2010" },
   { name: "Priya Shah", role: "Head of Design", since: "2015" },
   { name: "Kunal Desai", role: "Chief Sales Officer", since: "2018" },
@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Story"
-            title="Two Decades of Building Dreams"
+            title="Over Three Decades of Building Dreams"
             subtitle="From a single plot in Bharuch to South Gujarat's most respected developer — this is our story."
             align="center"
             light
@@ -45,7 +45,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-white/5 text-center">
             {[
-              { value: 20, suffix: "+", label: "Years" },
+              { value: 35, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
               { value: 5000, suffix: "+", label: "Families" },
               { value: 12, suffix: "M+", label: "Sq Ft Built" },

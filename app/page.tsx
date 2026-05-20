@@ -10,8 +10,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <StatsSection />
-      <FeaturedProjects />
       <PhilosophySection />
+      <FeaturedProjects />
       <AboutSnippet />
       <CTABanner />
     </>

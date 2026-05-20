@@ -1,12 +1,17 @@
 "use client";
 
 import { useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import { motion, useMotionValue, useTransform, useSpring, type Transition } from "framer-motion";
 import Link from "next/link";
 import { ArrowDown, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 
-const TICKER = "Premium Real Estate · Bharuch · Gujarat · Since 2005 · Landmark Spaces · Crafted with Excellence · ";
+const Hero3DScene = dynamic(() => import("@/components/home/Hero3DScene"), {
+  ssr: false,
+});
+
+const TICKER = "Premium Real Estate · Bharuch · Gujarat · Since 1991 · Landmark Spaces · Crafted with Excellence · ";
 
 const wordTransition = (i: number): Transition => ({
   duration: 0.85,
@@ -66,17 +71,18 @@ export default function HeroSection() {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary"
     >
-      {/* ── Background image — parallax layer ── */}
+      {/* ── 3D Scene — interactive layer ── */}
       <motion.div
-        className="absolute inset-[-8%] bg-cover bg-center bg-no-repeat z-0"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/images/city_center.jpeg')",
           x: bgX,
           y: bgY,
-          opacity: 0.18,
+          opacity: 0.55,
           willChange: "transform",
         }}
-      />
+      >
+        <Hero3DScene />
+      </motion.div>
 
       {/* ── Ambient orb 1: large amber bloom ── */}
       <motion.div
@@ -143,7 +149,7 @@ export default function HeroSection() {
           className="mb-10"
         >
           <span className="inline-block text-white/25 text-[10px] tracking-[0.55em] uppercase font-body border border-white/[0.08] px-6 py-2.5">
-            Est.&nbsp;2005&nbsp;·&nbsp;Bharuch,&nbsp;Gujarat
+            Est.&nbsp;1991&nbsp;·&nbsp;Bharuch,&nbsp;Gujarat
           </span>
         </motion.div>
 
@@ -160,7 +166,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={wordTransition(0)}
             >
-              Crafting
+              Shaping
             </motion.span>
           </div>
 
@@ -172,7 +178,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={wordTransition(1)}
             >
-              Landmark
+              Modern
             </motion.span>
           </div>
 
