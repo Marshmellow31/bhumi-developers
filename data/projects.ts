@@ -1,6 +1,12 @@
 export type ProjectStatus = "Ongoing" | "Completed" | "Upcoming";
 export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa";
 
+export interface FloorPlan {
+  name: string;
+  file: string;
+  size?: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -23,6 +29,8 @@ export interface Project {
   description: string;
   amenities: string[];
   featured: boolean;
+  brochure?: string;
+  floorPlans?: FloorPlan[];
 }
 
 export const projects: Project[] = [
@@ -237,6 +245,7 @@ export const projects: Project[] = [
       "Power Backup",
     ],
     featured: true,
+    brochure: "/documents/central-square-brochure.pdf",
   },
   {
     id: "8",
@@ -281,6 +290,15 @@ export const projects: Project[] = [
       "Clubhouse & Indoor Theater",
     ],
     featured: true,
+    brochure: "/documents/solitaire-pallazzo-brochure.pdf",
+    floorPlans: [
+      { name: "Brochure (Parking Layout & Details)", file: "/documents/solitaire-pallazzo-brochure-parking.pdf", size: "1.3 MB" },
+      { name: "Ground Floor Parking Layout Plan", file: "/documents/solitaire-pallazzo-ground-floor-parking.pdf", size: "1.7 MB" },
+      { name: "Ground Floor Shops Layout (107-108)", file: "/documents/solitaire-pallazzo-107-108-ground-floor.pdf", size: "2.1 MB" },
+      { name: "1st Floor Premium Plan", file: "/documents/solitaire-pallazzo-1st-floor-plan.pdf", size: "4.2 MB" },
+      { name: "2nd Floor Premium Plan", file: "/documents/solitaire-pallazzo-2nd-floor-plan.pdf", size: "7.0 MB" },
+      { name: "Typical Floor Layout Plan", file: "/documents/solitaire-pallazzo-typical-floor-plan.pdf", size: "5.9 MB" }
+    ],
   },
   {
     id: "9",
