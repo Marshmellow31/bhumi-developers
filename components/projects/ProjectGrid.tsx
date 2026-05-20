@@ -7,27 +7,12 @@ import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
-import { projects, type ProjectStatus, type ProjectType } from "@/data/projects";
+import { projects } from "@/data/projects";
 
-const statusFilters: Array<{ label: string; value: ProjectStatus | "All" }> = [
-  { label: "All", value: "All" },
-  { label: "Ongoing", value: "Ongoing" },
-  { label: "Completed", value: "Completed" },
-  { label: "Upcoming", value: "Upcoming" },
-];
 
-const typeFilters: Array<{ label: string; value: ProjectType | "All" }> = [
-  { label: "All Types", value: "All" },
-  { label: "Residential", value: "Residential" },
-  { label: "Villa", value: "Villa" },
-  { label: "Commercial", value: "Commercial" },
-  { label: "Mixed Use", value: "Mixed Use" },
-];
 
 export default function ProjectGrid() {
   const router = useRouter();
-  const [activeStatus, setActiveStatus] = useState<ProjectStatus | "All">("All");
-  const [activeType, setActiveType] = useState<ProjectType | "All">("All");
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [windowWidth, setWindowWidth] = useState(1200);
 
@@ -40,69 +25,24 @@ export default function ProjectGrid() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const filtered = projects.filter((p) => {
-    const statusMatch = activeStatus === "All" || p.status === activeStatus;
-    const typeMatch = activeType === "All" || p.type === activeType;
-    return statusMatch && typeMatch;
-  });
-
   return (
-    <div>
-      {/* Filters */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-12">
-        <div className="flex flex-wrap gap-2">
-          {statusFilters.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => {
-                setActiveStatus(value);
-                setHoveredIndex(null);
-              }}
-              className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold border transition-colors duration-200 font-body ${
-                activeStatus === value
-                  ? "bg-primary text-white border-primary"
-                  : "bg-white text-muted border-border hover:border-primary hover:text-primary"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {typeFilters.map(({ label, value }) => (
-            <button
-              key={value}
-              onClick={() => {
-                setActiveType(value);
-                setHoveredIndex(null);
-              }}
-              className={`px-4 py-2 text-xs tracking-[0.15em] uppercase font-semibold border transition-colors duration-200 font-body ${
-                activeType === value
-                  ? "bg-primary text-white border-primary"
-                  : "bg-white text-muted border-border hover:border-primary hover:text-primary"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </div>
-
+    <div className="flex-grow flex flex-col min-h-0 w-full">
       {/* Count */}
-      <p className="text-xs text-muted tracking-[0.2em] uppercase font-body mb-8">
-        {filtered.length} Project{filtered.length !== 1 ? "s" : ""}
+      <p className="text-xs text-muted tracking-[0.2em] uppercase font-body mb-4 shrink-0">
+        {projects.length} Project{projects.length !== 1 ? "s" : ""}
       </p>
 
       {/* Dynamic Hover-Expanding Panels */}
       <AnimatePresence mode="popLayout">
-        {filtered.length > 0 ? (
+        {projects.length > 0 ? (
           <motion.div 
             layout 
-            className="flex flex-col md:flex-row gap-4 w-full overflow-hidden items-stretch"
+            className="flex flex-col md:flex-row gap-4 w-full overflow-hidden items-stretch flex-1 min-h-0"
           >
-            {filtered.map((project, index) => {
+            {projects.map((project, index) => {
               const formattedNumber = String(index + 1).padStart(2, "0");
               const isHovered = hoveredIndex === index;
+              const isVertical = windowWidth >= 768 && hoveredIndex !== null && !isHovered;
               
               return (
                 <motion.div
@@ -112,7 +52,7 @@ export default function ProjectGrid() {
                   animate={{
                     opacity: 1,
                     scale: 1,
-                    flexGrow: isHovered ? 2.2 : hoveredIndex === null ? 1 : 0.7,
+                    flexGrow: isHovered ? 4.5 : hoveredIndex === null ? 1 : 0.6,
                   }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   onMouseEnter={() => setHoveredIndex(index)}
@@ -135,7 +75,7 @@ export default function ProjectGrid() {
                   style={{
                     height: windowWidth < 768 
                       ? (isHovered ? "380px" : "110px") 
-                      : "60vh"
+                      : "100%"
                   }}
                 >
                   {/* Background Image with Scale and Filter Effects */}
@@ -159,80 +99,89 @@ export default function ProjectGrid() {
                   {/* Card Content Wrapper */}
                   <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8 z-10 select-none">
                     
-                    {/* Collapsed State Content */}
-                    <AnimatePresence>
-                      {!isHovered && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.1 }}
-                          className="absolute inset-0 flex flex-col justify-between p-6 md:p-8 pointer-events-none"
-                        >
-                          {/* Number */}
-                          <span className="text-sm font-body font-bold text-white/50 tracking-wider">
-                            {formattedNumber}
-                          </span>
-                          
-                          {/* Rotated Desktop Title */}
-                          <div className="hidden md:block absolute bottom-12 left-1/2 -translate-x-1/2 origin-center whitespace-nowrap">
-                            <span 
-                              className="text-lg font-bold tracking-[0.25em] uppercase text-white/70 font-heading block"
-                              style={{
-                                writingMode: "vertical-rl",
-                                textOrientation: "mixed",
-                                transform: "rotate(180deg)",
-                                fontFamily: "var(--font-playfair)"
-                              }}
-                            >
-                              {project.name}
-                            </span>
-                          </div>
+                    {/* Top Row: Number & Status Tag */}
+                    <div className={`flex items-start w-full transition-all duration-300 ${
+                      isVertical ? "justify-center" : "justify-between"
+                    }`}>
+                      {/* Number */}
+                      <motion.span
+                        layout="position"
+                        animate={{
+                          fontSize: isHovered ? "1.5rem" : "0.875rem",
+                          color: isHovered ? "rgb(217, 119, 6, 0.8)" : "rgb(255, 255, 255, 0.5)"
+                        }}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        className="font-body font-bold"
+                      >
+                        {formattedNumber}
+                      </motion.span>
 
-                          {/* Horizontal Mobile Title */}
-                          <div className="md:hidden flex justify-between items-end w-full">
-                            <h4 className="text-lg font-bold text-white/80 font-heading" style={{ fontFamily: "var(--font-playfair)" }}>
-                              {project.name}
-                            </h4>
-                            <span className="text-xs text-amber-500 font-semibold tracking-wider font-body">
-                              {project.status}
-                            </span>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      {/* Status Tag (Fades in when expanded) */}
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.span
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.8 }}
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                            className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 font-body"
+                          >
+                            {project.status}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </div>
 
-                    {/* Expanded State Details */}
-                    <AnimatePresence>
-                      {isHovered && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 15 }}
-                          transition={{ duration: 0.2 }}
-                          className="flex flex-col h-full justify-between pointer-events-auto"
-                        >
-                          {/* Top Tag Row */}
-                          <div className="flex justify-between items-start">
-                            <span className="text-2xl font-bold font-body text-amber-500/80">
-                              {formattedNumber}
-                            </span>
-                            <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] tracking-[0.15em] uppercase font-semibold px-2.5 py-1 font-body">
-                              {project.status}
-                            </span>
-                          </div>
+                    {/* Bottom Info Stack */}
+                    <div className="flex flex-col justify-end h-full items-start">
+                      
+                      {/* Sub-tag / Location (Fades in when expanded) */}
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.span
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 20 }}
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                            className="text-[10px] tracking-[0.2em] text-white/50 uppercase font-semibold font-body block mb-1"
+                          >
+                            {project.type} &mdash; {project.location}
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
 
-                          {/* Info Stack */}
-                          <div className="flex flex-col gap-2 mt-auto">
-                            <span className="text-[10px] tracking-[0.2em] text-white/50 uppercase font-semibold font-body">
-                              {project.type} &mdash; {project.location}
-                            </span>
-                            <h3 
-                              className="text-2xl md:text-4xl font-bold text-white leading-tight font-heading"
-                              style={{ fontFamily: "var(--font-playfair)" }}
-                            >
-                              {project.name}
-                            </h3>
+                      {/* Title: Shared between Collapsed and Expanded states */}
+                      <motion.h3
+                        layout="position"
+                        animate={{
+                          fontSize: windowWidth >= 768
+                            ? (isHovered ? "2rem" : "1.125rem")
+                            : (isHovered ? "1.5rem" : "1rem"),
+                          color: isHovered ? "rgb(255, 255, 255)" : "rgba(255, 255, 255, 0.5)",
+                          opacity: isVertical ? 0 : 1,
+                          y: isVertical ? 20 : 0
+                        }}
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        className={`font-bold leading-tight font-heading w-full ${
+                          isHovered 
+                            ? "whitespace-normal" 
+                            : "truncate"
+                        }`}
+                        style={{ fontFamily: "var(--font-playfair)" }}
+                      >
+                        {project.name}
+                      </motion.h3>
+
+                      {/* Expanded Details Stack (tagline, description, price, button) */}
+                      <AnimatePresence>
+                        {isHovered && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 40 }}
+                            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                            className="flex flex-col gap-2 mt-1 pointer-events-auto"
+                          >
                             <p className="text-white/60 text-xs italic font-body max-w-md line-clamp-1">
                               &ldquo;{project.tagline}&rdquo;
                             </p>
@@ -261,7 +210,42 @@ export default function ProjectGrid() {
                                 </Button>
                               </Link>
                             </div>
-                          </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Spacer at the bottom to push text up smoothly when expanded on desktop */}
+                      <motion.div
+                        layout
+                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        style={{
+                          height: windowWidth >= 768 && isHovered ? "100px" : "0px"
+                        }}
+                        className="w-full shrink-0"
+                      />
+                    </div>
+
+                    {/* Vertical Title (Visible only on desktop when collapsed while another card is hovered) */}
+                    <AnimatePresence>
+                      {isVertical && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={{ opacity: 0.7, y: 0 }}
+                          exit={{ opacity: 0, y: 30 }}
+                          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                          className="absolute bottom-16 left-1/2 -translate-x-1/2 origin-center whitespace-nowrap z-20 pointer-events-none"
+                        >
+                          <span 
+                            className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-white font-heading block"
+                            style={{
+                              writingMode: "vertical-rl",
+                              textOrientation: "mixed",
+                              transform: "rotate(180deg)",
+                              fontFamily: "var(--font-playfair)"
+                            }}
+                          >
+                            {project.name}
+                          </span>
                         </motion.div>
                       )}
                     </AnimatePresence>

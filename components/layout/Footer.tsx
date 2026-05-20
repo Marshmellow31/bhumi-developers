@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
@@ -49,7 +52,10 @@ const quickLinks = [
 ];
 
 export default function Footer() {
-  return (
+  const pathname = usePathname();
+  const isProjectsPage = pathname === "/projects";
+
+  const footerContent = (
     <footer className="bg-primary text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -161,4 +167,10 @@ export default function Footer() {
       </div>
     </footer>
   );
+
+  if (isProjectsPage) {
+    return <div className="md:hidden w-full">{footerContent}</div>;
+  }
+
+  return footerContent;
 }
