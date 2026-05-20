@@ -12,6 +12,7 @@ import ProjectDocuments from "@/components/projects/ProjectDocuments";
 
 const PROJECT_LOGOS: Record<string, string> = {
   "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
+  "city-centre": "/images/city-center-logo.png",
 };
 
 interface Props {
