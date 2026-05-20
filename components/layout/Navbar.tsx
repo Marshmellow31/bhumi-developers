@@ -32,13 +32,15 @@ export default function Navbar() {
       : "bg-transparent"
     : "bg-primary shadow-lg border-b border-white/10";
 
+  const shouldShrink = !isHome || scrolled;
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16" : "h-24"}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${shouldShrink ? "h-16" : "h-24"}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center h-full">
-            <Logo className={`w-auto transition-all duration-500 ${scrolled ? "h-10" : "h-20"}`} light={false} />
+            <Logo className={`w-auto transition-all duration-500 ${shouldShrink ? "h-10" : "h-20"}`} light={false} />
           </Link>
 
           {/* Desktop Nav */}
@@ -57,7 +59,7 @@ export default function Navbar() {
               </Link>
             ))}
             <a
-              href="tel:+912642000000"
+              href="tel:+919879100355"
               className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-200"
             >
               <Phone size={13} />
@@ -100,7 +102,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href="tel:+912642000000"
+                href="tel:+919879100355"
                 className="mt-2 flex items-center justify-center gap-2 bg-white text-primary px-5 py-3 text-xs font-semibold tracking-[0.15em] uppercase"
               >
                 <Phone size={13} />
