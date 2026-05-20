@@ -110,9 +110,24 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-4 h-48 bg-primary/10 border border-border flex items-center justify-center">
-              <p className="text-muted text-sm font-body">Map embed goes here</p>
+            {/* Map */}
+            <div className="mt-8 flex flex-col gap-4">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3711.5678901234567!2d72.31922!3d21.89748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f30c0000001!2sBhumi%20House%2C%20Bharuch!5e0!3m2!1sen!2sin!4v1234567890"
+                width="100%"
+                height="300"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="border border-border"
+              />
+              <a href="https://maps.app.goo.gl/MA1FPwTGTEpoPFp16" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="md" className="w-full justify-center">
+                  Get Directions
+                  <MapPin size={14} />
+                </Button>
+              </a>
             </div>
           </div>
 
