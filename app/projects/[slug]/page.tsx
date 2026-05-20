@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { MapPin, Home, Calendar, Layers, FileText, Download, Eye } from "lucide-react";
+import { MapPin, Home, Calendar, Layers } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 import CTABanner from "@/components/home/CTABanner";
@@ -8,11 +8,10 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import ProjectGallerySection from "@/components/projects/ProjectGallerySection";
 import ProjectGalleryGrid from "@/components/projects/ProjectGalleryGrid";
+import ProjectDocuments from "@/components/projects/ProjectDocuments";
 
 const PROJECT_LOGOS: Record<string, string> = {
-  "central-square": "/images/central-square-logo.png",
   "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
-  "city-centre": "/images/city-center-logo.png",
 };
 
 interface Props {
@@ -122,60 +121,6 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
             )}
 
-            {/* Floor Plans & Layouts */}
-            {project.floorPlans && project.floorPlans.length > 0 && (
-              <div>
-                <h2
-                  className="text-xl font-bold text-primary mb-4"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  Floor Plans & Layouts
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {project.floorPlans.map((plan, i) => (
-                    <div
-                      key={i}
-                      className="group flex flex-col justify-between bg-white border border-border p-5 transition-all duration-300 hover:shadow-lg hover:border-primary/20"
-                    >
-                      <div className="flex items-start gap-4 mb-4">
-                        <div className="p-3 bg-amber-50 text-amber-600 rounded">
-                          <FileText size={24} className="stroke-[1.5]" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-primary text-base group-hover:text-amber-600 transition-colors">
-                            {plan.name}
-                          </h3>
-                          {plan.size && (
-                            <p className="text-xs text-muted font-body mt-1">PDF Document • {plan.size}</p>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="flex gap-2 border-t border-border pt-4 mt-auto">
-                        <a
-                          href={plan.file}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 py-2 px-3 bg-background hover:bg-primary hover:text-white border border-border hover:border-primary text-xs font-semibold tracking-wide text-charcoal transition-all font-body cursor-pointer"
-                        >
-                          <Eye size={14} />
-                          View
-                        </a>
-                        <a
-                          href={plan.file}
-                          download
-                          className="flex-1 flex items-center justify-center gap-2 py-2 px-3 bg-amber-500 hover:bg-amber-600 border border-amber-500 text-xs font-semibold tracking-wide text-white transition-all font-body cursor-pointer"
-                        >
-                          <Download size={14} />
-                          Download
-                        </a>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* Amenities */}
             <div>
               <h2
@@ -230,7 +175,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     <Button
                       variant="outline"
                       size="md"
-                      className="w-full justify-center border-amber-500/30 text-amber-400 hover:bg-amber-500 hover:text-white"
+                      className="w-full justify-center border-white/30 text-white hover:bg-white hover:text-primary"
                     >
                       Download Brochure
                     </Button>
@@ -266,6 +211,9 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </div>
               ))}
             </div>
+
+            {/* Available Downloads */}
+            <ProjectDocuments brochure={project.brochure} floorPlans={project.floorPlans} />
           </aside>
         </div>
       </div>
