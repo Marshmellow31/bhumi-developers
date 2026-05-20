@@ -35,7 +35,7 @@ const slides: SlideData[] = [
     italicWord: "Build Quality",
     regularText: "Superior",
     description: "Crafting structures with top-tier materials and rigorous engineering standards to stand the test of time.",
-    image: "/images/solitaire-plaza/Tavra Corner Day-a.jpg",
+    image: "/images/solitaire-plaza/Tavra Top 1st Cam-v01.jpg",
     projectTag: "Solitaire Pallazzo",
   },
   {
@@ -137,86 +137,54 @@ export default function PhilosophySection() {
       {!isMobile && (
         <div ref={containerRef} className="relative h-[400vh] bg-[#0A0A0A] z-10">
           <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-            <div className="max-w-7xl mx-auto w-full px-6 lg:px-8 grid grid-cols-12 gap-8 items-center h-full py-16">
-              {/* Left Column (Static) */}
-              <div className="col-span-4 flex flex-col justify-center gap-6 h-full pr-8">
-                <span className="text-white/30 text-xs tracking-[0.4em] uppercase font-body">
-                  Our Philosophy
-                </span>
-                
-                <h2 
-                  className="text-4xl lg:text-5xl font-bold text-white leading-tight font-heading"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  A Seamless Blend of <br />
-                  <span className="italic font-light text-white/60">Purpose</span> and <br />
-                  <span className="italic font-light text-white/60">Aesthetics</span>
-                </h2>
+            <div ref={rightColRef} className="w-full overflow-hidden h-[70vh] flex items-center relative">
+              <motion.div
+                ref={trackRef}
+                style={{ x }}
+                className="flex gap-6 lg:gap-8 items-center absolute left-0 pl-8 md:pl-16 lg:pl-24"
+              >
+                {/* Left Column Text Block (First item in the horizontal scroll track) */}
+                <div className="w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
+                  <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight font-body">
+                    A Seamless Blend <br />
+                    of <span className="font-heading italic font-light text-white/70">Purpose</span> and <br />
+                    <span className="font-heading italic font-light text-white/70">Aesthetics</span>
+                  </h2>
 
-                <div className="w-10 h-px bg-white/20 my-2" />
-
-                <p className="text-white/40 text-sm leading-relaxed font-body max-w-sm">
-                  We are a design and engineering company with a focus on quality construction, 
-                  architectural excellence, sustainable design, and innovation.
-                </p>
-
-                <div className="mt-4">
-                  <Link href="/contact">
-                    <Button size="md" variant="primary" className="bg-white text-black hover:bg-white/90">
-                      Let's Connect
-                      <ArrowRight size={14} />
-                    </Button>
-                  </Link>
+                  <p className="text-white/40 text-sm leading-relaxed font-body max-w-sm">
+                    We are a design and engineering company with a focus on quality construction,
+                    architectural excellence, sustainable design, and innovation.
+                  </p>
                 </div>
-              </div>
 
-              {/* Right Column (Horizontal Scroll Track) */}
-              <div ref={rightColRef} className="col-span-8 overflow-hidden h-[70vh] flex items-center relative">
-                <motion.div ref={trackRef} style={{ x }} className="flex gap-10 lg:gap-14 absolute left-0">
-                  {slides.map((slide, index) => (
+                {/* Cards */}
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className="relative w-[52vw] h-[55vh] shrink-0 overflow-hidden group border border-white/10"
+                  >
+                    {/* Image background with dark grayscale */}
                     <div
-                      key={index}
-                      className="relative w-[38vw] h-[60vh] shrink-0 overflow-hidden group border border-white/10"
-                    >
-                      {/* Image background with dark grayscale */}
-                      <div
-                        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-                        style={{
-                          backgroundImage: `url('${slide.image}')`,
-                          filter: "grayscale(30%) contrast(110%)",
-                        }}
-                      />
-                      {/* Elegant dark overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-85 transition-opacity" />
-                      
-                      {/* Top content: Category and number */}
-                      <div className="absolute top-6 left-6 right-6 flex justify-between items-center text-white/50 text-xs tracking-widest font-body">
-                        <span>{slide.number} &mdash; {slide.category}</span>
-                      </div>
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
+                      style={{
+                        backgroundImage: `url('${slide.image}')`,
+                      }}
+                    />
+                    {/* Elegant dark overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity" />
 
-                      {/* Bottom content: Title & Description */}
-                      <div className="absolute bottom-8 left-8 right-8 flex flex-col gap-3 text-white">
-                        <h3 
-                          className="text-2xl font-bold font-heading leading-tight"
-                          style={{ fontFamily: "var(--font-playfair)" }}
-                        >
-                          {slide.regularText}{" "}
-                          <span className="italic font-light text-white/70">
-                            {slide.italicWord}
-                          </span>
-                        </h3>
-                        <p className="text-white/50 text-xs leading-relaxed max-w-xs font-body opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          {slide.description}
-                        </p>
-                        <div className="flex items-center gap-2 text-white/30 text-[10px] tracking-widest uppercase font-body mt-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                          {slide.projectTag}
-                        </div>
-                      </div>
+                    {/* Bottom content: Title */}
+                    <div className="absolute bottom-8 left-8 right-8 text-white">
+                      <h3 className="text-3xl lg:text-4xl font-bold font-body leading-tight">
+                        {slide.regularText} <br />
+                        <span className="font-heading italic font-light text-white/80">
+                          {slide.italicWord}
+                        </span>
+                      </h3>
                     </div>
-                  ))}
-                </motion.div>
-              </div>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
@@ -228,25 +196,19 @@ export default function PhilosophySection() {
           <div className="flex flex-col gap-8">
             {/* Header info */}
             <div className="flex flex-col gap-4">
-              <span className="text-white/30 text-xs tracking-[0.3em] uppercase font-body">
-                Our Philosophy
-              </span>
-              <h2 
-                className="text-3xl font-bold text-white leading-tight font-heading"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                A Seamless Blend of <br />
-                <span className="italic font-light text-white/60">Purpose</span> and <br />
-                <span className="italic font-light text-white/60">Aesthetics</span>
+              <h2 className="text-3xl font-bold text-white leading-tight font-body">
+                A Seamless Blend <br />
+                of <span className="font-heading italic font-light text-white/70">Purpose</span> and <br />
+                <span className="font-heading italic font-light text-white/70">Aesthetics</span>
               </h2>
               <p className="text-white/40 text-sm leading-relaxed font-body">
-                We are a design and engineering company with a focus on quality construction, 
+                We are a design and engineering company with a focus on quality construction,
                 architectural excellence, sustainable design, and innovation.
               </p>
             </div>
 
             {/* Horizontal Swipe Cards */}
-            <div className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory pb-4">
+            <div className="flex gap-4 overflow-x-auto scrollbar-none snap-x snap-mandatory pb-4">
               {slides.map((slide, index) => (
                 <div
                   key={index}
@@ -256,44 +218,20 @@ export default function PhilosophySection() {
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
                       backgroundImage: `url('${slide.image}')`,
-                      filter: "grayscale(30%) contrast(110%)",
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                  
-                  <div className="absolute top-5 left-5 right-5 flex justify-between items-center text-white/50 text-xs tracking-widest font-body">
-                    <span>{slide.number} &mdash; {slide.category}</span>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                   <div className="absolute bottom-6 left-6 right-6 flex flex-col gap-2 text-white">
-                    <h3 
-                      className="text-xl font-bold font-heading"
-                      style={{ fontFamily: "var(--font-playfair)" }}
-                    >
-                      {slide.regularText}{" "}
-                      <span className="italic font-light text-white/70">
+                    <h3 className="text-2xl font-bold font-body leading-tight">
+                      {slide.regularText} <br />
+                      <span className="font-heading italic font-light text-white/80">
                         {slide.italicWord}
                       </span>
                     </h3>
-                    <p className="text-white/50 text-xs leading-relaxed font-body">
-                      {slide.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-white/30 text-[9px] tracking-widest uppercase font-body mt-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                      {slide.projectTag}
-                    </div>
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div>
-              <Link href="/contact">
-                <Button size="md" variant="primary" className="w-full bg-white text-black hover:bg-white/90 justify-center">
-                  Let's Connect
-                  <ArrowRight size={14} />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
