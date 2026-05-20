@@ -329,21 +329,44 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
+  {
+    id: "10",
+    slug: "pritam-residency",
+    name: "Pritam Residency",
+    tagline: "Refined Living in the Heart of Bharuch",
+    location: "Bharuch",
+    city: "Bharuch",
+    status: "Completed",
+    type: "Residential",
+    units: 48,
+    area: "1050–1800 sq ft",
+    priceRange: { min: 3500000, max: 7200000 },
+    completionYear: 2023,
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    gallery: [],
+    highlights: ["Spacious Residences", "Modern Architecture", "Prime Location", "24/7 Security"],
+    description:
+      "Pritam Residency is a thoughtfully designed residential community in the heart of Bharuch, offering spacious, well-appointed homes for modern families. Every detail has been crafted to provide a comfortable, secure, and community-oriented living experience.",
+    amenities: [
+      "Swimming Pool",
+      "Gymnasium",
+      "Children's Play Area",
+      "Landscaped Gardens",
+      "Covered Parking",
+      "Power Backup",
+      "24/7 Security",
+      "Community Hall",
+    ],
+    featured: true,
+  },
 ];
 
-// Returns the 4 featured projects for the homepage.
-// As requested, this includes Central Square, Solitaire Pallazzo, City Centre,
-// and a 4th "random" project from the remaining portfolio (e.g. Bhumi Royal Heights).
+// Featured projects for the homepage — primary slugs shown first, capped at 4.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-centre"];
-  const primary = projects.filter((p) => primarySlugs.includes(p.slug));
-  const others = projects.filter((p) => !primarySlugs.includes(p.slug));
-
-  // Statically pick the 4th project so it remains stable during Next.js SSR and client-side hydration.
-  // We can pick Bhumi Royal Heights as the "random" selection.
-  const random4th = others[0]; // "Bhumi Royal Heights"
-
-  return [...primary, random4th].slice(0, 4);
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "pritam-residency", "city-centre"];
+  return projects.filter((p) => primarySlugs.includes(p.slug))
+    .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
+    .slice(0, 4);
 };
 
 export const getProjectBySlug = (slug: string) => projects.find((p) => p.slug === slug);
