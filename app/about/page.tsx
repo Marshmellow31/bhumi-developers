@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const milestones = [
-  { year: "2005", title: "Founded", desc: "Bhumi Developers was established in Bharuch with a vision to redefine real estate." },
+  { year: "1991", title: "Founded", desc: "Bhumi Developers was established in Bharuch with a vision to redefine real estate." },
   { year: "2010", title: "First Landmark", desc: "Delivered our first major residential project — Bhumi Excel Park with 300 homes." },
   { year: "2015", title: "Commercial Expansion", desc: "Entered the commercial segment with Bhumi Grand Square in the heart of Bharuch." },
   { year: "2020", title: "5,000 Families", desc: "Crossed the milestone of housing 5,000+ satisfied families across South Gujarat." },
@@ -18,7 +18,7 @@ const milestones = [
 ];
 
 const team = [
-  { name: "Rajesh Patel", role: "Chairman & Founder", since: "2005" },
+  { name: "Rajesh Patel", role: "Chairman & Founder", since: "1991" },
   { name: "Mihir Patel", role: "Managing Director", since: "2010" },
   { name: "Priya Shah", role: "Head of Design", since: "2015" },
   { name: "Kunal Desai", role: "Chief Sales Officer", since: "2018" },

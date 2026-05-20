@@ -40,3 +40,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw design assets / resources
+/developer_pdfs/
+/logo-photos/
+/city centre/
+/pritam residency/
+/author image.jpeg
+
+# Document formats
+*.cdr
+*.pdf

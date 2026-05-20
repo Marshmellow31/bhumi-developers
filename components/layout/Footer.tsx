@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-6">
               Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
-              developer since 2005.
+              developer since 1991.
             </p>
             <div className="flex gap-3">
               {socialLinks.map(({ label, href, icon }) => (
@@ -167,10 +167,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-
-  if (isProjectsPage) {
-    return <div className="md:hidden w-full">{footerContent}</div>;
-  }
 
   return footerContent;
 }
