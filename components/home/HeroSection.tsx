@@ -1,15 +1,10 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import dynamic from "next/dynamic";
 import { motion, useMotionValue, useTransform, useSpring, type Transition } from "framer-motion";
 import Link from "next/link";
 import { ArrowDown, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
-
-const Hero3DScene = dynamic(() => import("@/components/home/Hero3DScene"), {
-  ssr: false,
-});
 
 const TICKER = "Premium Real Estate · Bharuch · Gujarat · Since 1991 · Landmark Spaces · Crafted with Excellence · ";
 
@@ -71,18 +66,17 @@ export default function HeroSection() {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary"
     >
-      {/* ── 3D Scene — interactive layer ── */}
+      {/* ── Background image — parallax layer ── */}
       <motion.div
-        className="absolute inset-0 z-0"
+        className="absolute inset-[-8%] bg-cover bg-center bg-no-repeat z-0"
         style={{
+          backgroundImage: "url('/images/solitaire-plaza/Tavra Corner Day-a.jpg')",
           x: bgX,
           y: bgY,
-          opacity: 0.55,
+          opacity: 0.22,
           willChange: "transform",
         }}
-      >
-        <Hero3DScene />
-      </motion.div>
+      />
 
       {/* ── Ambient orb 1: large amber bloom ── */}
       <motion.div

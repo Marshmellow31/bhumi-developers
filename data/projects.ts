@@ -171,10 +171,12 @@ export const projects: Project[] = [
     area: "500–5000 sq ft",
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2024,
-    image: "/images/city-centre/city-centre.png",
+    image: "/images/city-centre/city-centre-1.jpg",
     gallery: [
-      "/images/city-centre/city-centre.png",
-      "/images/city-centre/city-centre-2.png"
+      "/images/city-centre/city-centre-1.jpg",
+      "/images/city-centre/city-centre-2.jpg",
+      "/images/city-centre/city-centre-3.jpg",
+      "/images/city-centre/city-centre-4.jpg",
     ],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
