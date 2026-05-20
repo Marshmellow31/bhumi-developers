@@ -164,7 +164,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       {...register("name")}
-                      placeholder="Rajesh Patel"
+                      placeholder="Kiran Majmudar"
                       className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
                     />
                     {errors.name && (
@@ -193,7 +193,7 @@ export default function ContactPage() {
                   <input
                     {...register("email")}
                     type="email"
-                    placeholder="rajesh@example.com"
+                    placeholder="kiran.majmudar@example.com"
                     className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
                   />
                   {errors.email && (

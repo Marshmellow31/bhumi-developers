@@ -81,7 +81,7 @@ export default function AboutSnippet() {
               
               <div className="flex flex-col gap-0.5 mt-2">
                 <span className="font-heading text-lg font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
-                  Rajesh Patel
+                  Kiran Majmudar
                 </span>
                 <span className="text-muted text-xs tracking-widest uppercase font-semibold font-body">
                   Chairman & Founder
