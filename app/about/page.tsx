@@ -131,7 +131,7 @@ export default function AboutPage() {
 
               <div className="flex flex-col gap-5 text-muted font-body text-sm leading-relaxed">
                 <p>
-                  With over <strong className="text-primary font-semibold">35 years of engineering and construction experience</strong>, our founder Rajesh Patel has spent decades building massive industrial layouts across India alongside some of the country&apos;s most prominent MNCs. Under his leadership as the founder of <strong className="text-primary font-semibold">BD Buildcon LLP</strong>, he has left an indelible mark on the nation&apos;s industrial growth, one structure at a time.
+                  With over <strong className="text-primary font-semibold">35 years of engineering and construction experience</strong>, our founder Kiran Majmudar has spent decades building massive industrial layouts across India alongside some of the country&apos;s most prominent MNCs. Under his leadership as the founder of <strong className="text-primary font-semibold">BD Buildcon LLP</strong>, he has left an indelible mark on the nation&apos;s industrial growth, one structure at a time.
                 </p>
                 <p>
                   Now, he brings that exact level of industrial-grade engineering precision, complete transparency, and world-class quality back to where it all began — his hometown of Bharuch.
@@ -145,7 +145,7 @@ export default function AboutPage() {
 
               <div className="flex flex-col gap-0.5 mt-2">
                 <span className="font-heading text-lg font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
-                  KiranMajmudar
+                  Kiran Majmudar
                 </span>
                 <span className="text-muted text-xs tracking-widest uppercase font-semibold font-body">
                   Chairman & Founder
