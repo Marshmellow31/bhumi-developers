@@ -28,17 +28,17 @@ export default function Navbar() {
 
   const navBg = isHome
     ? scrolled
-      ? "bg-primary shadow-lg"
-      : "bg-transparent"
+      ? "bg-primary/95 backdrop-blur-sm shadow-lg"
+      : "bg-transparent border-b border-white/5"
     : "bg-primary shadow-lg";
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "h-20" : "h-28 md:h-32"}`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${scrolled ? "h-16" : "h-20"}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center h-full">
-            <Logo className={`w-auto transition-all duration-500 ${scrolled ? "h-14" : "h-20 md:h-24"}`} light={false} />
+            <Logo className={`w-auto transition-all duration-500 ${scrolled ? "h-9" : "h-11"}`} light={false} />
           </Link>
 
           {/* Desktop Nav */}

@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { MapPin, ZoomIn } from "lucide-react";
 import { motion } from "framer-motion";
-import { ZoomIn } from "lucide-react";
 import GalleryModal from "@/components/ui/GalleryModal";
 
 interface ProjectGallerySectionProps {
@@ -11,6 +12,8 @@ interface ProjectGallerySectionProps {
   status: string;
   name: string;
   location: string;
+  tagline?: string;
+  logo?: string;
   statusColors: Record<string, string>;
 }
 
@@ -20,35 +23,31 @@ export default function ProjectGallerySection({
   status,
   name,
   location,
+  tagline,
+  logo,
   statusColors,
 }: ProjectGallerySectionProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
 
-  const handleImageClick = () => {
-    setIsGalleryOpen(true);
-  };
-
   return (
     <>
-      {/* Hero */}
       <div
-        className="relative h-[60vh] min-h-[400px] bg-primary overflow-hidden cursor-pointer"
-        onClick={handleImageClick}
+        className="relative h-[75vh] min-h-[520px] bg-primary overflow-hidden cursor-pointer"
+        onClick={() => setIsGalleryOpen(true)}
       >
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-          style={{
-            backgroundImage: `url('${image}')`,
-          }}
+          style={{ backgroundImage: `url('${image}')` }}
         />
-        <div className="absolute inset-0 bg-primary/70" />
+        {/* Gradient: image visible at top, rich dark at bottom for text */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/10" />
 
-        {/* Zoom Indicator */}
+        {/* Zoom hint on hover */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileHover={{ opacity: 1, scale: 1 }}
-          className="absolute inset-0 flex items-center justify-center bg-black/40 pointer-events-none"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          className="absolute inset-0 flex items-center justify-center bg-black/20 pointer-events-none z-10"
         >
           <div className="flex flex-col items-center gap-3">
             <ZoomIn size={40} className="text-white" />
@@ -58,25 +57,53 @@ export default function ProjectGallerySection({
           </div>
         </motion.div>
 
-        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-12">
-          <div className="relative z-10">
-            <span
-              className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-4 font-body ${
-                statusColors[status]
-              }`}
-            >
-              {status}
-            </span>
-            <h1
-              className="text-4xl md:text-6xl font-bold text-white mb-3"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              {name}
-            </h1>
-            <p className="text-white/70 text-lg font-body flex items-center gap-2">
-              <span>📍</span>
-              {location}
-            </p>
+        {/* Content row: title stack left, tagline watermark right */}
+        <div className="absolute inset-0 flex items-end max-w-7xl mx-auto px-6 lg:px-8 pb-16 z-20 pointer-events-none">
+          <div className="w-full flex items-end justify-between gap-8">
+
+            {/* Left: logo crest → divider → badge → title → location */}
+            <div>
+              {logo && (
+                <div className="mb-6">
+                  <Image
+                    src={logo}
+                    alt={`${name} logo`}
+                    width={140}
+                    height={105}
+                    className="object-contain"
+                    priority
+                  />
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="block w-10 h-px bg-amber-500" />
+                    <span className="block w-2 h-2 rounded-full bg-amber-500/60" />
+                    <span className="block flex-1 h-px bg-white/10" />
+                  </div>
+                </div>
+              )}
+              <span
+                className={`inline-block text-xs tracking-widest uppercase font-semibold px-3 py-1.5 mb-5 font-body ${statusColors[status]}`}
+              >
+                {status}
+              </span>
+              <h1
+                className="text-5xl md:text-7xl font-bold text-white mb-4 leading-none"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                {name}
+              </h1>
+              <p className="text-white/60 text-base font-body flex items-center gap-2 tracking-wide">
+                <MapPin size={14} className="text-amber-500/70 shrink-0" />
+                {location}
+              </p>
+            </div>
+
+            {/* Right: subtle tagline watermark on large screens */}
+            {tagline && (
+              <p className="hidden lg:block text-right text-white/20 text-xs tracking-[0.3em] uppercase font-body self-end pb-1 max-w-[160px] leading-relaxed">
+                {tagline}
+              </p>
+            )}
+
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { ArrowDown, ChevronRight } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary pt-20">
       {/* Background image with strong black overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 opacity-25"
