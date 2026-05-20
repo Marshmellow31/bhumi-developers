@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef } from "react";
+import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -32,13 +33,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={`
-          inline-flex items-center justify-center gap-2 uppercase
-          transition-all duration-200 font-body active:scale-95
-          ${variantClasses[variant]}
-          ${sizeClasses[size]}
-          ${className}
-        `}
+        className={cn(
+          "inline-flex items-center justify-center gap-2 uppercase transition-all duration-200 font-body active:scale-95",
+          variantClasses[variant],
+          sizeClasses[size],
+          className
+        )}
         {...props}
       >
         {children}
