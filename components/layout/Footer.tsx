@@ -38,7 +38,7 @@ const projects = [
   { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
   { href: "/projects/central-square", label: "Central Square" },
   { href: "/projects/city-centre", label: "City Centre" },
-  { href: "/projects/bhumi-royal-heights", label: "Royal Heights" },
+  { href: "/projects/pritam-residency", label: "Pritam Residency" },
 ];
 
 const quickLinks = [

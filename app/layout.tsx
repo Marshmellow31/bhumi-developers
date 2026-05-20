@@ -3,6 +3,9 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
+import PageLoader from "@/components/ui/PageLoader";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -33,12 +36,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
+        {/* Cinematic grain overlay — fixed, z-indexed below cursor */}
+        <div className="grain-overlay" aria-hidden="true" />
+
+        {/* Amber scroll-progress bar */}
+        <ScrollProgress />
+
+        {/* First-load cinematic loader */}
+        <PageLoader />
+
+        {/* Magnetic dual-ring cursor (desktop only) */}
+        <CustomCursor />
+
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
