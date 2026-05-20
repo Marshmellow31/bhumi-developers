@@ -31,11 +31,9 @@ export default function AboutSnippet() {
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage:
-                    "url('/images/author.jpeg')",
+                  backgroundImage: "url('/images/owner.jpeg')",
                 }}
               />
-              <div className="absolute inset-0 bg-primary/5" />
             </div>
 
             {/* Floating stat card — black on white section */}
@@ -50,7 +48,7 @@ export default function AboutSnippet() {
                 className="text-5xl font-bold leading-none mb-1 text-white"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                35
+                35+
               </p>
               <div className="w-6 h-px bg-white/20 my-3" />
               <p className="text-white/40 text-xs tracking-[0.25em] uppercase font-body">
