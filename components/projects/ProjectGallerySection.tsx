@@ -40,8 +40,8 @@ export default function ProjectGallerySection({
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
           style={{ backgroundImage: `url('${image}')` }}
         />
-        {/* Gradient: image visible at top, rich dark at bottom for text */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/10" />
+        {/* Gradient: image clearly visible at top, dark only at bottom for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent" />
 
         {/* Zoom hint on hover */}
         <motion.div
