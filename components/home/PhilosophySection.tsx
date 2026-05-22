@@ -88,7 +88,6 @@ export default function PhilosophySection() {
   // Framer Motion hooks for desktop & mobile scroll animation
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    layoutEffect: false,
   });
 
   // Calculate dynamic scroll distance in pixels to align the last card perfectly

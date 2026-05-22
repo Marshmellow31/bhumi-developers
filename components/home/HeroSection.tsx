@@ -1,59 +1,61 @@
 "use client";
 
-import { useRef, useCallback } from "react";
-import { motion, useMotionValue, useTransform, useSpring, type Transition } from "framer-motion";
-import Link from "next/link";
-import { ArrowDown, ChevronRight } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { useRef, useCallback, useEffect, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useSpring,
+  AnimatePresence,
+} from "framer-motion";
 
-const TICKER = "Premium Real Estate · Bharuch · Gujarat · Since 1991 · Landmark Spaces · Crafted with Excellence · ";
+import { ArrowDown } from "lucide-react";
 
-const wordTransition = (i: number): Transition => ({
-  duration: 0.85,
-  delay: 0.4 + i * 0.14,
-  ease: "easeOut",
+/* ────────────────────────────────────────────── */
+const TICKER =
+  "Premium Real Estate  ·  Bharuch, Gujarat  ·  Since 1991  ·  Built to Endure  ·  ";
+
+/* Stable particles — generated once outside component */
+const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
+  id: i,
+  x: 8 + (i * 87) % 84,
+  y: 5 + (i * 61) % 88,
+  size: 1 + (i % 3) * 0.8,
+  delay: (i * 0.7) % 4,
+  duration: 7 + (i % 5),
+}));
+
+/* Shared fade-rise transition — no overflow, no clip */
+const fadeRise = (delay: number) => ({
+  initial:    { opacity: 0, y: 22 },
+  animate:    { opacity: 1, y: 0  },
+  transition: { duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef  = useRef<HTMLElement>(null);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  const mouseX = useMotionValue(0.5);
-  const mouseY = useMotionValue(0.5);
-
-  const spring = { damping: 30, stiffness: 90, mass: 0.8 };
+  /* ── Mouse parallax ── */
+  const mouseX  = useMotionValue(0.5);
+  const mouseY  = useMotionValue(0.5);
+  const spring  = { damping: 28, stiffness: 80, mass: 0.9 };
   const smoothX = useSpring(mouseX, spring);
   const smoothY = useSpring(mouseY, spring);
-
-  // Background drifts opposite to cursor (deep layer)
-  const bgX = useTransform(smoothX, [0, 1], [24, -24]);
-  const bgY = useTransform(smoothY, [0, 1], [18, -18]);
-
-  // Orb 1 — amber, top-left, moves with cursor
-  const orb1X = useTransform(smoothX, [0, 1], [-50, 50]);
-  const orb1Y = useTransform(smoothY, [0, 1], [-40, 40]);
-
-  // Orb 2 — white, bottom-right, moves opposite
-  const orb2X = useTransform(smoothX, [0, 1], [60, -60]);
-  const orb2Y = useTransform(smoothY, [0, 1], [50, -50]);
-
-  // Orb 3 — mid, subtle
-  const orb3X = useTransform(smoothX, [0, 1], [-30, 30]);
-  const orb3Y = useTransform(smoothY, [0, 1], [25, -25]);
-
-  // Text floats very slightly
-  const textX = useTransform(smoothX, [0, 1], [-10, 10]);
-  const textY = useTransform(smoothY, [0, 1], [-7, 7]);
+  const bgX     = useTransform(smoothX, [0, 1], [16, -16]);
+  const bgY     = useTransform(smoothY, [0, 1], [10, -10]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       if (!sectionRef.current) return;
-      const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
+      const { left, top, width, height } =
+        sectionRef.current.getBoundingClientRect();
       mouseX.set((e.clientX - left) / width);
       mouseY.set((e.clientY - top) / height);
     },
     [mouseX, mouseY]
   );
-
   const handleMouseLeave = useCallback(() => {
     mouseX.set(0.5);
     mouseY.set(0.5);
@@ -64,204 +66,234 @@ export default function HeroSection() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary"
+      className="relative min-h-screen flex flex-col overflow-hidden"
+      style={{ backgroundColor: "#080808" }}
     >
-      {/* ── Background image — parallax layer ── */}
+      {/* ── BG PHOTO ── */}
       <motion.div
-        className="absolute inset-[-8%] bg-cover bg-center bg-no-repeat z-0"
+        className="absolute inset-[-5%] z-0"
         style={{
-          backgroundImage: "url('/images/background.png')",
+          backgroundImage:    "url('/images/background.png')",
+          backgroundSize:     "cover",
+          backgroundPosition: "center",
+          backgroundRepeat:   "no-repeat",
           x: bgX,
           y: bgY,
-          opacity: 0.22,
           willChange: "transform",
         }}
       />
 
-      {/* ── Ambient orb 1: large amber bloom ── */}
-      <motion.div
-        className="absolute pointer-events-none z-[1]"
+      {/* ── OVERLAY ── */}
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          x: orb1X,
-          y: orb1Y,
-          width: 700,
-          height: 700,
-          top: "-10%",
-          left: "-5%",
-          background:
-            "radial-gradient(circle, rgba(245,158,11,0.11) 0%, rgba(245,158,11,0.04) 45%, transparent 70%)",
-          willChange: "transform",
+          background: `
+            linear-gradient(to bottom,
+              rgba(8,8,8,0.78) 0%,
+              rgba(8,8,8,0.42) 30%,
+              rgba(8,8,8,0.32) 55%,
+              rgba(8,8,8,0.70) 80%,
+              rgba(8,8,8,0.96) 100%
+            )
+          `,
         }}
       />
 
-      {/* ── Ambient orb 2: white glow bottom-right ── */}
-      <motion.div
-        className="absolute pointer-events-none z-[1]"
+      {/* ── AMBER RADIAL GLOW (bottom-centre) ── */}
+      <div
+        className="absolute z-[2] pointer-events-none"
         style={{
-          x: orb2X,
-          y: orb2Y,
-          width: 500,
-          height: 500,
-          bottom: "-5%",
-          right: "-5%",
+          bottom:     "-10%",
+          left:       "50%",
+          transform:  "translateX(-50%)",
+          width:      "70%",
+          height:     "50%",
           background:
-            "radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 65%)",
-          willChange: "transform",
+            "radial-gradient(ellipse at bottom, rgba(245,158,11,0.06) 0%, transparent 70%)",
         }}
       />
 
-      {/* ── Ambient orb 3: faint center accent ── */}
-      <motion.div
-        className="absolute pointer-events-none z-[1]"
-        style={{
-          x: orb3X,
-          y: orb3Y,
-          width: 400,
-          height: 400,
-          top: "30%",
-          left: "55%",
-          background:
-            "radial-gradient(circle, rgba(245,158,11,0.05) 0%, transparent 60%)",
-          willChange: "transform",
-        }}
-      />
+      {/* ── FLOATING PARTICLES ── */}
+      <AnimatePresence>
+        {mounted &&
+          PARTICLES.map((p) => (
+            <motion.div
+              key={p.id}
+              className="absolute rounded-full pointer-events-none z-[3]"
+              style={{
+                left:            `${p.x}%`,
+                top:             `${p.y}%`,
+                width:           p.size,
+                height:          p.size,
+                backgroundColor:
+                  p.id % 4 === 0
+                    ? "rgba(245,158,11,0.5)"
+                    : "rgba(255,255,255,0.15)",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 1, 0], y: [-6, -26, -46] }}
+              transition={{
+                duration: p.duration,
+                delay:    p.delay,
+                repeat:   Infinity,
+                ease:     "easeInOut",
+              }}
+            />
+          ))}
+      </AnimatePresence>
 
-      {/* ── Vertical rule lines ── */}
-      <div className="absolute left-8 top-0 h-full w-px bg-white/[0.04] z-10" />
-      <div className="absolute right-8 top-0 h-full w-px bg-white/[0.04] z-10" />
+      {/* ── VERTICAL EDGE RULES ── */}
+      <div className="absolute left-6 lg:left-12 top-0 h-full w-px bg-white/[0.05] z-[4] pointer-events-none" />
+      <div className="absolute right-6 lg:right-12 top-0 h-full w-px bg-white/[0.05] z-[4] pointer-events-none" />
 
-      {/* ── Hero content — floats gently ── */}
-      <motion.div
-        className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 text-center"
-        style={{ x: textX, y: textY, willChange: "transform" }}
-      >
-        {/* Eyebrow */}
+      {/* ══════════════════ MAIN CONTENT ══════════════════ */}
+      <div className="relative z-10 flex flex-col flex-1 items-center justify-center text-center px-6 lg:px-12 pt-28 pb-20">
+
+        {/* Eyebrow badge */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mb-10"
+          {...fadeRise(0.15)}
+          className="flex items-center gap-3 mb-10"
         >
-          <span className="inline-block text-white/25 text-[10px] tracking-[0.55em] uppercase font-body border border-white/[0.08] px-6 py-2.5">
+          <div className="w-8 h-px bg-amber-400/60" />
+          <span
+            className="text-[8.5px] tracking-[0.55em] uppercase text-white/40"
+            style={{ fontFamily: "var(--font-inter)" }}
+          >
             Est.&nbsp;1991&nbsp;·&nbsp;Bharuch,&nbsp;Gujarat
           </span>
+          <div className="w-8 h-px bg-white/15" />
         </motion.div>
 
-        {/* ── Main heading — word-by-word 3D reveal ── */}
-        <div
-          className="text-[clamp(4rem,11vw,9.5rem)] font-bold text-white leading-[0.92] tracking-tight mb-6"
-          style={{ fontFamily: "var(--font-playfair)", perspective: "800px" }}
-        >
+        {/* ── MAIN HEADING — no overflow-hidden, pure fade+rise ── */}
+        <div className="mb-6">
           {/* Line 1 */}
-          <div className="overflow-hidden">
-            <motion.span
-              className="hero-word block"
-              initial={{ opacity: 0, y: 60, rotateX: -25 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={wordTransition(0)}
+          <motion.div {...fadeRise(0.35)}>
+            <span
+              className="block select-none"
+              style={{
+                fontFamily:   "var(--font-playfair)",
+                fontSize:     "clamp(3rem, 8vw, 8rem)",
+                lineHeight:   1.08,
+                fontWeight:   800,
+                letterSpacing:"-0.02em",
+                color:        "#ffffff",
+              }}
             >
               Shaping
-            </motion.span>
-          </div>
+            </span>
+          </motion.div>
 
-          {/* Line 2 — italic light */}
-          <div className="overflow-hidden">
-            <motion.span
-              className="hero-word block italic font-light text-white/55"
-              initial={{ opacity: 0, y: 60, rotateX: -25 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={wordTransition(1)}
+          {/* Line 2 — italic ghost */}
+          <motion.div {...fadeRise(0.52)}>
+            <span
+              className="block select-none"
+              style={{
+                fontFamily:   "var(--font-playfair)",
+                fontSize:     "clamp(3rem, 8vw, 8rem)",
+                lineHeight:   1.08,
+                fontWeight:   400,
+                fontStyle:    "italic",
+                letterSpacing:"-0.02em",
+                color:        "rgba(255,255,255,0.38)",
+              }}
             >
               Modern
-            </motion.span>
-          </div>
+            </span>
+          </motion.div>
 
           {/* Line 3 */}
-          <div className="overflow-hidden">
-            <motion.span
-              className="hero-word block"
-              initial={{ opacity: 0, y: 60, rotateX: -25 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={wordTransition(2)}
+          <motion.div {...fadeRise(0.68)}>
+            <span
+              className="block select-none"
+              style={{
+                fontFamily:   "var(--font-playfair)",
+                fontSize:     "clamp(3rem, 8vw, 8rem)",
+                lineHeight:   1.08,
+                fontWeight:   800,
+                letterSpacing:"-0.02em",
+                color:        "#ffffff",
+              }}
             >
               Spaces
-            </motion.span>
-          </div>
+            </span>
+          </motion.div>
         </div>
 
-        {/* Divider */}
+        {/* Amber divider */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.9, ease: "easeOut" }}
-          className="w-14 h-px bg-amber-500/60 mx-auto mb-8 origin-left"
+          transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          style={{ transformOrigin: "center" }}
+          className="mx-auto mb-8 h-px w-16 bg-gradient-to-r from-transparent via-amber-400 to-transparent"
         />
 
-        {/* Subtitle */}
+        {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0 }}
-          className="text-white/35 text-base md:text-lg max-w-sm mx-auto mb-12 font-body leading-relaxed tracking-wide"
+          {...fadeRise(0.95)}
+          className="max-w-md text-white/55 leading-relaxed mb-10"
+          style={{
+            fontFamily: "var(--font-inter)",
+            fontSize:   "clamp(13px, 1.5vw, 15px)",
+          }}
         >
-          Premium real estate across Bharuch and South Gujarat.&nbsp;Built to endure.
+          Premium real estate across Bharuch and South Gujarat.
+          <br className="hidden sm:block" />
+          Crafted with precision, built to endure.
         </motion.p>
 
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.15 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Link href="/projects" data-cursor-label="EXPLORE">
-            <Button size="lg" variant="primary">
-              Explore Projects
-              <ChevronRight size={14} />
-            </Button>
-          </Link>
-          <Link href="/contact" data-cursor-label="VISIT">
-            <motion.div
-              whileHover={{ backgroundColor: "#ffffff", color: "#0A0A0A" }}
-              transition={{ duration: 0.2 }}
-              className="inline-flex items-center justify-center gap-2 uppercase font-body font-semibold px-9 py-4 text-xs tracking-[0.15em] border border-white/20 text-white active:scale-95 cursor-pointer"
-            >
-              Schedule a Visit
-            </motion.div>
-          </Link>
-        </motion.div>
-      </motion.div>
 
-      {/* ── Bottom marquee ticker ── */}
+      </div>
+      {/* ════════════════════════════════════════════ */}
+
+      {/* ── MARQUEE TICKER ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-12 left-0 right-0 z-20 overflow-hidden pointer-events-none"
+        className="relative z-10 overflow-hidden pointer-events-none"
+        style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        <div className="flex whitespace-nowrap animate-marquee">
-          {/* Duplicate for seamless loop */}
-          {[0, 1].map((n) => (
-            <span key={n} className="text-[9px] tracking-[0.4em] text-white/[0.12] uppercase font-body">
-              {TICKER.repeat(6)}
+        <div
+          className="flex whitespace-nowrap py-2"
+          style={{ animation: "marquee 45s linear infinite" }}
+        >
+          {[0, 1, 2].map((n) => (
+            <span
+              key={n}
+              className="shrink-0"
+              style={{
+                fontFamily:    "var(--font-inter)",
+                fontSize:      "9px",
+                letterSpacing: "0.38em",
+                color:         "rgba(255,255,255,0.07)",
+                textTransform: "uppercase",
+              }}
+            >
+              {TICKER.repeat(5)}
             </span>
           ))}
         </div>
       </motion.div>
 
-      {/* ── Scroll indicator ── */}
+      {/* ── SCROLL INDICATOR ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/20"
+        transition={{ delay: 2.0, duration: 1 }}
+        className="absolute bottom-8 right-10 z-20 hidden lg:flex flex-col items-center gap-2 text-white/20"
       >
-        <span className="text-[9px] tracking-[0.45em] uppercase font-body">Scroll</span>
+        <span
+          className="text-[7px] tracking-[0.55em] uppercase"
+          style={{ writingMode: "vertical-lr", fontFamily: "var(--font-inter)" }}
+        >
+          Scroll
+        </span>
         <motion.div
           animate={{ y: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
         >
-          <ArrowDown size={12} />
+          <ArrowDown size={10} />
         </motion.div>
       </motion.div>
     </section>

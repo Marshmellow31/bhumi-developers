@@ -121,7 +121,7 @@ export default function ContactPopup() {
                       disabled={isSubmitting}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Rajesh Patel"
+                      placeholder="e.g. Kiran Majmudar"
                       className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/20 focus:border-white/30 focus:outline-none transition-colors duration-250 font-body"
                     />
                   </div>
