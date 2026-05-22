@@ -14,7 +14,7 @@ import ProjectDocuments from "@/components/projects/ProjectDocuments";
 const PROJECT_LOGOS: Record<string, string> = {
   "central-square": "/images/central-square-logo.svg",
   "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
-  "city-centre": "/images/city-center-logo.png",
+  "city-center": "/images/city-center-logo.png",
   "pritam-residency": "/images/pritam-residency-logo.svg",
 };
 
@@ -158,17 +158,15 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {/* Visual grid texture overlay */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
                 
-                {/* Sleek logo capsule */}
-                <div className="relative w-full bg-white/95 rounded-xl p-6 flex items-center justify-center shadow-inner h-28 border border-white/5 transition-all duration-500 group-hover:scale-[1.02] group-hover:bg-white">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={logo}
-                      alt={`${project.name} logo`}
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
+                {/* Logo directly on dark background */}
+                <div className="relative w-full h-52">
+                  <Image
+                    src={logo}
+                    alt={`${project.name} logo`}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
                 
                 {/* Luxury Typography Stamp */}

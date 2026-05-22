@@ -42,9 +42,9 @@ export default function StatsSection() {
               transition={{ duration: 0.65, delay: i * 0.12, ease: "easeOut" }}
               className="group text-center py-10 lg:py-0 lg:px-8 relative"
             >
-              {/* Amber glow behind number */}
+              {/* Subtle white glow behind number */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="w-32 h-32 rounded-full bg-amber-500/[0.07] blur-2xl" />
+                <div className="w-32 h-32 rounded-full bg-white/[0.04] blur-2xl" />
               </div>
 
               <div

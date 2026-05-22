@@ -72,8 +72,8 @@ const slides: SlideData[] = [
     italicWord: "Retail Hubs",
     regularText: "Modern",
     description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
-    image: "/images/city-centre/city-centre-1.jpg",
-    projectTag: "City Centre",
+    image: "/images/city-center/city-center-1.jpg",
+    projectTag: "City Center",
   },
 ];
 

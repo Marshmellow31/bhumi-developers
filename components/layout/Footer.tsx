@@ -39,7 +39,7 @@ const socialLinks = [
 const projects = [
   { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
   { href: "/projects/central-square", label: "Central Square" },
-  { href: "/projects/city-centre", label: "City Centre" },
+  { href: "/projects/city-center", label: "City Center" },
   { href: "/projects/pritam-residency", label: "Pritam Residency" },
 ];
 

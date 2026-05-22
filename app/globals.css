@@ -105,19 +105,7 @@ body.cursor-active * {
 }
 
 .stat-number {
-  background: linear-gradient(
-    90deg,
-    #f59e0b 0%,
-    #fbbf24 40%,
-    #fffbeb 50%,
-    #fbbf24 60%,
-    #f59e0b 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 4s linear infinite;
+  color: #ffffff;
 }
 
 /* ── Scroll progress bar ────────────────────── */

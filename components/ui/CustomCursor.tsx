@@ -102,8 +102,8 @@ export default function CustomCursor() {
             width:           hovering ? 64  : 32,
             height:          hovering ? 64  : 32,
             opacity:         visible  ? 1   : 0,
-            borderColor:     hovering ? "rgba(245,158,11,0.85)" : "rgba(255,255,255,0.35)",
-            backgroundColor: hovering ? "rgba(245,158,11,0.12)" : "rgba(0, 0, 0, 0.04)",
+            borderColor:     hovering ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.35)",
+            backgroundColor: hovering ? "rgba(255,255,255,0.08)" : "rgba(0, 0, 0, 0.04)",
           }}
           transition={{ duration: 0.22, ease: "easeOut" }}
           style={{ border: "1px solid" }}
@@ -114,7 +114,7 @@ export default function CustomCursor() {
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.15 }}
-              className="text-[8px] font-semibold tracking-[0.18em] uppercase text-amber-400 font-body whitespace-nowrap"
+              className="text-[8px] font-semibold tracking-[0.18em] uppercase text-white font-body whitespace-nowrap"
             >
               {label}
             </motion.span>
