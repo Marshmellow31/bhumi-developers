@@ -155,6 +155,27 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      {/* Team Foundation Image Section */}
+      <div className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
+        {/* Parallax Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-fixed bg-center"
+          style={{ backgroundImage: "url('/images/about/team-foundation.jpg')" }}
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
+          <span className="text-white/80 text-[10px] md:text-xs tracking-[0.4em] uppercase font-semibold font-body mb-4 drop-shadow-md">
+            Our Greatest Asset
+          </span>
+          <h2 
+            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight drop-shadow-lg"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            A foundation built by people, <br/>
+            <span className="italic font-light text-white/90">not just concrete.</span>
+          </h2>
+        </div>
+      </div>
 
       {/* Timeline */}
       <div className="py-24 bg-white">
