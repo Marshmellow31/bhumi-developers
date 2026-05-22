@@ -28,23 +28,22 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <div className="bg-primary pt-36 pb-20">
+      <div className="bg-background pt-36 pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Story"
             title="Over Three Decades of Building Dreams"
             subtitle="From a single plot in Bharuch to South Gujarat's most respected developer — this is our story."
             align="center"
-            light
             animate
           />
         </div>
       </div>
 
       {/* Stats — black section */}
-      <div className="bg-primary border-t border-white/5 py-14">
+      <div className="bg-background border-t border-primary/5 py-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-white/5 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
             {[
               { value: 35, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
@@ -52,10 +51,10 @@ export default function AboutPage() {
               { value: 12, suffix: "M+", label: "Sq Ft Built" },
             ].map((s, i) => (
               <div key={i} className="py-8 lg:py-0 lg:px-8">
-                <p className="text-4xl font-bold text-white" style={{ fontFamily: "var(--font-playfair)" }}>
+                <p className="text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
                   <AnimatedCounter target={s.value} suffix={s.suffix} />
                 </p>
-                <p className="text-white/25 text-xs tracking-[0.3em] uppercase font-body mt-1">{s.label}</p>
+                <p className="text-muted text-xs tracking-[0.3em] uppercase font-body mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -77,13 +76,13 @@ export default function AboutPage() {
                 to quality, transparency, and timely delivery. Every Bhumi project is a promise kept.
               </p>
             </div>
-            <div className="bg-primary p-12">
-              <span className="text-white/30 text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Vision</span>
-              <h3 className="text-2xl font-bold text-white mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
+            <div className="bg-surface p-12">
+              <span className="text-muted text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Vision</span>
+              <h3 className="text-2xl font-bold text-primary mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Gujarat&apos;s Most Trusted Builder
               </h3>
-              <div className="w-8 h-px bg-white/20 mb-6" />
-              <p className="text-white/40 font-body leading-relaxed text-sm">
+              <div className="w-8 h-px bg-primary/20 mb-6" />
+              <p className="text-muted font-body leading-relaxed text-sm">
                 To be recognized across Gujarat for building spaces that stand the test of time —
                 where engineering excellence meets architectural beauty, creating legacies for generations.
               </p>
@@ -107,12 +106,12 @@ export default function AboutPage() {
                 />
               </div>
               {/* Badge on image */}
-              <div className="absolute -bottom-6 -right-6 bg-primary text-white p-6 shadow-xl w-40">
-                <p className="text-3xl font-bold leading-none mb-1 text-white" style={{ fontFamily: "var(--font-playfair)" }}>
+              <div className="absolute -bottom-6 -right-6 bg-background text-primary p-6 shadow-xl border border-primary/5 w-40">
+                <p className="text-3xl font-bold leading-none mb-1 text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
                   35+
                 </p>
-                <div className="w-5 h-px bg-white/20 my-2" />
-                <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase font-body">
+                <div className="w-5 h-px bg-primary/20 my-2" />
+                <p className="text-muted text-[10px] tracking-[0.2em] uppercase font-body">
                   Years Experience
                 </p>
               </div>
@@ -189,7 +188,7 @@ export default function AboutPage() {
       </div>
 
       {/* Awards & Recognition */}
-      <div className="py-24 bg-primary">
+      <div className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <SectionHeading
@@ -197,11 +196,10 @@ export default function AboutPage() {
               title="Awards & Honours"
               subtitle="Decades of excellence recognised by industry leaders and communities alike."
               align="center"
-              light
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-primary/5">
             {[
               {
                 photo: null,
@@ -246,27 +244,27 @@ export default function AboutPage() {
                 desc: "Short description of the award and what it recognises. Add details here.",
               },
             ].map((a, i) => (
-              <div key={i} className="bg-primary-light p-8 flex flex-col gap-5 group hover:bg-white/5 transition-colors duration-300">
+              <div key={i} className="bg-surface p-8 flex flex-col gap-5 group hover:bg-primary/[0.02] transition-colors duration-300">
                 {/* Photo placeholder */}
-                <div className="w-full h-44 bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                <div className="w-full h-44 bg-primary/[0.04] border border-primary/10 flex items-center justify-center overflow-hidden">
                   {a.photo ? (
                     <img src={a.photo} alt={a.award} className="w-full h-full object-cover" />
                   ) : (
-                    <span className="text-white/15 text-xs tracking-[0.2em] uppercase font-body select-none">Photo</span>
+                    <span className="text-muted/40 text-xs tracking-[0.2em] uppercase font-body select-none">Photo</span>
                   )}
                 </div>
 
                 {/* Award info */}
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-white/30 text-[10px] tracking-[0.3em] uppercase font-body">{a.year}</span>
-                    <div className="w-4 h-px bg-white/10" />
+                    <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body">{a.year}</span>
+                    <div className="w-4 h-px bg-primary/10" />
                   </div>
-                  <h4 className="text-white font-bold text-lg leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+                  <h4 className="text-primary font-bold text-lg leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
                     {a.award}
                   </h4>
-                  <p className="text-white/40 text-xs tracking-[0.2em] uppercase font-body">{a.body}</p>
-                  <p className="text-white/30 text-sm font-body leading-relaxed pt-1 border-t border-white/5">
+                  <p className="text-muted text-xs tracking-[0.2em] uppercase font-body">{a.body}</p>
+                  <p className="text-muted text-sm font-body leading-relaxed pt-1 border-t border-primary/5">
                     {a.desc}
                   </p>
                 </div>

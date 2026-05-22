@@ -27,14 +27,13 @@ export default function DownloadsClient({ projects, totalDocs }: Props) {
   return (
     <>
       {/* ── Hero ── */}
-      <div className="bg-primary pt-36 pb-0">
+      <div className="bg-background pt-36 pb-0">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-14">
           <SectionHeading
             eyebrow="Resources"
             title="Brochures & Floor Plans"
             subtitle="Access complete engineering layouts, floor plans, and digital brochures for our premier commercial and residential landmarks."
             align="center"
-            light
           />
         </div>
 
@@ -44,7 +43,7 @@ export default function DownloadsClient({ projects, totalDocs }: Props) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-3 border-t border-white/10"
+            className="grid grid-cols-3 border-t border-primary/5"
           >
             {[
               { value: projects.length, label: "Projects" },
@@ -53,15 +52,15 @@ export default function DownloadsClient({ projects, totalDocs }: Props) {
             ].map((s) => (
               <div
                 key={s.label}
-                className="py-6 text-center border-r border-white/10 last:border-r-0"
+                className="py-6 text-center border-r border-primary/5 last:border-r-0"
               >
                 <div
-                  className="text-3xl font-bold text-white"
+                  className="text-3xl font-bold text-primary"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {s.value}
                 </div>
-                <div className="text-[10px] tracking-[0.25em] uppercase text-white/30 mt-1 font-body">
+                <div className="text-[10px] tracking-[0.25em] uppercase text-muted mt-1 font-body">
                   {s.label}
                 </div>
               </div>
