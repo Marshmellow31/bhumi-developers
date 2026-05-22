@@ -54,7 +54,7 @@ export default function StatsSection() {
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} duration={1800} />
               </div>
 
-              <p className="text-white/20 text-[10px] tracking-[0.35em] uppercase font-body">
+              <p className="text-white/70 text-[10px] tracking-[0.35em] uppercase font-body">
                 {stat.label}
               </p>
             </motion.div>
