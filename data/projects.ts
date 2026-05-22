@@ -37,6 +37,7 @@ export interface Project {
   brochure?: string;
   floorPlans?: FloorPlan[];
   contact?: ProjectContact;
+  video?: string;
 }
 
 export const projects: Project[] = [
@@ -53,7 +54,7 @@ export const projects: Project[] = [
     area: "450–3500 sq ft",
     priceRange: { min: 3200000, max: 18000000 },
     completionYear: 2026,
-    image: "/images/central-square/Pacnhbatti 505 Front_Cam01-a.jpg",
+    image: "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.jpg",
     gallery: [
       "/images/central-square/Pacnhbatti 505 Front_Cam01-a.jpg",
       "/images/central-square/Pacnhbatti 505 Gallary Closeup_Cam01-a.jpg",
@@ -94,8 +95,13 @@ export const projects: Project[] = [
     area: "2400–4500 sq ft",
     priceRange: { min: 8500000, max: 24000000 },
     completionYear: 2027,
-    image: "/images/solitaire-plaza/Tavra Corner Day-a.jpg",
+    image: "/images/solitaire-plaza/47.jpeg",
     gallery: [
+      "/images/solitaire-plaza/47.jpeg",
+      "/images/solitaire-plaza/53.jpeg",
+      "/images/solitaire-plaza/54.jpeg",
+      "/images/solitaire-plaza/55.jpeg",
+      "/images/solitaire-plaza/72.jpeg",
       "/images/solitaire-plaza/Tavra Corner Day-a.jpg",
       "/images/solitaire-plaza/Tavra Foyer Entry_Cam-a.jpg",
       "/images/solitaire-plaza/Tavra Gate Night Cam-a.jpg",
@@ -156,10 +162,29 @@ export const projects: Project[] = [
     completionYear: 2024,
     image: "/images/city-center/city-center-1.jpg",
     gallery: [
+      "/images/city-center/03.png",
+      "/images/city-center/04.jpg",
+      "/images/city-center/05.png",
+      "/images/city-center/06.png",
+      "/images/city-center/07.png",
+      "/images/city-center/08.png",
+      "/images/city-center/09.png",
+      "/images/city-center/10.png",
+      "/images/city-center/14.jpg",
+      "/images/city-center/15.jpg",
+      "/images/city-center/16.png",
+      "/images/city-center/17.jpg",
+      "/images/city-center/19.jpg",
+      "/images/city-center/20.jpg",
+      "/images/city-center/city-center-night-168.jpg",
+      "/images/city-center/city-center-night-169.jpg",
+      "/images/city-center/city-center-night-170.jpg",
+      "/images/city-center/city-center-night-171.jpg",
+      "/images/city-center/city-center-night-172.jpg",
       "/images/city-center/city-center-1.jpg",
       "/images/city-center/city-center-2.jpg",
       "/images/city-center/city-center-3.jpg",
-      "/images/city-center/city-center-4.jpg",
+      "/images/city-center/city-center-4.jpg"
     ],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
@@ -174,6 +199,7 @@ export const projects: Project[] = [
       "Professional Property Management",
     ],
     featured: true,
+    video: "/videos/city-center/use.mp4",
   },
   {
     id: "10",

@@ -22,7 +22,7 @@ const slides: SlideData[] = [
     italicWord: "Planning",
     regularText: "Meticulous",
     description: "Designing spaces with attention to layout optimization, natural ventilation, and architectural harmony.",
-    image: "/images/central-square/Pacnhbatti 505 Front_Cam01-a.jpg",
+    image: "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.jpg",
     projectTag: "Central Square",
   },
   {
@@ -37,13 +37,13 @@ const slides: SlideData[] = [
   },
   {
     number: "03",
-    category: "COMMUNITY",
-    titleHtml: "Integrated <em>Living</em>",
-    italicWord: "Living",
-    regularText: "Integrated",
-    description: "Creating communities with self-contained ecosystems, green spaces, and modern lifestyle amenities.",
-    image: "/images/pritam-residency/pritam-residency.png",
-    projectTag: "Pritam Residency",
+    category: "BUSINESS",
+    titleHtml: "Modern <em>Retail Hubs</em>",
+    italicWord: "Retail Hubs",
+    regularText: "Modern",
+    description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
+    image: "/images/city-center/city-center-1.jpg",
+    projectTag: "City Center",
   },
   {
     number: "04",
@@ -65,16 +65,7 @@ const slides: SlideData[] = [
     image: "/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.jpg",
     projectTag: "Solitaire Pallazzo",
   },
-  {
-    number: "06",
-    category: "BUSINESS",
-    titleHtml: "Modern <em>Retail Hubs</em>",
-    italicWord: "Retail Hubs",
-    regularText: "Modern",
-    description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
-    image: "/images/city-center/city-center-1.jpg",
-    projectTag: "City Center",
-  },
+
 ];
 
 export default function PhilosophySection() {
@@ -120,7 +111,7 @@ export default function PhilosophySection() {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex gap-4 md:gap-6 lg:gap-8 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24"
+            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24"
           >
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
@@ -140,7 +131,7 @@ export default function PhilosophySection() {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="relative w-[80vw] md:w-[60vw] lg:w-[52vw] h-[50vh] md:h-[55vh] shrink-0 overflow-hidden group border border-white/10"
+                className="relative w-[90vw] md:w-[75vw] lg:w-[68vw] h-[64vh] md:h-[66vh] lg:h-[66vh] shrink-0 overflow-hidden group border border-white/10"
               >
                 {/* Image background */}
                 <div

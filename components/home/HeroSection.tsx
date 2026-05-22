@@ -1,14 +1,10 @@
 "use client";
 
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
-  useMotionValue,
-  useTransform,
-  useSpring,
   AnimatePresence,
 } from "framer-motion";
-import { ArrowDown } from "lucide-react";
 
 /* ── Constants ── */
 const TICKER =
@@ -32,55 +28,26 @@ const fadeRise = (delay: number) => ({
 });
 
 export default function HeroSection() {
-  const sectionRef = useRef<HTMLElement>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  /* ── Mouse parallax ── */
-  const mouseX  = useMotionValue(0.5);
-  const mouseY  = useMotionValue(0.5);
-  const spring  = { damping: 28, stiffness: 80, mass: 0.9 };
-  const smoothX = useSpring(mouseX, spring);
-  const smoothY = useSpring(mouseY, spring);
-  const bgX     = useTransform(smoothX, [0, 1], [16, -16]);
-  const bgY     = useTransform(smoothY, [0, 1], [10, -10]);
-
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      if (!sectionRef.current) return;
-      const { left, top, width, height } =
-        sectionRef.current.getBoundingClientRect();
-      mouseX.set((e.clientX - left) / width);
-      mouseY.set((e.clientY - top)  / height);
-    },
-    [mouseX, mouseY]
-  );
-  const handleMouseLeave = useCallback(() => {
-    mouseX.set(0.5);
-    mouseY.set(0.5);
-  }, [mouseX, mouseY]);
-
   return (
     <section
-      ref={sectionRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: "#111111" }}
     >
-      {/* ── BG PHOTO with parallax ── */}
-      <motion.div
-        className="absolute inset-[-5%] z-0"
-        style={{
-          backgroundImage:    "url('/images/background.png')",
-          backgroundSize:     "cover",
-          backgroundPosition: "center",
-          backgroundRepeat:   "no-repeat",
-          x: bgX,
-          y: bgY,
-          willChange: "transform",
-        }}
-      />
+      {/* ── BG VIDEO ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          src="/videos/city-center/city-centre-video.mp4"
+          poster="/images/background.png"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* ── Gradient overlay ── */}
       <div
@@ -145,19 +112,8 @@ export default function HeroSection() {
       <div className="absolute right-6 lg:right-12 top-0 h-full w-px bg-white/[0.05] z-[4] pointer-events-none" />
 
       {/* ══════════════ MAIN CONTENT ══════════════ */}
-      <div className="relative z-10 flex flex-col flex-1 items-center justify-center text-center px-6 lg:px-12 pt-28 pb-20">
+      <div className="relative z-10 flex flex-col flex-1 items-start justify-end text-left pl-6 lg:pl-12 pr-10 lg:pr-16 pt-28 pb-8 lg:pb-12 max-w-4xl">
 
-        {/* Eyebrow badge */}
-        <motion.div {...fadeRise(0.2)} className="flex items-center gap-3 mb-10">
-          <div className="w-8 h-px bg-amber-400/60" />
-          <span
-            className="text-[8.5px] tracking-[0.55em] uppercase text-white/40"
-            style={{ fontFamily: "var(--font-inter)" }}
-          >
-            Est.&nbsp;1991&nbsp;·&nbsp;Bharuch,&nbsp;Gujarat
-          </span>
-          <div className="w-8 h-px bg-white/15" />
-        </motion.div>
 
         {/* ── Heading ── */}
         <div className="mb-6">
@@ -211,28 +167,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Amber divider */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          style={{ transformOrigin: "center" }}
-          className="mx-auto mb-8 h-px w-16 bg-gradient-to-r from-transparent via-amber-400 to-transparent"
-        />
 
-        {/* Tagline */}
-        <motion.p
-          {...fadeRise(1.0)}
-          className="max-w-md text-white/50 leading-relaxed"
-          style={{
-            fontFamily: "var(--font-inter)",
-            fontSize:   "clamp(13px, 1.4vw, 15px)",
-          }}
-        >
-          Premium real estate across Bharuch and South Gujarat.
-          <br className="hidden sm:block" />
-          Crafted with precision, built to endure.
-        </motion.p>
 
       </div>
       {/* ════════════════════════════════════════ */}
@@ -267,25 +202,54 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
+
       {/* ── Scroll indicator ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.0, duration: 1 }}
-        className="absolute bottom-8 right-10 z-20 hidden lg:flex flex-col items-center gap-2 text-white/20"
+        transition={{ delay: 2.2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3"
       >
+        {/* Mouse outline */}
+        <div
+          className="relative flex justify-center"
+          style={{
+            width:        "34px",
+            height:       "52px",
+            borderRadius: "17px",
+            border:       "1.5px solid rgba(255,255,255,0.35)",
+          }}
+        >
+          {/* Scrolling dot inside mouse */}
+          <motion.div
+            style={{
+              width:           "5px",
+              height:          "9px",
+              borderRadius:    "3px",
+              backgroundColor: "rgba(255,255,255,0.7)",
+              marginTop:       "9px",
+            }}
+            animate={{ y: [0, 16, 0], opacity: [1, 0.2, 1] }}
+            transition={{
+              duration:    1.6,
+              repeat:      Infinity,
+              ease:        "easeInOut",
+              repeatDelay: 0.2,
+            }}
+          />
+        </div>
+
         <span
-          className="text-[7px] tracking-[0.55em] uppercase"
-          style={{ writingMode: "vertical-lr", fontFamily: "var(--font-inter)" }}
+          style={{
+            fontFamily:    "var(--font-inter)",
+            fontSize:      "8px",
+            letterSpacing: "0.45em",
+            color:         "rgba(255,255,255,0.30)",
+            textTransform: "uppercase",
+          }}
         >
           Scroll
         </span>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
-        >
-          <ArrowDown size={10} />
-        </motion.div>
       </motion.div>
 
     </section>

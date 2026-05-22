@@ -66,6 +66,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         location={project.location}
         tagline={project.tagline}
         statusColors={statusColors}
+        video={project.video}
       />
 
       {/* Content */}

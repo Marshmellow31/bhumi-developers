@@ -14,6 +14,7 @@ interface ProjectGallerySectionProps {
   location: string;
   tagline?: string;
   statusColors: Record<string, string>;
+  video?: string;
 }
 
 export default function ProjectGallerySection({
@@ -24,6 +25,7 @@ export default function ProjectGallerySection({
   location,
   tagline,
   statusColors,
+  video,
 }: ProjectGallerySectionProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
@@ -47,10 +49,21 @@ export default function ProjectGallerySection({
             <span>Back to Projects</span>
           </Link>
         </div>
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-          style={{ backgroundImage: `url('${image}')` }}
-        />
+        {video ? (
+          <video
+            src={video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+            style={{ backgroundImage: `url('${image}')` }}
+          />
+        )}
         {/* Gradient: image clearly visible at top, dark only at bottom for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent" />
 

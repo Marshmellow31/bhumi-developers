@@ -12,7 +12,7 @@ const statusStyles: Record<string, string> = {
   Upcoming:  "text-amber-700 before:bg-amber-600",
 };
 
-/* Alternating beige tones — bg-background (#F0E6D0) and bg-surface (#E6D8BC) */
+/* Alternating beige tones */
 const rowBg = ["bg-background", "bg-surface", "bg-background", "bg-surface"];
 
 interface FeaturedRowProps {
@@ -43,7 +43,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           data-cursor-label="VIEW"
           className="block relative overflow-hidden aspect-[4/3] lg:aspect-[5/4]"
         >
-          {/* Image */}
           <motion.div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -54,10 +53,8 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
 
-          {/* Subtle bottom gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
 
-          {/* Status pill — top-left of image */}
           <div className="absolute top-5 left-5 z-10">
             <span
               className={`inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm pl-2.5 pr-3 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold font-body shadow-sm before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:inline-block ${statusStyles[project.status]}`}
@@ -66,7 +63,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
             </span>
           </div>
 
-          {/* Hover-revealed corner arrow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileHover={{ opacity: 1, scale: 1 }}
@@ -79,7 +75,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
 
       {/* ── Text side ── */}
       <div className="lg:col-span-5 flex flex-col gap-4">
-        {/* Number index */}
         <div className="flex items-baseline gap-4">
           <span
             className="text-5xl lg:text-6xl font-light text-primary/15 leading-none"
@@ -92,7 +87,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           </span>
         </div>
 
-        {/* Title */}
         <h3
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-[1.05]"
           style={{ fontFamily: "var(--font-playfair)" }}
@@ -100,7 +94,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           {project.name}
         </h3>
 
-        {/* Tagline */}
         <p
           className="text-lg md:text-xl italic font-light text-muted leading-relaxed -mt-2"
           style={{ fontFamily: "var(--font-playfair)" }}
@@ -108,12 +101,10 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           {project.tagline}
         </p>
 
-        {/* Description */}
         <p className="text-sm text-muted leading-relaxed font-body line-clamp-3 max-w-md">
           {project.description}
         </p>
 
-        {/* Meta grid: Location · Price */}
         <div className="grid grid-cols-2 gap-6 mt-1 pt-5 border-t border-border max-w-md">
           <div>
             <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
@@ -137,7 +128,6 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           </div>
         </div>
 
-        {/* CTA + counter */}
         <div className="flex items-center justify-between mt-4 max-w-md">
           <Link
             href={`/projects/${project.slug}`}
