@@ -7,6 +7,11 @@ export interface FloorPlan {
   size?: string;
 }
 
+export interface ProjectContact {
+  phones: { number: string; label?: string }[];
+  email?: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -31,6 +36,7 @@ export interface Project {
   featured: boolean;
   brochure?: string;
   floorPlans?: FloorPlan[];
+  contact?: ProjectContact;
 }
 
 export const projects: Project[] = [
@@ -71,6 +77,9 @@ export const projects: Project[] = [
     ],
     featured: true,
     brochure: "/documents/central-square-brochure.pdf",
+    contact: {
+      phones: [{ number: "+917283888893", label: "+91 72838 88893" }],
+    },
   },
   {
     id: "8",
@@ -116,6 +125,13 @@ export const projects: Project[] = [
     ],
     featured: true,
     brochure: "/documents/solitaire-pallazzo-brochure.pdf",
+    contact: {
+      phones: [
+        { number: "+919998016244", label: "+91 99980 16244" },
+        { number: "+918511343554", label: "+91 85113 43554" },
+      ],
+      email: "sp.info.tavra@gmail.com",
+    },
     floorPlans: [
       { name: "Brochure (Parking Layout & Details)", file: "/documents/solitaire-pallazzo-brochure-parking.pdf", size: "1.3 MB" },
       { name: "Ground Floor Parking Layout Plan", file: "/documents/solitaire-pallazzo-ground-floor-parking.pdf", size: "1.7 MB" },
