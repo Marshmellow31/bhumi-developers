@@ -9,13 +9,6 @@ export const metadata: Metadata = {
     "Learn about Bhumi Developers — over 35 years of building premium real estate in Bharuch and South Gujarat.",
 };
 
-const milestones = [
-  { year: "1991", title: "Founded", desc: "Bhumi Developers was established in Bharuch with a vision to redefine real estate." },
-  { year: "2010", title: "First Landmark", desc: "Delivered our first major residential project — Bhumi Excel Park with 300 homes." },
-  { year: "2015", title: "Commercial Expansion", desc: "Entered the commercial segment with Bhumi Grand Square in the heart of Bharuch." },
-  { year: "2020", title: "5,000 Families", desc: "Crossed the milestone of housing 5,000+ satisfied families across South Gujarat." },
-  { year: "2025", title: "Expanding Horizons", desc: "Expanding into Ankleshwar, Surat, and beyond with 6 ongoing projects." },
-];
 
 const team = [
   { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
@@ -178,36 +171,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="py-24 bg-background">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <SectionHeading eyebrow="Our Journey" title="Milestones That Define Us" />
-          </div>
-          <div className="relative">
-            <div className="absolute md:left-1/2 md:-translate-x-px left-1.5 top-0 bottom-0 w-px bg-border" />
-            <div className="flex flex-col gap-12">
-              {milestones.map((m, i) => (
-                <div
-                  key={i}
-                  className={`flex md:items-start gap-6 md:gap-8 flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
-                >
-                  <div className={`flex-1 ${i % 2 === 0 ? "md:text-right" : "md:text-left"} text-left`}>
-                    <div className="inline-block bg-surface border border-black/5 px-6 py-4 w-full md:w-auto">
-                      <p className="text-muted text-xs tracking-[0.25em] uppercase font-semibold font-body mb-1">{m.year}</p>
-                      <h4 className="text-primary font-bold text-base mb-2" style={{ fontFamily: "var(--font-playfair)" }}>{m.title}</h4>
-                      <p className="text-muted text-sm font-body leading-relaxed">{m.desc}</p>
-                    </div>
-                  </div>
-                  <div className="relative z-10 w-3 h-3 bg-champagne border-4 border-background mt-4 shrink-0 order-first md:order-none" />
-                  <div className="hidden md:block flex-1" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Awards & Recognition */}
       <div className="py-24 bg-background">

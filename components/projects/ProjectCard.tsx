@@ -132,7 +132,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <motion.div
               className="absolute inset-0 z-10"
               style={{
-                background:     "#0a0a0a",
+                background:     "#111111",
                 transformOrigin: "right",
               }}
               initial={{ scaleX: 1 }}
