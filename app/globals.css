@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Core foundation (warm near-black, not pure #000) ─── */
-  --color-primary:       #1A1510;   /* dark espresso — warm, barely lighter than jet-black */
-  --color-primary-light: #2C2218;   /* warm dark charcoal                                  */
-  --color-charcoal:      #1E1812;   /* warm charcoal body text                             */
+  /* ── Core foundation (neutral near-black) ───────────── */
+  --color-primary:       #111111;   /* slightly lighter than pure black — clean, no tint   */
+  --color-primary-light: #1C1C1C;   /* dark charcoal                                       */
+  --color-charcoal:      #1A1A1A;   /* charcoal body text                                  */
 
   --color-accent:        #FFFFFF;
   --color-accent-light:  #E8E8E8;
@@ -31,7 +31,7 @@
 
 :root {
   --background: #F0E6D0;
-  --foreground: #1A1510;
+  --foreground: #111111;
 }
 
 * {
@@ -117,7 +117,7 @@ body.cursor-active * {
 }
 
 .stat-number {
-  color: #1A1510;
+  color: #111111;
 }
 
 /* ── Scroll progress bar (champagne gold) ──── */
