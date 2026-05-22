@@ -172,7 +172,7 @@ export default function FeaturedProjects() {
   return (
     <div className="relative overflow-hidden">
       {/* ── Section header band ── */}
-      <div className="bg-background pt-14 md:pt-20 pb-10 md:pb-14 border-b border-border/50">
+      <div className="bg-beige pt-14 md:pt-20 pb-10 md:pb-14 border-b border-border/50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
