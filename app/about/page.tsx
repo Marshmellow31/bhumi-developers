@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -95,7 +95,7 @@ export default function AboutPage() {
                 <div
                   className="absolute inset-0 bg-cover bg-center"
                   style={{
-                    backgroundImage: "url('/images/owner.jpeg')",
+                    backgroundImage: "url('/images/owner.webp')",
                   }}
                 />
               </div>
@@ -154,7 +154,7 @@ export default function AboutPage() {
         {/* Parallax Image */}
         <div 
           className="absolute inset-0 bg-cover bg-fixed bg-center"
-          style={{ backgroundImage: "url('/images/about/team-foundation.jpg')" }}
+          style={{ backgroundImage: "url('/images/about/team-foundation.webp')" }}
         />
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">

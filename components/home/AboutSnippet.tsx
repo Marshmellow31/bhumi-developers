@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 
@@ -39,7 +39,7 @@ export default function AboutSnippet() {
               <motion.div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{
-                  backgroundImage: "url('/images/owner.jpeg')",
+                  backgroundImage: "url('/images/owner.webp')",
                   filter: "grayscale(20%)",
                 }}
                 whileHover={{ scale: 1.03, filter: "grayscale(0%)" }}

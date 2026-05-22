@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import {
@@ -40,7 +40,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           src="/videos/city-center/city-centre-video.mp4"
-          poster="/images/background.png"
+          poster="/images/background.webp"
           autoPlay
           muted
           loop

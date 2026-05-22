@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Leaf } from "lucide-react";
@@ -15,7 +15,7 @@ export default function SustainabilitySection() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster="/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.jpg"
+        poster="/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp"
       >
         <source src="/videos/sustainability.mp4" type="video/mp4" />
       </video>

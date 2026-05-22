@@ -1,0 +1,11 @@
+# Documents (PDFs) — serve via external storage
+/public/documents/
+
+# Raw design sources
+/developer_pdfs/
+/logo-photos/
+/scripts/
+
+# Misc
+*.cdr
+*.pdf

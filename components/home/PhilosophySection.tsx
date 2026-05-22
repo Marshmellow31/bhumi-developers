@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -22,7 +22,7 @@ const slides: SlideData[] = [
     italicWord: "Planning",
     regularText: "Meticulous",
     description: "Designing spaces with attention to layout optimization, natural ventilation, and architectural harmony.",
-    image: "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.jpg",
+    image: "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.webp",
     projectTag: "Central Square",
   },
   {
@@ -32,7 +32,7 @@ const slides: SlideData[] = [
     italicWord: "Build Quality",
     regularText: "Superior",
     description: "Crafting structures with top-tier materials and rigorous engineering standards to stand the test of time.",
-    image: "/images/solitaire-plaza/Tavra Top 1st Cam-v01.jpg",
+    image: "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp",
     projectTag: "Solitaire Pallazzo",
   },
   {
@@ -42,7 +42,7 @@ const slides: SlideData[] = [
     italicWord: "Retail Hubs",
     regularText: "Modern",
     description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
-    image: "/images/city-center/city-center-1.jpg",
+    image: "/images/city-center/city-center-1.webp",
     projectTag: "City Center",
   },
   {
@@ -52,7 +52,7 @@ const slides: SlideData[] = [
     italicWord: "Recreation",
     regularText: "Rooftop",
     description: "Curating premium active spaces such as terrace pickleball courts, multi-sport turfs, and rooftop cafes.",
-    image: "/images/solitaire-plaza/Tavra Tarrace Pickel Ball Area-v01.jpg",
+    image: "/images/solitaire-plaza/Tavra Tarrace Pickel Ball Area-v01.webp",
     projectTag: "Solitaire Pallazzo",
   },
   {
@@ -62,7 +62,7 @@ const slides: SlideData[] = [
     italicWord: "Landscapes",
     regularText: "Green",
     description: "Integrating lush manicured gardens, quiet gazebo sitouts, and open-air decks to keep you connected with nature.",
-    image: "/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.jpg",
+    image: "/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp",
     projectTag: "Solitaire Pallazzo",
   },
 
