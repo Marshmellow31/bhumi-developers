@@ -81,9 +81,9 @@ function HamburgerIcon({ open }: { open: boolean }) {
   );
 }
 
-/* ════════════════════════════════════════════════════════════
+/* ============================================================
    Navbar
-════════════════════════════════════════════════════════════ */
+============================================================ */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -106,12 +106,9 @@ export default function Navbar() {
     isHome ? ["0px", "20px"] : ["20px", "20px"]
   )})`;
 
-  /* Navbar height: tall → compact as user scrolls */
-  const navHeight = useTransform(scrollY, [0, 80], isHome ? [96, 64] : [64, 64]);
-
   return (
     <>
-      {/* ════════════ NAVBAR HEADER ════════════ */}
+      {/* ============ NAVBAR HEADER ============ */}
       <motion.header
         className="fixed top-0 left-0 right-0 z-50"
         style={{
@@ -121,9 +118,8 @@ export default function Navbar() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            className="flex items-center justify-between"
-            style={{ height: navHeight }}
+          <div
+            className="flex items-center justify-between h-16"
           >
             {/* Logo */}
             <Link href="/" className="flex items-center h-full">
@@ -182,11 +178,11 @@ export default function Navbar() {
             >
               <HamburgerIcon open={isOpen} />
             </button>
-          </motion.div>
+          </div>
         </div>
       </motion.header>
 
-      {/* ════════════ FULLSCREEN MOBILE OVERLAY ════════════ */}
+      {/* ============ FULLSCREEN MOBILE OVERLAY ============ */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

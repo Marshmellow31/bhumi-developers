@@ -52,16 +52,16 @@ const quickLinks = [
 
 export default function Footer() {
   const footerContent = (
-    <footer className="bg-background text-primary border-t border-primary/5">
+    <footer className="bg-primary text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-6 -ml-2">
-              <Logo className="h-16 w-auto" light={true} />
+              <Logo className="h-16 w-auto" light={false} />
             </div>
-            <p className="text-muted text-sm leading-relaxed mb-6">
+            <p className="text-white/40 text-sm leading-relaxed mb-6">
               Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
               developer since 1991.
             </p>
@@ -71,7 +71,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 border border-primary/15 flex items-center justify-center text-primary/40 hover:border-primary hover:text-primary transition-colors duration-200"
+                  className="w-9 h-9 border border-white/15 flex items-center justify-center text-white/30 hover:border-white hover:text-white transition-colors duration-200"
                 >
                   {icon}
                 </a>
@@ -81,7 +81,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-primary text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -89,7 +89,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-muted text-sm hover:text-primary transition-colors duration-200"
+                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Projects */}
           <div>
-            <h4 className="text-primary text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Our Projects
             </h4>
             <ul className="space-y-3">
@@ -108,7 +108,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-muted text-sm hover:text-primary transition-colors duration-200"
+                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -119,12 +119,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-primary text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
               Get In Touch
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-muted text-sm">
-                <MapPin size={15} className="text-muted mt-0.5 shrink-0" />
+              <li className="flex items-start gap-3 text-white/40 text-sm">
+                <MapPin size={15} className="text-white/40 mt-0.5 shrink-0" />
                 <span>
                   1ST FLOOR, Millennium Arcade, College Rd,
                   <br />
@@ -134,7 +134,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+919879100355"
-                  className="flex items-center gap-3 text-muted text-sm hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
                   <Phone size={15} className="shrink-0" />
                   +91 98791 00355
@@ -143,7 +143,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:contact@bhumidevelopers.co.in"
-                  className="flex items-center gap-3 text-muted text-sm hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
                 >
                   <Mail size={15} className="shrink-0" />
                   contact@bhumidevelopers.co.in
@@ -155,8 +155,8 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-primary/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted tracking-wide">
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/20 tracking-wide">
           <p>© {new Date().getFullYear()} Bhumi Developers. All rights reserved.</p>
           <p>Bharuch, Gujarat, India</p>
         </div>

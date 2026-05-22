@@ -8,9 +8,9 @@ import { projects } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 
 const statusStyles: Record<string, string> = {
-  Ongoing:   "bg-primary text-white",
-  Completed: "bg-primary/5 text-primary border border-primary/20",
-  Upcoming:  "bg-primary/5 text-primary border border-primary/10",
+  Ongoing:   "bg-white text-primary",
+  Completed: "bg-white/10 text-white border border-white/30",
+  Upcoming:  "bg-white/5 text-white border border-white/20",
 };
 
 export default function ProjectShowcase() {
@@ -22,7 +22,7 @@ export default function ProjectShowcase() {
   }, []);
 
   return (
-    <div className="h-screen w-full flex bg-background overflow-hidden">
+    <div className="h-screen w-full flex bg-primary overflow-hidden">
       {/* ─── Left Panel: Project List ─── */}
       <div className="relative w-[42%] min-w-[420px] h-full flex flex-col justify-between py-32 px-12 lg:px-16 z-10">
         {/* Eyebrow */}
@@ -31,7 +31,7 @@ export default function ProjectShowcase() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted text-[10px] tracking-[0.35em] uppercase font-body font-semibold"
+            className="text-white/30 text-[10px] tracking-[0.35em] uppercase font-body font-semibold"
           >
             Our Portfolio
           </motion.span>
@@ -49,14 +49,14 @@ export default function ProjectShowcase() {
                 className="block"
               >
                 <motion.div
-                  className="group relative text-left py-5 border-b border-primary/[0.06] last:border-b-0 cursor-pointer"
+                  className="group relative text-left py-5 border-b border-white/[0.06] last:border-b-0 cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 >
                   {/* Active indicator line */}
                   <motion.div
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] bg-primary rounded-full"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] bg-white rounded-full"
                     initial={false}
                     animate={{
                       height: isActive ? "60%" : "0%",
@@ -70,7 +70,7 @@ export default function ProjectShowcase() {
                       {/* Number */}
                       <span
                         className={`text-xs font-body tracking-wider transition-colors duration-400 ${
-                          isActive ? "text-primary/60" : "text-primary/20"
+                          isActive ? "text-white/60" : "text-white/15"
                         }`}
                       >
                         {String(i + 1).padStart(2, "0")}
@@ -79,7 +79,7 @@ export default function ProjectShowcase() {
                       {/* Name */}
                       <h3
                         className={`text-2xl lg:text-3xl font-bold transition-all duration-400 ${
-                          isActive ? "text-primary" : "text-primary/25 group-hover:text-primary/50"
+                          isActive ? "text-white" : "text-white/25 group-hover:text-white/50"
                         }`}
                         style={{ fontFamily: "var(--font-playfair)" }}
                       >
@@ -95,7 +95,7 @@ export default function ProjectShowcase() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ArrowRight size={18} className="text-primary/45" />
+                      <ArrowRight size={18} className="text-white/40" />
                     </motion.div>
                   </div>
 
@@ -114,7 +114,7 @@ export default function ProjectShowcase() {
                         >
                           {project.status}
                         </span>
-                        <div className="flex items-center gap-1.5 text-muted text-xs font-body">
+                        <div className="flex items-center gap-1.5 text-white/30 text-xs font-body">
                           <MapPin size={10} className="shrink-0" />
                           <span>{project.location}</span>
                         </div>
@@ -136,11 +136,11 @@ export default function ProjectShowcase() {
           className="flex items-end justify-between"
         >
           <div>
-            <p className="text-muted text-[9px] tracking-[0.3em] uppercase font-body mb-1">
+            <p className="text-white/20 text-[9px] tracking-[0.3em] uppercase font-body mb-1">
               Starting from
             </p>
             <p
-              className="text-primary text-xl font-bold"
+              className="text-white text-xl font-bold"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               {formatPrice(active.priceRange.min)}
@@ -148,7 +148,7 @@ export default function ProjectShowcase() {
           </div>
           <Link
             href={`/projects/${active.slug}`}
-            className="group/link flex items-center gap-2 text-primary/65 hover:text-primary text-xs font-semibold font-body tracking-[0.15em] uppercase transition-colors duration-300"
+            className="group/link flex items-center gap-2 text-white/60 hover:text-white text-xs font-semibold font-body tracking-[0.15em] uppercase transition-colors duration-300"
             data-cursor-label="VIEW"
           >
             View Project
@@ -157,7 +157,7 @@ export default function ProjectShowcase() {
         </motion.div>
 
         {/* Right-edge separator */}
-        <div className="absolute top-0 right-0 w-px h-full bg-primary/[0.06]" />
+        <div className="absolute top-0 right-0 w-px h-full bg-white/[0.06]" />
       </div>
 
       {/* ─── Right Panel: Hero Image ─── */}
@@ -176,9 +176,9 @@ export default function ProjectShowcase() {
               style={{ backgroundImage: `url('${active.image}')` }}
             />
             {/* Subtle left-edge gradient for blending */}
-            <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-transparent" />
             {/* Bottom gradient for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
           </motion.div>
         </AnimatePresence>
 
@@ -193,12 +193,12 @@ export default function ProjectShowcase() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <p
-                className="text-primary/75 text-sm lg:text-base font-light italic leading-relaxed"
+                className="text-white/50 text-sm lg:text-base font-light italic leading-relaxed"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 &ldquo;{active.tagline}&rdquo;
               </p>
-              <div className="w-10 h-px bg-primary/15 mt-4 ml-auto" />
+              <div className="w-10 h-px bg-white/15 mt-4 ml-auto" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -212,7 +212,7 @@ export default function ProjectShowcase() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-primary/45 text-[10px] tracking-[0.3em] uppercase font-body font-semibold"
+              className="text-white/25 text-[10px] tracking-[0.3em] uppercase font-body font-semibold"
             >
               {active.type}
             </motion.span>
