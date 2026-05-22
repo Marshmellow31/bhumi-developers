@@ -7,6 +7,8 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import PageLoader from "@/components/ui/PageLoader";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import ContactPopup from "@/components/ui/ContactPopup";
+import LenisProvider from "@/components/ui/LenisProvider";
+import PageTransition from "@/components/ui/PageTransition";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -41,21 +43,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
-        {/* Premium white scroll-progress bar */}
-        <ScrollProgress />
+        <LenisProvider>
+          {/* Gold scroll-progress bar */}
+          <ScrollProgress />
 
-        {/* Lead Generation Popup */}
-        <ContactPopup />
+          {/* Lead Generation Popup */}
+          <ContactPopup />
 
-        {/* First-load cinematic loader */}
-        <PageLoader />
+          {/* First-load cinematic loader */}
+          <PageLoader />
 
-        {/* Magnetic dual-ring cursor (desktop only) */}
-        <CustomCursor />
+          {/* Magnetic dual-ring cursor (desktop only) */}
+          <CustomCursor />
 
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+          <Navbar />
+          <PageTransition>{children}</PageTransition>
+          <Footer />
+        </LenisProvider>
       </body>
     </html>
   );

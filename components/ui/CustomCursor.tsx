@@ -1,64 +1,86 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+
+/* ═══════════════════════════════════════════════════════════════
+   CustomCursor
+   • 8px dot  — near-instant spring (stiffness:800 damping:50)
+   • 36px ring — lagged spring    (stiffness:150 damping:20)
+   • On data-cursor="view"  → ring 80px, gold fill, "VIEW" label
+   • On any link / button   → dot hidden, ring shrinks to 14px
+   • body.cursor-active sets cursor:none on everything
+═══════════════════════════════════════════════════════════════ */
+type CursorMode = "default" | "link" | "view";
 
 export default function CustomCursor() {
   const [visible, setVisible] = useState(false);
-  const [hovering, setHovering] = useState(false);
-  const [label, setLabel] = useState("");
+  const [mode, setMode]       = useState<CursorMode>("default");
 
-  const rawX = useMotionValue(-200);
-  const rawY = useMotionValue(-200);
+  /* Raw mouse position */
+  const rawX = useMotionValue(-300);
+  const rawY = useMotionValue(-300);
 
-  const dotX = useSpring(rawX, { damping: 50, stiffness: 800 });
-  const dotY = useSpring(rawY, { damping: 50, stiffness: 800 });
-  const ringX = useSpring(rawX, { damping: 28, stiffness: 280 });
-  const ringY = useSpring(rawY, { damping: 28, stiffness: 280 });
+  /* Dot — near-instant */
+  const dotX = useSpring(rawX, { stiffness: 800, damping: 50 });
+  const dotY = useSpring(rawY, { stiffness: 800, damping: 50 });
 
-  // Refs so event handlers never go stale and never trigger re-renders
-  const shownRef   = useRef(false);
+  /* Ring — lagged (stiffness:150 damping:20 as specified) */
+  const ringX = useSpring(rawX, { stiffness: 150, damping: 20 });
+  const ringY = useSpring(rawY, { stiffness: 150, damping: 20 });
+
+  /* Refs to avoid stale-closure issues in event handlers */
+  const seenRef    = useRef(false);
   const activeRef  = useRef<Element | null>(null);
-  const hoverRef   = useRef(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    /* Skip on touch devices */
     if (window.matchMedia("(pointer: coarse)").matches) return;
 
     document.body.classList.add("cursor-active");
 
+    /* ── Track mouse position ── */
     const onMove = (e: MouseEvent) => {
       rawX.set(e.clientX);
       rawY.set(e.clientY);
-      // Only call setVisible once — use ref to avoid stale closure
-      if (!shownRef.current) {
-        shownRef.current = true;
+      if (!seenRef.current) {
+        seenRef.current = true;
         setVisible(true);
       }
     };
 
+    /* ── Detect hovered element type ── */
     const onOver = (e: MouseEvent) => {
-      const hit = (e.composedPath() as Element[]).find(
-        (el) => el instanceof HTMLElement && el.matches("a, button, [data-cursor]")
-      ) as HTMLElement | undefined;
+      const path = e.composedPath() as Element[];
 
-      if (hit) {
-        if (hit !== activeRef.current) {
-          activeRef.current = hit;
-          if (!hoverRef.current) {
-            hoverRef.current = true;
-            setHovering(true);
-          }
-          const next = hit.dataset.cursorLabel ?? "";
-          setLabel(next);
+      /* Highest-priority: data-cursor="view" */
+      const viewEl = path.find(
+        (el) => el instanceof HTMLElement && el.dataset.cursor === "view"
+      );
+      if (viewEl) {
+        if (activeRef.current !== viewEl) {
+          activeRef.current = viewEl;
+          setMode("view");
         }
-      } else {
-        if (activeRef.current) {
-          activeRef.current = null;
-          hoverRef.current = false;
-          setHovering(false);
-          setLabel("");
+        return;
+      }
+
+      /* Second: any link or button */
+      const linkEl = path.find(
+        (el) => el instanceof HTMLElement && el.matches("a, button")
+      );
+      if (linkEl) {
+        if (activeRef.current !== linkEl) {
+          activeRef.current = linkEl;
+          setMode("link");
         }
+        return;
+      }
+
+      /* Default */
+      if (activeRef.current) {
+        activeRef.current = null;
+        setMode("default");
       }
     };
 
@@ -70,53 +92,60 @@ export default function CustomCursor() {
       window.removeEventListener("mouseover", onOver);
       document.body.classList.remove("cursor-active");
     };
-  }, [rawX, rawY]); // MotionValues have stable identity — listed only to satisfy lint
+  }, [rawX, rawY]);
+
+  /* ── Derived animate values per mode ── */
+  const dotAnimate = {
+    width:   mode === "link" ? 0   : 8,
+    height:  mode === "link" ? 0   : 8,
+    opacity: mode === "link" ? 0   : visible ? 1 : 0,
+    scale:   mode === "link" ? 0   : 1,
+  };
+
+  const ringAnimate = {
+    width:           mode === "view" ? 80  : mode === "link" ? 14 : 36,
+    height:          mode === "view" ? 80  : mode === "link" ? 14 : 36,
+    backgroundColor: mode === "view" ? "rgba(245,158,11,0.92)" : "transparent",
+    borderColor:     mode === "view" ? "rgba(245,158,11,0)"
+                   : mode === "link" ? "rgba(255,255,255,0.6)"
+                   : "rgba(255,255,255,0.35)",
+    opacity: visible ? 1 : 0,
+  };
 
   return (
     <>
-      {/* Dot — instant follow */}
+      {/* ── 8px dot ── */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
       >
         <motion.div
           className="rounded-full bg-white"
-          animate={{
-            width: hovering ? 6 : 8,
-            height: hovering ? 6 : 8,
-            opacity: label ? 0 : 1,
-            scale: label ? 0 : 1,
-          }}
-          transition={{ duration: 0.15 }}
+          animate={dotAnimate}
+          transition={{ duration: 0.15, ease: "easeOut" }}
         />
       </motion.div>
 
-      {/* Ring — spring-lagged */}
+      {/* ── 36px ring (lagged) ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
       >
         <motion.div
-          className="rounded-full flex items-center justify-center"
-          animate={{
-            width:           hovering ? 64  : 32,
-            height:          hovering ? 64  : 32,
-            opacity:         visible  ? 1   : 0,
-            borderColor:     hovering ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.35)",
-            backgroundColor: hovering ? "rgba(255,255,255,0.08)" : "rgba(0, 0, 0, 0.04)",
-          }}
-          transition={{ duration: 0.22, ease: "easeOut" }}
-          style={{ border: "1px solid" }}
+          className="rounded-full flex items-center justify-center border"
+          animate={ringAnimate}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
         >
-          {hovering && label && (
+          {mode === "view" && (
             <motion.span
-              key={label}
-              initial={{ opacity: 0, scale: 0.7 }}
+              initial={{ opacity: 0, scale: 0.6 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.15 }}
-              className="text-[8px] font-semibold tracking-[0.18em] uppercase text-white font-body whitespace-nowrap"
+              exit={{ opacity: 0, scale: 0.6 }}
+              transition={{ duration: 0.18 }}
+              className="text-[9px] font-bold tracking-[0.22em] uppercase text-black select-none"
+              style={{ fontFamily: "var(--font-inter)" }}
             >
-              {label}
+              VIEW
             </motion.span>
           )}
         </motion.div>

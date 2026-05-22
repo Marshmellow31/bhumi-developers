@@ -74,6 +74,7 @@ export default function ContactPopup() {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", duration: 0.5, bounce: 0.1 }}
             className="relative w-full max-w-md overflow-hidden bg-[#121212] border border-white/10 p-8 text-white shadow-2xl z-10"
+            data-lenis-prevent
           >
             {/* Close Button */}
             <button
