@@ -184,16 +184,18 @@ export default function ProjectShowcase() {
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
           >
-            <div className="absolute inset-0">
-              <Image
-                src={active.image}
-                alt={active.name}
-                fill
-                className="object-contain object-center"
-                priority={activeIndex === 0}
-                sizes="58vw"
-                onLoad={() => setImageLoaded(true)}
-              />
+            <div className="absolute inset-x-0 inset-y-[8%]">
+              <div className="relative w-full h-full">
+                <Image
+                  src={active.image}
+                  alt={active.name}
+                  fill
+                  className="object-contain object-center"
+                  priority={activeIndex === 0}
+                  sizes="58vw"
+                  onLoad={() => setImageLoaded(true)}
+                />
+              </div>
             </div>
 
             {/* Shimmer skeleton — fades out once image has loaded */}
