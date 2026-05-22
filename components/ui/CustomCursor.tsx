@@ -107,8 +107,8 @@ export default function CustomCursor() {
     height:          mode === "view" ? 80  : mode === "link" ? 14 : 36,
     backgroundColor: mode === "view" ? "rgba(245,158,11,0.92)" : "transparent",
     borderColor:     mode === "view" ? "rgba(245,158,11,0)"
-                   : mode === "link" ? "rgba(255,255,255,0.6)"
-                   : "rgba(255,255,255,0.35)",
+                   : mode === "link" ? "rgba(10,10,10,0.6)"
+                   : "rgba(10,10,10,0.35)",
     opacity: visible ? 1 : 0,
   };
 
@@ -120,7 +120,7 @@ export default function CustomCursor() {
         style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
       >
         <motion.div
-          className="rounded-full bg-white"
+          className="rounded-full bg-primary"
           animate={dotAnimate}
           transition={{ duration: 0.15, ease: "easeOut" }}
         />
