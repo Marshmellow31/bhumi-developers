@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, ZoomIn } from "lucide-react";
+import { MapPin, ZoomIn, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import GalleryModal from "@/components/ui/GalleryModal";
 
 interface ProjectGallerySectionProps {
@@ -33,6 +34,19 @@ export default function ProjectGallerySection({
         className="relative h-[75vh] min-h-[520px] bg-primary overflow-hidden cursor-pointer"
         onClick={() => setIsGalleryOpen(true)}
       >
+        {/* Back to Projects Button */}
+        <div
+          className="absolute top-28 left-6 lg:left-8 z-30"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 px-4 py-2 bg-black/40 hover:bg-black/60 border border-white/10 hover:border-white/30 rounded-full text-white/80 hover:text-white text-xs tracking-[0.15em] uppercase font-semibold font-body backdrop-blur-md transition-all duration-300"
+          >
+            <ArrowLeft size={14} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
+            <span>Back to Projects</span>
+          </Link>
+        </div>
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
           style={{ backgroundImage: `url('${image}')` }}

@@ -126,6 +126,40 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "9",
+    slug: "city-center",
+    name: "City Center",
+    tagline: "The Core of Trade and Entertainment",
+    location: "College Road, Bharuch",
+    city: "Bharuch",
+    status: "Completed",
+    type: "Commercial",
+    units: 95,
+    area: "500–5000 sq ft",
+    priceRange: { min: 2800000, max: 15000000 },
+    completionYear: 2024,
+    image: "/images/city-center/city-center-1.jpg",
+    gallery: [
+      "/images/city-center/city-center-1.jpg",
+      "/images/city-center/city-center-2.jpg",
+      "/images/city-center/city-center-3.jpg",
+      "/images/city-center/city-center-4.jpg",
+    ],
+    highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
+    description:
+      "Bhumi City Center is a landmark commercial and retail destination. Positioned at high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
+    amenities: [
+      "Escalators & Lift Services",
+      "Central Air Conditioning",
+      "Dedicated Loading Bays",
+      "Multi-cuisine Food Court",
+      "Extensive Visitor Parking",
+      "100% Power Backup",
+      "Professional Property Management",
+    ],
+    featured: true,
+  },
+  {
     id: "10",
     slug: "pritam-residency",
     name: "Pritam Residency",
@@ -158,45 +192,11 @@ export const projects: Project[] = [
     ],
     featured: true,
   },
-  {
-    id: "9",
-    slug: "city-center",
-    name: "City Center",
-    tagline: "The Core of Trade and Entertainment",
-    location: "College Road, Bharuch",
-    city: "Bharuch",
-    status: "Completed",
-    type: "Commercial",
-    units: 95,
-    area: "500–5000 sq ft",
-    priceRange: { min: 2800000, max: 15000000 },
-    completionYear: 2024,
-    image: "/images/city-center/city-center-1.jpg",
-    gallery: [
-      "/images/city-center/city-center-1.jpg",
-      "/images/city-center/city-center-2.jpg",
-      "/images/city-center/city-center-3.jpg",
-      "/images/city-center/city-center-4.jpg",
-    ],
-    highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
-    description:
-      "Bhumi City Center is a landmark commercial and retail destination. Positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
-    amenities: [
-      "Escalators & Lift Services",
-      "Central Air Conditioning",
-      "Dedicated Loading Bays",
-      "Multi-cuisine Food Court",
-      "Extensive Visitor Parking",
-      "100% Power Backup",
-      "Professional Property Management",
-    ],
-    featured: true,
-  },
 ];
 
 // Featured projects for the homepage — primary slugs shown first, capped at 4.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["city-center", "central-square", "solitaire-pallazzo", "pritam-residency"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
     .slice(0, 4);
