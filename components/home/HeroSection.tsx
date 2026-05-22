@@ -8,32 +8,31 @@ import {
   useSpring,
   AnimatePresence,
 } from "framer-motion";
-
 import { ArrowDown } from "lucide-react";
 
-/* ────────────────────────────────────────────── */
+/* ── Constants ── */
 const TICKER =
   "Premium Real Estate  ·  Bharuch, Gujarat  ·  Since 1991  ·  Built to Endure  ·  ";
 
-/* Stable particles — generated once outside component */
+/* Deterministic particles — no Math.random() on render */
 const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
-  id: i,
-  x: 8 + (i * 87) % 84,
-  y: 5 + (i * 61) % 88,
-  size: 1 + (i % 3) * 0.8,
-  delay: (i * 0.7) % 4,
-  duration: 7 + (i % 5),
+  id:       i,
+  x:        8  + (i * 87) % 84,
+  y:        5  + (i * 61) % 88,
+  size:     1  + (i % 3)  * 0.8,
+  delay:    (i * 0.7) % 4,
+  duration: 7  + (i % 5),
 }));
 
-/* Shared fade-rise transition — no overflow, no clip */
+/* Shared fade-rise for all elements */
 const fadeRise = (delay: number) => ({
-  initial:    { opacity: 0, y: 22 },
+  initial:    { opacity: 0, y: 20 },
   animate:    { opacity: 1, y: 0  },
   transition: { duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] as const },
 });
 
 export default function HeroSection() {
-  const sectionRef  = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -52,7 +51,7 @@ export default function HeroSection() {
       const { left, top, width, height } =
         sectionRef.current.getBoundingClientRect();
       mouseX.set((e.clientX - left) / width);
-      mouseY.set((e.clientY - top) / height);
+      mouseY.set((e.clientY - top)  / height);
     },
     [mouseX, mouseY]
   );
@@ -69,7 +68,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: "#080808" }}
     >
-      {/* ── BG PHOTO ── */}
+      {/* ── BG PHOTO with parallax ── */}
       <motion.div
         className="absolute inset-[-5%] z-0"
         style={{
@@ -83,37 +82,37 @@ export default function HeroSection() {
         }}
       />
 
-      {/* ── OVERLAY ── */}
+      {/* ── Gradient overlay ── */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
             linear-gradient(to bottom,
               rgba(8,8,8,0.78) 0%,
-              rgba(8,8,8,0.42) 30%,
-              rgba(8,8,8,0.32) 55%,
-              rgba(8,8,8,0.70) 80%,
-              rgba(8,8,8,0.96) 100%
+              rgba(8,8,8,0.40) 28%,
+              rgba(8,8,8,0.28) 52%,
+              rgba(8,8,8,0.68) 80%,
+              rgba(8,8,8,0.97) 100%
             )
           `,
         }}
       />
 
-      {/* ── AMBER RADIAL GLOW (bottom-centre) ── */}
+      {/* ── Amber radial glow (bottom-centre) ── */}
       <div
         className="absolute z-[2] pointer-events-none"
         style={{
-          bottom:     "-10%",
-          left:       "50%",
-          transform:  "translateX(-50%)",
-          width:      "70%",
-          height:     "50%",
+          bottom:    "-10%",
+          left:      "50%",
+          transform: "translateX(-50%)",
+          width:     "70%",
+          height:    "50%",
           background:
-            "radial-gradient(ellipse at bottom, rgba(245,158,11,0.06) 0%, transparent 70%)",
+            "radial-gradient(ellipse at bottom, rgba(245,158,11,0.07) 0%, transparent 70%)",
         }}
       />
 
-      {/* ── FLOATING PARTICLES ── */}
+      {/* ── Floating particles ── */}
       <AnimatePresence>
         {mounted &&
           PARTICLES.map((p) => (
@@ -125,10 +124,9 @@ export default function HeroSection() {
                 top:             `${p.y}%`,
                 width:           p.size,
                 height:          p.size,
-                backgroundColor:
-                  p.id % 4 === 0
-                    ? "rgba(245,158,11,0.5)"
-                    : "rgba(255,255,255,0.15)",
+                backgroundColor: p.id % 4 === 0
+                  ? "rgba(245,158,11,0.50)"
+                  : "rgba(255,255,255,0.14)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: [0, 1, 0], y: [-6, -26, -46] }}
@@ -142,18 +140,15 @@ export default function HeroSection() {
           ))}
       </AnimatePresence>
 
-      {/* ── VERTICAL EDGE RULES ── */}
+      {/* ── Vertical edge rules ── */}
       <div className="absolute left-6 lg:left-12 top-0 h-full w-px bg-white/[0.05] z-[4] pointer-events-none" />
       <div className="absolute right-6 lg:right-12 top-0 h-full w-px bg-white/[0.05] z-[4] pointer-events-none" />
 
-      {/* ══════════════════ MAIN CONTENT ══════════════════ */}
+      {/* ══════════════ MAIN CONTENT ══════════════ */}
       <div className="relative z-10 flex flex-col flex-1 items-center justify-center text-center px-6 lg:px-12 pt-28 pb-20">
 
         {/* Eyebrow badge */}
-        <motion.div
-          {...fadeRise(0.15)}
-          className="flex items-center gap-3 mb-10"
-        >
+        <motion.div {...fadeRise(0.2)} className="flex items-center gap-3 mb-10">
           <div className="w-8 h-px bg-amber-400/60" />
           <span
             className="text-[8.5px] tracking-[0.55em] uppercase text-white/40"
@@ -164,54 +159,51 @@ export default function HeroSection() {
           <div className="w-8 h-px bg-white/15" />
         </motion.div>
 
-        {/* ── MAIN HEADING — no overflow-hidden, pure fade+rise ── */}
+        {/* ── Heading ── */}
         <div className="mb-6">
-          {/* Line 1 */}
-          <motion.div {...fadeRise(0.35)}>
+          <motion.div {...fadeRise(0.38)}>
             <span
               className="block select-none"
               style={{
-                fontFamily:   "var(--font-playfair)",
-                fontSize:     "clamp(3rem, 8vw, 8rem)",
-                lineHeight:   1.08,
-                fontWeight:   800,
-                letterSpacing:"-0.02em",
-                color:        "#ffffff",
+                fontFamily:    "var(--font-playfair)",
+                fontSize:      "clamp(3rem, 8vw, 8rem)",
+                lineHeight:    1.08,
+                fontWeight:    800,
+                letterSpacing: "-0.02em",
+                color:         "#ffffff",
               }}
             >
               Shaping
             </span>
           </motion.div>
 
-          {/* Line 2 — italic ghost */}
           <motion.div {...fadeRise(0.52)}>
             <span
               className="block select-none"
               style={{
-                fontFamily:   "var(--font-playfair)",
-                fontSize:     "clamp(3rem, 8vw, 8rem)",
-                lineHeight:   1.08,
-                fontWeight:   400,
-                fontStyle:    "italic",
-                letterSpacing:"-0.02em",
-                color:        "rgba(255,255,255,0.38)",
+                fontFamily:    "var(--font-playfair)",
+                fontSize:      "clamp(3rem, 8vw, 8rem)",
+                lineHeight:    1.08,
+                fontWeight:    400,
+                fontStyle:     "italic",
+                letterSpacing: "-0.02em",
+                color:         "rgba(255,255,255,0.36)",
               }}
             >
               Modern
             </span>
           </motion.div>
 
-          {/* Line 3 */}
-          <motion.div {...fadeRise(0.68)}>
+          <motion.div {...fadeRise(0.66)}>
             <span
               className="block select-none"
               style={{
-                fontFamily:   "var(--font-playfair)",
-                fontSize:     "clamp(3rem, 8vw, 8rem)",
-                lineHeight:   1.08,
-                fontWeight:   800,
-                letterSpacing:"-0.02em",
-                color:        "#ffffff",
+                fontFamily:    "var(--font-playfair)",
+                fontSize:      "clamp(3rem, 8vw, 8rem)",
+                lineHeight:    1.08,
+                fontWeight:    800,
+                letterSpacing: "-0.02em",
+                color:         "#ffffff",
               }}
             >
               Spaces
@@ -228,13 +220,13 @@ export default function HeroSection() {
           className="mx-auto mb-8 h-px w-16 bg-gradient-to-r from-transparent via-amber-400 to-transparent"
         />
 
-        {/* Description */}
+        {/* Tagline */}
         <motion.p
-          {...fadeRise(0.95)}
-          className="max-w-md text-white/55 leading-relaxed mb-10"
+          {...fadeRise(1.0)}
+          className="max-w-md text-white/50 leading-relaxed"
           style={{
             fontFamily: "var(--font-inter)",
-            fontSize:   "clamp(13px, 1.5vw, 15px)",
+            fontSize:   "clamp(13px, 1.4vw, 15px)",
           }}
         >
           Premium real estate across Bharuch and South Gujarat.
@@ -242,11 +234,10 @@ export default function HeroSection() {
           Crafted with precision, built to endure.
         </motion.p>
 
-
       </div>
-      {/* ════════════════════════════════════════════ */}
+      {/* ════════════════════════════════════════ */}
 
-      {/* ── MARQUEE TICKER ── */}
+      {/* ── Marquee ticker ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -266,7 +257,7 @@ export default function HeroSection() {
                 fontFamily:    "var(--font-inter)",
                 fontSize:      "9px",
                 letterSpacing: "0.38em",
-                color:         "rgba(255,255,255,0.07)",
+                color:         "rgba(255,255,255,0.06)",
                 textTransform: "uppercase",
               }}
             >
@@ -276,7 +267,7 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* ── SCROLL INDICATOR ── */}
+      {/* ── Scroll indicator ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -296,6 +287,7 @@ export default function HeroSection() {
           <ArrowDown size={10} />
         </motion.div>
       </motion.div>
+
     </section>
   );
 }

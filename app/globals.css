@@ -115,7 +115,7 @@ body.cursor-active * {
   left: 0;
   right: 0;
   height: 3px;
-  background: #ffffff;
+  background: linear-gradient(to right, #d97706, #f59e0b);
   transform-origin: left;
   z-index: 60;
 }

@@ -3,115 +3,268 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionTemplate,
+  useTransform,
+} from "framer-motion";
+import { Phone } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
-const navLinks = [
-  { href: "/", label: "Home" },
+/* ── Nav links ── */
+const NAV_LINKS = [
+  { href: "/",        label: "Home"    },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "/about",   label: "About"   },
   { href: "/contact", label: "Contact" },
 ];
 
+/* ── Mobile menu stagger variants ── */
+const overlayVariants = {
+  closed: { opacity: 0 },
+  open:   { opacity: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const menuListVariants = {
+  closed: {},
+  open:   { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+};
+
+const menuItemVariants = {
+  closed: { opacity: 0, y: 32 },
+  open:   {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
+
+/* ════════════════════════════════════════════════════════════
+   Animated hamburger — 3 SVG lines morph to X
+════════════════════════════════════════════════════════════ */
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      width="24" height="24"
+      viewBox="0 0 24 24"
+      className="text-white"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    >
+      {/* Top line — rotates to first arm of X */}
+      <motion.line
+        x1="3" y1="6" x2="21" y2="6"
+        animate={open
+          ? { x1: 4, y1: 4, x2: 20, y2: 20 }
+          : { x1: 3, y1: 6, x2: 21, y2: 6 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      />
+      {/* Middle line — fades out */}
+      <motion.line
+        x1="3" y1="12" x2="21" y2="12"
+        animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
+        transition={{ duration: 0.2 }}
+      />
+      {/* Bottom line — rotates to second arm of X */}
+      <motion.line
+        x1="3" y1="18" x2="21" y2="18"
+        animate={open
+          ? { x1: 4, y1: 20, x2: 20, y2: 4 }
+          : { x1: 3, y1: 18, x2: 21, y2: 18 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      />
+    </svg>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════
+   Navbar
+════════════════════════════════════════════════════════════ */
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isHome   = pathname === "/";
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  /* Close mobile menu on route change */
+  useEffect(() => setIsOpen(false), [pathname]);
 
-  const navBg = isHome
-    ? scrolled
-      ? "bg-primary/95 backdrop-blur-sm shadow-lg border-b border-white/10"
-      : "bg-transparent"
-    : "bg-primary shadow-lg border-b border-white/10";
+  /* ── Scroll-driven navbar background ── */
+  const { scrollY } = useScroll();
 
-  const shouldShrink = !isHome || scrolled;
+  /* opacity of bg: 0 at scrollY≤60, 1 at scrollY≥120 */
+  const bgOpacity = useTransform(scrollY, [0, 60], [0, 1]);
+
+  /* On non-home pages always show solid bg */
+  const navBgColor = useMotionTemplate`rgba(10,10,10,${isHome ? bgOpacity : 1})`;
+  const navBlur    = useMotionTemplate`blur(${useTransform(
+    scrollY,
+    [0, 60],
+    isHome ? ["0px", "20px"] : ["20px", "20px"]
+  )})`;
+
+  /* Navbar height: tall → compact as user scrolls */
+  const navHeight = useTransform(scrollY, [0, 80], isHome ? [96, 64] : [64, 64]);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className={`flex items-center justify-between transition-all duration-500 ${shouldShrink ? "h-16" : "h-24"}`}>
-          {/* Logo */}
-          <Link href="/" className="flex items-center h-full">
-            <Logo className={`w-auto transition-all duration-500 ${shouldShrink ? "h-10" : "h-20"}`} light={false} />
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8 h-full">
-            {navLinks.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-xs tracking-[0.2em] uppercase font-body transition-colors duration-200 ${
-                  pathname === href
-                    ? "text-white"
-                    : "text-white/50 hover:text-white"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-            <a
-              href="tel:+919879100355"
-              className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-200"
-            >
-              <Phone size={13} />
-              Enquire
-            </a>
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2 flex items-center self-center"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+    <>
+      {/* ════════════ NAVBAR HEADER ════════════ */}
+      <motion.header
+        className="fixed top-0 left-0 right-0 z-50"
+        style={{
+          backgroundColor: navBgColor,
+          backdropFilter:  navBlur,
+          borderBottom:    "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            className="flex items-center justify-between"
+            style={{ height: navHeight }}
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
+            {/* Logo */}
+            <Link href="/" className="flex items-center h-full">
+              <Logo className="w-auto h-10" light={false} />
+            </Link>
 
-      {/* Mobile Menu */}
+            {/* ── Desktop Nav ── */}
+            <nav className="hidden md:flex items-center gap-8 h-full">
+              {NAV_LINKS.map(({ href, label }) => {
+                const active = pathname === href;
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="relative flex flex-col items-center gap-0.5 group"
+                  >
+                    <span
+                      className={`text-[11px] tracking-[0.22em] uppercase transition-colors duration-200 ${
+                        active ? "text-white" : "text-white/48 group-hover:text-white"
+                      }`}
+                      style={{ fontFamily: "var(--font-inter)" }}
+                    >
+                      {label}
+                    </span>
+
+                    {/* Gold underline — shared layoutId animates between active links */}
+                    {active && (
+                      <motion.span
+                        layoutId="navUnderline"
+                        className="absolute -bottom-1 left-0 right-0 h-px"
+                        style={{ background: "#f59e0b" }}
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+
+              {/* CTA */}
+              <a
+                href="tel:+919879100355"
+                className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-[10px] font-semibold tracking-[0.18em] uppercase hover:bg-amber-400 hover:text-black transition-colors duration-200"
+                style={{ fontFamily: "var(--font-inter)" }}
+              >
+                <Phone size={12} />
+                Enquire
+              </a>
+            </nav>
+
+            {/* ── Mobile hamburger ── */}
+            <button
+              className="md:hidden p-2 flex items-center"
+              onClick={() => setIsOpen((v) => !v)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+            >
+              <HamburgerIcon open={isOpen} />
+            </button>
+          </motion.div>
+        </div>
+      </motion.header>
+
+      {/* ════════════ FULLSCREEN MOBILE OVERLAY ════════════ */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-primary border-t border-white/10 overflow-hidden"
+            key="mobile-menu"
+            className="fixed inset-0 z-40 md:hidden flex flex-col"
+            style={{ backgroundColor: "rgba(6,6,6,0.97)" }}
+            variants={overlayVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
           >
-            <nav className="flex flex-col px-6 py-6 gap-4">
-              {navLinks.map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
+            {/* Amber accent line at top */}
+            <div className="h-px w-full bg-amber-400/30" />
+
+            {/* Spacer for navbar height */}
+            <div style={{ height: 64 }} />
+
+            {/* Staggered nav links */}
+            <motion.nav
+              className="flex flex-col flex-1 justify-center px-10 gap-2"
+              variants={menuListVariants}
+              initial="closed"
+              animate="open"
+            >
+              {NAV_LINKS.map(({ href, label }) => {
+                const active = pathname === href;
+                return (
+                  <motion.div key={href} variants={menuItemVariants}>
+                    <Link
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className="group flex items-center gap-4 py-4 border-b border-white/[0.06]"
+                    >
+                      {/* Amber dot — shows on active */}
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-200 ${
+                          active ? "bg-amber-400" : "bg-white/20 group-hover:bg-amber-400/60"
+                        }`}
+                      />
+                      <span
+                        className={`text-3xl font-bold tracking-tight transition-colors duration-200 ${
+                          active ? "text-white" : "text-white/40 group-hover:text-white"
+                        }`}
+                        style={{ fontFamily: "var(--font-playfair)" }}
+                      >
+                        {label}
+                      </span>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+
+              {/* CTA in mobile menu */}
+              <motion.div variants={menuItemVariants} className="mt-8">
+                <a
+                  href="tel:+919879100355"
                   onClick={() => setIsOpen(false)}
-                  className={`text-sm tracking-[0.2em] uppercase font-body py-2 border-b border-white/10 ${
-                    pathname === href ? "text-white" : "text-white/50"
-                  }`}
+                  className="flex items-center justify-center gap-2 bg-amber-400 text-black px-6 py-4 text-[10px] font-bold tracking-[0.25em] uppercase"
+                  style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  {label}
-                </Link>
-              ))}
-              <a
-                href="tel:+919879100355"
-                className="mt-2 flex items-center justify-center gap-2 bg-white text-primary px-5 py-3 text-xs font-semibold tracking-[0.15em] uppercase"
+                  <Phone size={13} />
+                  Call Us Now
+                </a>
+              </motion.div>
+            </motion.nav>
+
+            {/* Subtle bottom watermark */}
+            <div className="pb-10 px-10">
+              <p
+                className="text-[8px] tracking-[0.5em] uppercase text-white/12"
+                style={{ fontFamily: "var(--font-inter)" }}
               >
-                <Phone size={13} />
-                Enquire Now
-              </a>
-            </nav>
+                Bhumi Developers · Bharuch, Gujarat
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
