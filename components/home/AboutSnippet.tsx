@@ -15,9 +15,9 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutSnippet() {
   return (
-    <section className="relative py-24 md:py-40 bg-background overflow-hidden">
+    <section className="relative py-24 md:py-40 bg-[#0A0A0A] overflow-hidden">
       {/* Soft ambient warmth */}
-      <div className="absolute top-0 right-0 w-[45%] h-[55%] bg-gradient-to-bl from-amber-50/40 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[45%] h-[55%] bg-gradient-to-bl from-white/[0.02] via-transparent to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* ── Editorial header ── */}
@@ -28,8 +28,8 @@ export default function AboutSnippet() {
           transition={{ duration: 0.8, ease }}
           className="flex items-center gap-3 mb-12 md:mb-20"
         >
-          <span className="w-8 h-px bg-primary/40" />
-          <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
+          <span className="w-8 h-px bg-white/20" />
+          <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 font-body font-semibold">
             A Word From The Founder
           </span>
         </motion.div>
@@ -64,9 +64,9 @@ export default function AboutSnippet() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4, ease }}
-              className="absolute -top-4 left-6 bg-background px-4 py-1.5"
+              className="absolute -top-4 left-6 bg-primary px-4 py-1.5"
             >
-              <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-muted">
+              <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-white/40">
                 Est. 1991
               </span>
             </motion.div>
@@ -111,11 +111,11 @@ export default function AboutSnippet() {
           >
             {/* Title */}
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.02] tracking-tight"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               The man behind <br />
-              <span className="italic font-light text-muted">Bhumi&rsquo;s promise.</span>
+              <span className="italic font-light text-white/50">Bhumi&rsquo;s promise.</span>
             </h2>
 
             {/* Decorative quote mark + pull quote */}
@@ -128,7 +128,7 @@ export default function AboutSnippet() {
                 &ldquo;
               </span>
               <p
-                className="relative text-lg md:text-xl text-primary/85 leading-relaxed font-light italic max-w-2xl pl-6"
+                className="relative text-lg md:text-xl text-white/80 leading-relaxed font-light italic max-w-2xl pl-6"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 My roots have always been here — in Bharuch. This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back.
@@ -136,7 +136,7 @@ export default function AboutSnippet() {
             </div>
 
             {/* Supporting body */}
-            <div className="flex flex-col gap-4 text-sm md:text-[15px] text-muted leading-relaxed font-body max-w-2xl">
+            <div className="flex flex-col gap-4 text-sm md:text-[15px] text-white/40 leading-relaxed font-body max-w-2xl">
               <p>
                 With over 35 years in construction and engineering — building industries across India alongside some of the country&rsquo;s top MNCs — I have had the privilege of leaving a mark on this nation&rsquo;s industrial landscape, one structure at a time.
               </p>
@@ -147,23 +147,23 @@ export default function AboutSnippet() {
 
             {/* Signature block */}
             <div className="flex items-center gap-5 pt-2">
-              <span className="w-12 h-px bg-primary/30" />
+              <span className="w-12 h-px bg-white/20" />
               <div className="flex flex-col">
                 <span
-                  className="text-2xl font-bold text-primary leading-tight"
+                  className="text-2xl font-bold text-white leading-tight"
                   style={{ fontFamily: "var(--font-playfair)" }}
                 >
                   Kiran Majmudar
                 </span>
-                <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body font-semibold mt-1">
+                <span className="text-white/40 text-[10px] tracking-[0.3em] uppercase font-body font-semibold mt-1">
                   Chairman &amp; Founder
                 </span>
               </div>
             </div>
 
             {/* Pillars */}
-            <div className="mt-4 pt-10 border-t border-border">
-              <p className="text-[9px] tracking-[0.35em] uppercase text-muted/70 font-body font-semibold mb-6">
+            <div className="mt-4 pt-10 border-t border-white/10">
+              <p className="text-[9px] tracking-[0.35em] uppercase text-white/30 font-body font-semibold mb-6">
                 Our Promise To You
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
@@ -174,7 +174,7 @@ export default function AboutSnippet() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease }}
-                    className="flex items-baseline gap-4 text-sm text-primary/90 font-body"
+                    className="flex items-baseline gap-4 text-sm text-white/80 font-body"
                   >
                     <span
                       className="text-xs text-amber-700/60 font-semibold tracking-wider shrink-0"
@@ -193,12 +193,12 @@ export default function AboutSnippet() {
               <Link
                 href="/about"
                 data-cursor-label="LEADERS"
-                className="group inline-flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase"
+                className="group inline-flex items-center gap-3 text-white text-xs font-semibold font-body tracking-[0.25em] uppercase"
               >
                 <span className="relative">
                   Meet Our Leaders
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500" />
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-white origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-white origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
                 </span>
                 <ArrowUpRight
                   size={14}

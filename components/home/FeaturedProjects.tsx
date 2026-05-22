@@ -79,19 +79,19 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
         {/* Number index */}
         <div className="flex items-baseline gap-4">
           <span
-            className="text-5xl lg:text-6xl font-light text-primary/15 leading-none"
+            className="text-5xl lg:text-6xl font-light text-white/10 leading-none"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
             {formattedNumber}
           </span>
-          <span className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-white/40 font-body font-semibold">
             {project.type}
           </span>
         </div>
 
         {/* Title */}
         <h3
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-[1.05]"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.05]"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           {project.name}
@@ -99,34 +99,34 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
 
         {/* Tagline */}
         <p
-          className="text-lg md:text-xl italic font-light text-muted leading-relaxed -mt-2"
+          className="text-lg md:text-xl italic font-light text-white/50 leading-relaxed -mt-2"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           {project.tagline}
         </p>
 
         {/* Description */}
-        <p className="text-sm text-muted leading-relaxed font-body line-clamp-3 max-w-md">
+        <p className="text-sm text-white/40 leading-relaxed font-body line-clamp-3 max-w-md">
           {project.description}
         </p>
 
         {/* Meta grid: Location · Price */}
-        <div className="grid grid-cols-2 gap-6 mt-2 pt-6 border-t border-border max-w-md">
+        <div className="grid grid-cols-2 gap-6 mt-2 pt-6 border-t border-white/10 max-w-md">
           <div>
-            <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
+            <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-body mb-1.5">
               Location
             </p>
-            <div className="flex items-center gap-1.5 text-sm text-primary font-body font-semibold">
-              <MapPin size={12} className="shrink-0 text-muted" />
+            <div className="flex items-center gap-1.5 text-sm text-white font-body font-semibold">
+              <MapPin size={12} className="shrink-0 text-white/40" />
               <span>{project.location}</span>
             </div>
           </div>
           <div>
-            <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
+            <p className="text-[9px] tracking-[0.3em] uppercase text-white/30 font-body mb-1.5">
               Starting From
             </p>
             <p
-              className="text-lg font-bold text-primary leading-none"
+              className="text-lg font-bold text-white leading-none"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               {formatPrice(project.priceRange.min)}
@@ -139,12 +139,12 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           <Link
             href={`/projects/${project.slug}`}
             data-cursor-label="EXPLORE"
-            className="group/cta inline-flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.2em] uppercase"
+            className="group/cta inline-flex items-center gap-3 text-white text-xs font-semibold font-body tracking-[0.2em] uppercase"
           >
             <span className="relative">
               Explore Project
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-left scale-x-100 group-hover/cta:scale-x-0 transition-transform duration-500" />
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-right scale-x-0 group-hover/cta:scale-x-100 transition-transform duration-500 delay-200" />
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-white origin-left scale-x-100 group-hover/cta:scale-x-0 transition-transform duration-500" />
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-white origin-right scale-x-0 group-hover/cta:scale-x-100 transition-transform duration-500 delay-200" />
             </span>
             <ArrowUpRight
               size={14}
@@ -152,10 +152,10 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
             />
           </Link>
           <span
-            className="text-xs text-muted/50 tracking-[0.25em] font-body"
+            className="text-xs text-white/30 tracking-[0.25em] font-body"
             style={{ fontFamily: "var(--font-playfair)" }}
           >
-            {formattedNumber} <span className="text-muted/30">/</span> {totalFormatted}
+            {formattedNumber} <span className="text-white/20">/</span> {totalFormatted}
           </span>
         </div>
       </div>
@@ -167,9 +167,9 @@ export default function FeaturedProjects() {
   const featured = getFeaturedProjects().slice(0, 4);
 
   return (
-    <section className="relative py-24 md:py-40 bg-background overflow-hidden">
+    <section className="relative py-24 md:py-40 bg-[#0A0A0A] overflow-hidden">
       {/* Subtle ambient background accent */}
-      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-amber-50/40 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-white/[0.02] via-transparent to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* ── Section header ── */}
@@ -182,32 +182,32 @@ export default function FeaturedProjects() {
         >
           <div className="flex flex-col gap-4 max-w-2xl">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-px bg-primary/40" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
+              <span className="w-8 h-px bg-white/20" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-white/40 font-body font-semibold">
                 Featured Portfolio
               </span>
             </div>
             <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.02] tracking-tight"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               Landmark spaces, <br />
-              <span className="italic font-light text-muted">crafted with intent.</span>
+              <span className="italic font-light text-white/50">crafted with intent.</span>
             </h2>
           </div>
 
           <Link
             href="/projects"
             data-cursor-label="ALL"
-            className="group flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase shrink-0"
+            className="group flex items-center gap-3 text-white text-xs font-semibold font-body tracking-[0.25em] uppercase shrink-0"
           >
             <span className="relative">
               View All Projects
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-white scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
             </span>
             <ArrowUpRight
               size={14}
-              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-white"
             />
           </Link>
         </motion.div>

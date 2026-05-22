@@ -25,14 +25,14 @@ export default function StatsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background border-t border-primary/5 py-16 md:py-24 overflow-hidden"
+      className="bg-primary border-t border-white/5 py-16 md:py-24 overflow-hidden"
       style={{ perspective: "1200px" }}
     >
       <motion.div
         style={{ rotateX, scale }}
         className="max-w-7xl mx-auto px-6 lg:px-8"
       >
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/[0.06]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-white/[0.06]">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
@@ -44,17 +44,17 @@ export default function StatsSection() {
             >
               {/* Subtle dark glow behind number */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="w-32 h-32 rounded-full bg-primary/[0.02] blur-2xl" />
+                <div className="w-32 h-32 rounded-full bg-white/[0.04] blur-2xl" />
               </div>
 
               <div
-                className="stat-number text-4xl md:text-5xl lg:text-6xl font-bold mb-2 relative"
+                className="stat-number text-4xl md:text-5xl lg:text-6xl font-bold mb-2 relative text-white"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} duration={1800} />
               </div>
 
-              <p className="text-muted text-[10px] tracking-[0.35em] uppercase font-body">
+              <p className="text-white/20 text-[10px] tracking-[0.35em] uppercase font-body">
                 {stat.label}
               </p>
             </motion.div>
