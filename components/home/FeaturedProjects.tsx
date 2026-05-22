@@ -2,70 +2,227 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { getFeaturedProjects } from "@/data/projects";
-import ProjectCard from "@/components/projects/ProjectCard";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
-import { ArrowRight } from "lucide-react";
+import { MapPin, ArrowUpRight } from "lucide-react";
+import { getFeaturedProjects, type Project } from "@/data/projects";
+import { formatPrice } from "@/lib/utils";
 
-/* Grid container — staggerChildren drives each card's entrance */
-const gridVariants = {
-  hidden:  {},
-  visible: {
-    transition: {
-      staggerChildren:  0.1,
-      delayChildren:    0.05,
-    },
-  },
+const statusStyles: Record<string, string> = {
+  Ongoing:   "text-emerald-700 before:bg-emerald-600",
+  Completed: "text-primary before:bg-primary",
+  Upcoming:  "text-amber-700 before:bg-amber-600",
 };
 
-/* Per-card variant — matches the wipe+slide used inside ProjectCard */
-const itemVariant = {
-  hidden:  { opacity: 0, y: 36 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
+interface FeaturedRowProps {
+  project: Project;
+  index: number;
+  total: number;
+}
+
+function FeaturedRow({ project, index, total }: FeaturedRowProps) {
+  const isReversed = index % 2 === 1;
+  const formattedNumber = String(index + 1).padStart(2, "0");
+  const totalFormatted = String(total).padStart(2, "0");
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center ${
+        isReversed ? "lg:[&>div:first-child]:order-2" : ""
+      }`}
+    >
+      {/* ── Image side ── */}
+      <div className="lg:col-span-7 relative group">
+        <Link
+          href={`/projects/${project.slug}`}
+          data-cursor-label="VIEW"
+          className="block relative overflow-hidden aspect-[4/3] lg:aspect-[5/4]"
+        >
+          {/* Image */}
+          <motion.div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url('${project.image}')`,
+              filter: "grayscale(15%)",
+            }}
+            whileHover={{ scale: 1.04, filter: "grayscale(0%)" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          {/* Subtle bottom gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none" />
+
+          {/* Status pill — top-left of image */}
+          <div className="absolute top-5 left-5 z-10">
+            <span
+              className={`inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm pl-2.5 pr-3 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold font-body before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:inline-block ${statusStyles[project.status]}`}
+            >
+              {project.status}
+            </span>
+          </div>
+
+          {/* Hover-revealed corner arrow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileHover={{ opacity: 1, scale: 1 }}
+            className="absolute bottom-5 right-5 w-12 h-12 bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          >
+            <ArrowUpRight size={18} className="text-primary" />
+          </motion.div>
+        </Link>
+      </div>
+
+      {/* ── Text side ── */}
+      <div className="lg:col-span-5 flex flex-col gap-6">
+        {/* Number index */}
+        <div className="flex items-baseline gap-4">
+          <span
+            className="text-5xl lg:text-6xl font-light text-primary/15 leading-none"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            {formattedNumber}
+          </span>
+          <span className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold">
+            {project.type}
+          </span>
+        </div>
+
+        {/* Title */}
+        <h3
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-[1.05]"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          {project.name}
+        </h3>
+
+        {/* Tagline */}
+        <p
+          className="text-lg md:text-xl italic font-light text-muted leading-relaxed -mt-2"
+          style={{ fontFamily: "var(--font-playfair)" }}
+        >
+          {project.tagline}
+        </p>
+
+        {/* Description */}
+        <p className="text-sm text-muted leading-relaxed font-body line-clamp-3 max-w-md">
+          {project.description}
+        </p>
+
+        {/* Meta grid: Location · Price */}
+        <div className="grid grid-cols-2 gap-6 mt-2 pt-6 border-t border-border max-w-md">
+          <div>
+            <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
+              Location
+            </p>
+            <div className="flex items-center gap-1.5 text-sm text-primary font-body font-semibold">
+              <MapPin size={12} className="shrink-0 text-muted" />
+              <span>{project.location}</span>
+            </div>
+          </div>
+          <div>
+            <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
+              Starting From
+            </p>
+            <p
+              className="text-lg font-bold text-primary leading-none"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              {formatPrice(project.priceRange.min)}
+            </p>
+          </div>
+        </div>
+
+        {/* CTA + counter */}
+        <div className="flex items-center justify-between mt-6 max-w-md">
+          <Link
+            href={`/projects/${project.slug}`}
+            data-cursor-label="EXPLORE"
+            className="group/cta inline-flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.2em] uppercase"
+          >
+            <span className="relative">
+              Explore Project
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-left scale-x-100 group-hover/cta:scale-x-0 transition-transform duration-500" />
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-right scale-x-0 group-hover/cta:scale-x-100 transition-transform duration-500 delay-200" />
+            </span>
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-500 group-hover/cta:translate-x-1 group-hover/cta:-translate-y-1"
+            />
+          </Link>
+          <span
+            className="text-xs text-muted/50 tracking-[0.25em] font-body"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            {formattedNumber} <span className="text-muted/30">/</span> {totalFormatted}
+          </span>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
 export default function FeaturedProjects() {
   const featured = getFeaturedProjects().slice(0, 4);
 
   return (
-    <section className="py-24 md:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="relative py-24 md:py-40 bg-background overflow-hidden">
+      {/* Subtle ambient background accent */}
+      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-amber-50/40 via-transparent to-transparent pointer-events-none" />
 
-        {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-          <SectionHeading
-            eyebrow="Featured Projects"
-            title="Spaces That Define Living"
-            align="left"
-          />
-          <Link href="/projects" className="shrink-0">
-            <Button variant="outline" size="sm">
-              View All Projects
-              <ArrowRight size={14} />
-            </Button>
-          </Link>
-        </div>
-
-        {/* Staggered card grid */}
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        {/* ── Section header ── */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-          variants={gridVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-24 md:mb-32"
         >
-          {featured.map((project) => (
-            <motion.div key={project.id} variants={itemVariant}>
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
+          <div className="flex flex-col gap-4 max-w-2xl">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-px bg-primary/40" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
+                Featured Portfolio
+              </span>
+            </div>
+            <h2
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Landmark spaces, <br />
+              <span className="italic font-light text-muted">crafted with intent.</span>
+            </h2>
+          </div>
+
+          <Link
+            href="/projects"
+            data-cursor-label="ALL"
+            className="group flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase shrink-0"
+          >
+            <span className="relative">
+              View All Projects
+              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+            </span>
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+            />
+          </Link>
         </motion.div>
 
+        {/* ── Editorial rows ── */}
+        <div className="flex flex-col gap-32 md:gap-48">
+          {featured.map((project, i) => (
+            <FeaturedRow
+              key={project.id}
+              project={project}
+              index={i}
+              total={featured.length}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ interface SectionHeadingProps {
   subtitle?: string;
   align?: "left" | "center" | "right";
   light?: boolean;
+  animate?: boolean;
 }
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -18,6 +19,7 @@ export default function SectionHeading({
   subtitle,
   align = "center",
   light = false,
+  animate = false,
 }: SectionHeadingProps) {
   const alignClass = {
     left:   "text-left  items-start",
@@ -31,8 +33,9 @@ export default function SectionHeading({
         <div className="overflow-hidden">
           <motion.span
             initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true, amount: 0.4 }}
+            {...(animate
+              ? { animate: { y: "0%" } }
+              : { whileInView: { y: "0%" }, viewport: { once: true, amount: 0.4 } })}
             transition={{ duration: 0.65, ease }}
             className={`block text-xs tracking-[0.3em] uppercase font-semibold font-body ${
               light ? "text-white/50" : "text-muted"
@@ -46,8 +49,9 @@ export default function SectionHeading({
       <div className="overflow-hidden">
         <motion.h2
           initial={{ y: "105%" }}
-          whileInView={{ y: "0%" }}
-          viewport={{ once: true, amount: 0.4 }}
+          {...(animate
+            ? { animate: { y: "0%" } }
+            : { whileInView: { y: "0%" }, viewport: { once: true, amount: 0.4 } })}
           transition={{ duration: 0.85, delay: eyebrow ? 0.1 : 0, ease }}
           className={`text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-heading ${
             light ? "text-white" : "text-primary"
@@ -61,8 +65,9 @@ export default function SectionHeading({
       {eyebrow && (
         <motion.div
           initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
+          {...(animate
+            ? { animate: { scaleX: 1 } }
+            : { whileInView: { scaleX: 1 }, viewport: { once: true, amount: 0.4 } })}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           style={{ originX: align === "right" ? 1 : align === "center" ? 0.5 : 0 }}
           className={`w-10 h-px ${light ? "bg-white/30" : "bg-primary/30"} ${
@@ -74,8 +79,9 @@ export default function SectionHeading({
       {subtitle && (
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          {...(animate
+            ? { animate: { opacity: 1, y: 0 } }
+            : { whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.4 } })}
           transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
           className={`text-base md:text-lg max-w-2xl leading-relaxed font-body mt-2 ${
             light ? "text-white/50" : "text-muted"

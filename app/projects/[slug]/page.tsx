@@ -12,7 +12,7 @@ import ProjectGalleryGrid from "@/components/projects/ProjectGalleryGrid";
 import ProjectDocuments from "@/components/projects/ProjectDocuments";
 
 const PROJECT_LOGOS: Record<string, string> = {
-  "central-square": "/images/central-square-logo.svg",
+  "central-square": "/images/central-square-logo.png",
   "solitaire-pallazzo": "/images/solitaire-pallazzo-logo.jpg",
   "city-center": "/images/city-center-logo.png",
   "pritam-residency": "/images/pritam-residency-logo.svg",

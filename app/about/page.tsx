@@ -36,6 +36,7 @@ export default function AboutPage() {
             subtitle="From a single plot in Bharuch to South Gujarat's most respected developer — this is our story."
             align="center"
             light
+            animate
           />
         </div>
       </div>
