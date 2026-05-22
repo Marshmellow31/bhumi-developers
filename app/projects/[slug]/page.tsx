@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {project.amenities.map((a, i) => (
                   <span
                     key={i}
-                    className="bg-white border border-border text-charcoal text-xs tracking-wide px-4 py-2 font-body"
+                    className="bg-background border border-border text-charcoal text-xs tracking-wide px-4 py-2 font-body"
                   >
                     {a}
                   </span>
@@ -302,7 +302,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             )}
 
             {/* Details */}
-            <div className="bg-background border border-border p-6 flex flex-col gap-4">
+            <div className="bg-surface border border-border p-6 flex flex-col gap-4">
               <h3
                 className="text-base font-bold text-primary"
                 style={{ fontFamily: "var(--font-playfair)" }}

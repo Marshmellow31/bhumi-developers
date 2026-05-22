@@ -28,20 +28,21 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <div className="bg-background pt-36 pb-20">
+      <div className="bg-primary pt-36 pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Story"
             title="Over Three Decades of Building Dreams"
             subtitle="From a single plot in Bharuch to South Gujarat's most respected developer — this is our story."
             align="center"
+            light
             animate
           />
         </div>
       </div>
 
-      {/* Stats — black section */}
-      <div className="bg-background border-t border-primary/5 py-14">
+      {/* Stats */}
+      <div className="bg-surface border-t border-champagne/20 py-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
             {[
@@ -62,26 +63,26 @@ export default function AboutPage() {
       </div>
 
       {/* Mission & Vision */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-            <div className="bg-white p-12">
-              <span className="text-muted text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Mission</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-champagne/25">
+            <div className="bg-background p-12">
+              <span className="text-sienna text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Mission</span>
               <h3 className="text-2xl font-bold text-primary mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Building More Than Homes
               </h3>
-              <div className="w-8 h-px bg-primary/20 mb-6" />
+              <div className="w-8 h-px bg-champagne/60 mb-6" />
               <p className="text-muted font-body leading-relaxed text-sm">
                 To create thoughtfully designed spaces that enrich lives — with unwavering commitment
                 to quality, transparency, and timely delivery. Every Bhumi project is a promise kept.
               </p>
             </div>
             <div className="bg-surface p-12">
-              <span className="text-muted text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Vision</span>
+              <span className="text-sienna text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Vision</span>
               <h3 className="text-2xl font-bold text-primary mt-3 mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
                 Gujarat&apos;s Most Trusted Builder
               </h3>
-              <div className="w-8 h-px bg-primary/20 mb-6" />
+              <div className="w-8 h-px bg-champagne/60 mb-6" />
               <p className="text-muted font-body leading-relaxed text-sm">
                 To be recognized across Gujarat for building spaces that stand the test of time —
                 where engineering excellence meets architectural beauty, creating legacies for generations.
@@ -127,7 +128,7 @@ export default function AboutPage() {
                   From National Infrastructure to Bharuch&apos;s Horizon
                 </h3>
               </div>
-              <div className="w-12 h-px bg-primary/20" />
+              <div className="w-12 h-px bg-champagne/60" />
 
               <div className="flex flex-col gap-5 text-muted font-body text-sm leading-relaxed">
                 <p>
@@ -136,7 +137,7 @@ export default function AboutPage() {
                 <p>
                   Now, he brings that exact level of industrial-grade engineering precision, complete transparency, and world-class quality back to where it all began — his hometown of Bharuch.
                 </p>
-                <div className="italic pl-4 border-l-2 border-primary/20 text-primary/80 font-medium flex flex-col gap-3">
+                <div className="italic pl-4 border-l-2 border-champagne/60 text-primary/80 font-medium flex flex-col gap-3">
                   <p>
                     &ldquo;This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back. A promise to bring world-class construction quality, complete transparency, and projects that truly reflect Bharuch&apos;s growing potential — creating spaces where families can live with pride and businesses can grow with confidence.&rdquo;
                   </p>
@@ -178,7 +179,7 @@ export default function AboutPage() {
       </div>
 
       {/* Timeline */}
-      <div className="py-24 bg-white">
+      <div className="py-24 bg-background">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <SectionHeading eyebrow="Our Journey" title="Milestones That Define Us" />
@@ -199,7 +200,7 @@ export default function AboutPage() {
                       <p className="text-muted text-sm font-body leading-relaxed">{m.desc}</p>
                     </div>
                   </div>
-                  <div className="relative z-10 w-3 h-3 bg-primary border-4 border-white mt-4 shrink-0 order-first md:order-none" />
+                  <div className="relative z-10 w-3 h-3 bg-champagne border-4 border-background mt-4 shrink-0 order-first md:order-none" />
                   <div className="hidden md:block flex-1" />
                 </div>
               ))}
@@ -304,7 +305,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {team.map((member, i) => (
-              <div key={i} className="bg-white p-8 text-center">
+              <div key={i} className="bg-background p-8 text-center">
                 <div className="w-16 h-16 bg-primary mx-auto mb-5 flex items-center justify-center">
                   <span className="text-white text-2xl font-bold" style={{ fontFamily: "var(--font-playfair)" }}>
                     {member.name.charAt(0)}

@@ -38,7 +38,7 @@ export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocume
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.05 }}
-            className="bg-white border border-border flex flex-col gap-4 p-6 hover:border-primary hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 group/doc"
+            className="bg-background border border-border flex flex-col gap-4 p-6 hover:border-primary hover:shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-all duration-300 group/doc"
           >
             {/* Icon + info */}
             <div className="flex items-start gap-4">

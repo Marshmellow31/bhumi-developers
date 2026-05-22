@@ -70,7 +70,7 @@ export default function SectionHeading({
             : { whileInView: { scaleX: 1 }, viewport: { once: true, amount: 0.4 } })}
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           style={{ originX: align === "right" ? 1 : align === "center" ? 0.5 : 0 }}
-          className={`w-10 h-px ${light ? "bg-white/30" : "bg-primary/30"} ${
+          className={`w-10 h-px ${light ? "bg-champagne/50" : "bg-champagne"} ${
             align === "center" ? "self-center" : align === "right" ? "self-end" : "self-start"
           }`}
         />

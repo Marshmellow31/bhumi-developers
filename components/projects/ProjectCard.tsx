@@ -99,7 +99,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           }}
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="bg-white border border-border overflow-visible relative"
+          className="bg-background border border-border overflow-visible relative"
         >
 
           {/* ════════════════════════════════════════

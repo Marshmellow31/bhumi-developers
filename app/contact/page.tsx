@@ -138,7 +138,7 @@ export default function ContactPage() {
             transition={{ duration: 0.7 }}
             className="lg:col-span-3"
           >
-            <div className="bg-white border border-border p-8 md:p-10">
+            <div className="bg-background border border-border p-8 md:p-10">
               <h2
                 className="text-2xl font-bold text-primary mb-6"
                 style={{ fontFamily: "var(--font-playfair)" }}
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   </label>
                   <select
                     {...register("interest")}
-                    className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal focus:outline-none focus:border-primary transition-colors bg-white"
+                    className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal focus:outline-none focus:border-primary transition-colors bg-background"
                   >
                     <option value="Residential">Residential</option>
                     <option value="Commercial">Commercial</option>

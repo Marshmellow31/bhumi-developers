@@ -38,30 +38,34 @@ const socialLinks = [
 
 const projects = [
   { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
-  { href: "/projects/central-square", label: "Central Square" },
-  { href: "/projects/city-center", label: "City Center" },
-  { href: "/projects/pritam-residency", label: "Pritam Residency" },
+  { href: "/projects/central-square",     label: "Central Square"    },
+  { href: "/projects/city-center",        label: "City Center"       },
+  { href: "/projects/pritam-residency",   label: "Pritam Residency"  },
 ];
 
 const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
+  { href: "/",         label: "Home"    },
+  { href: "/about",    label: "About Us" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact",  label: "Contact"  },
 ];
 
 export default function Footer() {
-  const footerContent = (
+  return (
     <footer className="bg-primary text-white">
+      {/* Champagne top accent line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
+
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-6 -ml-2">
               <Logo className="h-16 w-auto" light={false} />
             </div>
-            <p className="text-white/40 text-sm leading-relaxed mb-6">
+            <p className="text-white/45 text-sm leading-relaxed mb-6 font-body">
               Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
               developer since 1991.
             </p>
@@ -71,7 +75,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 border border-white/15 flex items-center justify-center text-white/30 hover:border-white hover:text-white transition-colors duration-200"
+                  className="w-9 h-9 border border-white/12 flex items-center justify-center text-white/35 hover:border-champagne hover:text-champagne transition-colors duration-300"
                 >
                   {icon}
                 </a>
@@ -81,7 +85,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white/40 text-xs tracking-[0.3em] uppercase font-semibold mb-6 font-body">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -89,7 +93,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
+                    className="text-white/50 text-sm font-body hover:text-champagne transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -100,7 +104,7 @@ export default function Footer() {
 
           {/* Projects */}
           <div>
-            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white/40 text-xs tracking-[0.3em] uppercase font-semibold mb-6 font-body">
               Our Projects
             </h4>
             <ul className="space-y-3">
@@ -108,7 +112,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-white/40 text-sm hover:text-white transition-colors duration-200"
+                    className="text-white/50 text-sm font-body hover:text-champagne transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -119,12 +123,12 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white text-xs tracking-[0.3em] uppercase font-semibold mb-6">
+            <h4 className="text-white/40 text-xs tracking-[0.3em] uppercase font-semibold mb-6 font-body">
               Get In Touch
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-white/40 text-sm">
-                <MapPin size={15} className="text-white/40 mt-0.5 shrink-0" />
+              <li className="flex items-start gap-3 text-white/50 text-sm font-body">
+                <MapPin size={15} className="text-champagne/60 mt-0.5 shrink-0" />
                 <span>
                   1ST FLOOR, Millennium Arcade, College Rd,
                   <br />
@@ -134,18 +138,18 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+919879100355"
-                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-white/50 text-sm font-body hover:text-champagne transition-colors"
                 >
-                  <Phone size={15} className="shrink-0" />
+                  <Phone size={15} className="text-champagne/60 shrink-0" />
                   +91 98791 00355
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:contact@bhumidevelopers.co.in"
-                  className="flex items-center gap-3 text-white/40 text-sm hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-white/50 text-sm font-body hover:text-champagne transition-colors"
                 >
-                  <Mail size={15} className="shrink-0" />
+                  <Mail size={15} className="text-champagne/60 shrink-0" />
                   contact@bhumidevelopers.co.in
                 </a>
               </li>
@@ -155,14 +159,12 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/20 tracking-wide">
+      <div className="border-t border-white/[0.06] bg-primary-light">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/25 tracking-wide font-body">
           <p>© {new Date().getFullYear()} Bhumi Developers. All rights reserved.</p>
           <p>Bharuch, Gujarat, India</p>
         </div>
       </div>
     </footer>
   );
-
-  return footerContent;
 }

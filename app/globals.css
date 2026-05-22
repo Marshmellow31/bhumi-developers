@@ -1,25 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* Monochrome Premium Palette */
-  --color-primary: #0A0A0A;
-  --color-primary-light: #1C1C1C;
-  --color-accent: #FFFFFF;
-  --color-accent-light: #E8E8E8;
-  --color-background: #FFFFFF;
-  --color-surface: #F5F5F5;
-  --color-charcoal: #111111;
-  --color-muted: #737373;
-  --color-border: #D4D4D4;
+  /* ── Core foundation (neutral near-black) ───────────── */
+  --color-primary:       #111111;   /* slightly lighter than pure black — clean, no tint   */
+  --color-primary-light: #1C1C1C;   /* dark charcoal                                       */
+  --color-charcoal:      #1A1A1A;   /* charcoal body text                                  */
 
-  /* Typography */
+  --color-accent:        #FFFFFF;
+  --color-accent-light:  #E8E8E8;
+
+  /* ── Warm neutral surfaces (richer beige shift) ────────── */
+  --color-background: #F0E6D0;   /* antique linen — visibly warm cream/beige              */
+  --color-surface:    #E6D8BC;   /* deep warm parchment                                   */
+  --color-muted:      #7D6A58;   /* warm taupe — readable on both light and parchment     */
+  --color-border:     #C8B898;   /* strong warm beige border — clearly visible            */
+
+  /* ── Beige family ─────────────────────────────────────── */
+  --color-beige:       #D9C4A0;  /* deep mid beige — CTA sections, distinct from surface  */
+  --color-beige-light: #EAD9BF;  /* light beige — subtle warmth                           */
+  --color-beige-dark:  #BBA070;  /* deep tan — strong beige accents                       */
+
+  /* ── Premium accent colours ──────────────────────────── */
+  --color-champagne: #C9A96E;    /* champagne gold — dividers, hovers, accents            */
+  --color-sienna:    #7A5535;    /* warm brown — eyebrows, pillar numbers                 */
+
+  /* ── Typography ──────────────────────────────────────── */
   --font-heading: var(--font-playfair);
-  --font-body: var(--font-inter);
+  --font-body:    var(--font-inter);
 }
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #0A0A0A;
+  --background: #F0E6D0;
+  --foreground: #111111;
 }
 
 * {
@@ -98,24 +110,24 @@ body.cursor-active * {
   perspective-origin: 50% 50%;
 }
 
-/* ── Shimmer sweep on stat numbers ─────────── */
+/* ── Stat numbers ───────────────────────────── */
 @keyframes shimmer {
   0%   { background-position: -200% center }
   100% { background-position: 200% center }
 }
 
 .stat-number {
-  color: #ffffff;
+  color: #111111;
 }
 
-/* ── Scroll progress bar ────────────────────── */
+/* ── Scroll progress bar (champagne gold) ──── */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: #ffffff;
+  height: 2px;
+  background: linear-gradient(to right, #8a6a3a, #c9a96e, #e8d5a3, #c9a96e, #8a6a3a);
   transform-origin: left;
   z-index: 60;
 }

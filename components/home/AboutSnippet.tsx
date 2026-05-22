@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+const pillars = [
+  "Uncompromising focus on quality & engineering",
+  "Transparent transactions & absolute integrity",
+  "On-time delivery — a 35+ year track record",
+  "Nurturing customer relationships for a lifetime",
+];
+
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutSnippet() {
@@ -114,7 +121,7 @@ export default function AboutSnippet() {
             {/* Decorative quote mark + pull quote */}
             <div className="relative pt-6">
               <span
-                className="absolute -top-2 -left-2 text-7xl lg:text-8xl text-amber-700/15 leading-none select-none font-light"
+                className="absolute -top-2 -left-2 text-7xl lg:text-8xl text-champagne/25 leading-none select-none font-light"
                 style={{ fontFamily: "var(--font-playfair)" }}
                 aria-hidden
               >
@@ -140,7 +147,7 @@ export default function AboutSnippet() {
 
             {/* Signature block */}
             <div className="flex items-center gap-5 pt-2">
-              <span className="w-12 h-px bg-primary/30" />
+              <span className="w-12 h-px bg-champagne/60" />
               <div className="flex flex-col">
                 <span
                   className="text-2xl font-bold text-primary leading-tight"
@@ -154,7 +161,51 @@ export default function AboutSnippet() {
               </div>
             </div>
 
+            {/* Pillars */}
+            <div className="mt-4 pt-10 border-t border-border">
+              <p className="text-[9px] tracking-[0.35em] uppercase text-muted/70 font-body font-semibold mb-6">
+                Our Promise To You
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {pillars.map((point, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease }}
+                    className="flex items-baseline gap-4 text-sm text-primary/90 font-body"
+                  >
+                    <span
+                      className="text-xs text-champagne font-semibold tracking-wider shrink-0"
+                      style={{ fontFamily: "var(--font-playfair)" }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span className="leading-relaxed">{point}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
 
+            {/* CTA */}
+            <div className="mt-2">
+              <Link
+                href="/about"
+                data-cursor-label="LEADERS"
+                className="group inline-flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase"
+              >
+                <span className="relative">
+                  Meet Our Leaders
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500" />
+                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
+                </span>
+                <ArrowUpRight
+                  size={14}
+                  className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>
