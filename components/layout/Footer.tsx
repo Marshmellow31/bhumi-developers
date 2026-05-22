@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
@@ -40,7 +39,7 @@ const socialLinks = [
 const projects = [
   { href: "/projects/solitaire-pallazzo", label: "Solitaire Pallazzo" },
   { href: "/projects/central-square", label: "Central Square" },
-  { href: "/projects/city-centre", label: "City Centre" },
+  { href: "/projects/city-center", label: "City Center" },
   { href: "/projects/pritam-residency", label: "Pritam Residency" },
 ];
 
@@ -52,9 +51,6 @@ const quickLinks = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  const isProjectsPage = pathname === "/projects";
-
   const footerContent = (
     <footer className="bg-primary text-white">
       {/* Main Footer */}

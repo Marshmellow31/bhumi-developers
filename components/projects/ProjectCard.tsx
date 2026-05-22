@@ -22,7 +22,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   // 3D tilt state
   const wrapRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [gloss, setGloss] = useState({ x: 50, y: 50 });
   const [isTilted, setIsTilted] = useState(false);
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -31,7 +30,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     const nx = (e.clientX - rect.left) / rect.width;
     const ny = (e.clientY - rect.top)  / rect.height;
     setTilt({ x: (ny - 0.5) * -14, y: (nx - 0.5) * 14 });
-    setGloss({ x: nx * 100, y: ny * 100 });
   }, []);
 
   const handleMouseEnter = useCallback(() => setIsTilted(true), []);
@@ -54,9 +52,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             rotateX: tilt.x,
             rotateY: tilt.y,
             scale: isTilted ? 1.025 : 1,
-            boxShadow: isTilted
-              ? "0 28px 60px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.10)"
-              : "0 1px 3px rgba(0,0,0,0.06)",
           }}
           transition={{ type: "spring", damping: 22, stiffness: 220 }}
           style={{ transformStyle: "preserve-3d" }}
@@ -77,15 +72,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               </span>
             </div>
 
-            {/* Mouse-tracking gloss highlight */}
-            {isTilted && (
-              <div
-                className="absolute inset-0 pointer-events-none z-10 opacity-25 transition-none"
-                style={{
-                  background: `radial-gradient(circle at ${gloss.x}% ${gloss.y}%, rgba(255,255,255,0.9) 0%, transparent 55%)`,
-                }}
-              />
-            )}
+
           </div>
 
           {/* Content */}

@@ -72,18 +72,13 @@ const slides: SlideData[] = [
     italicWord: "Retail Hubs",
     regularText: "Modern",
     description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
-    image: "/images/city-centre/city-centre-1.jpg",
-    projectTag: "City Centre",
+    image: "/images/city-center/city-center-1.jpg",
+    projectTag: "City Center",
   },
 ];
 
 export default function PhilosophySection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   // Framer Motion hooks for desktop & mobile scroll animation
   const { scrollYProgress } = useScroll({
@@ -96,8 +91,6 @@ export default function PhilosophySection() {
   const rightColRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!isMounted) return;
-
     const calculateScrollRange = () => {
       if (trackRef.current && rightColRef.current) {
         const trackWidth = trackRef.current.scrollWidth;
@@ -114,7 +107,7 @@ export default function PhilosophySection() {
       clearTimeout(timer);
       window.removeEventListener("resize", calculateScrollRange);
     };
-  }, [isMounted]);
+  }, []);
 
   // Translate the horizontal track dynamically based on measured pixels
   const xRaw = useTransform(scrollYProgress, [0, 1], [0, 1]);

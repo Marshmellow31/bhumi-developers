@@ -187,7 +187,96 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Awards & Recognition */}
+      <div className="py-24 bg-primary">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <SectionHeading
+              eyebrow="Recognition"
+              title="Awards & Honours"
+              subtitle="Decades of excellence recognised by industry leaders and communities alike."
+              align="center"
+              light
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5">
+            {[
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+              {
+                photo: null,
+                award: "Award Name",
+                body: "Awarding Organisation",
+                year: "Year",
+                desc: "Short description of the award and what it recognises. Add details here.",
+              },
+            ].map((a, i) => (
+              <div key={i} className="bg-primary-light p-8 flex flex-col gap-5 group hover:bg-white/5 transition-colors duration-300">
+                {/* Photo placeholder */}
+                <div className="w-full h-44 bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden">
+                  {a.photo ? (
+                    <img src={a.photo} alt={a.award} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-white/15 text-xs tracking-[0.2em] uppercase font-body select-none">Photo</span>
+                  )}
+                </div>
+
+                {/* Award info */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/30 text-[10px] tracking-[0.3em] uppercase font-body">{a.year}</span>
+                    <div className="w-4 h-px bg-white/10" />
+                  </div>
+                  <h4 className="text-white font-bold text-lg leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+                    {a.award}
+                  </h4>
+                  <p className="text-white/40 text-xs tracking-[0.2em] uppercase font-body">{a.body}</p>
+                  <p className="text-white/30 text-sm font-body leading-relaxed pt-1 border-t border-white/5">
+                    {a.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Leadership */}
+
       <div className="py-24 bg-surface">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">

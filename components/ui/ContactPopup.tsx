@@ -7,7 +7,6 @@ import Button from "@/components/ui/Button";
 
 export default function ContactPopup() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [project, setProject] = useState("");
@@ -15,7 +14,6 @@ export default function ContactPopup() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
     // Check if the user has already submitted or closed the popup in this session or globally
     const hasSeenPopup = localStorage.getItem("hasSeenContactPopup");
     if (hasSeenPopup === "true") return;
@@ -55,8 +53,6 @@ export default function ContactPopup() {
       setIsSubmitting(false);
     }
   };
-
-  if (!isMounted) return null;
 
   return (
     <AnimatePresence>
@@ -100,7 +96,7 @@ export default function ContactPopup() {
                     className="text-2xl font-bold font-heading leading-tight"
                     style={{ fontFamily: "var(--font-playfair)" }}
                   >
-                    Let's Build Your <br />
+                    Let&rsquo;s Build Your <br />
                     <span className="italic font-light text-white/70">Dream Space</span>
                   </h3>
                   <p className="text-white/50 text-xs leading-relaxed font-body">

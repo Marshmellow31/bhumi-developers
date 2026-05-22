@@ -160,8 +160,8 @@ export const projects: Project[] = [
   },
   {
     id: "9",
-    slug: "city-centre",
-    name: "City Centre",
+    slug: "city-center",
+    name: "City Center",
     tagline: "The Core of Trade and Entertainment",
     location: "College Road, Bharuch",
     city: "Bharuch",
@@ -171,16 +171,16 @@ export const projects: Project[] = [
     area: "500–5000 sq ft",
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2024,
-    image: "/images/city-centre/city-centre-1.jpg",
+    image: "/images/city-center/city-center-1.jpg",
     gallery: [
-      "/images/city-centre/city-centre-1.jpg",
-      "/images/city-centre/city-centre-2.jpg",
-      "/images/city-centre/city-centre-3.jpg",
-      "/images/city-centre/city-centre-4.jpg",
+      "/images/city-center/city-center-1.jpg",
+      "/images/city-center/city-center-2.jpg",
+      "/images/city-center/city-center-3.jpg",
+      "/images/city-center/city-center-4.jpg",
     ],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
-      "Bhumi City Centre is a landmark commercial and retail destination. Positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
+      "Bhumi City Center is a landmark commercial and retail destination. Positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
     amenities: [
       "Escalators & Lift Services",
       "Central Air Conditioning",
@@ -196,7 +196,7 @@ export const projects: Project[] = [
 
 // Featured projects for the homepage — primary slugs shown first, capped at 4.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "pritam-residency", "city-centre"];
+  const primarySlugs = ["city-center", "central-square", "solitaire-pallazzo", "pritam-residency"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
     .slice(0, 4);
