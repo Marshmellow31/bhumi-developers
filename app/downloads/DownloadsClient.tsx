@@ -70,7 +70,7 @@ export default function DownloadsClient({ projects, totalDocs }: Props) {
       </div>
 
       {/* ── Filter Bar ── */}
-      <div className="sticky top-[64px] z-30 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
+      <div className="sticky top-[64px] z-30 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center gap-1 overflow-x-auto py-3">
             <span className="flex items-center gap-1.5 text-[10px] text-muted tracking-[0.2em] uppercase font-body pr-4 border-r border-border mr-2 shrink-0">
@@ -151,7 +151,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.06 }}
-      className="border border-border bg-white overflow-hidden group"
+      className="border border-border bg-background overflow-hidden group"
     >
       {/* Banner */}
       <div className="relative h-56 md:h-64 overflow-hidden">
@@ -201,7 +201,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       {/* Documents */}
-      <div className="p-6 md:p-8 bg-[#FAFAFA]">
+      <div className="p-6 md:p-8 bg-surface">
         <div className="flex items-center justify-between mb-5 pb-3 border-b border-border">
           <h3 className="text-[11px] font-semibold tracking-[0.2em] text-primary uppercase font-body">Available Documents</h3>
           <span className="text-[10px] text-muted font-body tracking-widest uppercase">{docCount} {docCount === 1 ? "file" : "files"}</span>
@@ -229,7 +229,7 @@ function DocCard({ name, meta, label, file, delay }: DocCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.4, ease: "easeOut", delay }}
-      className="bg-white border border-border flex flex-col gap-3 p-4 hover:border-amber-300 hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-300 group/doc"
+      className="bg-background border border-border flex flex-col gap-3 p-4 hover:border-champagne hover:shadow-[0_4px_20px_rgba(0,0,0,0.07)] transition-all duration-300 group/doc"
     >
       <div className="flex items-start gap-3">
         <div className="shrink-0 w-9 h-9 flex items-center justify-center bg-amber-50 border border-amber-100 text-amber-500 transition-all duration-300 group-hover/doc:bg-amber-500 group-hover/doc:text-white group-hover/doc:border-amber-500">

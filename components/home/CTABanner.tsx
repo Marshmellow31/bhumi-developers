@@ -7,18 +7,27 @@ import { Phone } from "lucide-react";
 
 export default function CTABanner() {
   return (
-    <section className="relative py-28 overflow-hidden bg-background">
-      {/* Hairline borders */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-primary/10" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/10" />
+    <section className="relative py-28 overflow-hidden bg-beige">
+      {/* Champagne hairline borders */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-champagne/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-champagne/50 to-transparent" />
 
-      {/* Subtle grid texture */}
+      {/* Subtle warm grid texture */}
       <div
-        className="absolute inset-0 opacity-[0.02]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "linear-gradient(#0A0A0A 1px, transparent 1px), linear-gradient(90deg, #0A0A0A 1px, transparent 1px)",
+            "linear-gradient(#1A1510 1px, transparent 1px), linear-gradient(90deg, #1A1510 1px, transparent 1px)",
           backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* Warm champagne radial glow — centre */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%)",
         }}
       />
 
@@ -30,7 +39,7 @@ export default function CTABanner() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center gap-6"
         >
-          <span className="text-muted text-xs tracking-[0.4em] uppercase font-body">
+          <span className="text-sienna text-xs tracking-[0.4em] uppercase font-body font-semibold">
             Find Your Dream Home
           </span>
 
@@ -40,10 +49,11 @@ export default function CTABanner() {
           >
             Ready to Make
             <br />
-            <span className="italic font-light text-primary/60">Your Move?</span>
+            <span className="italic font-light text-primary/55">Your Move?</span>
           </h2>
 
-          <div className="w-10 h-px bg-primary/15 mt-2" />
+          {/* Champagne divider */}
+          <div className="w-12 h-px bg-gradient-to-r from-transparent via-champagne to-transparent mt-1" />
 
           <p className="text-muted text-sm max-w-sm font-body leading-relaxed tracking-wide">
             Our property experts are here to guide you through every step — from site visits
@@ -57,10 +67,7 @@ export default function CTABanner() {
               </Button>
             </Link>
             <a href="tel:+919879100355">
-              <Button
-                size="lg"
-                variant="outline"
-              >
+              <Button size="lg" variant="outline">
                 <Phone size={14} />
                 Call Us Now
               </Button>

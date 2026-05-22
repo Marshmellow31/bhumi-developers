@@ -121,7 +121,7 @@ export default function AboutSnippet() {
             {/* Decorative quote mark + pull quote */}
             <div className="relative pt-6">
               <span
-                className="absolute -top-2 -left-2 text-7xl lg:text-8xl text-amber-700/15 leading-none select-none font-light"
+                className="absolute -top-2 -left-2 text-7xl lg:text-8xl text-champagne/25 leading-none select-none font-light"
                 style={{ fontFamily: "var(--font-playfair)" }}
                 aria-hidden
               >
@@ -147,7 +147,7 @@ export default function AboutSnippet() {
 
             {/* Signature block */}
             <div className="flex items-center gap-5 pt-2">
-              <span className="w-12 h-px bg-primary/30" />
+              <span className="w-12 h-px bg-champagne/60" />
               <div className="flex flex-col">
                 <span
                   className="text-2xl font-bold text-primary leading-tight"
@@ -177,7 +177,7 @@ export default function AboutSnippet() {
                     className="flex items-baseline gap-4 text-sm text-primary/90 font-body"
                   >
                     <span
-                      className="text-xs text-amber-700/60 font-semibold tracking-wider shrink-0"
+                      className="text-xs text-champagne font-semibold tracking-wider shrink-0"
                       style={{ fontFamily: "var(--font-playfair)" }}
                     >
                       0{i + 1}
