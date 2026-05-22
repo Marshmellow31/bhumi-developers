@@ -66,7 +66,7 @@ export default function HeroSection() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen flex flex-col overflow-hidden"
-      style={{ backgroundColor: "#080808" }}
+      style={{ backgroundColor: "#111111" }}
     >
       {/* ── BG PHOTO with parallax ── */}
       <motion.div

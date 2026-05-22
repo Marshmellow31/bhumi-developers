@@ -114,7 +114,7 @@ export default function PhilosophySection() {
   const x = useTransform(xRaw, (v) => -v * scrollRange);
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-[#0A0A0A] z-10">
+    <div ref={containerRef} className="relative h-[400vh] bg-[#111111] z-10">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div ref={rightColRef} className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
           <motion.div

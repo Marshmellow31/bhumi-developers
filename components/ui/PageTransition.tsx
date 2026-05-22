@@ -47,7 +47,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       {/* Full-screen curtain — only visible mid-transition */}
       <motion.div
         className="fixed inset-0 pointer-events-none"
-        style={{ backgroundColor: "#0A0A0A", zIndex: 9990 }}
+        style={{ backgroundColor: "#111111", zIndex: 9990 }}
         initial={{ clipPath: "inset(0 100% 0 0)" }}
         animate={curtain}
       />

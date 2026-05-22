@@ -99,7 +99,7 @@ export default function Navbar() {
   const bgOpacity = useTransform(scrollY, [0, 60], [0, 1]);
 
   /* On non-home pages always show solid bg */
-  const navBgColor = useMotionTemplate`rgba(10,10,10,${isHome ? bgOpacity : 1})`;
+  const navBgColor = useMotionTemplate`rgba(17,17,17,${isHome ? bgOpacity : 1})`;
   const navBlur    = useMotionTemplate`blur(${useTransform(
     scrollY,
     [0, 60],
@@ -150,7 +150,7 @@ export default function Navbar() {
                       <motion.span
                         layoutId="navUnderline"
                         className="absolute -bottom-1 left-0 right-0 h-px"
-                        style={{ background: "#f59e0b" }}
+                        style={{ background: "#C9A96E" }}
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -161,7 +161,7 @@ export default function Navbar() {
               {/* CTA */}
               <a
                 href="tel:+919879100355"
-                className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-[10px] font-semibold tracking-[0.18em] uppercase hover:bg-amber-400 hover:text-black transition-colors duration-200"
+                className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-[10px] font-semibold tracking-[0.18em] uppercase hover:bg-champagne hover:text-primary transition-colors duration-200"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
                 <Phone size={12} />
@@ -188,14 +188,14 @@ export default function Navbar() {
           <motion.div
             key="mobile-menu"
             className="fixed inset-0 z-40 md:hidden flex flex-col"
-            style={{ backgroundColor: "rgba(6,6,6,0.97)" }}
+            style={{ backgroundColor: "rgba(17,17,17,0.97)" }}
             variants={overlayVariants}
             initial="closed"
             animate="open"
             exit="closed"
           >
-            {/* Amber accent line at top */}
-            <div className="h-px w-full bg-amber-400/30" />
+            {/* Champagne accent line at top */}
+            <div className="h-px w-full bg-champagne/30" />
 
             {/* Spacer for navbar height */}
             <div style={{ height: 64 }} />
@@ -219,7 +219,7 @@ export default function Navbar() {
                       {/* Amber dot — shows on active */}
                       <span
                         className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors duration-200 ${
-                          active ? "bg-amber-400" : "bg-white/20 group-hover:bg-amber-400/60"
+                          active ? "bg-champagne" : "bg-white/20 group-hover:bg-champagne/60"
                         }`}
                       />
                       <span
@@ -240,7 +240,7 @@ export default function Navbar() {
                 <a
                   href="tel:+919879100355"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-amber-400 text-black px-6 py-4 text-[10px] font-bold tracking-[0.25em] uppercase"
+                  className="flex items-center justify-center gap-2 bg-champagne text-primary px-6 py-4 text-[10px] font-bold tracking-[0.25em] uppercase"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
                   <Phone size={13} />
