@@ -114,7 +114,7 @@ export default function PhilosophySection() {
   const x = useTransform(xRaw, (v) => -v * scrollRange);
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-background z-10">
+    <div ref={containerRef} className="relative h-[400vh] bg-[#0A0A0A] z-10">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div ref={rightColRef} className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
           <motion.div
@@ -124,13 +124,13 @@ export default function PhilosophySection() {
           >
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight font-body">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-body">
                 A Seamless Blend <br />
-                of <span className="font-heading italic font-light text-primary/70">Purpose</span> and <br />
-                <span className="font-heading italic font-light text-primary/70">Aesthetics</span>
+                of <span className="font-heading italic font-light text-white/70">Purpose</span> and <br />
+                <span className="font-heading italic font-light text-white/70">Aesthetics</span>
               </h2>
 
-              <p className="text-muted text-sm leading-relaxed font-body max-w-[70vw] md:max-w-md lg:max-w-sm">
+              <p className="text-white/40 text-sm leading-relaxed font-body max-w-[70vw] md:max-w-md lg:max-w-sm">
                 We are a design and engineering company with a focus on quality construction,
                 architectural excellence, sustainable design, and innovation.
               </p>
@@ -140,7 +140,7 @@ export default function PhilosophySection() {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="relative w-[80vw] md:w-[60vw] lg:w-[52vw] h-[50vh] md:h-[55vh] shrink-0 overflow-hidden group border border-primary/10"
+                className="relative w-[80vw] md:w-[60vw] lg:w-[52vw] h-[50vh] md:h-[55vh] shrink-0 overflow-hidden group border border-white/10"
               >
                 {/* Image background */}
                 <div

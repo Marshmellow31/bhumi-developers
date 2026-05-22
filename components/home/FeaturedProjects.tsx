@@ -34,7 +34,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
       }`}
     >
       {/* ── Image side ── */}
-      <div className="lg:col-span-7 relative group">
+      <div className="lg:col-span-7 relative group h-full flex flex-col justify-center">
         <Link
           href={`/projects/${project.slug}`}
           data-cursor-label="VIEW"
@@ -42,22 +42,22 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
         >
           {/* Image */}
           <motion.div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-contain bg-no-repeat bg-center"
             style={{
               backgroundImage: `url('${project.image}')`,
               filter: "grayscale(15%)",
             }}
             whileHover={{ scale: 1.04, filter: "grayscale(0%)" }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           />
 
           {/* Subtle bottom gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
 
           {/* Status pill — top-left of image */}
           <div className="absolute top-5 left-5 z-10">
             <span
-              className={`inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm pl-2.5 pr-3 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold font-body before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:inline-block ${statusStyles[project.status]}`}
+              className={`inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm pl-2.5 pr-3 py-1.5 text-[10px] tracking-[0.18em] uppercase font-semibold font-body shadow-sm before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:inline-block ${statusStyles[project.status]}`}
             >
               {project.status}
             </span>
@@ -67,7 +67,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileHover={{ opacity: 1, scale: 1 }}
-            className="absolute bottom-5 right-5 w-12 h-12 bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute bottom-5 right-5 w-12 h-12 bg-white/95 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-sm"
           >
             <ArrowUpRight size={18} className="text-primary" />
           </motion.div>
@@ -169,7 +169,7 @@ export default function FeaturedProjects() {
   return (
     <section className="relative py-24 md:py-40 bg-background overflow-hidden">
       {/* Subtle ambient background accent */}
-      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-amber-50/40 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* ── Section header ── */}
@@ -182,7 +182,7 @@ export default function FeaturedProjects() {
         >
           <div className="flex flex-col gap-4 max-w-2xl">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-px bg-primary/40" />
+              <span className="w-8 h-px bg-primary/20" />
               <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
                 Featured Portfolio
               </span>
@@ -207,7 +207,7 @@ export default function FeaturedProjects() {
             </span>
             <ArrowUpRight
               size={14}
-              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
+              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-primary"
             />
           </Link>
         </motion.div>
