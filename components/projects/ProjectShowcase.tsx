@@ -1,21 +1,27 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 
 const statusStyles: Record<string, string> = {
-  Ongoing:   "bg-white text-primary",
-  Completed: "bg-white/10 text-white border border-white/30",
-  Upcoming:  "bg-white/5 text-white border border-white/20",
+  Ongoing:   "bg-champagne text-primary",
+  Completed: "bg-champagne/10 text-champagne border border-champagne/30",
+  Upcoming:  "bg-champagne/5 text-champagne/70 border border-champagne/20",
 };
 
 export default function ProjectShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const active = projects[activeIndex];
+
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [activeIndex]);
 
   const handleSelect = useCallback((i: number) => {
     setActiveIndex(i);
@@ -31,7 +37,7 @@ export default function ProjectShowcase() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/30 text-[10px] tracking-[0.35em] uppercase font-body font-semibold"
+            className="text-champagne text-[10px] tracking-[0.35em] uppercase font-body font-semibold"
           >
             Our Portfolio
           </motion.span>
@@ -56,7 +62,7 @@ export default function ProjectShowcase() {
                 >
                   {/* Active indicator line */}
                   <motion.div
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] bg-white rounded-full"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] bg-champagne rounded-full"
                     initial={false}
                     animate={{
                       height: isActive ? "60%" : "0%",
@@ -70,7 +76,7 @@ export default function ProjectShowcase() {
                       {/* Number */}
                       <span
                         className={`text-xs font-body tracking-wider transition-colors duration-400 ${
-                          isActive ? "text-white/60" : "text-white/15"
+                          isActive ? "text-champagne/80" : "text-white/15"
                         }`}
                       >
                         {String(i + 1).padStart(2, "0")}
@@ -95,7 +101,7 @@ export default function ProjectShowcase() {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ArrowRight size={18} className="text-white/40" />
+                      <ArrowRight size={18} className="text-champagne/70" />
                     </motion.div>
                   </div>
 
@@ -136,11 +142,11 @@ export default function ProjectShowcase() {
           className="flex items-end justify-between"
         >
           <div>
-            <p className="text-white/20 text-[9px] tracking-[0.3em] uppercase font-body mb-1">
+            <p className="text-champagne/50 text-[9px] tracking-[0.3em] uppercase font-body mb-1">
               Starting from
             </p>
             <p
-              className="text-white text-xl font-bold"
+              className="text-champagne text-xl font-bold"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
               {formatPrice(active.priceRange.min)}
@@ -148,7 +154,7 @@ export default function ProjectShowcase() {
           </div>
           <Link
             href={`/projects/${active.slug}`}
-            className="group/link flex items-center gap-2 text-white/60 hover:text-white text-xs font-semibold font-body tracking-[0.15em] uppercase transition-colors duration-300"
+            className="group/link flex items-center gap-2 text-champagne/70 hover:text-champagne text-xs font-semibold font-body tracking-[0.15em] uppercase transition-colors duration-300"
             data-cursor-label="VIEW"
           >
             View Project
@@ -162,19 +168,59 @@ export default function ProjectShowcase() {
 
       {/* ─── Right Panel: Hero Image ─── */}
       <div className="relative flex-1 h-full overflow-hidden">
+        {/* Preload all project images so transitions feel instant */}
+        <div className="sr-only" aria-hidden="true">
+          {projects.map((p) => (
+            <Image key={p.id} src={p.image} alt="" width={1} height={1} priority />
+          ))}
+        </div>
+
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id}
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
             initial={{ opacity: 0, scale: 1.06 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
           >
-            <div
-              className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: `url('${active.image}')` }}
-            />
+            <div className="absolute inset-0">
+              <Image
+                src={active.image}
+                alt={active.name}
+                fill
+                className="object-contain object-center"
+                priority={activeIndex === 0}
+                sizes="58vw"
+                onLoad={() => setImageLoaded(true)}
+              />
+            </div>
+
+            {/* Shimmer skeleton — fades out once image has loaded */}
+            <AnimatePresence>
+              {!imageLoaded && (
+                <motion.div
+                  className="absolute inset-0 z-10 overflow-hidden bg-primary-light"
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <motion.div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(105deg, transparent 35%, rgba(201,169,110,0.07) 50%, transparent 65%)",
+                    }}
+                    animate={{ x: ["-100%", "200%"] }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      repeatDelay: 0.2,
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
             {/* Subtle left-edge gradient for blending */}
             <div className="absolute inset-0 bg-gradient-to-r from-primary/40 via-transparent to-transparent" />
             {/* Bottom gradient for text readability */}
@@ -198,7 +244,7 @@ export default function ProjectShowcase() {
               >
                 &ldquo;{active.tagline}&rdquo;
               </p>
-              <div className="w-10 h-px bg-white/15 mt-4 ml-auto" />
+              <div className="w-10 h-px bg-champagne/30 mt-4 ml-auto" />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -212,7 +258,7 @@ export default function ProjectShowcase() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-white/25 text-[10px] tracking-[0.3em] uppercase font-body font-semibold"
+              className="text-champagne/45 text-[10px] tracking-[0.3em] uppercase font-body font-semibold"
             >
               {active.type}
             </motion.span>

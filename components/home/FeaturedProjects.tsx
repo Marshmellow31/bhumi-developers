@@ -45,7 +45,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
         >
           {/* Image */}
           <motion.div
-            className="absolute inset-0 bg-contain bg-no-repeat bg-center"
+            className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url('${project.image}')`,
               filter: "grayscale(15%)",

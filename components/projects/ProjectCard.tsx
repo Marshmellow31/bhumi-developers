@@ -108,11 +108,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               Dark overlay wipes left (scaleX 1→0).
               Image simultaneously un-scales (1.15→1).
           ════════════════════════════════════════ */}
-          <div className="relative h-64 overflow-hidden bg-surface">
+          <div className="relative h-64 overflow-hidden bg-primary">
 
             {/* The actual property image — parallax depth offset */}
             <motion.div
-              className="absolute inset-0 bg-cover bg-center"
+              className="absolute -inset-4 bg-cover bg-center"
               style={{
                 backgroundImage: `url('${project.image}')`,
                 filter: "grayscale(20%)",
