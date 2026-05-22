@@ -12,6 +12,9 @@ const statusStyles: Record<string, string> = {
   Upcoming:  "text-amber-700 before:bg-amber-600",
 };
 
+/* Alternating beige tones — bg-background (#F0E6D0) and bg-surface (#E6D8BC) */
+const rowBg = ["bg-background", "bg-surface", "bg-background", "bg-surface"];
+
 interface FeaturedRowProps {
   project: Project;
   index: number;
@@ -29,7 +32,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center ${
+      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
         isReversed ? "lg:[&>div:first-child]:order-2" : ""
       }`}
     >
@@ -75,7 +78,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
       </div>
 
       {/* ── Text side ── */}
-      <div className="lg:col-span-5 flex flex-col gap-6">
+      <div className="lg:col-span-5 flex flex-col gap-4">
         {/* Number index */}
         <div className="flex items-baseline gap-4">
           <span
@@ -111,7 +114,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
         </p>
 
         {/* Meta grid: Location · Price */}
-        <div className="grid grid-cols-2 gap-6 mt-2 pt-6 border-t border-border max-w-md">
+        <div className="grid grid-cols-2 gap-6 mt-1 pt-5 border-t border-border max-w-md">
           <div>
             <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
               Location
@@ -135,7 +138,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
         </div>
 
         {/* CTA + counter */}
-        <div className="flex items-center justify-between mt-6 max-w-md">
+        <div className="flex items-center justify-between mt-4 max-w-md">
           <Link
             href={`/projects/${project.slug}`}
             data-cursor-label="EXPLORE"
@@ -167,63 +170,62 @@ export default function FeaturedProjects() {
   const featured = getFeaturedProjects().slice(0, 4);
 
   return (
-    <section className="relative py-24 md:py-40 bg-background overflow-hidden">
-      {/* Subtle ambient background accent */}
-      <div className="absolute top-0 left-0 w-[40%] h-[60%] bg-gradient-to-br from-primary/[0.02] via-transparent to-transparent pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
-        {/* ── Section header ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-24 md:mb-32"
-        >
-          <div className="flex flex-col gap-4 max-w-2xl">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-px bg-primary/20" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
-                Featured Portfolio
-              </span>
-            </div>
-            <h2
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              Landmark spaces, <br />
-              <span className="italic font-light text-muted">crafted with intent.</span>
-            </h2>
-          </div>
-
-          <Link
-            href="/projects"
-            data-cursor-label="ALL"
-            className="group flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase shrink-0"
+    <div className="relative overflow-hidden">
+      {/* ── Section header band ── */}
+      <div className="bg-background pt-14 md:pt-20 pb-10 md:pb-14 border-b border-border/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-8"
           >
-            <span className="relative">
-              View All Projects
-              <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
-            </span>
-            <ArrowUpRight
-              size={14}
-              className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-primary"
-            />
-          </Link>
-        </motion.div>
+            <div className="flex flex-col gap-4 max-w-2xl">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-px bg-primary/20" />
+                <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
+                  Featured Portfolio
+                </span>
+              </div>
+              <h2
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Landmark spaces, <br />
+                <span className="italic font-light text-muted">crafted with intent.</span>
+              </h2>
+            </div>
 
-        {/* ── Editorial rows ── */}
-        <div className="flex flex-col gap-32 md:gap-48">
-          {featured.map((project, i) => (
-            <FeaturedRow
-              key={project.id}
-              project={project}
-              index={i}
-              total={featured.length}
-            />
-          ))}
+            <Link
+              href="/projects"
+              data-cursor-label="ALL"
+              className="group flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase shrink-0"
+            >
+              <span className="relative">
+                View All Projects
+                <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
+              </span>
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-primary"
+              />
+            </Link>
+          </motion.div>
         </div>
       </div>
-    </section>
+
+      {/* ── Alternating project row bands ── */}
+      {featured.map((project, i) => (
+        <div
+          key={project.id}
+          className={`${rowBg[i]} border-b border-border/50 last:border-b-0`}
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-12 py-14 md:py-20">
+            <FeaturedRow project={project} index={i} total={featured.length} />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

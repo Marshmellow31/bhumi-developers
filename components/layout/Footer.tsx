@@ -7,7 +7,7 @@ import Logo from "@/components/ui/Logo";
 const socialLinks = [
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/bd_buildcon/",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -74,6 +74,8 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 border border-white/12 flex items-center justify-center text-white/35 hover:border-champagne hover:text-champagne transition-colors duration-300"
                 >

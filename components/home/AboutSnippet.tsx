@@ -1,21 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-
-const pillars = [
-  "Uncompromising focus on quality & engineering",
-  "Transparent transactions & absolute integrity",
-  "On-time delivery — a 35+ year track record",
-  "Nurturing customer relationships for a lifetime",
-];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutSnippet() {
   return (
-    <section className="relative py-24 md:py-40 bg-background overflow-hidden">
+    <section className="relative py-24 md:py-40 overflow-hidden" style={{ backgroundColor: "#F0E6D0" }}>
       {/* Soft ambient warmth */}
       <div className="absolute top-0 right-0 w-[45%] h-[55%] bg-gradient-to-bl from-amber-50/40 via-transparent to-transparent pointer-events-none" />
 
@@ -54,30 +45,30 @@ export default function AboutSnippet() {
                 whileHover={{ scale: 1.03, filter: "grayscale(0%)" }}
                 transition={{ duration: 1.4, ease }}
               />
-              {/* Subtle vignette */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent pointer-events-none" />
             </div>
 
-            {/* Establishment badge — top-left of portrait */}
+            {/* Establishment badge */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.4, ease }}
-              className="absolute -top-4 left-6 bg-background px-4 py-1.5"
+              className="absolute -top-4 left-6 px-4 py-1.5"
+              style={{ backgroundColor: "#F0E6D0" }}
             >
               <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-muted">
                 Est. 1991
               </span>
             </motion.div>
 
-            {/* Stat overlay — refined */}
+            {/* Stat overlay — dark on beige */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.5, ease }}
-              className="absolute -bottom-10 -right-6 lg:-right-12 bg-primary text-white px-8 py-7 z-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]"
+              className="absolute -bottom-10 -right-6 lg:-right-12 bg-primary px-8 py-7 z-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]"
             >
               <div className="flex items-baseline gap-1">
                 <p
@@ -118,7 +109,7 @@ export default function AboutSnippet() {
               <span className="italic font-light text-muted">Bhumi&rsquo;s promise.</span>
             </h2>
 
-            {/* Decorative quote mark + pull quote */}
+            {/* Pull quote */}
             <div className="relative pt-6">
               <span
                 className="absolute -top-2 -left-2 text-7xl lg:text-8xl text-champagne/25 leading-none select-none font-light"
@@ -161,51 +152,6 @@ export default function AboutSnippet() {
               </div>
             </div>
 
-            {/* Pillars */}
-            <div className="mt-4 pt-10 border-t border-border">
-              <p className="text-[9px] tracking-[0.35em] uppercase text-muted/70 font-body font-semibold mb-6">
-                Our Promise To You
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
-                {pillars.map((point, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 + i * 0.08, ease }}
-                    className="flex items-baseline gap-4 text-sm text-primary/90 font-body"
-                  >
-                    <span
-                      className="text-xs text-champagne font-semibold tracking-wider shrink-0"
-                      style={{ fontFamily: "var(--font-playfair)" }}
-                    >
-                      0{i + 1}
-                    </span>
-                    <span className="leading-relaxed">{point}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            {/* CTA */}
-            <div className="mt-2">
-              <Link
-                href="/about"
-                data-cursor-label="LEADERS"
-                className="group inline-flex items-center gap-3 text-primary text-xs font-semibold font-body tracking-[0.25em] uppercase"
-              >
-                <span className="relative">
-                  Meet Our Leaders
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-left scale-x-100 group-hover:scale-x-0 transition-transform duration-500" />
-                  <span className="absolute -bottom-1 left-0 right-0 h-px bg-primary origin-right scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
-                </span>
-                <ArrowUpRight
-                  size={14}
-                  className="transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </Link>
-            </div>
           </motion.div>
         </div>
       </div>
