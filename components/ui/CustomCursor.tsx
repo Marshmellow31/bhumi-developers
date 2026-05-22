@@ -105,31 +105,46 @@ export default function CustomCursor() {
   const ringAnimate = {
     width:           mode === "view" ? 80  : mode === "link" ? 14 : 36,
     height:          mode === "view" ? 80  : mode === "link" ? 14 : 36,
+    /* For "view" we use a real gold fill and exit the blend context */
     backgroundColor: mode === "view" ? "rgba(245,158,11,0.92)" : "transparent",
-    borderColor:     mode === "view" ? "rgba(245,158,11,0)"
-                   : mode === "link" ? "rgba(10,10,10,0.6)"
-                   : "rgba(10,10,10,0.35)",
+    borderColor:     mode === "view" ? "transparent" : "rgba(255,255,255,1)",
     opacity: visible ? 1 : 0,
   };
 
   return (
     <>
-      {/* ── 8px dot ── */}
+      {/* ── 8px dot — mix-blend-mode:difference → inverts against bg ── */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
+        style={{
+          x: dotX,
+          y: dotY,
+          translateX: "-50%",
+          translateY: "-50%",
+          mixBlendMode: "difference",
+        }}
       >
         <motion.div
-          className="rounded-full bg-primary"
+          className="rounded-full"
+          style={{ backgroundColor: "#ffffff" }}
           animate={dotAnimate}
           transition={{ duration: 0.15, ease: "easeOut" }}
         />
       </motion.div>
 
-      {/* ── 36px ring (lagged) ── */}
+      {/* ── 36px ring (spring-lagged) ── */}
+      {/* In default/link modes: mix-blend-mode:difference → ring auto-inverts.
+          In view mode: gold fill, no blend needed (sits above image cards). */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
-        style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+        style={{
+          x: ringX,
+          y: ringY,
+          translateX: "-50%",
+          translateY: "-50%",
+          /* Disable blend in view mode so gold colour is faithful */
+          mixBlendMode: mode === "view" ? "normal" : "difference",
+        }}
       >
         <motion.div
           className="rounded-full flex items-center justify-center border"
