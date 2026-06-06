@@ -17,6 +17,7 @@ import Logo from "@/components/ui/Logo";
 const NAV_LINKS = [
   { href: "/",        label: "Home"    },
   { href: "/projects", label: "Projects" },
+  { href: "/hotels",   label: "Hotels"   },
   { href: "/about",   label: "About"   },
   { href: "/contact", label: "Contact" },
 ];

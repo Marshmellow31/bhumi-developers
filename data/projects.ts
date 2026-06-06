@@ -1,5 +1,5 @@
 export type ProjectStatus = "Ongoing" | "Completed" | "Upcoming";
-export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa";
+export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa" | "Hotel";
 
 export interface FloorPlan {
   name: string;
@@ -269,7 +269,7 @@ export const projects: Project[] = [
     location: "Near Imagica, Mumbai",
     city: "Mumbai",
     status: "Upcoming",
-    type: "Villa",
+    type: "Hotel",
     units: 0,
     area: "Coming Soon",
     priceRange: { min: 0, max: 0 },
