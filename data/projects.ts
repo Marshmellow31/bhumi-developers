@@ -157,7 +157,7 @@ export const projects: Project[] = [
     status: "Completed",
     type: "Commercial",
     units: 95,
-    area: "500–5000 sq ft",
+    area: "6 Lakh sq ft",
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2024,
     image: "/images/city-center/city-center-1.webp",
@@ -188,7 +188,7 @@ export const projects: Project[] = [
     ],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
-      "Bhumi City Center is a landmark commercial and retail destination. Positioned at high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
+      "Bhumi City Center is a landmark commercial and retail destination. Occupying 6 lakh square feet of premium space and positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
     amenities: [
       "Escalators & Lift Services",
       "Central Air Conditioning",
