@@ -309,7 +309,7 @@ export const projects: Project[] = [
       "/images/gacl-colony/gacl-colony-main.jpg"
     ],
     highlights: ["108 Houses", "7.62 Acres of Land", "Full Infrastructure", "Outright Sale", "Est. 1995"],
-    description: "108 ready homes spread across 7.62 acres of fully developed land near the GACL campus in Bharuch. Established since 1995 with complete infrastructure in place — available on outright sale.",
+    description: "1995 marked a significant milestone for our company with the successful completion of GACL Colony, one of the largest residential projects in Bharuch at the time, with a project value of ₹4 crore. The development set a benchmark for quality residential construction and showcased our ability to execute large-scale projects.\n\nMore than three decades later, GACL Colony continues to stand strong and remains well known for its quality construction, reflecting our commitment to building communities that last for generations.",
     amenities: [
       "Full Road Infrastructure",
       "Water & Drainage Lines",

@@ -90,7 +90,11 @@ export default async function ProjectDetailPage({ params }: Props) {
               >
                 About This Project
               </h2>
-              <p className="text-muted leading-relaxed font-body">{project.description}</p>
+              <div className="text-muted leading-relaxed font-body space-y-4">
+                {project.description.split('\n').map((para, i) => (
+                  para.trim() && <p key={i}>{para}</p>
+                ))}
+              </div>
             </div>
 
             {/* Highlights */}
