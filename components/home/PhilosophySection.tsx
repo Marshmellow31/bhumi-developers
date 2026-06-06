@@ -18,9 +18,9 @@ const slides: SlideData[] = [
   {
     number: "01",
     category: "DESIGN",
-    titleHtml: "Meticulous <em>Planning</em>",
-    italicWord: "Planning",
-    regularText: "Meticulous",
+    titleHtml: "Prime Commercial <em>Destination</em>",
+    italicWord: "Destination",
+    regularText: "Prime Commercial",
     description: "Designing spaces with attention to layout optimization, natural ventilation, and architectural harmony.",
     image: "/images/central-square/Pacnhbatti 505 High 2nd_Cam01-a.webp",
     projectTag: "Central Square",
@@ -28,9 +28,9 @@ const slides: SlideData[] = [
   {
     number: "02",
     category: "CRAFT",
-    titleHtml: "Superior <em>Build Quality</em>",
-    italicWord: "Build Quality",
-    regularText: "Superior",
+    titleHtml: "Residential <em>High Rise</em>",
+    italicWord: "High Rise",
+    regularText: "Residential",
     description: "Crafting structures with top-tier materials and rigorous engineering standards to stand the test of time.",
     image: "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp",
     projectTag: "Solitaire Pallazzo",
@@ -38,21 +38,31 @@ const slides: SlideData[] = [
   {
     number: "03",
     category: "BUSINESS",
-    titleHtml: "Modern <em>Retail Hubs</em>",
-    italicWord: "Retail Hubs",
-    regularText: "Modern",
+    titleHtml: "Mixed Use <em>Development</em>",
+    italicWord: "Development",
+    regularText: "Mixed Use",
     description: "Positioning Grade-A corporate offices and retail outlets at high-footfall urban centers.",
     image: "/images/city-center/city-center-1.webp",
     projectTag: "City Center",
+  },
+  {
+    number: "04",
+    category: "COMMUNITY",
+    titleHtml: "Refined <em>Living</em>",
+    italicWord: "Living",
+    regularText: "Refined",
+    description: "A thoughtfully designed residential community offering spacious, well-appointed homes for modern families.",
+    image: "/images/pritam-residency/pritam-residency.webp",
+    projectTag: "Pritam Residency",
   },
 ];
 
 export default function PhilosophySection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Framer Motion hooks for desktop & mobile scroll animation
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start top", "end bottom"]
   });
 
   // Calculate dynamic scroll distance in pixels to align the last card perfectly
@@ -90,7 +100,7 @@ export default function PhilosophySection() {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24"
+            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24 w-max"
           >
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
