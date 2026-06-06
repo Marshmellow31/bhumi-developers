@@ -62,7 +62,7 @@ export default function PhilosophySection() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start top", "end bottom"]
+    offset: ["start start", "end end"]
   });
 
   // Calculate dynamic scroll distance in pixels to align the last card perfectly
@@ -100,7 +100,7 @@ export default function PhilosophySection() {
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24 w-max"
+            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24 pr-6 md:pr-16 lg:pr-24 w-max"
           >
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
