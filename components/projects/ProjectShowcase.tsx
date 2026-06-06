@@ -159,32 +159,7 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
 export default function ProjectShowcase() {
   return (
     <div className="relative overflow-hidden">
-      {/* ── Section header band ── */}
-      <div className="bg-beige pt-20 md:pt-24 pb-6 md:pb-8 border-b border-border/50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-4 max-w-2xl"
-          >
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-px bg-primary/20" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
-                Our Portfolio
-              </span>
-            </div>
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              Every project, <br />
-              <span className="italic font-light text-muted">a lasting mark.</span>
-            </h1>
-          </motion.div>
-        </div>
-      </div>
+
 
       {/* ── Alternating project row bands ── */}
       {projects.map((project, i) => (
@@ -193,7 +168,7 @@ export default function ProjectShowcase() {
           className={`${rowBg[i % rowBg.length]} border-b border-border/50 last:border-b-0`}
         >
           <div className={`max-w-7xl mx-auto px-6 lg:px-12 ${
-            i === 0 ? "pt-6 md:pt-8 pb-14 md:pb-20" : "py-14 md:py-20"
+            i === 0 ? "pt-24 md:pt-32 pb-14 md:pb-20" : "py-14 md:py-20"
           }`}>
             <ProjectRow project={project} index={i} total={projects.length} />
           </div>
