@@ -1,5 +1,5 @@
 export type ProjectStatus = "Ongoing" | "Completed" | "Upcoming";
-export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa" | "Hotel";
+export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa" | "Hotel" | "Township";
 
 export interface FloorPlan {
   name: string;
@@ -254,8 +254,8 @@ export const projects: Project[] = [
     gallery: [
       "/images/bkc2/bkc2-main.jpeg"
     ],
-    highlights: ["Modern Architecture", "Prime Location", "Upcoming Project"],
-    description: "An exciting new project coming to Mumbai. Modern design, great location — more details dropping soon.",
+    highlights: ["17+ Lakh Sq Ft", "Modern Architecture", "Prime Location", "Upcoming Project"],
+    description: "An exciting new project coming to Mumbai. Spanning over 17 lakh square feet, it will be a landmark development with modern design and a prime location.",
     amenities: [
       "State-of-the-art Design",
       "Ample Parking",
@@ -288,6 +288,62 @@ export const projects: Project[] = [
       "Swimming Pool",
       "Landscaped Gardens",
       "24/7 Security"
+    ],
+    featured: false,
+  },
+  {
+    id: "13",
+    slug: "gacl-colony",
+    name: "GACL Colony",
+    tagline: "108 Homes. 7.62 Acres. Since 1995.",
+    location: "GACL Township Area, Bharuch",
+    city: "Bharuch",
+    status: "Completed",
+    type: "Township",
+    units: 108,
+    area: "7.62 Acres",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 1995,
+    image: "/images/gacl-colony/gacl-colony-main.jpg",
+    gallery: [
+      "/images/gacl-colony/gacl-colony-main.jpg"
+    ],
+    highlights: ["108 Houses", "7.62 Acres of Land", "Full Infrastructure", "Outright Sale", "Est. 1995"],
+    description: "108 ready homes spread across 7.62 acres of fully developed land near the GACL campus in Bharuch. Established since 1995 with complete infrastructure in place — available on outright sale.",
+    amenities: [
+      "Full Road Infrastructure",
+      "Water & Drainage Lines",
+      "Street Lighting",
+      "Boundary Compound",
+      "Open Green Spaces",
+      "Outright Sale — Clear Title",
+    ],
+    featured: false,
+  },
+  {
+    id: "14",
+    slug: "eminence",
+    name: "Eminence",
+    tagline: "Elevated Living in the Heart of Vadodara",
+    location: "Vadodara",
+    city: "Vadodara",
+    status: "Upcoming",
+    type: "Residential",
+    units: 0,
+    area: "Coming Soon",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 2027,
+    image: "/images/eminence/eminence-main.jpg",
+    gallery: [
+      "/images/eminence/eminence-main.jpg"
+    ],
+    highlights: ["Premium Residences", "Vadodara Location", "Modern Architecture", "Upcoming Project"],
+    description: "A premium residential building coming to Vadodara. Thoughtfully designed for modern living — more details will be shared soon.",
+    amenities: [
+      "Modern Architecture",
+      "Ample Parking",
+      "24/7 Security",
+      "Landscaped Areas",
     ],
     featured: false,
   },

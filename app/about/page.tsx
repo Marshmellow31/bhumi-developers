@@ -306,10 +306,10 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* BD Buildcon LLP */}
             <div className="flex flex-col items-center gap-5 bg-surface border border-border p-8 hover:shadow-sm transition-shadow duration-300">
-              <div className="w-full h-36 flex items-center justify-center">
+              <div className="w-full h-36 flex items-center justify-center bg-white">
                 <img
                   src="/images/BD Buildcon.png"
                   alt="BD Buildcon LLP"
@@ -353,6 +353,56 @@ export default function AboutPage() {
                 </h3>
                 <p className="text-xs text-muted font-body mt-1">
                   Hotels &amp; Resort Developments
+                </p>
+              </div>
+            </div>
+
+            {/* Venus */}
+            <div className="flex flex-col items-center gap-5 bg-surface border border-border p-8 hover:shadow-sm transition-shadow duration-300">
+              <div className="w-full h-36 flex items-center justify-center bg-white">
+                <img
+                  src="/images/venus.png"
+                  alt="Venus"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold mb-1">
+                  Group Company
+                </p>
+                <h3
+                  className="text-lg font-bold text-primary"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  Venus
+                </h3>
+                <p className="text-xs text-muted font-body mt-1">
+                  &nbsp;
+                </p>
+              </div>
+            </div>
+
+            {/* Eminence */}
+            <div className="flex flex-col items-center gap-5 bg-surface border border-border p-8 hover:shadow-sm transition-shadow duration-300">
+              <div className="w-full h-36 flex items-center justify-center bg-white">
+                <img
+                  src="/images/eminence.png"
+                  alt="Eminence"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold mb-1">
+                  Residential Development
+                </p>
+                <h3
+                  className="text-lg font-bold text-primary"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  Eminence
+                </h3>
+                <p className="text-xs text-muted font-body mt-1">
+                  Premium Residences, Vadodara
                 </p>
               </div>
             </div>
