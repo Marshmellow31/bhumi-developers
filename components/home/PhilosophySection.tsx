@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -45,27 +45,6 @@ const slides: SlideData[] = [
     image: "/images/city-center/city-center-1.webp",
     projectTag: "City Center",
   },
-  {
-    number: "04",
-    category: "LEISURE",
-    titleHtml: "Rooftop <em>Recreation</em>",
-    italicWord: "Recreation",
-    regularText: "Rooftop",
-    description: "Curating premium active spaces such as terrace pickleball courts, multi-sport turfs, and rooftop cafes.",
-    image: "/images/solitaire-plaza/Tavra Tarrace Pickel Ball Area-v01.webp",
-    projectTag: "Solitaire Pallazzo",
-  },
-  {
-    number: "05",
-    category: "NATURE",
-    titleHtml: "Green <em>Landscapes</em>",
-    italicWord: "Landscapes",
-    regularText: "Green",
-    description: "Integrating lush manicured gardens, quiet gazebo sitouts, and open-air decks to keep you connected with nature.",
-    image: "/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp",
-    projectTag: "Solitaire Pallazzo",
-  },
-
 ];
 
 export default function PhilosophySection() {
@@ -142,6 +121,13 @@ export default function PhilosophySection() {
                 />
                 {/* Elegant dark overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity" />
+
+                {/* Top-left building name */}
+                <div className="absolute top-6 md:top-8 left-6 md:left-8 z-10">
+                  <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/60 font-body font-semibold">
+                    {slide.projectTag}
+                  </span>
+                </div>
 
                 {/* Bottom content: Title */}
                 <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 text-white">
