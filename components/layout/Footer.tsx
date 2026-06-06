@@ -162,22 +162,21 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-3">
             <span className="text-[9px] tracking-[0.35em] uppercase text-white/25 font-body font-semibold shrink-0 mr-2">Group Companies</span>
             {[
-              { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",          bg: true  },
-              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP", bg: false },
-              { src: "/images/venus.png",         alt: "Venus",                    bg: true  },
-              { src: "/images/eminence.png",      alt: "Eminence",                 bg: true  },
-            ].map(({ src, alt, bg }) => (
+              { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
+              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5 },
+              { src: "/images/venus.png",         alt: "Venus",                      scale: 1.2 },
+              { src: "/images/eminence.png",      alt: "Eminence",                   scale: 1.2 },
+            ].map(({ src, alt, scale, noBg }) => (
               <div
                 key={alt}
-                className={`h-14 w-14 flex items-center justify-center p-1.5 ${
-                  bg ? "bg-white/90" : "bg-white/5 border border-white/10"
-                }`}
+                className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 ${noBg ? "" : "bg-white/90"}`}
                 title={alt}
               >
                 <img
                   src={src}
                   alt={alt}
                   className="max-h-full max-w-full object-contain"
+                  style={{ transform: `scale(${scale})` }}
                 />
               </div>
             ))}
