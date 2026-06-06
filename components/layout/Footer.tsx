@@ -65,10 +65,6 @@ export default function Footer() {
             <div className="mb-6 -ml-2">
               <Logo className="h-16 w-auto" light={false} />
             </div>
-            <p className="text-white/45 text-sm leading-relaxed mb-6 font-body">
-              Building dreams, crafting legacies. Bharuch&rsquo;s most trusted real estate
-              developer since 1991.
-            </p>
             <div className="flex gap-3">
               {socialLinks.map(({ label, href, icon }) => (
                 <a
@@ -156,6 +152,35 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Group Companies Strip */}
+      <div className="border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-[9px] tracking-[0.35em] uppercase text-white/25 font-body font-semibold shrink-0 mr-2">Group Companies</span>
+            {[
+              { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",          bg: true  },
+              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP", bg: false },
+              { src: "/images/venus.png",         alt: "Venus",                    bg: true  },
+              { src: "/images/eminence.png",      alt: "Eminence",                 bg: true  },
+            ].map(({ src, alt, bg }) => (
+              <div
+                key={alt}
+                className={`h-9 w-24 flex items-center justify-center px-2 ${
+                  bg ? "bg-white/90" : "bg-white/5 border border-white/10"
+                }`}
+                title={alt}
+              >
+                <img
+                  src={src}
+                  alt={alt}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

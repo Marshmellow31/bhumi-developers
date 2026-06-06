@@ -47,6 +47,16 @@ const slides: SlideData[] = [
   },
   {
     number: "04",
+    category: "UPCOMING",
+    titleHtml: "Luxury <em>Retreat</em>",
+    italicWord: "Retreat",
+    regularText: "Luxury",
+    description: "An upcoming premium residential project offering luxurious villa living with world-class resort amenities.",
+    image: "/images/resort/resort-main.jpeg",
+    projectTag: "The Resort",
+  },
+  {
+    number: "05",
     category: "COMMUNITY",
     titleHtml: "Refined <em>Living</em>",
     italicWord: "Living",
@@ -56,7 +66,7 @@ const slides: SlideData[] = [
     projectTag: "Pritam Residency",
   },
   {
-    number: "05",
+    number: "06",
     category: "COMMERCIAL",
     titleHtml: "Upcoming <em>Landmark</em>",
     italicWord: "Landmark",
@@ -64,16 +74,6 @@ const slides: SlideData[] = [
     description: "An exciting new development set to redefine the city's commercial landscape.",
     image: "/images/bkc2/bkc2-main.jpeg",
     projectTag: "BKC 2",
-  },
-  {
-    number: "06",
-    category: "UPCOMING",
-    titleHtml: "Luxury <em>Retreat</em>",
-    italicWord: "Retreat",
-    regularText: "Luxury",
-    description: "An upcoming premium residential project offering luxurious villa living with world-class resort amenities.",
-    image: "/images/resort/resort-main.jpeg",
-    projectTag: "The Resort",
   },
 ];
 
