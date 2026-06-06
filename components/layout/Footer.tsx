@@ -169,7 +169,7 @@ export default function Footer() {
             ].map(({ src, alt, bg }) => (
               <div
                 key={alt}
-                className={`h-9 w-24 flex items-center justify-center px-2 ${
+                className={`h-14 w-14 flex items-center justify-center p-1.5 ${
                   bg ? "bg-white/90" : "bg-white/5 border border-white/10"
                 }`}
                 title={alt}
