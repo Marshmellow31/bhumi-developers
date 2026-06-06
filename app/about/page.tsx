@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 
 const team = [
   { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
-  { name: "Mihir Patel", role: "Managing Director", since: "2010" },
-  { name: "Priya Shah", role: "Head of Design", since: "2015" },
-  { name: "Kunal Desai", role: "Chief Sales Officer", since: "2018" },
+  { name: "Avik Majmudar", role: "Managing Director", since: "2010" },
 ];
 
 export default function AboutPage() {
@@ -266,7 +264,7 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <SectionHeading eyebrow="Leadership" title="The People Behind Bhumi" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-px bg-border">
             {team.map((member, i) => (
               <div key={i} className="bg-background p-8 text-center">
                 <div className="w-16 h-16 bg-primary mx-auto mb-5 flex items-center justify-center">
