@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MapPin, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight, Building2, Hotel } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 
@@ -95,13 +95,13 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
         </h3>
 
         <p
-          className="text-lg md:text-xl italic font-light text-muted leading-relaxed -mt-2"
+          className="text-2xl md:text-3xl italic font-semibold text-primary/80 leading-relaxed -mt-2"
           style={{ fontFamily: "var(--font-playfair)" }}
         >
           {project.tagline}
         </p>
 
-        <p className="text-sm text-muted leading-relaxed font-body line-clamp-3 max-w-md">
+        <p className="text-base md:text-lg text-primary font-body font-semibold leading-relaxed max-w-md">
           {project.description}
         </p>
 
@@ -160,7 +160,6 @@ export default function ProjectShowcase() {
   return (
     <div className="relative overflow-hidden">
 
-
       {/* ── Alternating project row bands ── */}
       {projects.map((project, i) => (
         <div
@@ -174,6 +173,51 @@ export default function ProjectShowcase() {
           </div>
         </div>
       ))}
+
+      {/* ── Other categories ── */}
+      <div className="bg-beige border-t border-border/50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-6 h-px bg-primary/20" />
+            <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
+              Also Explore
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link
+              href="/hotels"
+              className="group flex items-center justify-between bg-background border border-border px-6 py-5 hover:border-primary/30 hover:shadow-sm transition-all duration-300"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-beige border border-border flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-300">
+                  <Hotel size={18} className="text-primary/60 group-hover:text-primary transition-colors duration-300" />
+                </div>
+                <div>
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold mb-0.5">Category</p>
+                  <p className="text-base font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>Resorts &amp; Hotels</p>
+                </div>
+              </div>
+              <ArrowUpRight size={16} className="text-muted group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+            </Link>
+
+            <Link
+              href="/gacl-colony"
+              className="group flex items-center justify-between bg-background border border-border px-6 py-5 hover:border-primary/30 hover:shadow-sm transition-all duration-300"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-beige border border-border flex items-center justify-center shrink-0 group-hover:border-primary/30 transition-colors duration-300">
+                  <Building2 size={18} className="text-primary/60 group-hover:text-primary transition-colors duration-300" />
+                </div>
+                <div>
+                  <p className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold mb-0.5">Township</p>
+                  <p className="text-base font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>GACL Colony</p>
+                </div>
+              </div>
+              <ArrowUpRight size={16} className="text-muted group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

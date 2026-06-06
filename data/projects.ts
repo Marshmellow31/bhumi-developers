@@ -46,7 +46,7 @@ export const projects: Project[] = [
     slug: "central-square",
     name: "Central Square",
     tagline: "Bharuch's Premier Business Plaza",
-    location: "Link Road, Bharuch",
+    location: "Panchbatti, Bharuch",
     city: "Bharuch",
     status: "Ongoing",
     type: "Commercial",
@@ -64,10 +64,13 @@ export const projects: Project[] = [
       "/images/central-square/Pacnhbatti 505 Right_Cam.webp",
       "/images/central-square/Pacnhbatti 505 Shops Closeup_Cam01-a.webp"
     ],
-    highlights: ["State-of-the-art Design", "Vibrant Retail Plaza", "Ample Multi-level Parking", "Prime Location"],
+    highlights: ["Health & Wellness Hub", "Clinics & Diagnostic Centres", "Vibrant Retail Plaza", "Ample Multi-level Parking", "State-of-the-art Design", "Prime Location"],
     description:
-      "Bhumi Central Square redefines commercial excellence in Bharuch. Located in the highly active business hub, it integrates premium corporate offices and luxurious retail spaces with world-class facilities and unmatched architectural grandeur.",
+      "A modern commercial hub in Panchbatti, Bharuch, with a strong focus on health and wellness. Offices, clinics, diagnostic centres, and shops — all in one well-designed building.",
     amenities: [
+      "Medical Clinics & OPDs",
+      "Diagnostic & Pathology Labs",
+      "Pharmacy Retail Spaces",
       "24/7 Security & CCTV",
       "High-speed Elevators",
       "Executive Conference Room",
@@ -87,7 +90,7 @@ export const projects: Project[] = [
     slug: "solitaire-pallazzo",
     name: "Solitaire Pallazzo",
     tagline: "Ultra-Luxury Palatial Residencies",
-    location: "Zadeshwar Road, Bharuch",
+    location: "Tavra, Bharuch",
     city: "Bharuch",
     status: "Upcoming",
     type: "Residential",
@@ -119,7 +122,7 @@ export const projects: Project[] = [
     ],
     highlights: ["Exclusive Single-Apartment-Per-Floor", "Infinity Terrace Pool", "Smart-Home Automation", "Private Elevators"],
     description:
-      "Drawing inspiration from the finest architectural designs, Solitaire Pallazzo is the crown jewel of luxury living in Bharuch. An exclusive collection of ultra-luxurious, expansive spaces, private sky lawns, and high-end finishes built for the elite few.",
+      "Spacious, beautifully designed homes in Tavra, Bharuch. Each flat gets its own floor — with private terraces, smart features, and top-quality finishes.",
     amenities: [
       "Infinity Swimming Pool",
       "World-class Gym & Spa",
@@ -188,7 +191,7 @@ export const projects: Project[] = [
     ],
     highlights: ["High-street Retail Stores", "Premium Multiplex & Dining", "Grade-A Office Spaces", "Centrally Located"],
     description:
-      "Bhumi City Center is a landmark commercial and retail destination. Occupying 6 lakh square feet of premium space and positioned at a high-footfall location, it boasts modern, flexible retail layouts and Grade-A office facilities, making it the perfect hub for both national brands and scaling enterprises.",
+      "One of Bharuch's biggest commercial destinations. Spread across 6 lakh sq ft, it has shops, offices, food courts, and parking — all under one roof.",
     amenities: [
       "Escalators & Lift Services",
       "Central Air Conditioning",
@@ -221,7 +224,7 @@ export const projects: Project[] = [
     ],
     highlights: ["Spacious Residences", "Modern Architecture", "Prime Location", "24/7 Security"],
     description:
-      "Pritam Residency is a thoughtfully designed residential community in the heart of Bharuch, offering spacious, well-appointed homes for modern families. Every detail has been crafted to provide a comfortable, secure, and community-oriented living experience.",
+      "A warm, well-planned residential society in Bharuch. Spacious homes, a friendly community, and all the basic comforts you need.",
     amenities: [
       "Swimming Pool",
       "Gymnasium",
@@ -252,7 +255,7 @@ export const projects: Project[] = [
       "/images/bkc2/bkc2-main.jpeg"
     ],
     highlights: ["Modern Architecture", "Prime Location", "Upcoming Project"],
-    description: "BKC 2 is an exciting upcoming project set to become a new landmark. Designed with modern architecture and premium facilities, more details will be announced soon.",
+    description: "An exciting new project coming to Mumbai. Modern design, great location — more details dropping soon.",
     amenities: [
       "State-of-the-art Design",
       "Ample Parking",
@@ -279,7 +282,7 @@ export const projects: Project[] = [
       "/images/resort/resort-main.jpeg"
     ],
     highlights: ["Luxury Villas", "Resort Amenities", "Upcoming Project"],
-    description: "The Resort is an upcoming premium residential project offering luxurious villa living with world-class resort amenities.",
+    description: "A peaceful resort getaway near Mumbai. Lush greenery, private villas, and a relaxed lifestyle — coming soon.",
     amenities: [
       "Clubhouse",
       "Swimming Pool",

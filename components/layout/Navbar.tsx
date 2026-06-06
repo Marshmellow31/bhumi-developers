@@ -15,11 +15,10 @@ import Logo from "@/components/ui/Logo";
 
 /* ── Nav links ── */
 const NAV_LINKS = [
-  { href: "/",        label: "Home"    },
+  { href: "/",         label: "Home"     },
   { href: "/projects", label: "Projects" },
-  { href: "/hotels",   label: "Hotels"   },
-  { href: "/about",   label: "About"   },
-  { href: "/contact", label: "Contact" },
+  { href: "/about",    label: "About"    },
+  { href: "/contact",  label: "Contact"  },
 ];
 
 /* ── Mobile menu stagger variants ── */
