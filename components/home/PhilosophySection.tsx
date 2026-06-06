@@ -52,7 +52,7 @@ const slides: SlideData[] = [
     italicWord: "Living",
     regularText: "Refined",
     description: "A thoughtfully designed residential community offering spacious, well-appointed homes for modern families.",
-    image: "/images/pritam-residency/pritam-residency.webp",
+    image: "/images/pritam-residency/pritam-residency-new.png",
     projectTag: "Pritam Residency",
   },
   {

@@ -217,9 +217,9 @@ export const projects: Project[] = [
     area: "1050–1800 sq ft",
     priceRange: { min: 3500000, max: 7200000 },
     completionYear: 2023,
-    image: "/images/pritam-residency/pritam-residency.webp",
+    image: "/images/pritam-residency/pritam-residency-new.png",
     gallery: [
-      "/images/pritam-residency/pritam-residency.webp",
+      "/images/pritam-residency/pritam-residency-new.png",
       "/images/pritam-residency/pritam-residency-2.webp"
     ],
     highlights: ["Spacious Residences", "Modern Architecture", "Prime Location", "24/7 Security"],

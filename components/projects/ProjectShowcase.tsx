@@ -76,12 +76,6 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
       {/* ── Text side ── */}
       <div className="lg:col-span-5 flex flex-col gap-4">
         <div className="flex items-baseline gap-4">
-          <span
-            className="text-5xl lg:text-6xl font-light text-primary/15 leading-none"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            {formattedNumber}
-          </span>
           <span className="text-[10px] tracking-[0.3em] uppercase text-muted font-body font-semibold">
             {project.type}
           </span>
