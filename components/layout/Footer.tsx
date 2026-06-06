@@ -163,7 +163,7 @@ export default function Footer() {
             <span className="text-[9px] tracking-[0.35em] uppercase text-white/25 font-body font-semibold shrink-0 mr-2">Group Companies</span>
             {[
               { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
-              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5 },
+              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
               { src: "/images/venus.png",         alt: "Venus",                      scale: 1.2 },
               { src: "/images/eminence.png",      alt: "Eminence",                   scale: 1.2 },
             ].map(({ src, alt, scale, noBg }) => (
