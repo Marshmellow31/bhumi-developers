@@ -158,28 +158,30 @@ export default function Footer() {
 
       {/* Group Companies Strip */}
       <div className="border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-[9px] tracking-[0.35em] uppercase text-white/25 font-body font-semibold shrink-0 mr-2">Group Companies</span>
-            {[
-              { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
-              { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
-              { src: "/images/venus.png",         alt: "Venus",                      scale: 1.2 },
-              { src: "/images/eminence.png",      alt: "Eminence",                   scale: 1.2 },
-            ].map(({ src, alt, scale, noBg }) => (
-              <div
-                key={alt}
-                className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 ${noBg ? "" : "bg-white/90"}`}
-                title={alt}
-              >
-                <img
-                  src={src}
-                  alt={alt}
-                  className="max-h-full max-w-full object-contain"
-                  style={{ transform: `scale(${scale})` }}
-                />
-              </div>
-            ))}
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+          <div className="flex flex-col items-center gap-6">
+            <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+              {[
+                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
+                { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
+                { src: "/images/venus.png",         alt: "Venus",                      scale: 1.2 },
+                { src: "/images/eminence.png",      alt: "Eminence",                   scale: 1.2 },
+              ].map(({ src, alt, scale, noBg }) => (
+                <div
+                  key={alt}
+                  className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 ${noBg ? "" : "bg-white/90"}`}
+                  title={alt}
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="max-h-full max-w-full object-contain"
+                    style={{ transform: `scale(${scale})` }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
