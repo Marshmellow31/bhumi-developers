@@ -57,20 +57,10 @@ const slides: SlideData[] = [
   },
   {
     number: "05",
-    category: "COMMUNITY",
-    titleHtml: "Refined <em>Living</em>",
-    italicWord: "Living",
-    regularText: "Refined",
-    description: "A thoughtfully designed residential community offering spacious, well-appointed homes for modern families.",
-    image: "/images/pritam-residency/pritam-residency-new.png",
-    projectTag: "Pritam Residency",
-  },
-  {
-    number: "06",
     category: "COMMERCIAL",
-    titleHtml: "Upcoming <em>Landmark</em>",
-    italicWord: "Landmark",
-    regularText: "Upcoming",
+    titleHtml: "IT <em>Hubs</em>",
+    italicWord: "Hubs",
+    regularText: "IT",
     description: "An exciting new development set to redefine the city's commercial landscape.",
     image: "/images/bkc2/bkc2-main.jpeg",
     projectTag: "BKC 2",
@@ -114,7 +104,7 @@ export default function PhilosophySection() {
   const x = useTransform(xRaw, (v) => -v * scrollRange);
 
   return (
-    <div ref={containerRef} className="relative h-[600vh] bg-[#111111] z-10">
+    <div ref={containerRef} className="relative h-[500vh] bg-[#111111] z-10">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div ref={rightColRef} className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
           <motion.div
