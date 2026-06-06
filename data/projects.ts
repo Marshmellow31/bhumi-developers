@@ -261,14 +261,41 @@ export const projects: Project[] = [
     ],
     featured: false,
   },
+  {
+    id: "12",
+    slug: "the-resort",
+    name: "The Resort",
+    tagline: "Your Private Paradise",
+    location: "Near Imagica, Mumbai",
+    city: "Mumbai",
+    status: "Upcoming",
+    type: "Villa",
+    units: 0,
+    area: "Coming Soon",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 2028,
+    image: "/images/resort/resort-main.jpeg",
+    gallery: [
+      "/images/resort/resort-main.jpeg"
+    ],
+    highlights: ["Luxury Villas", "Resort Amenities", "Upcoming Project"],
+    description: "The Resort is an upcoming premium residential project offering luxurious villa living with world-class resort amenities.",
+    amenities: [
+      "Clubhouse",
+      "Swimming Pool",
+      "Landscaped Gardens",
+      "24/7 Security"
+    ],
+    featured: false,
+  },
 ];
 
-// Featured projects for the homepage — primary slugs shown first, capped at 5.
+// Featured projects for the homepage — primary slugs shown first, capped at 6.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency", "bkc2"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency", "bkc2", "the-resort"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
-    .slice(0, 5);
+    .slice(0, 6);
 };
 
 export const getProjectBySlug = (slug: string) => projects.find((p) => p.slug === slug);

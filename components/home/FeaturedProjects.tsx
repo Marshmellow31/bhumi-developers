@@ -13,7 +13,7 @@ const statusStyles: Record<string, string> = {
 };
 
 /* Alternating beige tones */
-const rowBg = ["bg-background", "bg-surface", "bg-background", "bg-surface", "bg-background"];
+const rowBg = ["bg-background", "bg-surface", "bg-background", "bg-surface", "bg-background", "bg-surface"];
 
 interface FeaturedRowProps {
   project: Project;
@@ -157,7 +157,7 @@ function FeaturedRow({ project, index, total }: FeaturedRowProps) {
 }
 
 export default function FeaturedProjects() {
-  const featured = getFeaturedProjects().slice(0, 5);
+  const featured = getFeaturedProjects().slice(0, 6);
 
   return (
     <div className="relative overflow-hidden">

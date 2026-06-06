@@ -104,6 +104,23 @@ const segments: Segment[] = [
     projectSlug: "bkc2",
     accentColor: "rgba(201,169,110,0.85)",
   },
+  {
+    number: "06",
+    category: "UPCOMING",
+    eyebrow: "Upcoming Luxury Retreat",
+    headline: ["Luxurious Retreat,", "World-Class Living"],
+    description:
+      "An upcoming premium residential project offering luxurious villa living with world-class resort amenities for a life of serenity.",
+    highlights: [
+      "Premium villa living",
+      "Resort-style amenities",
+      "Exclusive green spaces",
+    ],
+    image: "/images/resort/resort-main.jpeg",
+    projectRef: "The Resort · Mumbai",
+    projectSlug: "the-resort",
+    accentColor: "rgba(201,169,110,0.85)",
+  },
 ];
 
 const STATS = [
@@ -144,7 +161,7 @@ export default function PhilosophySection() {
   const x = useTransform(xRaw, (v) => -v * scrollRange);
 
   return (
-    <div ref={containerRef} className="relative h-[500vh] z-10" style={{ backgroundColor: "#111111" }}>
+    <div ref={containerRef} className="relative h-[600vh] z-10" style={{ backgroundColor: "#111111" }}>
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div ref={rightColRef} className="w-full overflow-hidden h-[80vh] flex items-center relative">
           <motion.div
