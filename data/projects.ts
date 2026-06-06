@@ -304,9 +304,9 @@ export const projects: Project[] = [
     area: "7.62 Acres",
     priceRange: { min: 0, max: 0 },
     completionYear: 1995,
-    image: "/images/gacl-colony/gacl-colony-main.jpg",
+    image: "/images/gacl-colony/1.webp",
     gallery: [
-      "/images/gacl-colony/gacl-colony-main.jpg"
+      "/images/gacl-colony/1.webp"
     ],
     highlights: ["108 Houses", "7.62 Acres of Land", "Full Infrastructure", "Outright Sale", "Est. 1995"],
     description: "1995 marked a significant milestone for our company with the successful completion of GACL Colony, one of the largest residential projects in Bharuch at the time, with a project value of ₹4 crore. The development set a benchmark for quality residential construction and showcased our ability to execute large-scale projects.\n\nMore than three decades later, GACL Colony continues to stand strong and remains well known for its quality construction, reflecting our commitment to building communities that last for generations.",
