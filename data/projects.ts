@@ -239,8 +239,8 @@ export const projects: Project[] = [
     slug: "bkc2",
     name: "BKC 2",
     tagline: "Upcoming Landmark Building",
-    location: "Bharuch",
-    city: "Bharuch",
+    location: "Mumbai",
+    city: "Mumbai",
     status: "Upcoming",
     type: "Commercial",
     units: 0,
@@ -263,12 +263,12 @@ export const projects: Project[] = [
   },
 ];
 
-// Featured projects for the homepage — primary slugs shown first, capped at 4.
+// Featured projects for the homepage — primary slugs shown first, capped at 5.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency", "bkc2"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
-    .slice(0, 4);
+    .slice(0, 5);
 };
 
 export const getProjectBySlug = (slug: string) => projects.find((p) => p.slug === slug);
