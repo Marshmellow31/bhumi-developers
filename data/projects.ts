@@ -1,4 +1,4 @@
-﻿export type ProjectStatus = "Ongoing" | "Completed" | "Upcoming";
+export type ProjectStatus = "Ongoing" | "Completed" | "Upcoming";
 export type ProjectType = "Residential" | "Commercial" | "Mixed Use" | "Villa";
 
 export interface FloorPlan {
@@ -233,6 +233,33 @@ export const projects: Project[] = [
       "Community Hall",
     ],
     featured: true,
+  },
+  {
+    id: "11",
+    slug: "bkc2",
+    name: "BKC 2",
+    tagline: "Upcoming Landmark Building",
+    location: "Bharuch",
+    city: "Bharuch",
+    status: "Upcoming",
+    type: "Commercial",
+    units: 0,
+    area: "Coming Soon",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 2028,
+    image: "/images/bkc2/bkc2-main.jpeg",
+    gallery: [
+      "/images/bkc2/bkc2-main.jpeg"
+    ],
+    highlights: ["Modern Architecture", "Prime Location", "Upcoming Project"],
+    description: "BKC 2 is an exciting upcoming project set to become a new landmark. Designed with modern architecture and premium facilities, more details will be announced soon.",
+    amenities: [
+      "State-of-the-art Design",
+      "Ample Parking",
+      "24/7 Security",
+      "Modern Infrastructure"
+    ],
+    featured: false,
   },
 ];
 

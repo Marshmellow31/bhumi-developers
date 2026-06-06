@@ -55,6 +55,16 @@ const slides: SlideData[] = [
     image: "/images/pritam-residency/pritam-residency.webp",
     projectTag: "Pritam Residency",
   },
+  {
+    number: "05",
+    category: "COMMERCIAL",
+    titleHtml: "Upcoming <em>Landmark</em>",
+    italicWord: "Landmark",
+    regularText: "Upcoming",
+    description: "An exciting new development set to redefine the city's commercial landscape.",
+    image: "/images/bkc2/bkc2-main.jpeg",
+    projectTag: "BKC 2",
+  },
 ];
 
 export default function PhilosophySection() {
@@ -94,7 +104,7 @@ export default function PhilosophySection() {
   const x = useTransform(xRaw, (v) => -v * scrollRange);
 
   return (
-    <div ref={containerRef} className="relative h-[400vh] bg-[#111111] z-10">
+    <div ref={containerRef} className="relative h-[500vh] bg-[#111111] z-10">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div ref={rightColRef} className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
           <motion.div
@@ -129,8 +139,9 @@ export default function PhilosophySection() {
                     backgroundImage: `url('${slide.image}')`,
                   }}
                 />
-                {/* Elegant dark overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity" />
+                {/* Elegant dark overlays for contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/70 to-transparent" />
 
                 {/* Top-left building name */}
                 <div className="absolute top-6 md:top-8 left-6 md:left-8 z-10">
