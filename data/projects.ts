@@ -96,15 +96,10 @@ export const projects: Project[] = [
     type: "Residential",
     units: 48,
     area: "2400–4500 sq ft",
-    priceRange: { min: 8500000, max: 24000000 },
+    priceRange: { min: 6000000, max: 24000000 },
     completionYear: 2027,
-    image: "/images/solitaire-plaza/47.webp",
+    image: "/images/solitaire-plaza/Tavra Corner Day-a.webp",
     gallery: [
-      "/images/solitaire-plaza/47.webp",
-      "/images/solitaire-plaza/53.webp",
-      "/images/solitaire-plaza/54.webp",
-      "/images/solitaire-plaza/55.webp",
-      "/images/solitaire-plaza/72.webp",
       "/images/solitaire-plaza/Tavra Corner Day-a.webp",
       "/images/solitaire-plaza/Tavra Foyer Entry_Cam-a.webp",
       "/images/solitaire-plaza/Tavra Gate Night Cam-a.webp",
@@ -205,6 +200,33 @@ export const projects: Project[] = [
     video: "/videos/city-center/use.mp4",
   },
   {
+    id: "12",
+    slug: "the-resort",
+    name: "The Resort",
+    tagline: "Your Private Paradise",
+    location: "Near Imagica, Mumbai",
+    city: "Mumbai",
+    status: "Upcoming",
+    type: "Hotel",
+    units: 0,
+    area: "Coming Soon",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 2028,
+    image: "/images/resort/resort-main.jpeg",
+    gallery: [
+      "/images/resort/resort-main.jpeg"
+    ],
+    highlights: ["Luxury Villas", "Resort Amenities", "Upcoming Project"],
+    description: "A peaceful resort getaway near Mumbai. Lush greenery, private villas, and a relaxed lifestyle — coming soon.",
+    amenities: [
+      "Clubhouse",
+      "Swimming Pool",
+      "Landscaped Gardens",
+      "24/7 Security"
+    ],
+    featured: false,
+  },
+  {
     id: "10",
     slug: "pritam-residency",
     name: "Pritam Residency",
@@ -264,38 +286,11 @@ export const projects: Project[] = [
     ],
     featured: false,
   },
-  {
-    id: "12",
-    slug: "the-resort",
-    name: "The Resort",
-    tagline: "Your Private Paradise",
-    location: "Near Imagica, Mumbai",
-    city: "Mumbai",
-    status: "Upcoming",
-    type: "Hotel",
-    units: 0,
-    area: "Coming Soon",
-    priceRange: { min: 0, max: 0 },
-    completionYear: 2028,
-    image: "/images/resort/resort-main.jpeg",
-    gallery: [
-      "/images/resort/resort-main.jpeg"
-    ],
-    highlights: ["Luxury Villas", "Resort Amenities", "Upcoming Project"],
-    description: "A peaceful resort getaway near Mumbai. Lush greenery, private villas, and a relaxed lifestyle — coming soon.",
-    amenities: [
-      "Clubhouse",
-      "Swimming Pool",
-      "Landscaped Gardens",
-      "24/7 Security"
-    ],
-    featured: false,
-  },
 ];
 
 // Featured projects for the homepage — primary slugs shown first, capped at 6.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency", "bkc2", "the-resort"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "the-resort", "pritam-residency", "bkc2"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
     .slice(0, 6);

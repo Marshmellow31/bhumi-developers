@@ -185,20 +185,13 @@ export default async function ProjectDetailPage({ params }: Props) {
             {/* Price Card */}
             <div className="bg-primary text-white p-8">
               <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
-                Price Range
+                Starts From
               </p>
               <p
                 className="text-3xl font-bold text-white mb-1"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {formatPrice(project.priceRange.min)}
-              </p>
-              <p className="text-white/50 text-sm font-body mb-1">to</p>
-              <p
-                className="text-2xl font-bold text-white"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                {formatPrice(project.priceRange.max)}
               </p>
               <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
 
