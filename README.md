@@ -1,8 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bhumi Developers - Corporate Website
 
-## Getting Started
+A modern, high-performance corporate website and project portfolio for **Bhumi Developers**, a leading real estate firm developing residential, commercial, and township projects across Bharuch, Mumbai, and Vadodara.
 
-First, run the development server:
+This application is built using the latest web technologies to provide an immersive, premium user experience with 3D elements, smooth scrolling, and responsive design.
+
+## ✨ Key Features
+
+- **Project Portfolio:** Detailed showcasing of ongoing, completed, and upcoming real estate projects (e.g., Central Square, Solitaire Pallazzo, City Center).
+- **Immersive 3D Experiences:** Interactive 3D graphics and canvas elements powered by React Three Fiber.
+- **Smooth Scrolling:** Integrated Lenis for seamless and fluid scrolling experiences.
+- **Premium Aesthetics:** Modern UI/UX built with Tailwind CSS v4 and Framer Motion for elegant animations.
+- **Performance Optimized:** Utilizing Next.js App Router, optimized images, and fonts for maximum speed and SEO.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **3D Rendering:** [React Three Fiber](https://r3f.docs.pmnd.rs/) & [Drei](https://github.com/pmndrs/drei)
+- **Scrolling:** [Lenis](https://lenis.studiofreight.com/)
+- **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+
+## 📂 Project Structure
+
+- `app/`: Next.js App Router structure, containing pages, layouts, and global CSS.
+- `components/`: Modular React components, including UI elements, home sections, and 3D canvases.
+- `data/`: Centralized static data points (e.g., `projects.ts` containing all real estate project details).
+- `lib/`: Utility functions and helper classes.
+- `public/`: Static assets including images, videos, 3D models, and PDF brochures.
+
+## 🚀 Getting Started
+
+First, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -10,26 +50,11 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## 🚀 Deploy on Vercel
+## 🌐 Deploy on Vercel
 
 This project is fully optimized and configured for seamless deployment on [Vercel](https://vercel.com). Follow the steps below to deploy your app:
 
@@ -55,7 +80,4 @@ Before clicking **Deploy**, expand the **Environment Variables** section in the 
 | `NEXT_PUBLIC_CONTACT_EMAIL` | `contact@bhumidevelopers.com` | The default email address used for contact and enquiry actions. |
 
 ### 4. Deploy!
-Click **Deploy**. Vercel will build the application using Node.js 22, compile all TypeScript, generate static pages, and serve your app globally via their high-performance edge CDN!
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more advanced details.
-
+Click **Deploy**. Vercel will build the application, compile all TypeScript, generate static pages, and serve your app globally via their high-performance edge CDN!
