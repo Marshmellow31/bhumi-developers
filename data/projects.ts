@@ -113,7 +113,9 @@ export const projects: Project[] = [
       "/images/solitaire-plaza/Tavra Tarrace Cafe-v01.webp",
       "/images/solitaire-plaza/Tavra Tarrace Pickel Ball Area-v01.webp",
       "/images/solitaire-plaza/Tavra Tarrace Sitting Cam-a.webp",
-      "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp"
+      "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp",
+      "/images/solitaire-plaza/Screenshot 2026-06-08 190622.png",
+      "/images/solitaire-plaza/Screenshot 2026-06-08 190936.png"
     ],
     highlights: ["Exclusive Single-Apartment-Per-Floor", "Smart-Home Automation", "Private Elevators"],
     description:
