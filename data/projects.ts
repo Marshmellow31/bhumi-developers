@@ -115,12 +115,11 @@ export const projects: Project[] = [
       "/images/solitaire-plaza/Tavra Tarrace Sitting Cam-a.webp",
       "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp"
     ],
-    highlights: ["Exclusive Single-Apartment-Per-Floor", "Infinity Terrace Pool", "Smart-Home Automation", "Private Elevators"],
+    highlights: ["Exclusive Single-Apartment-Per-Floor", "Smart-Home Automation", "Private Elevators"],
     description:
       "Spacious, beautifully designed homes in Tavra, Bharuch. Each flat gets its own floor — with private terraces, smart features, and top-quality finishes.",
     amenities: [
-      "Infinity Swimming Pool",
-      "World-class Gym & Spa",
+      "Gym",
       "Private Sky Deck",
       "Concierge Service",
       "Multi-tier Security System",
