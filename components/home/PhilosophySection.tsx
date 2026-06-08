@@ -48,8 +48,8 @@ const slides: SlideData[] = [
   {
     number: "04",
     category: "UPCOMING",
-    titleHtml: "Luxury <em>Retreat</em>",
-    italicWord: "Retreat",
+    titleHtml: "Luxury <em>Resort</em>",
+    italicWord: "Resort",
     regularText: "Luxury",
     description: "An upcoming premium residential project offering luxurious villa living with world-class resort amenities.",
     image: "/images/resort/resort-main.jpeg",

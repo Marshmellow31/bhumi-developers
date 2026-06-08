@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 
@@ -128,11 +128,17 @@ export default function AboutSnippet() {
 
             {/* Supporting body */}
             <div className="flex flex-col gap-4 text-sm md:text-[15px] text-muted leading-relaxed font-body max-w-2xl">
-              <p>
-                With over 35 years in construction and engineering — building industries across India alongside some of the country&rsquo;s top MNCs — I have had the privilege of leaving a mark on this nation&rsquo;s industrial landscape, one structure at a time.
+              <p className="font-semibold text-primary">
+                Professionally Driven. Value Focused.
               </p>
               <p>
-                Bhumi Developers is a promise to bring world-class construction quality, complete transparency, and projects that truly reflect Bharuch&rsquo;s growing potential — creating spaces where families can live with pride and businesses can grow with confidence.
+                At Bhumi Developers, we believe that real estate is more than construction—it is about creating lasting value. Through exceptional <strong>after-sales service</strong>, <strong>100% utility-driven spaces</strong>, and a <strong>system-driven building management approach</strong>, we ensure that every project continues to deliver value long after possession.
+              </p>
+              <p>
+                Our focus is on developing <strong>landmark projects</strong> that offer strong infrastructure, modern amenities, and sustainable growth opportunities. Every development is designed to maximize functionality, enhance lifestyles, and contribute to long-term <strong>value addition</strong> for our customers and investors.
+              </p>
+              <p>
+                The motive behind our projects is to create fully infrastructured communities that provide confidence, convenience, and genuine value for investment. Guided by transparency, quality, and customer-centric policies, we strive to build spaces that stand as symbols of trust, progress, and prosperity for generations.
               </p>
             </div>
 
