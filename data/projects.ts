@@ -115,8 +115,8 @@ export const projects: Project[] = [
       "/images/solitaire-plaza/Tavra Tarrace Pickel Ball Area-v01.webp",
       "/images/solitaire-plaza/Tavra Tarrace Sitting Cam-a.webp",
       "/images/solitaire-plaza/Tavra Top 1st Cam-v01.webp",
-      "/images/solitaire-plaza/Screenshot 2026-06-08 190622.png",
-      "/images/solitaire-plaza/Screenshot 2026-06-08 190936.png"
+      "/images/solitaire-plaza/Screenshot 2026-06-08 190622.webp",
+      "/images/solitaire-plaza/Screenshot 2026-06-08 190936.webp"
     ],
     highlights: ["Exclusive Single-Apartment-Per-Floor", "Smart-Home Automation", "Private Elevators"],
     description:
@@ -241,9 +241,9 @@ export const projects: Project[] = [
     area: "1050–1800 sq ft",
     priceRange: { min: 3500000, max: 7200000 },
     completionYear: 2023,
-    image: "/images/pritam-residency/pritam-residency-new.png",
+    image: "/images/pritam-residency/pritam-residency-new.webp",
     gallery: [
-      "/images/pritam-residency/pritam-residency-new.png",
+      "/images/pritam-residency/pritam-residency-new.webp",
       "/images/pritam-residency/pritam-residency-2.webp"
     ],
     highlights: ["Spacious Residences", "Modern Architecture", "Prime Location", "24/7 Security"],
@@ -356,19 +356,19 @@ export const projects: Project[] = [
     area: "Coming Soon",
     priceRange: { min: 0, max: 0 },
     completionYear: 2027,
-    image: "/images/eminence/Eminence Bliss_1 - Photo.jpg.jpeg",
+    image: "/images/eminence/Eminence Bliss_1 - Photo.webp",
     gallery: [
-      "/images/eminence/Eminence Bliss_1 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_2 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_3 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_4 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_5 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_6 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_7 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_8 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_9 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_10 - Photo.jpg.jpeg",
-      "/images/eminence/Eminence Bliss_11 - Photo.jpg.jpeg"
+      "/images/eminence/Eminence Bliss_1 - Photo.webp",
+      "/images/eminence/Eminence Bliss_2 - Photo.webp",
+      "/images/eminence/Eminence Bliss_3 - Photo.webp",
+      "/images/eminence/Eminence Bliss_4 - Photo.webp",
+      "/images/eminence/Eminence Bliss_5 - Photo.webp",
+      "/images/eminence/Eminence Bliss_6 - Photo.webp",
+      "/images/eminence/Eminence Bliss_7 - Photo.webp",
+      "/images/eminence/Eminence Bliss_8 - Photo.webp",
+      "/images/eminence/Eminence Bliss_9 - Photo.webp",
+      "/images/eminence/Eminence Bliss_10 - Photo.webp",
+      "/images/eminence/Eminence Bliss_11 - Photo.webp"
     ],
     highlights: ["Premium Residences", "Vadodara Location", "Modern Architecture", "Upcoming Project"],
     description: "A premium residential building coming to Vadodara. Thoughtfully designed for modern living — more details will be shared soon.",

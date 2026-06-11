@@ -17,9 +17,8 @@ export default function AboutSnippet() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease }}
-          className="flex items-center gap-3 mb-12 md:mb-20"
+          className="flex items-center mb-12 md:mb-20"
         >
-          <span className="w-8 h-px bg-primary/40" />
           <span className="text-[10px] tracking-[0.4em] uppercase text-muted font-body font-semibold">
             A Word From The Founder
           </span>
@@ -105,8 +104,8 @@ export default function AboutSnippet() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              The man behind <br />
-              <span className="italic font-light text-muted">Bhumi&rsquo;s promise.</span>
+              The engineering legacy <br />
+              <span className="italic font-light text-muted">behind Bhumi&rsquo;s promise.</span>
             </h2>
 
             {/* Pull quote */}
@@ -122,7 +121,7 @@ export default function AboutSnippet() {
                 className="relative text-lg md:text-xl text-primary/85 leading-relaxed font-light italic max-w-2xl pl-6"
                 style={{ fontFamily: "var(--font-playfair)" }}
               >
-                My roots have always been here — in Bharuch. This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back.
+                My roots have always been here, in Bharuch. This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back.
               </p>
             </div>
 
@@ -132,10 +131,10 @@ export default function AboutSnippet() {
                 Professionally Driven. Value Focused.
               </p>
               <p>
-                At Bhumi Developers, we believe that real estate is more than construction—it is about creating lasting value. Through exceptional <strong>after-sales service</strong>, <strong>100% utility-driven spaces</strong>, and a <strong>system-driven building management approach</strong>, we ensure that every project continues to deliver value long after possession.
+                At Bhumi Developers, we believe that real estate is more than construction; it is about creating lasting value. Through exceptional <strong>after-sales service</strong>, <strong>100% utility-driven spaces</strong>, and a <strong>system-driven building management approach</strong>, we ensure that every project continues to deliver value long after possession.
               </p>
               <p>
-                Built with passion and backed by decades of experience in <strong>international engineering practices</strong>, our developments are engineered to the highest standards of quality, durability, and functionality. We focus on engineering excellence, creating true <strong>engineering marvels</strong> where every design and construction decision is driven by sound engineering parameters—ensuring your investment remains valuable and enduring for a lifetime.
+                Built with passion and backed by decades of experience in <strong>international engineering practices</strong>, our developments are engineered to the highest standards of quality, durability, and functionality. We focus on engineering excellence, creating true <strong>engineering marvels</strong> where every design and construction decision is driven by sound engineering parameters, ensuring your investment remains valuable and enduring for a lifetime.
               </p>
               <p>
                 Our focus is on developing <strong>landmark projects</strong> that offer strong infrastructure, modern amenities, and sustainable growth opportunities. Every development is designed to maximize functionality, enhance lifestyles, and create long-term <strong>value addition</strong> for our customers and investors.
@@ -146,19 +145,16 @@ export default function AboutSnippet() {
             </div>
 
             {/* Signature block */}
-            <div className="flex items-center gap-5 pt-2">
-              <span className="w-12 h-px bg-champagne/60" />
-              <div className="flex flex-col">
-                <span
-                  className="text-2xl font-bold text-primary leading-tight"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  Kiran Majmudar
-                </span>
-                <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body font-semibold mt-1">
-                  Chairman &amp; Founder
-                </span>
-              </div>
+            <div className="flex flex-col pt-2 pl-6">
+              <span
+                className="text-2xl font-bold text-primary leading-tight"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Kiran Majmudar
+              </span>
+              <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body font-semibold mt-1">
+                Chairman &amp; Founder
+              </span>
             </div>
 
           </motion.div>
