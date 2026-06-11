@@ -240,7 +240,7 @@ export const projects: Project[] = [
     units: 48,
     area: "1050–1800 sq ft",
     priceRange: { min: 3500000, max: 7200000 },
-    completionYear: 2023,
+    completionYear: 2000,
     image: "/images/pritam-residency/pritam-residency-new.webp",
     gallery: [
       "/images/pritam-residency/pritam-residency-new.webp",
