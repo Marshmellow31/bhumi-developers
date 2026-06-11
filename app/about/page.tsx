@@ -84,70 +84,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Founder's Story */}
-      <div className="py-24 bg-surface">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            {/* Left: Framed Portrait */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative h-[480px] overflow-hidden border border-black/5 shadow-lg">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('/images/owner.webp')",
-                  }}
-                />
-              </div>
-              {/* Badge on image */}
-              <div className="absolute -bottom-6 -right-6 bg-background text-primary p-6 shadow-xl border border-primary/5 w-40">
-                <p className="text-3xl font-bold leading-none mb-1 text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
-                  35+
-                </p>
-                <div className="w-5 h-px bg-primary/20 my-2" />
-                <p className="text-muted text-[10px] tracking-[0.2em] uppercase font-body">
-                  Years Experience
-                </p>
-              </div>
-              {/* Corner accent */}
-              <div className="absolute -top-4 -left-4 w-16 h-16 border border-primary/10 -z-10" />
-            </div>
 
-            {/* Right: Vision & Narrative */}
-            <div className="lg:col-span-7 flex flex-col gap-6">
-              <div>
-                <span className="text-muted text-xs tracking-[0.3em] uppercase font-semibold font-body">Founder&apos;s Story</span>
-                <h3 className="text-3xl lg:text-4xl font-bold text-primary mt-3 leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
-                  From National Infrastructure to Bharuch&apos;s Horizon
-                </h3>
-              </div>
-              <div className="w-12 h-px bg-champagne/60" />
-
-              <div className="flex flex-col gap-5 text-muted font-body text-sm leading-relaxed">
-                <p>
-                  With over <strong className="text-primary font-semibold">35 years of engineering and construction experience</strong>, our founder Kiran Majmudar has spent decades building massive industrial layouts across India alongside some of the country&apos;s most prominent MNCs. Under his leadership as the founder of <strong className="text-primary font-semibold">BD Buildcon LLP</strong>, he has left an indelible mark on the nation&apos;s industrial growth, one structure at a time.
-                </p>
-                <p>
-                  Now, he brings that exact level of industrial-grade engineering precision, complete transparency, and world-class quality back to where it all began — his hometown of Bharuch.
-                </p>
-                <div className="italic pl-4 border-l-2 border-champagne/60 text-primary/80 font-medium flex flex-col gap-3">
-                  <p>
-                    &ldquo;This city shaped me, and everything I have achieved, I owe to it. Bhumi Developers is my way of giving back. A promise to bring world-class construction quality, complete transparency, and projects that truly reflect Bharuch&apos;s growing potential — creating spaces where families can live with pride and businesses can grow with confidence.&rdquo;
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-0.5 mt-2">
-                <span className="font-heading text-lg font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>
-                  Kiran Majmudar
-                </span>
-                <span className="text-muted text-xs tracking-widest uppercase font-semibold font-body">
-                  Chairman & Founder
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* Our Team Section */}
       <div className="py-24 bg-background border-t border-champagne/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
