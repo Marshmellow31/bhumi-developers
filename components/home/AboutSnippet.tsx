@@ -135,7 +135,10 @@ export default function AboutSnippet() {
                 At Bhumi Developers, we believe that real estate is more than construction—it is about creating lasting value. Through exceptional <strong>after-sales service</strong>, <strong>100% utility-driven spaces</strong>, and a <strong>system-driven building management approach</strong>, we ensure that every project continues to deliver value long after possession.
               </p>
               <p>
-                Our focus is on developing <strong>landmark projects</strong> that offer strong infrastructure, modern amenities, and sustainable growth opportunities. Every development is designed to maximize functionality, enhance lifestyles, and contribute to long-term <strong>value addition</strong> for our customers and investors.
+                Built with passion and backed by decades of experience in <strong>international engineering practices</strong>, our developments are engineered to the highest standards of quality, durability, and functionality. We focus on engineering excellence, creating true <strong>engineering marvels</strong> where every design and construction decision is driven by sound engineering parameters—ensuring your investment remains valuable and enduring for a lifetime.
+              </p>
+              <p>
+                Our focus is on developing <strong>landmark projects</strong> that offer strong infrastructure, modern amenities, and sustainable growth opportunities. Every development is designed to maximize functionality, enhance lifestyles, and create long-term <strong>value addition</strong> for our customers and investors.
               </p>
               <p>
                 The motive behind our projects is to create fully infrastructured communities that provide confidence, convenience, and genuine value for investment. Guided by transparency, quality, and customer-centric policies, we strive to build spaces that stand as symbols of trust, progress, and prosperity for generations.
