@@ -39,7 +39,7 @@ export default function HeroSection() {
       {/* ── BG VIDEO ── */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
-          src="/videos/city-center/homepage-video.mp4"
+          src="/videos/homepage-video.mp4"
           poster="/images/background.webp"
           autoPlay
           muted

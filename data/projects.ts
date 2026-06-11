@@ -81,6 +81,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     brochure: "/documents/central-square-brochure.pdf",
+    video: "/videos/central-square-video.mp4",
     contact: {
       phones: [{ number: "+917283888893", label: "+91 72838 88893" }],
     },
@@ -170,6 +171,7 @@ export const projects: Project[] = [
       { name: "2nd Floor Premium Plan", file: "/documents/solitaire-pallazzo-2nd-floor-plan.pdf", size: "7.0 MB" },
       { name: "Typical Floor Layout Plan", file: "/documents/solitaire-pallazzo-typical-floor-plan.pdf", size: "5.9 MB" }
     ],
+    video: "/videos/solitaire-plaza-video.mp4",
   },
   {
     id: "9",
