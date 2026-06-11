@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 const team = [
   { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
+  { name: "Hema Majmudar", role: "Director", since: "1991" },
   { name: "Avik Majmudar", role: "Managing Director", since: "2023" },
 ];
 
@@ -202,7 +203,7 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <SectionHeading eyebrow="Leadership" title="The People Behind Bhumi" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-px bg-border">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {team.map((member, i) => (
               <div key={i} className="bg-background p-8 text-center">
                 <div className="w-16 h-16 bg-primary mx-auto mb-5 flex items-center justify-center">
