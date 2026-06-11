@@ -195,7 +195,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                       className="text-3xl font-bold text-white mb-1"
                       style={{ fontFamily: "var(--font-playfair)" }}
                     >
-                      Coming Soon
+                      {project.status === "Completed" ? "Completed" : "Coming Soon"}
                     </p>
                   ) : (
                     <>
