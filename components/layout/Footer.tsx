@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Logo from "@/components/ui/Logo";
+import Image from "next/image";
 
 const socialLinks = [
   {
@@ -64,7 +65,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
-                { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
+                { src: "/images/kiranveda.webp",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
                 { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 1.2 },
               ].map(({ src, alt, scale, noBg }) => (
                 <div
@@ -72,9 +73,11 @@ export default function Footer() {
                   className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 ${noBg ? "" : "bg-white/90"}`}
                   title={alt}
                 >
-                  <img
+                  <Image
                     src={src}
                     alt={alt}
+                    width={80}
+                    height={80}
                     className="max-h-full max-w-full object-contain"
                     style={{ transform: `scale(${scale})` }}
                   />

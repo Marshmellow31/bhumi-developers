@@ -5,6 +5,7 @@ import { MapPin, ZoomIn, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import GalleryModal from "@/components/ui/GalleryModal";
+import Image from "next/image";
 
 interface ProjectGallerySectionProps {
   image: string;
@@ -59,9 +60,13 @@ export default function ProjectGallerySection({
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
           />
         ) : (
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-            style={{ backgroundImage: `url('${image}')` }}
+          <Image
+            src={image}
+            alt={name}
+            fill
+            priority
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            sizes="100vw"
           />
         )}
         {/* Gradient: image clearly visible at top, dark only at bottom for text legibility */}
