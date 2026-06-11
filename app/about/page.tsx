@@ -36,12 +36,11 @@ export default function AboutPage() {
       {/* Stats */}
       <div className="bg-surface border-t border-champagne/20 py-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-3 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
             {[
               { value: 35, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
-              { value: 5000, suffix: "+", label: "Families" },
-              { value: 12, suffix: "M+", label: "Sq Ft Built" },
+              { value: 72, suffix: " Lakhs+", label: "Sq Ft Built" },
             ].map((s, i) => (
               <div key={i} className="py-8 lg:py-0 lg:px-8">
                 <p className="text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-playfair)" }}>

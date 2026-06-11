@@ -61,10 +61,10 @@ const MILESTONES = [
   },
   {
     year:   "2024",
-    stat:   12,
-    suffix: "M+",
+    stat:   72,
+    suffix: " Lakhs+",
     label:  "Sq Ft Developed",
-    desc:   "35 years. 50+ landmark projects. 5,000+ families. A legacy built on trust — shaping the future of Bharuch, one landmark at a time.",
+    desc:   "35 years. 50+ landmark projects. 72 Lakhs+ Sq Ft Developed. A legacy built on trust — shaping the future of Bharuch, one landmark at a time.",
   },
 ] as const;
 
