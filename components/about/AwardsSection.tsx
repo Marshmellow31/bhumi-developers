@@ -42,6 +42,13 @@ const awards = [
     year: "2026",
     desc: "Certificate of Excellence proudly presented to Vir Bhumi Buildcon Pvt. Ltd. for being the Best Developer of the Year in the Commercial Project category.",
   },
+  {
+    photo: "/images/about/credai-membership.png",
+    award: "CREDAI Membership Certificate",
+    body: "CREDAI Bharuch",
+    year: "2019",
+    desc: "Official membership certificate certifying Kiranbhai Majmudar as a proud member of CREDAI Bharuch (Bharuch Real Estate Developers Association of Gujarat).",
+  },
 ];
 
 export default function AwardsSection() {
