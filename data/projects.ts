@@ -357,6 +357,7 @@ export const projects: Project[] = [
     priceRange: { min: 0, max: 0 },
     completionYear: 2027,
     image: "/images/eminence/Eminence Bliss_1 - Photo.webp",
+    brochure: "/documents/eminence-floor-plans.pdf",
     gallery: [
       "/images/eminence/Eminence Bliss_1 - Photo.webp",
       "/images/eminence/Eminence Bliss_2 - Photo.webp",
@@ -392,7 +393,7 @@ export const projects: Project[] = [
     units: 0,
     area: "Coming Soon",
     priceRange: { min: 0, max: 0 },
-    completionYear: 2028,
+    completionYear: 2026,
     image: "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
     gallery: [
       "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg"

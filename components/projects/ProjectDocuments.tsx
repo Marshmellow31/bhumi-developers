@@ -10,8 +10,14 @@ interface ProjectDocumentsProps {
 }
 
 export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocumentsProps) {
+  const isFloorPlan = brochure?.toLowerCase().includes("floor-plan") || brochure?.toLowerCase().includes("floorplan");
   const docs = [
-    ...(brochure ? [{ name: "Complete Project Brochure", meta: "Official Digital Brochure • PDF", label: "BROCHURE", file: brochure }] : []),
+    ...(brochure ? [{ 
+      name: isFloorPlan ? "Project Floor Plans" : "Complete Project Brochure", 
+      meta: isFloorPlan ? "Official Floor Plans • PDF" : "Official Digital Brochure • PDF", 
+      label: isFloorPlan ? "FLOOR PLANS" : "BROCHURE", 
+      file: brochure 
+    }] : []),
     ...(floorPlans ?? []).map((plan) => ({
       name: plan.name,
       meta: `Floor Plan / Layout${plan.size ? ` • ${plan.size}` : " • PDF"}`,

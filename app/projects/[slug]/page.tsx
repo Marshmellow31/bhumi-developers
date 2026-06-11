@@ -188,25 +188,29 @@ export default async function ProjectDetailPage({ params }: Props) {
 
             {/* Price Card */}
             <div className="bg-primary text-white p-8">
-              {project.priceRange.min === 0 ? (
-                <p
-                  className="text-3xl font-bold text-white mb-1"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  Coming Soon
-                </p>
-              ) : (
+              {project.slug !== "fern-series" && (
                 <>
-                  <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
-                    Starts From
-                  </p>
-                  <p
-                    className="text-3xl font-bold text-white mb-1"
-                    style={{ fontFamily: "var(--font-playfair)" }}
-                  >
-                    {formatPrice(project.priceRange.min)}
-                  </p>
-                  <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
+                  {project.priceRange.min === 0 ? (
+                    <p
+                      className="text-3xl font-bold text-white mb-1"
+                      style={{ fontFamily: "var(--font-playfair)" }}
+                    >
+                      Coming Soon
+                    </p>
+                  ) : (
+                    <>
+                      <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
+                        Starts From
+                      </p>
+                      <p
+                        className="text-3xl font-bold text-white mb-1"
+                        style={{ fontFamily: "var(--font-playfair)" }}
+                      >
+                        {formatPrice(project.priceRange.min)}
+                      </p>
+                      <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
+                    </>
+                  )}
                 </>
               )}
 
@@ -231,7 +235,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </div>
               )}
 
-              <div className="mt-6 flex flex-col gap-3">
+              <div className={`flex flex-col gap-3 ${project.slug !== "fern-series" ? "mt-6" : ""}`}>
                 <Link href="/contact">
                   <Button variant="primary" size="md" className="w-full justify-center">
                     Enquire Now
@@ -244,7 +248,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                       size="md"
                       className="w-full justify-center border-white/30 text-white hover:bg-white hover:text-primary"
                     >
-                      Download Brochure
+                      {project.brochure.toLowerCase().includes("floor-plan") ? "Download Floor Plans" : "Download Brochure"}
                     </Button>
                   </a>
                 )}
