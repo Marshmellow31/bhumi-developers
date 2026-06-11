@@ -356,7 +356,18 @@ export const projects: Project[] = [
     completionYear: 2027,
     image: "/images/eminence/eminence-main.jpg",
     gallery: [
-      "/images/eminence/eminence-main.jpg"
+      "/images/eminence/eminence-main.jpg",
+      "/images/eminence/Eminence Bliss_1 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_2 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_3 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_4 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_5 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_6 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_7 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_8 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_9 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_10 - Photo.jpg.jpeg",
+      "/images/eminence/Eminence Bliss_11 - Photo.jpg.jpeg"
     ],
     highlights: ["Premium Residences", "Vadodara Location", "Modern Architecture", "Upcoming Project"],
     description: "A premium residential building coming to Vadodara. Thoughtfully designed for modern living — more details will be shared soon.",
