@@ -8,11 +8,11 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 const awards = [
   {
-    photo: "/images/about/bharuch-civil-engineers-forum.png",
-    award: "Civil Engineering Felicitation",
-    body: "Bharuch Civil Engineers Forum",
-    year: "Engineers' Day",
-    desc: "Felicitation of Shri Kiran Majmudar in recognition of valuable contribution and outstanding achievements in the field of Civil Engineering.",
+    photo: "/images/about/certificate-excellence.png",
+    award: "Certificate of Excellence",
+    body: "National Real Estate Awards",
+    year: "2026",
+    desc: "Certificate of Excellence proudly presented to Vir Bhumi Buildcon Pvt. Ltd. for being the Best Developer of the Year in the Commercial Project category.",
   },
   {
     photo: "/images/about/golden-trophy.png",
@@ -36,18 +36,25 @@ const awards = [
     desc: "Standing plaque presenting the City Icon honour to Kiran Majmudar of Vir Bhumi Buildcon Pvt. Ltd. for creating architectural landmarks.",
   },
   {
-    photo: "/images/about/certificate-excellence.png",
-    award: "Certificate of Excellence",
-    body: "National Real Estate Awards",
-    year: "2026",
-    desc: "Certificate of Excellence proudly presented to Vir Bhumi Buildcon Pvt. Ltd. for being the Best Developer of the Year in the Commercial Project category.",
-  },
-  {
     photo: "/images/about/credai-membership.png",
     award: "CREDAI Membership Certificate",
     body: "CREDAI Bharuch",
     year: "2019",
     desc: "Official membership certificate certifying Kiranbhai Majmudar as a proud member of CREDAI Bharuch (Bharuch Real Estate Developers Association of Gujarat).",
+  },
+  {
+    photo: "/images/about/gacl-township-certificate.webp",
+    award: "Certificate of Appreciation",
+    body: "GACL Township",
+    year: "1995",
+    desc: "Awarded to Bhumi Developers (Shri Kiran Majmudar) in recognition of outstanding leadership, dedication, and valuable contribution towards the growth and success of GACL Township.",
+  },
+  {
+    photo: "/images/about/bharuch-civil-engineers-forum.png",
+    award: "Civil Engineering Felicitation",
+    body: "Bharuch Civil Engineers Forum",
+    year: "Engineers' Day",
+    desc: "Felicitation of Shri Kiran Majmudar in recognition of valuable contribution and outstanding achievements in the field of Civil Engineering.",
   },
 ];
 
