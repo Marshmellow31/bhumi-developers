@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ShieldCheck, Award, Clock, Building2 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -84,9 +85,65 @@ export default function AboutPage() {
         </div>
       </div>
 
+      {/* Why Bhumi Developers Section */}
+      <div className="py-24 bg-surface border-t border-b border-champagne/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <SectionHeading
+              eyebrow="Our Advantages"
+              title="Why Bhumi Developers"
+              subtitle="Over three decades of engineering excellence, built on trust, quality, and transparency."
+              align="center"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Industrial Precision",
+                desc: "We bring the highest standards of safety, material choice, and engineering rigor from heavy industrial construction into residential and commercial spaces.",
+              },
+              {
+                icon: Award,
+                title: "Proven Legacy",
+                desc: "With over 35 years of experience in Gujarat's real estate sector, we have built a reputation of delivering premium quality and reliable construction.",
+              },
+              {
+                icon: Clock,
+                title: "On-Time Delivery",
+                desc: "We respect your time. Our rigorous planning, advanced construction scheduling, and direct project supervision ensure we deliver on or before schedule.",
+              },
+              {
+                icon: Building2,
+                title: "Complete Transparency",
+                desc: "Clear land titles, RERA-compliant projects, honest pricing, and transparent communications. We keep our promises with zero hidden clauses.",
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-background border border-primary/5 p-8 flex flex-col gap-5 hover:border-primary/20 hover:shadow-xl transition-all duration-300 rounded-sm group"
+                >
+                  <div className="w-12 h-12 bg-primary/5 border border-primary/10 flex items-center justify-center rounded-sm text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <Icon size={24} />
+                  </div>
+                  <h4 className="text-primary font-bold text-lg leading-snug font-heading" style={{ fontFamily: "var(--font-playfair)" }}>
+                    {item.title}
+                  </h4>
+                  <p className="text-muted text-sm font-body leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* Our Team Section */}
-      <div className="py-24 bg-background border-t border-champagne/10">
+      <div className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             {/* Left Column: Heading and Text */}
@@ -112,9 +169,9 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Right Column: Beautifully Framed Team Photo */}
+            {/* Right Column: Beautifully Framed Team Photo - Aspect-[16/9] renders the full image with 0 cropping */}
             <div className="lg:col-span-7 relative">
-              <div className="relative h-[450px] md:h-[500px] overflow-hidden border border-black/5 shadow-xl group rounded-sm">
+              <div className="relative w-full aspect-[16/9] overflow-hidden border border-black/5 shadow-xl group rounded-sm">
                 <Image
                   src="/images/about/bhumi-team.webp"
                   alt="Bhumi Developers Team"
