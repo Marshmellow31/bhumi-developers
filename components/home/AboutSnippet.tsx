@@ -127,20 +127,20 @@ export default function AboutSnippet() {
 
             {/* Supporting body */}
             <div className="flex flex-col gap-4 text-sm md:text-[15px] text-muted leading-relaxed font-body max-w-2xl">
-              <p className="font-semibold text-primary">
-                Professionally Driven. Value Focused.
+              <p>
+                Bharuch is my Janmabhoomi and Karmabhoomi. It is the city where I was born, where I built my career, and where I have spent a lifetime learning, growing, and working. Because of this deep connection, I have always felt a responsibility to contribute to the city&apos;s growth and create developments that add real value to the community.
               </p>
               <p>
-                At Bhumi Developers, we believe that real estate is more than construction; it is about creating lasting value. Through exceptional <strong>after-sales service</strong>, <strong>100% utility-driven spaces</strong>, and a <strong>system-driven building management approach</strong>, we ensure that every project continues to deliver value long after possession.
+                I have spent most of my professional life in engineering and construction, delivering projects for leading companies, consultants, and multinational organizations. Over the years, I have learned that quality is never an accident—it comes from proper planning, strong engineering, attention to detail, and the commitment to do things the right way.
               </p>
               <p>
-                Built with passion and backed by decades of experience in <strong>international engineering practices</strong>, our developments are engineered to the highest standards of quality, durability, and functionality. We focus on engineering excellence, creating true <strong>engineering marvels</strong> where every design and construction decision is driven by sound engineering parameters, ensuring your investment remains valuable and enduring for a lifetime.
+                When I entered real estate, I brought the same mindset with me. I understand that buying a property is not just a purchase; it is often a family&apos;s hard-earned savings and years of sacrifice. More importantly, it is a sign of trust. When someone chooses one of our projects, they are placing their faith in us, and I consider it my responsibility to ensure that trust is honoured through quality, transparency, and long-term value.
               </p>
               <p>
-                Our focus is on developing <strong>landmark projects</strong> that offer strong infrastructure, modern amenities, and sustainable growth opportunities. Every development is designed to maximize functionality, enhance lifestyles, and create long-term <strong>value addition</strong> for our customers and investors.
+                In Gujarat, we have a saying, &ldquo;Janya Nu Jher.&rdquo; Once you know how things should be done, it becomes difficult to accept anything less. My engineering background gave me that perspective. When I looked around, I felt that many real estate projects were missing the planning, construction quality, and long-term thinking that customers truly deserve. That realization became the foundation of Bhumi Developers.
               </p>
               <p>
-                The motive behind our projects is to create fully infrastructured communities that provide confidence, convenience, and genuine value for investment. Guided by transparency, quality, and customer-centric policies, we strive to build spaces that stand as symbols of trust, progress, and prosperity for generations.
+                My vision is simple—to bring professional engineering standards and quality construction into every project we develop. I want our customers to feel confident that they are investing in a project built with care, strong infrastructure, proper systems, and a long-term commitment to value.
               </p>
             </div>
 
