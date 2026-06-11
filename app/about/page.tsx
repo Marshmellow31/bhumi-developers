@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
@@ -147,25 +148,51 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      {/* Team Foundation Image Section */}
-      <div className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
-        {/* Parallax Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-fixed bg-center"
-          style={{ backgroundImage: "url('/images/about/team-foundation.webp')" }}
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-6">
-          <span className="text-white/80 text-[10px] md:text-xs tracking-[0.4em] uppercase font-semibold font-body mb-4 drop-shadow-md">
-            Our Greatest Asset
-          </span>
-          <h2 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight drop-shadow-lg"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            A foundation built by people, <br/>
-            <span className="italic font-light text-white/90">not just concrete.</span>
-          </h2>
+      {/* Our Team Section */}
+      <div className="py-24 bg-background border-t border-champagne/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            {/* Left Column: Heading and Text */}
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              <div>
+                <span className="text-sienna text-xs tracking-[0.3em] uppercase font-semibold font-body">Our Greatest Asset</span>
+                <h3 className="text-3xl lg:text-4xl font-bold text-primary mt-3 leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
+                  A Foundation Built by People, <br/>
+                  <span className="italic font-light text-muted">not just concrete.</span>
+                </h3>
+              </div>
+              <div className="w-12 h-px bg-champagne/60" />
+              <div className="flex flex-col gap-5 text-muted font-body text-sm leading-relaxed">
+                <p>
+                  At Bhumi Developers, we believe that real estate isn&apos;t just about steel and concrete — it is about the collective passion, engineering precision, and dedication of the people who bring these blueprints to life.
+                </p>
+                <p>
+                  Our multidisciplinary team comprises seasoned civil engineers, project managers, design specialists, and customer relations experts. Working in perfect harmony, we ensure that every square foot we build delivers on our promise of craftsmanship, safety, and transparency.
+                </p>
+                <p>
+                  Together, we are not just building modern structures; we are crafting the landmarks of South Gujarat and nurturing a legacy that future generations will build upon.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Beautifully Framed Team Photo */}
+            <div className="lg:col-span-7 relative">
+              <div className="relative h-[450px] md:h-[500px] overflow-hidden border border-black/5 shadow-xl group rounded-sm">
+                <Image
+                  src="/images/about/bhumi-team.webp"
+                  alt="Bhumi Developers Team"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent pointer-events-none" />
+              </div>
+              {/* Decorative background framing accent */}
+              <div className="absolute -bottom-4 -left-4 w-24 h-24 border-l border-b border-primary/10 -z-10" />
+              <div className="absolute -top-4 -right-4 w-24 h-24 border-r border-t border-primary/10 -z-10" />
+            </div>
+          </div>
         </div>
       </div>
 
