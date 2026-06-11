@@ -180,10 +180,10 @@ export const projects: Project[] = [
     city: "Bharuch",
     status: "Completed",
     type: "Commercial",
-    units: 95,
+    units: 430,
     area: "6 Lakh sq ft",
     priceRange: { min: 2800000, max: 15000000 },
-    completionYear: 2024,
+    completionYear: 2023,
     image: "/images/city-center/city-center-1.webp",
     gallery: [
       "/images/city-center/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
@@ -379,11 +379,39 @@ export const projects: Project[] = [
     ],
     featured: false,
   },
+  {
+    id: "15",
+    slug: "fern-series",
+    name: "The Fern Series by Marriott",
+    tagline: "Premium Hospitality and Comfort",
+    location: "Bharuch",
+    city: "Bharuch",
+    status: "Upcoming",
+    type: "Hotel",
+    units: 0,
+    area: "Coming Soon",
+    priceRange: { min: 0, max: 0 },
+    completionYear: 2028,
+    image: "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
+    gallery: [
+      "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg"
+    ],
+    highlights: ["Premium Hospitality", "World-class Amenities", "Strategic Location"],
+    description: "An upcoming luxury hotel project bringing the renowned Fern Series by Marriott to Bharuch. Promising world-class hospitality, premium accommodations, and state-of-the-art facilities.",
+    amenities: [
+      "Luxury Rooms & Suites",
+      "Fine Dining Restaurants",
+      "Banquet & Conference Halls",
+      "Swimming Pool & Spa",
+      "24/7 Concierge Service"
+    ],
+    featured: false,
+  },
 ];
 
 // Featured projects for the homepage — primary slugs shown first, capped at 6.
 export const getFeaturedProjects = () => {
-  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "pritam-residency", "bkc2", "the-resort"];
+  const primarySlugs = ["central-square", "solitaire-pallazzo", "city-center", "fern-series", "the-resort", "bkc2"];
   return projects.filter((p) => primarySlugs.includes(p.slug))
     .sort((a, b) => primarySlugs.indexOf(a.slug) - primarySlugs.indexOf(b.slug))
     .slice(0, 6);

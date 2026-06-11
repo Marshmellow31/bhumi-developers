@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MapPin, Home, Calendar, Layers, Phone, Mail } from "lucide-react";
+import { MapPin, Home, Calendar, Layers, Phone, Mail, Store } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 import CTABanner from "@/components/home/CTABanner";
@@ -156,14 +156,14 @@ export default async function ProjectDetailPage({ params }: Props) {
           <aside className="flex flex-col gap-6">
             {/* Project Brand Seal */}
             {logo && (
-              <div className="bg-primary border border-white/10 p-8 flex flex-col items-center justify-center relative group overflow-hidden shadow-2xl">
+              <div className="bg-white border border-border p-8 flex flex-col items-center justify-center relative group overflow-hidden shadow-xl">
                 {/* Thin elegant gold top border line */}
                 <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-amber-500/10 via-amber-500 to-amber-500/10" />
                 
                 {/* Visual grid texture overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
                 
-                {/* Logo directly on dark background */}
+                {/* Logo directly on white background */}
                 <div className="relative w-full h-52">
                   <Image
                     src={logo}
@@ -175,11 +175,11 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </div>
                 
                 {/* Luxury Typography Stamp */}
-                <div className="mt-5 flex flex-col items-center gap-1.5 select-none text-center">
-                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-amber-500 font-body">
+                <div className="mt-5 flex flex-col items-center gap-1.5 select-none text-center z-10">
+                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-amber-600 font-body">
                     Exclusive Development
                   </span>
-                  <span className="text-[9px] tracking-[0.15em] uppercase text-white/40 font-body">
+                  <span className="text-[9px] tracking-[0.15em] uppercase text-primary/40 font-body">
                     Bhumi Developers Signature Series
                   </span>
                 </div>
@@ -198,6 +198,27 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {formatPrice(project.priceRange.min)}
               </p>
               <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
+
+              {(project.slug === "city-center" || project.slug === "central-square") && (
+                <div className="mt-6 bg-gradient-to-r from-amber-500 to-amber-600 rounded-sm p-5 shadow-xl relative overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+                  {/* Decorative faint pattern */}
+                  <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[size:12px_12px] opacity-20 pointer-events-none" />
+                  
+                  <div className="relative flex items-start gap-4">
+                    <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0 backdrop-blur-sm border border-white/30 shadow-inner">
+                      <Store size={18} className="text-white drop-shadow-md" />
+                    </div>
+                    <div className="flex flex-col">
+                      <p className="text-white/90 text-[10px] tracking-widest uppercase font-bold font-body mb-1 drop-shadow-sm">
+                        Prime Commercial
+                      </p>
+                      <p className="text-white font-medium text-[15px] font-body leading-snug drop-shadow-md">
+                        Shops available for <span className="font-bold underline decoration-white/60 underline-offset-[3px]">Rent</span> & <span className="font-bold underline decoration-white/60 underline-offset-[3px]">Purchase</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="mt-6 flex flex-col gap-3">
                 <Link href="/contact">

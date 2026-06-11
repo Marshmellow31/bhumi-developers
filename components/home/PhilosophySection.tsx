@@ -65,6 +65,16 @@ const slides: SlideData[] = [
     image: "/images/bkc2/bkc2-main.jpeg",
     projectTag: "BKC 2",
   },
+  {
+    number: "06",
+    category: "HOSPITALITY",
+    titleHtml: "Luxury <em>Hotel</em>",
+    italicWord: "Hotel",
+    regularText: "Luxury",
+    description: "An upcoming luxury hotel project bringing the renowned Fern Series by Marriott to Bharuch.",
+    image: "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
+    projectTag: "Fern Series by Marriott",
+  },
 ];
 
 export default function PhilosophySection() {
