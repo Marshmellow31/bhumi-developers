@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const details = [
     { icon: Home, label: "Type", value: project.type },
     { icon: MapPin, label: "Location", value: project.city },
-    { icon: Layers, label: "Total Units", value: `${project.units} Units` },
+    ...(project.units !== 0 ? [{ icon: Layers, label: "Total Units", value: `${project.units} Units` }] : []),
     { icon: Calendar, label: "Completion", value: project.completionYear.toString() },
   ];
 
@@ -188,16 +188,27 @@ export default async function ProjectDetailPage({ params }: Props) {
 
             {/* Price Card */}
             <div className="bg-primary text-white p-8">
-              <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
-                Starts From
-              </p>
-              <p
-                className="text-3xl font-bold text-white mb-1"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                {formatPrice(project.priceRange.min)}
-              </p>
-              <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
+              {project.priceRange.min === 0 ? (
+                <p
+                  className="text-3xl font-bold text-white mb-1"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  Coming Soon
+                </p>
+              ) : (
+                <>
+                  <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
+                    Starts From
+                  </p>
+                  <p
+                    className="text-3xl font-bold text-white mb-1"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    {formatPrice(project.priceRange.min)}
+                  </p>
+                  <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
+                </>
+              )}
 
               {(project.slug === "city-center" || project.slug === "central-square") && (
                 <div className="mt-6 bg-gradient-to-r from-amber-500 to-amber-600 rounded-sm p-5 shadow-xl relative overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">

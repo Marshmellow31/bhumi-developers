@@ -111,13 +111,13 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
           </div>
           <div>
             <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
-              Starting From
+              {project.priceRange.min === 0 ? "Status" : "Starting From"}
             </p>
             <p
               className="text-lg font-bold text-primary leading-none"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              {formatPrice(project.priceRange.min)}
+              {project.priceRange.min === 0 ? "Coming Soon" : formatPrice(project.priceRange.min)}
             </p>
           </div>
         </div>
