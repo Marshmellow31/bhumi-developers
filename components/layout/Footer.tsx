@@ -65,8 +65,7 @@ export default function Footer() {
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
-                { src: "/images/venus.png",         alt: "Venus",                      scale: 1.2 },
-                { src: "/images/eminence.png",      alt: "Eminence",                   scale: 1.2 },
+                { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 1.2 },
               ].map(({ src, alt, scale, noBg }) => (
                 <div
                   key={alt}

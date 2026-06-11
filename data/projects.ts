@@ -45,7 +45,7 @@ export const projects: Project[] = [
     id: "7",
     slug: "central-square",
     name: "Central Square",
-    tagline: "Bharuch's Premier Business Plaza",
+    tagline: "A Landmark Destination for Healthcare & Business",
     location: "Panchbatti, Bharuch",
     city: "Bharuch",
     status: "Ongoing",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     ],
     highlights: ["Health & Wellness Hub", "Clinics & Diagnostic Centres", "Vibrant Retail Plaza", "Ample Multi-level Parking", "State-of-the-art Design", "Prime Location"],
     description:
-      "A Landmark Destination for Healthcare & Business\n\nLocated at Panchbatti, the heart of Bharuch, this project is designed to become the city's most preferred destination for healthcare and business.\n\nBringing together doctors, clinics, diagnostic centres, offices, and retail spaces under one roof, it offers unmatched convenience in one of Bharuch's most established commercial locations.\n\nBeing the only four-side-open commercial project, it enjoys accessibility and visibility, making it a truly landmark address.",
+      "Located at Panchbatti, the heart of Bharuch, this project is designed to become the city's most preferred destination for healthcare and business.\n\nBringing together doctors, clinics, diagnostic centres, offices, and retail spaces under one roof, it offers unmatched convenience in one of Bharuch's most established commercial locations.\n\nBeing the only four-side-open commercial project, it enjoys accessibility and visibility, making it a truly landmark address.",
     amenities: [
       "Medical Clinics & OPDs",
       "Diagnostic & Pathology Labs",
@@ -186,6 +186,7 @@ export const projects: Project[] = [
     completionYear: 2024,
     image: "/images/city-center/city-center-1.webp",
     gallery: [
+      "/images/city-center/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
       "/images/city-center/03.webp",
       "/images/city-center/04.webp",
       "/images/city-center/05.webp",
@@ -354,9 +355,8 @@ export const projects: Project[] = [
     area: "Coming Soon",
     priceRange: { min: 0, max: 0 },
     completionYear: 2027,
-    image: "/images/eminence/eminence-main.jpg",
+    image: "/images/eminence/Eminence Bliss_1 - Photo.jpg.jpeg",
     gallery: [
-      "/images/eminence/eminence-main.jpg",
       "/images/eminence/Eminence Bliss_1 - Photo.jpg.jpeg",
       "/images/eminence/Eminence Bliss_2 - Photo.jpg.jpeg",
       "/images/eminence/Eminence Bliss_3 - Photo.jpg.jpeg",
