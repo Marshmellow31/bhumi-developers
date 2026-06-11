@@ -21,7 +21,7 @@ export interface Project {
   city: string;
   status: ProjectStatus;
   type: ProjectType;
-  units: number;
+  units: number | string;
   area: string;
   priceRange: {
     min: number;
@@ -250,7 +250,6 @@ export const projects: Project[] = [
     description:
       "A warm, well-planned residential society in Bharuch. Spacious homes, a friendly community, and all the basic comforts you need.",
     amenities: [
-      "Swimming Pool",
       "Gymnasium",
       "Children's Play Area",
       "Landscaped Gardens",
@@ -270,15 +269,15 @@ export const projects: Project[] = [
     city: "Mumbai",
     status: "Upcoming",
     type: "Commercial",
-    units: 0,
+    units: "300+",
     area: "Coming Soon",
-    priceRange: { min: 0, max: 0 },
+    priceRange: { min: 3000000, max: 0 },
     completionYear: 2028,
     image: "/images/bkc2/bkc2-main.jpeg",
     gallery: [
       "/images/bkc2/bkc2-main.jpeg"
     ],
-    highlights: ["17+ Lakh Sq Ft", "Modern Architecture", "Prime Location", "Upcoming Project"],
+    highlights: ["17+ Lakh Sq Ft", "Major IT Hub", "Grade-A Corporate Offices", "Premium Retail Outlets", "Prime Location"],
     description: "An exciting new project coming to Mumbai. Spanning over 17 lakh square feet, it will be a landmark development with modern design and a prime location.",
     amenities: [
       "State-of-the-art Design",
@@ -305,8 +304,8 @@ export const projects: Project[] = [
     gallery: [
       "/images/resort/resort-main.jpeg"
     ],
-    highlights: ["Luxury Villas", "Resort Amenities", "Upcoming Project"],
-    description: "A peaceful resort getaway near Mumbai. Lush greenery, private villas, and a relaxed lifestyle — coming soon.",
+    highlights: ["Private Lakefront Villas", "Natural Waterfalls", "Lush Tropical Environment", "Serene Lake Views", "Eco-friendly Architecture", "Luxury Resort Amenities"],
+    description: "Located in the green landscapes of Khalapur, Mumbai, this ultra-luxury resort and wellness destination offers a perfect balance of nature and comfort. With a natural pond, a waterfall, and serene surroundings, the resort is designed to provide a peaceful and rejuvenating experience while delivering the highest standards of hospitality and luxury.",
     amenities: [
       "Clubhouse",
       "Swimming Pool",
