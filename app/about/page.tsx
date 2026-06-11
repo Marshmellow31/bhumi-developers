@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
+import AwardsSection from "@/components/about/AwardsSection";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -171,91 +172,8 @@ export default function AboutPage() {
 
 
       {/* Awards & Recognition */}
-      <div className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <SectionHeading
-              eyebrow="Recognition"
-              title="Awards & Honours"
-              subtitle="Decades of excellence recognised by industry leaders and communities alike."
-              align="center"
-            />
-          </div>
+      <AwardsSection />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-primary/5">
-            {[
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-              {
-                photo: null,
-                award: "Award Name",
-                body: "Awarding Organisation",
-                year: "Year",
-                desc: "Short description of the award and what it recognises. Add details here.",
-              },
-            ].map((a, i) => (
-              <div key={i} className="bg-surface p-8 flex flex-col gap-5 group hover:bg-primary/[0.02] transition-colors duration-300">
-                {/* Photo placeholder */}
-                <div className="w-full h-44 bg-primary/[0.04] border border-primary/10 flex items-center justify-center overflow-hidden">
-                  {a.photo ? (
-                    <img src={a.photo} alt={a.award} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-muted/40 text-xs tracking-[0.2em] uppercase font-body select-none">Photo</span>
-                  )}
-                </div>
-
-                {/* Award info */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body">{a.year}</span>
-                    <div className="w-4 h-px bg-primary/10" />
-                  </div>
-                  <h4 className="text-primary font-bold text-lg leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
-                    {a.award}
-                  </h4>
-                  <p className="text-muted text-xs tracking-[0.2em] uppercase font-body">{a.body}</p>
-                  <p className="text-muted text-sm font-body leading-relaxed pt-1 border-t border-primary/5">
-                    {a.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Leadership */}
 
