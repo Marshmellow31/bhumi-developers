@@ -31,63 +31,84 @@ export default function AboutSnippet() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5 flex flex-col"
           >
-            {/* Portrait frame */}
-            <div className="relative aspect-[4/5] overflow-hidden group">
+            <div className="relative">
+              {/* Portrait frame */}
+              <div className="relative aspect-[4/5] overflow-hidden group">
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: "url('/images/owner.webp')",
+                    filter: "grayscale(20%)",
+                  }}
+                  whileHover={{ scale: 1.03, filter: "grayscale(0%)" }}
+                  transition={{ duration: 1.4, ease }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent pointer-events-none" />
+              </div>
+
+              {/* Establishment badge */}
               <motion.div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{
-                  backgroundImage: "url('/images/owner.webp')",
-                  filter: "grayscale(20%)",
-                }}
-                whileHover={{ scale: 1.03, filter: "grayscale(0%)" }}
-                transition={{ duration: 1.4, ease }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent pointer-events-none" />
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.4, ease }}
+                className="absolute -top-4 left-6 px-4 py-1.5"
+                style={{ backgroundColor: "#F0E6D0" }}
+              >
+                <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-muted">
+                  Est. 1991
+                </span>
+              </motion.div>
+
+              {/* Stat overlay — dark on beige */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5, ease }}
+                className="absolute -bottom-10 -right-6 lg:-right-12 bg-primary px-8 py-7 z-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]"
+              >
+                <div className="flex items-baseline gap-1">
+                  <p
+                    className="text-6xl font-bold leading-none text-white"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    35
+                  </p>
+                  <p
+                    className="text-3xl font-light text-white/70 leading-none"
+                    style={{ fontFamily: "var(--font-playfair)" }}
+                  >
+                    +
+                  </p>
+                </div>
+                <div className="w-8 h-px bg-white/25 my-4" />
+                <p className="text-white/50 text-[9px] tracking-[0.35em] uppercase font-body font-semibold">
+                  Years of <br />
+                  Trust
+                </p>
+              </motion.div>
             </div>
 
-            {/* Establishment badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
+            {/* Signature block */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.4, ease }}
-              className="absolute -top-4 left-6 px-4 py-1.5"
-              style={{ backgroundColor: "#F0E6D0" }}
+              transition={{ duration: 0.8, delay: 0.6, ease }}
+              className="mt-20 flex flex-col items-center text-center"
             >
-              <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-muted">
-                Est. 1991
+              <span
+                className="text-3xl md:text-4xl font-bold text-primary leading-tight"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                Kiran Majmudar
               </span>
-            </motion.div>
-
-            {/* Stat overlay — dark on beige */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5, ease }}
-              className="absolute -bottom-10 -right-6 lg:-right-12 bg-primary px-8 py-7 z-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.35)]"
-            >
-              <div className="flex items-baseline gap-1">
-                <p
-                  className="text-6xl font-bold leading-none text-white"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  35
-                </p>
-                <p
-                  className="text-3xl font-light text-white/70 leading-none"
-                  style={{ fontFamily: "var(--font-playfair)" }}
-                >
-                  +
-                </p>
-              </div>
-              <div className="w-8 h-px bg-white/25 my-4" />
-              <p className="text-white/50 text-[9px] tracking-[0.35em] uppercase font-body font-semibold">
-                Years of <br />
-                Trust
-              </p>
+              <span className="text-muted text-[10.5px] tracking-[0.3em] uppercase font-body font-semibold mt-2">
+                Chairman & Founder
+              </span>
             </motion.div>
           </motion.div>
 
@@ -144,18 +165,7 @@ export default function AboutSnippet() {
               </p>
             </div>
 
-            {/* Signature block */}
-            <div className="flex flex-col pt-2 pl-6">
-              <span
-                className="text-2xl font-bold text-primary leading-tight"
-                style={{ fontFamily: "var(--font-playfair)" }}
-              >
-                Kiran Majmudar
-              </span>
-              <span className="text-muted text-[10px] tracking-[0.3em] uppercase font-body font-semibold mt-1">
-                Chairman &amp; Founder
-              </span>
-            </div>
+
 
           </motion.div>
         </div>
