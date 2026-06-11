@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const team = [
   { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
-  { name: "Avik Majmudar", role: "Managing Director", since: "2010" },
+  { name: "Avik Majmudar", role: "Managing Director", since: "2023" },
 ];
 
 export default function AboutPage() {

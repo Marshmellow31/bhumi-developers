@@ -64,25 +64,36 @@ export default function Footer() {
             <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
               {[
-                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true },
+                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
                 { src: "/images/kiranveda.webp",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
                 { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 1.2 },
-              ].map(({ src, alt, scale, noBg }) => (
-                <div
-                  key={alt}
-                  className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 ${noBg ? "" : "bg-white/90"}`}
-                  title={alt}
-                >
-                  <Image
-                    src={src}
-                    alt={alt}
-                    width={80}
-                    height={80}
-                    className="max-h-full max-w-full object-contain"
-                    style={{ transform: `scale(${scale})` }}
-                  />
-                </div>
-              ))}
+              ].map(({ src, alt, scale, noBg, href }) => {
+                const content = (
+                  <div
+                    className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 transition-transform duration-300 hover:scale-[1.03] ${noBg ? "" : "bg-white/90"}`}
+                    title={alt}
+                  >
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={80}
+                      height={80}
+                      className="max-h-full max-w-full object-contain"
+                      style={{ transform: `scale(${scale})` }}
+                    />
+                  </div>
+                );
+
+                if (href) {
+                  return (
+                    <a key={alt} href={href} target="_blank" rel="noopener noreferrer" className="block cursor-pointer">
+                      {content}
+                    </a>
+                  );
+                }
+
+                return <div key={alt}>{content}</div>;
+              })}
             </div>
           </div>
         </div>
