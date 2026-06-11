@@ -187,8 +187,8 @@ export const projects: Project[] = [
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2023,
     image: "/images/city-center/city-center-1.webp",
+    brochure: "/documents/city-center-brochure.pdf",
     gallery: [
-      "/images/city-center/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
       "/images/city-center/03.webp",
       "/images/city-center/04.webp",
       "/images/city-center/05.webp",
