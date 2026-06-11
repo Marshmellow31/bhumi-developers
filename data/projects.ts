@@ -218,7 +218,12 @@ export const projects: Project[] = [
       "One of Bharuch's biggest commercial destinations. Spread across 6 lakh sq ft, it has shops, offices, food courts, and parking — all under one roof.",
     amenities: [
       "Escalators & Lift Services",
-      "Central Air Conditioning",
+      "Doctor House",
+      "Game Zone",
+      "Multiplex",
+      "Branded Street",
+      "Hotels",
+      "Education Hub",
       "Dedicated Loading Bays",
       "Multi-cuisine Food Court",
       "Extensive Visitor Parking",
