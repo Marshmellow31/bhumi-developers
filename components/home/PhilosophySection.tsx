@@ -115,15 +115,9 @@ export default function PhilosophySection() {
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight font-body">
-                A Seamless Blend <br />
-                of <span className="font-heading italic font-light text-white/70">Purpose</span> and <br />
-                <span className="font-heading italic font-light text-white/70">Aesthetics</span>
+                Creating <span className="font-heading italic font-light text-white/70">Landmarks.</span> <br />
+                Building <span className="font-heading italic font-light text-white/70">Trust.</span>
               </h2>
-
-              <p className="text-white/40 text-sm leading-relaxed font-body max-w-[70vw] md:max-w-md lg:max-w-sm">
-                We are a design and engineering company with a focus on quality construction,
-                architectural excellence, sustainable design, and innovation.
-              </p>
             </div>
 
             {/* Cards */}

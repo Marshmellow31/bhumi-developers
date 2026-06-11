@@ -66,7 +66,7 @@ export const projects: Project[] = [
     ],
     highlights: ["Health & Wellness Hub", "Clinics & Diagnostic Centres", "Vibrant Retail Plaza", "Ample Multi-level Parking", "State-of-the-art Design", "Prime Location"],
     description:
-      "A modern commercial hub in Panchbatti, Bharuch, with a strong focus on health and wellness. Offices, clinics, diagnostic centres, and shops — all in one well-designed building.",
+      "A Landmark Destination for Healthcare & Business\n\nLocated at Panchbatti, the heart of Bharuch, this project is designed to become the city's most preferred destination for healthcare and business.\n\nBringing together doctors, clinics, diagnostic centres, offices, and retail spaces under one roof, it offers unmatched convenience in one of Bharuch's most established commercial locations.\n\nBeing the only four-side-open commercial project, it enjoys accessibility and visibility, making it a truly landmark address.",
     amenities: [
       "Medical Clinics & OPDs",
       "Diagnostic & Pathology Labs",
