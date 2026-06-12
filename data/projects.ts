@@ -38,6 +38,8 @@ export interface Project {
   floorPlans?: FloorPlan[];
   contact?: ProjectContact;
   video?: string;
+  mapUrl?: string;
+  coordinates?: { lat: number; lng: number };
 }
 
 export const projects: Project[] = [
@@ -64,7 +66,7 @@ export const projects: Project[] = [
       "/images/central-square/Pacnhbatti 505 Right_Cam.webp",
       "/images/central-square/Pacnhbatti 505 Shops Closeup_Cam01-a.webp"
     ],
-    highlights: ["Health & Wellness Hub", "Clinics & Diagnostic Centres", "Vibrant Retail Plaza", "Ample Multi-level Parking", "State-of-the-art Design", "Prime Location"],
+    highlights: ["Health & Wellness Hub", "Clinics & Diagnostic Centres", "Vibrant Retail Plaza", "Ample Multi-level Parking", "State-of-the-art Design", "Prime Location", "All Four Sides Open", "International Engineering Standards"],
     description:
       "Located at Panchbatti, the heart of Bharuch, this project is designed to become the city's most preferred destination for healthcare and business.\n\nBringing together doctors, clinics, diagnostic centres, offices, and retail spaces under one roof, it offers unmatched convenience in one of Bharuch's most established commercial locations.\n\nBeing the only four-side-open commercial project, it enjoys accessibility and visibility, making it a truly landmark address.",
     amenities: [
@@ -82,6 +84,8 @@ export const projects: Project[] = [
     featured: true,
     brochure: "/documents/central-square-brochure.pdf",
     video: "/videos/central-square-video.mp4",
+    mapUrl: "https://maps.app.goo.gl/exkK4j2W7d1uFoJr7",
+    coordinates: { lat: 21.701098, lng: 72.988292 },
     contact: {
       phones: [{ number: "+917283888893", label: "+91 72838 88893" }],
     },
@@ -118,41 +122,44 @@ export const projects: Project[] = [
       "/images/solitaire-plaza/Screenshot 2026-06-08 190622.webp",
       "/images/solitaire-plaza/Screenshot 2026-06-08 190936.webp"
     ],
-    highlights: ["Exclusive Single-Apartment-Per-Floor", "Smart-Home Automation", "Private Elevators"],
+    highlights: [
+      "24/7 Security",
+      "Stretcher Lifts",
+      "Fully Secured Gated Community",
+      "Full of Amenities",
+      "Basement Parking",
+      "Engineering Standard Construction"
+    ],
     description:
       "Solitaire Palazzo is a premium G+14 residential development in the prime location of Tavra, offering spacious 3 BHK residences with beautiful views of the Narmada River. Designed for comfortable family living, the project combines well-planned homes, modern amenities, and a convenient location, creating a lifestyle that is both practical and enjoyable.",
     amenities: [
       "Gym",
       "Private Sky Deck",
-      "Concierge Service",
       "Multi-tier Security System",
       "EV Charging Infrastructure",
       "Clubhouse & Indoor Theater",
-      "Attractive Entrance Gate",
-      "Weather Resistant Paint",
       "Attractive Building Design",
       "Drop-off Zone",
       "RCC / Paver Road",
-      "Good Plantation",
+      "Landscaping",
       "Entry Foyer With Reception Desk",
       "Gated Community",
       "24/7 Security",
-      "3 Tier Security",
       "Lightning Arrester",
       "Separate Entry & Exit Points",
       "All Area Covered with CCTV Surveillance",
-      "24/7 Water Supply",
-      "Caretaker Room",
       "Intercom System",
       "DG Backup For Common Area",
       "Allotted Car Parking",
-      "AC Point In Living Room",
-      "Wi-fi Point In Each Unit",
-      "Underground Cabling",
-      "Inverter Cabling Point",
+      "Wi-Fi",
       "Water Softener Plant",
       "Vaastu Friendly",
-      "Sewage Treatment Plant",
+      "Pickle Ball Court",
+      "Basketball Court",
+      "Cricket Turf",
+      "Children Play Area / Pool",
+      "Mandir",
+      "Gazebo",
     ],
     featured: true,
     brochure: "/documents/solitaire-pallazzo-brochure.pdf",
@@ -172,6 +179,8 @@ export const projects: Project[] = [
       { name: "Typical Floor Layout Plan", file: "/documents/solitaire-pallazzo-typical-floor-plan.pdf", size: "5.9 MB" }
     ],
     video: "/videos/solitaire-plaza-video.mp4",
+    mapUrl: "https://maps.app.goo.gl/enux3NZQXSRLgSaLA",
+    coordinates: { lat: 21.734950, lng: 73.052199 },
   },
   {
     id: "9",
@@ -232,6 +241,11 @@ export const projects: Project[] = [
     ],
     featured: true,
     video: "/videos/city-center/use.mp4",
+    mapUrl: "https://maps.app.goo.gl/7Ae4Hvp8iQEayW3m9",
+    coordinates: { lat: 21.7036014, lng: 72.9969943 },
+    floorPlans: [
+      { name: "City Center Drawing", file: "/documents/city-center-drawing.pdf", size: "0.3 MB" }
+    ],
   },
   {
     id: "15",
@@ -292,6 +306,8 @@ export const projects: Project[] = [
       "Community Hall",
     ],
     featured: true,
+    mapUrl: "https://maps.app.goo.gl/v6f2msKgXWoz7sQ77",
+    coordinates: { lat: 21.7060732, lng: 73.0097257 },
   },
   {
     id: "11",
@@ -375,6 +391,8 @@ export const projects: Project[] = [
       "Outright Sale — Clear Title",
     ],
     featured: false,
+    mapUrl: "https://maps.app.goo.gl/VXQ8WQzegjZBwQi7A",
+    coordinates: { lat: 21.7203322, lng: 72.9826081 },
   },
   {
     id: "14",

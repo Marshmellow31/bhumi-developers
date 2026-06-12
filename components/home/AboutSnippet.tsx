@@ -6,7 +6,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function AboutSnippet() {
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden" style={{ backgroundColor: "#F0E6D0" }}>
+    <section className="relative py-24 md:py-40 overflow-x-clip" style={{ backgroundColor: "#F0E6D0" }}>
       {/* Soft ambient warmth */}
       <div className="absolute top-0 right-0 w-[45%] h-[55%] bg-gradient-to-bl from-amber-50/40 via-transparent to-transparent pointer-events-none" />
 
@@ -31,7 +31,7 @@ export default function AboutSnippet() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease }}
-            className="lg:col-span-5 flex flex-col"
+            className="lg:col-span-5 flex flex-col lg:sticky lg:top-32 h-fit"
           >
             <div className="relative">
               {/* Portrait frame */}

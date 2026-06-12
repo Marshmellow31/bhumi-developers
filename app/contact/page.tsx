@@ -10,10 +10,9 @@ import Button from "@/components/ui/Button";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Enter a valid email address"),
   phone: z.string().regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number"),
-  interest: z.enum(["Residential", "Commercial", "Villa", "Mixed Use", "General Enquiry"]),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  interest: z.enum(["Residential", "Commercial", "Villa", "Mixed Use", "General Enquiry"]).optional(),
+  message: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -175,22 +174,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-xs tracking-widest uppercase text-muted font-semibold font-body mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    {...register("email")}
-                    type="email"
-                    placeholder="john.doe@example.com"
-                    className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-xs mt-1 font-body">{errors.email.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-xs tracking-widest uppercase text-muted font-semibold font-body mb-2">
-                    Interested In *
+                    Interested In
                   </label>
                   <select
                     {...register("interest")}
@@ -206,7 +190,7 @@ export default function ContactPage() {
 
                 <div>
                   <label className="block text-xs tracking-widest uppercase text-muted font-semibold font-body mb-2">
-                    Message *
+                    Message
                   </label>
                   <textarea
                     {...register("message")}

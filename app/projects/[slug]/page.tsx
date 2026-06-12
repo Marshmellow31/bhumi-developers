@@ -356,6 +356,39 @@ export default async function ProjectDetailPage({ params }: Props) {
 
             {/* Available Downloads */}
             <ProjectDocuments brochure={project.brochure} floorPlans={project.floorPlans} />
+
+            {/* Location Map */}
+            {project.coordinates && (
+              <div className="bg-surface border border-border p-6 flex flex-col gap-4">
+                <h3
+                  className="text-base font-bold text-primary"
+                  style={{ fontFamily: "var(--font-playfair)" }}
+                >
+                  Location Map
+                </h3>
+                <div className="w-full h-64 rounded-sm overflow-hidden border border-black/5">
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    frameBorder="0" 
+                    scrolling="no" 
+                    marginHeight={0} 
+                    marginWidth={0} 
+                    src={`https://maps.google.com/maps?q=${project.coordinates.lat},${project.coordinates.lng}&z=15&output=embed`}
+                  ></iframe>
+                </div>
+                {project.mapUrl && (
+                  <a 
+                    href={project.mapUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 border border-primary text-primary text-xs tracking-[0.1em] uppercase font-bold py-3 hover:bg-primary hover:text-white transition-colors duration-300 mt-2"
+                  >
+                    <MapPin size={14} /> Get Directions
+                  </a>
+                )}
+              </div>
+            )}
           </aside>
         </div>
       </div>
