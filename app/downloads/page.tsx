@@ -3,9 +3,10 @@ import { projects } from "@/data/projects";
 import DownloadsClient from "./DownloadsClient";
 
 export const metadata: Metadata = {
-  title: "Downloads | Bhumi Developers",
+  title: "Downloads — Brochures & Floor Plans",
   description:
-    "Download brochures and floor plan layout structures for Bhumi Developers landmark projects.",
+    "Download brochures and floor plan layout structures for Bhumi Developers landmark projects in Bharuch.",
+  alternates: { canonical: "/downloads" },
 };
 
 export default function DownloadsPage() {

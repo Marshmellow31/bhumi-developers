@@ -7,9 +7,10 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import AwardsSection from "@/components/about/AwardsSection";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us — 30+ Years of Building in Bharuch",
   description:
-    "Learn about Bhumi Developers — over 30 years of building premium real estate in Bharuch and South Gujarat.",
+    "Learn about Bhumi Developers — over 30 years of building premium real estate in Bharuch and South Gujarat. 50+ projects, 72 lakh+ sq ft delivered.",
+  alternates: { canonical: "/about" },
 };
 
 

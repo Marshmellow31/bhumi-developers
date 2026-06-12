@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPin, Home, Calendar, Layers, Phone, Mail, Store } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 import CTABanner from "@/components/home/CTABanner";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
@@ -30,9 +31,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
+  const description =
+    project.description.split("\n").find((p) => p.trim()) ?? project.tagline;
   return {
-    title: project.name,
-    description: project.description,
+    title: `${project.name} — ${project.type} Project in ${project.location}`,
+    description,
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: {
+      title: `${project.name} | Bhumi Developers`,
+      description,
+      url: `/projects/${slug}`,
+      type: "website",
+      images: [{ url: project.image, alt: project.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | Bhumi Developers`,
+      description,
+      images: [project.image],
+    },
   };
 }
 
@@ -56,8 +73,52 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const logo = PROJECT_LOGOS[project.slug];
 
+  const projectUrl = `${SITE_URL}/projects/${project.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/projects` },
+        { "@type": "ListItem", position: 3, name: project.name, item: projectUrl },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": project.type === "Residential" ? "ApartmentComplex" : "Place",
+      name: project.name,
+      url: projectUrl,
+      image: `${SITE_URL}${project.image}`,
+      description: project.description.split("\n").find((p) => p.trim()) ?? project.tagline,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: project.location,
+        addressRegion: project.city.includes("Mumbai") ? "Maharashtra" : "Gujarat",
+        addressCountry: "IN",
+      },
+      ...(project.coordinates && {
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: project.coordinates.lat,
+          longitude: project.coordinates.lng,
+        },
+      }),
+      ...(project.type === "Residential" && {
+        containedInPlace: { "@type": "City", name: project.city },
+      }),
+      branchOf: { "@id": `${SITE_URL}/#organization`, name: SITE_NAME },
+    },
+  ];
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <ProjectGallerySection
         image={project.image}
         gallery={project.gallery}

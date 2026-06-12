@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, SITE_NAME } from "@/lib/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
@@ -24,17 +25,116 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Bhumi Developers | Premium Real Estate in Bharuch, Gujarat",
     template: "%s | Bhumi Developers",
   },
   description:
-    "Bhumi Developers — Bharuch's most trusted real estate developer. Explore premium residential and commercial projects crafted with excellence.",
-  keywords: ["real estate", "Bharuch", "Gujarat", "apartments", "villas", "Bhumi Developers"],
+    "Bhumi Developers — Bharuch's most trusted real estate developer since 1995. Explore premium residential flats, commercial shops & offices, villas, and townships across Bharuch and South Gujarat.",
+  keywords: [
+    "Bhumi Developers",
+    "real estate Bharuch",
+    "builders in Bharuch",
+    "flats in Bharuch",
+    "3 BHK flats Bharuch",
+    "apartments in Bharuch",
+    "shops for sale in Bharuch",
+    "commercial property Bharuch",
+    "offices in Bharuch",
+    "villas in Bharuch",
+    "property in Bharuch",
+    "real estate Gujarat",
+    "RERA approved projects Bharuch",
+    "Central Square Bharuch",
+    "Solitaire Pallazzo Bharuch",
+    "City Center Bharuch",
+  ],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Real Estate",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    siteName: "Bhumi Developers",
+    siteName: SITE_NAME,
+    locale: "en_IN",
+    url: SITE_URL,
+    title: "Bhumi Developers | Premium Real Estate in Bharuch, Gujarat",
+    description:
+      "Bharuch's most trusted real estate developer since 1995. Premium residential flats, commercial shops & offices, villas, and townships across South Gujarat.",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Bhumi Developers logo",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bhumi Developers | Premium Real Estate in Bharuch, Gujarat",
+    description:
+      "Bharuch's most trusted real estate developer since 1995. Premium residential, commercial, and township projects across South Gujarat.",
+    images: ["/logo.png"],
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LocalBusiness"],
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo.png`,
+  description:
+    "Bhumi Developers is Bharuch's most trusted real estate developer since 1995, building premium residential, commercial, hospitality, and township projects across South Gujarat.",
+  foundingDate: "1995",
+  email: "contact@bhumidevelopers.co.in",
+  telephone: "+919879100355",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "1st Floor, Millennium Arcade, College Rd, opp. SVMIT Eng. College, Friends Colony, Bholav",
+    addressLocality: "Bharuch",
+    addressRegion: "Gujarat",
+    postalCode: "392001",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 21.710968,
+    longitude: 72.997883,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "10:00",
+      closes: "19:00",
+    },
+  ],
+  sameAs: ["https://www.instagram.com/bd_buildcon/"],
+  areaServed: ["Bharuch", "South Gujarat", "Vadodara", "Mumbai"],
 };
 
 export default function RootLayout({
@@ -43,6 +143,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <LenisProvider>
           {/* Gold scroll-progress bar */}
           <ScrollProgress />

@@ -116,8 +116,11 @@ export default function HeroSection() {
 
 
         {/* ── Heading ── */}
-        <div className="mb-6">
-          <motion.div {...fadeRise(0.38)}>
+        <h1 className="mb-6">
+          <span className="sr-only">
+            Bhumi Developers — Premium Real Estate Developer in Bharuch, Gujarat.{" "}
+          </span>
+          <motion.span className="block" {...fadeRise(0.38)}>
             <span
               className="block select-none"
               style={{
@@ -131,9 +134,9 @@ export default function HeroSection() {
             >
               Shaping
             </span>
-          </motion.div>
+          </motion.span>
 
-          <motion.div {...fadeRise(0.52)}>
+          <motion.span className="block" {...fadeRise(0.52)}>
             <span
               className="block select-none"
               style={{
@@ -148,9 +151,9 @@ export default function HeroSection() {
             >
               Modern
             </span>
-          </motion.div>
+          </motion.span>
 
-          <motion.div {...fadeRise(0.66)}>
+          <motion.span className="block" {...fadeRise(0.66)}>
             <span
               className="block select-none"
               style={{
@@ -164,8 +167,8 @@ export default function HeroSection() {
             >
               Spaces
             </span>
-          </motion.div>
-        </div>
+          </motion.span>
+        </h1>
 
 
 
