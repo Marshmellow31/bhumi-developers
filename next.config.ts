@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
   compress: true,
+  experimental: {
+    allowedDevOrigins: ["192.168.0.70:3000", "192.168.0.70"],
+  },
 };
 
 export default nextConfig;

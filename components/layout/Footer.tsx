@@ -65,7 +65,7 @@ export default function Footer() {
             <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
-                { src: "/images/kiranveda.webp",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
+                { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
                 { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 1.2 },
               ].map(({ src, alt, scale, noBg, href }) => {
                 const content = (
