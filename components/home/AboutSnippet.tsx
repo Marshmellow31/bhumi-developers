@@ -1,4 +1,4 @@
-"use client";
+Remov"use client";
 
 import { motion } from "framer-motion";
 
@@ -58,7 +58,7 @@ export default function AboutSnippet() {
                 style={{ backgroundColor: "#F0E6D0" }}
               >
                 <span className="text-[9px] tracking-[0.35em] uppercase font-body font-semibold text-muted">
-                  Est. 1991
+                  Est. 1995
                 </span>
               </motion.div>
 
@@ -75,7 +75,7 @@ export default function AboutSnippet() {
                     className="text-6xl font-bold leading-none text-white"
                     style={{ fontFamily: "var(--font-playfair)" }}
                   >
-                    35
+                    30
                   </p>
                   <p
                     className="text-3xl font-light text-white/70 leading-none"
@@ -93,7 +93,7 @@ export default function AboutSnippet() {
             </div>
 
             {/* Signature block */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -125,8 +125,8 @@ export default function AboutSnippet() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-[1.02] tracking-tight"
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              The engineering legacy <br />
-              <span className="italic font-light text-muted">behind Bhumi&rsquo;s promise.</span>
+              The vision behind <br />
+              <span className="italic font-light text-muted">our engineering standards.</span>
             </h2>
 
             {/* Pull quote */}

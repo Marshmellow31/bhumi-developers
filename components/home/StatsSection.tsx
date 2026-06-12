@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 const stats = [
-  { value: 35,   suffix: "+",  label: "Years of Excellence" },
+  { value: 30,   suffix: "+",  label: "Years of Excellence" },
   { value: 50,   suffix: "+",  label: "Projects Delivered"  },
   { value: 5000, suffix: "+",  label: "Happy Families"      },
   { value: 12,   suffix: "M+", label: "Sq Ft Developed"     },

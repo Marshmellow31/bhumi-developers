@@ -8,7 +8,7 @@ import {
 
 /* ── Constants ── */
 const TICKER =
-  "Premium Real Estate  ·  Bharuch, Gujarat  ·  Since 1991  ·  Built to Endure  ·  ";
+  "Premium Real Estate  ·  Bharuch, Gujarat  ·  Since 1995  ·  Built to Endure  ·  ";
 
 /* Deterministic particles — no Math.random() on render */
 const PARTICLES = Array.from({ length: 14 }, (_, i) => ({

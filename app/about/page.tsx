@@ -9,13 +9,13 @@ import AwardsSection from "@/components/about/AwardsSection";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Bhumi Developers — over 35 years of building premium real estate in Bharuch and South Gujarat.",
+    "Learn about Bhumi Developers — over 30 years of building premium real estate in Bharuch and South Gujarat.",
 };
 
 
 const team = [
-  { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1991" },
-  { name: "Hema Majmudar", role: "Director", since: "1991" },
+  { name: "Kiran Majmudar", role: "Chairman & Founder", since: "1995" },
+  { name: "Hema Majmudar", role: "Director", since: "1995" },
   { name: "Avik Majmudar", role: "Managing Director", since: "2023" },
 ];
 
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-3 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
             {[
-              { value: 35, suffix: "+", label: "Years" },
+              { value: 30, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
               { value: 72, suffix: " Lakhs+", label: "Sq Ft Built" },
             ].map((s, i) => (
@@ -108,7 +108,7 @@ export default function AboutPage() {
               {
                 icon: Award,
                 title: "Proven Legacy",
-                desc: "With over 35 years of experience in Gujarat's real estate sector, we have built a reputation of delivering premium quality and reliable construction.",
+                desc: "With over 30 years of experience in Gujarat's real estate sector, we have built a reputation of delivering premium quality and reliable construction.",
               },
               {
                 icon: Clock,

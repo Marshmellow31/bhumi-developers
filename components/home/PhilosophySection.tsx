@@ -47,6 +47,16 @@ const slides: SlideData[] = [
   },
   {
     number: "04",
+    category: "HOSPITALITY",
+    titleHtml: "Luxury <em>Hotel</em>",
+    italicWord: "Hotel",
+    regularText: "Luxury",
+    description: "An upcoming luxury hotel project bringing the renowned Fern Series by Marriott to Bharuch.",
+    image: "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
+    projectTag: "Fern Series by Marriott",
+  },
+  {
+    number: "05",
     category: "UPCOMING",
     titleHtml: "Luxury <em>Resort</em>",
     italicWord: "Resort",
@@ -56,7 +66,7 @@ const slides: SlideData[] = [
     projectTag: "The Resort",
   },
   {
-    number: "05",
+    number: "06",
     category: "COMMERCIAL",
     titleHtml: "IT <em>Hubs</em>",
     italicWord: "Hubs",
@@ -64,16 +74,6 @@ const slides: SlideData[] = [
     description: "An exciting new development set to redefine the city's commercial landscape.",
     image: "/images/bkc2/bkc2-main.jpeg",
     projectTag: "BKC 2",
-  },
-  {
-    number: "06",
-    category: "HOSPITALITY",
-    titleHtml: "Luxury <em>Hotel</em>",
-    italicWord: "Hotel",
-    regularText: "Luxury",
-    description: "An upcoming luxury hotel project bringing the renowned Fern Series by Marriott to Bharuch.",
-    image: "/images/fern-series/WhatsApp Image 2026-06-11 at 4.20.56 PM.jpeg",
-    projectTag: "Fern Series by Marriott",
   },
 ];
 

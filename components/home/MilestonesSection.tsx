@@ -35,11 +35,11 @@ function useCountUp(end: number, trigger: boolean, duration = 2.0) {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   Milestone data  (Bhumi Developers 1991 → 2024)
+   Milestone data  (Bhumi Developers 1995 → 2024)
 ═══════════════════════════════════════════════════════════════ */
 const MILESTONES = [
   {
-    year:   "1991",
+    year:   "1995",
     stat:   1,
     suffix: "",
     label:  "Year Founded",
@@ -64,7 +64,7 @@ const MILESTONES = [
     stat:   72,
     suffix: " Lakhs+",
     label:  "Sq Ft Developed",
-    desc:   "35 years. 50+ landmark projects. 72 Lakhs+ Sq Ft Developed. A legacy built on trust — shaping the future of Bharuch, one landmark at a time.",
+    desc:   "30 years. 50+ landmark projects. 72 Lakhs+ Sq Ft Developed. A legacy built on trust — shaping the future of Bharuch, one landmark at a time.",
   },
 ] as const;
 

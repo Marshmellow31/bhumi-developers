@@ -69,7 +69,7 @@ export default function PageLoader() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-white/25 text-[10px] tracking-[0.45em] uppercase font-body"
             >
-              Premium Real Estate · Since 1991
+              Premium Real Estate · Since 1995
             </motion.p>
 
             {/* Progress bar */}
