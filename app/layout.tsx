@@ -91,6 +91,18 @@ export const metadata: Metadata = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  description:
+    "Bhumi Developers — Bharuch's most trusted real estate developer since 1995. Premium residential, commercial, and township projects across South Gujarat.",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "en-IN",
+};
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": ["Organization", "LocalBusiness"],
@@ -141,12 +153,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en-IN" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+            __html: JSON.stringify([websiteJsonLd, organizationJsonLd]).replace(/</g, "\\u003c"),
           }}
         />
         <LenisProvider>

@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import CTABanner from "@/components/home/CTABanner";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import AwardsSection from "@/components/about/AwardsSection";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us — 30+ Years of Building in Bharuch",
@@ -12,6 +13,29 @@ export const metadata: Metadata = {
     "Learn about Bhumi Developers — over 30 years of building premium real estate in Bharuch and South Gujarat. 50+ projects, 72 lakh+ sq ft delivered.",
   alternates: { canonical: "/about" },
 };
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "About Us", item: `${SITE_URL}/about` },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/about#page`,
+    url: `${SITE_URL}/about`,
+    name: "About Bhumi Developers — 30+ Years of Building in Bharuch",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#organization` },
+    description:
+      "Bhumi Developers has been building premium real estate in Bharuch and South Gujarat since 1995 — 50+ projects, 72 lakh+ sq ft delivered, trusted by thousands of families.",
+    inLanguage: "en-IN",
+  },
+];
 
 
 const team = [
@@ -23,6 +47,12 @@ const team = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Hero */}
       <div className="bg-primary pt-36 pb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
