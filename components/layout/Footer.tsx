@@ -80,7 +80,7 @@ export default function Footer() {
                       width={80}
                       height={80}
                       className="max-h-full max-w-full object-contain"
-                      style={{ transform: `scale(${scale})` }}
+                      style={{ transform: `scale(${scale})`, width: "auto", height: "auto" }}
                     />
                   </div>
                 );

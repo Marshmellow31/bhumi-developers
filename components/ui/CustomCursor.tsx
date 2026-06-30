@@ -106,8 +106,8 @@ export default function CustomCursor() {
     width:           mode === "view" ? 80  : mode === "link" ? 14 : 36,
     height:          mode === "view" ? 80  : mode === "link" ? 14 : 36,
     /* For "view" we use a real gold fill and exit the blend context */
-    backgroundColor: mode === "view" ? "rgba(245,158,11,0.92)" : "transparent",
-    borderColor:     mode === "view" ? "transparent" : "rgba(255,255,255,1)",
+    backgroundColor: mode === "view" ? "rgba(245,158,11,0.92)" : "rgba(245,158,11,0)",
+    borderColor:     mode === "view" ? "rgba(255,255,255,0)" : "rgba(255,255,255,1)",
     opacity: visible ? 1 : 0,
   };
 
