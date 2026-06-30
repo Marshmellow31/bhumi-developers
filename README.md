@@ -7,7 +7,6 @@ This application is built using the latest web technologies to provide an immers
 ## ✨ Key Features
 
 - **Project Portfolio:** Detailed showcasing of ongoing, completed, and upcoming real estate projects (e.g., Central Square, Solitaire Pallazzo, City Center).
-- **Immersive 3D Experiences:** Interactive 3D graphics and canvas elements powered by React Three Fiber.
 - **Smooth Scrolling:** Integrated Lenis for seamless and fluid scrolling experiences.
 - **Premium Aesthetics:** Modern UI/UX built with Tailwind CSS v4 and Framer Motion for elegant animations.
 - **Performance Optimized:** Utilizing Next.js App Router, optimized images, and fonts for maximum speed and SEO.
@@ -17,7 +16,6 @@ This application is built using the latest web technologies to provide an immers
 - **Framework:** [Next.js](https://nextjs.org/) (App Router, React 19)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
-- **3D Rendering:** [React Three Fiber](https://r3f.docs.pmnd.rs/) & [Drei](https://github.com/pmndrs/drei)
 - **Scrolling:** [Lenis](https://lenis.studiofreight.com/)
 - **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
 - **Icons:** [Lucide React](https://lucide.dev/)
@@ -25,10 +23,10 @@ This application is built using the latest web technologies to provide an immers
 ## 📂 Project Structure
 
 - `app/`: Next.js App Router structure, containing pages, layouts, and global CSS.
-- `components/`: Modular React components, including UI elements, home sections, and 3D canvases.
+- `components/`: Modular React components, including UI elements and home sections.
 - `data/`: Centralized static data points (e.g., `projects.ts` containing all real estate project details).
 - `lib/`: Utility functions and helper classes.
-- `public/`: Static assets including images, videos, 3D models, and PDF brochures.
+- `public/`: Static assets including images, videos, and PDF brochures.
 
 ## 🚀 Getting Started
 
