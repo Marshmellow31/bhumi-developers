@@ -6,6 +6,7 @@ import { FileText, Download, Eye, MapPin, ChevronRight, SlidersHorizontal } from
 import Link from "next/link";
 import SectionHeading from "@/components/ui/SectionHeading";
 import type { Project, ProjectType } from "@/data/projects";
+import { getDocumentUrls } from "@/lib/documents";
 
 type Filter = "All" | ProjectType;
 
@@ -223,6 +224,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 interface DocCardProps { name: string; meta: string; label: string; file: string; delay: number }
 
 function DocCard({ name, meta, label, file, delay }: DocCardProps) {
+  const urls = getDocumentUrls(file);
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -242,10 +244,10 @@ function DocCard({ name, meta, label, file, delay }: DocCardProps) {
       </div>
       <span className="self-start text-[9px] tracking-[0.18em] uppercase font-semibold font-body text-amber-600 bg-amber-50 px-2 py-0.5 border border-amber-100">{label}</span>
       <div className="flex gap-2 mt-auto">
-        <a href={file} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-1.5 py-2 border border-border text-[11px] font-semibold text-charcoal tracking-wide font-body transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary" data-cursor-label="VIEW">
+        <a href={urls.view} target="_blank" rel="noreferrer" className="flex-1 flex items-center justify-center gap-1.5 py-2 border border-border text-[11px] font-semibold text-charcoal tracking-wide font-body transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary" data-cursor-label="VIEW">
           <Eye size={11} /> View
         </a>
-        <a href={file} download className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-amber-500 hover:bg-amber-600 text-[11px] font-semibold text-white tracking-wide font-body transition-all duration-200 border border-amber-500 hover:border-amber-600" data-cursor-label="GET">
+        <a href={urls.download} {...(urls.isDrive ? { target: "_blank", rel: "noreferrer" } : { download: true })} className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-amber-500 hover:bg-amber-600 text-[11px] font-semibold text-white tracking-wide font-body transition-all duration-200 border border-amber-500 hover:border-amber-600" data-cursor-label="GET">
           <Download size={11} /> Download
         </a>
       </div>

@@ -8,9 +8,9 @@ import AwardsSection from "@/components/about/AwardsSection";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Us — 30+ Years of Building in Bharuch",
+  title: "About Us — 35+ Years of Building in Bharuch",
   description:
-    "Learn about Bhumi Developers — over 30 years of building premium real estate in Bharuch and South Gujarat. 50+ projects, 72 lakh+ sq ft delivered.",
+    "Learn about Bhumi Developers — over 35 years of building premium real estate in Bharuch and South Gujarat. 50+ projects, 72 lakh+ sq ft delivered.",
   alternates: { canonical: "/about" },
 };
 
@@ -28,7 +28,7 @@ const jsonLd = [
     "@type": "AboutPage",
     "@id": `${SITE_URL}/about#page`,
     url: `${SITE_URL}/about`,
-    name: "About Bhumi Developers — 30+ Years of Building in Bharuch",
+    name: "About Bhumi Developers — 35+ Years of Building in Bharuch",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     about: { "@id": `${SITE_URL}/#organization` },
     description:
@@ -58,7 +58,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <SectionHeading
             eyebrow="Our Story"
-            title="Over Three Decades of Building Dreams"
+            title="Over 35 Years of Building Dreams"
             subtitle="From a single plot in Bharuch to South Gujarat's most respected developer — this is our story."
             align="center"
             light
@@ -72,7 +72,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-3 divide-y-2 lg:divide-y-0 lg:divide-x divide-primary/5 text-center">
             {[
-              { value: 30, suffix: "+", label: "Years" },
+              { value: 35, suffix: "+", label: "Years" },
               { value: 50, suffix: "+", label: "Projects" },
               { value: 72, suffix: " Lakhs+", label: "Sq Ft Built" },
             ].map((s, i) => (
@@ -124,7 +124,7 @@ export default function AboutPage() {
             <SectionHeading
               eyebrow="Our Advantages"
               title="Why Bhumi Developers"
-              subtitle="Over three decades of engineering excellence, built on trust, quality, and transparency."
+              subtitle="Over 35 years of engineering excellence, built on trust, quality, and transparency."
               align="center"
             />
           </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
               {
                 icon: Award,
                 title: "Proven Legacy",
-                desc: "With over 30 years of experience in Gujarat's real estate sector, we have built a reputation of delivering premium quality and reliable construction.",
+                desc: "With over 35 years of experience in Gujarat's real estate sector, we have built a reputation of delivering premium quality and reliable construction.",
               },
               {
                 icon: Clock,

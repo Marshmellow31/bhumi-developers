@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "Power Backup",
     ],
     featured: true,
-    brochure: "/documents/central-square-brochure.pdf",
+    brochure: "https://drive.google.com/file/d/1KQQRRrItZKLS7ii29C1MgwMv5KNz7qeK/view",
     video: "/videos/central-square-video.mp4",
     mapUrl: "https://maps.app.goo.gl/exkK4j2W7d1uFoJr7",
     coordinates: { lat: 21.701098, lng: 72.988292 },
@@ -162,7 +162,7 @@ export const projects: Project[] = [
       "Gazebo",
     ],
     featured: true,
-    brochure: "/documents/solitaire-pallazzo-brochure.pdf",
+    brochure: "https://drive.google.com/file/d/1I5U2tBA4nTIkjfR7Q3RW1zC2IxP__O3e/view",
     contact: {
       phones: [
         { number: "+919998016244", label: "+91 99980 16244" },
@@ -171,12 +171,12 @@ export const projects: Project[] = [
       email: "sp.info.tavra@gmail.com",
     },
     floorPlans: [
-      { name: "Brochure (Parking Layout & Details)", file: "/documents/solitaire-pallazzo-brochure-parking.pdf", size: "1.3 MB" },
-      { name: "Ground Floor Parking Layout Plan", file: "/documents/solitaire-pallazzo-ground-floor-parking.pdf", size: "1.7 MB" },
-      { name: "Ground Floor Shops Layout (107-108)", file: "/documents/solitaire-pallazzo-107-108-ground-floor.pdf", size: "2.1 MB" },
-      { name: "1st Floor Premium Plan", file: "/documents/solitaire-pallazzo-1st-floor-plan.pdf", size: "4.2 MB" },
-      { name: "2nd Floor Premium Plan", file: "/documents/solitaire-pallazzo-2nd-floor-plan.pdf", size: "7.0 MB" },
-      { name: "Typical Floor Layout Plan", file: "/documents/solitaire-pallazzo-typical-floor-plan.pdf", size: "5.9 MB" }
+      { name: "Brochure (Parking Layout & Details)", file: "https://drive.google.com/file/d/1_aSlPoux-ht620NBC7wLDTaMNOZi4zW2/view", size: "1.3 MB" },
+      { name: "Ground Floor Parking Layout Plan", file: "https://drive.google.com/file/d/1CBu2Bfey1eJSeqGnUAm_5800kn32ENZA/view", size: "1.7 MB" },
+      { name: "Ground Floor Shops Layout (107-108)", file: "https://drive.google.com/file/d/1CaN5LKr-2LhxGz_td_spt0KqAY1Jk5Ng/view", size: "2.1 MB" },
+      { name: "1st Floor Premium Plan", file: "https://drive.google.com/file/d/15Ud1unvoXBBoKBf5QmhpOJEZP24R9QEu/view", size: "4.2 MB" },
+      { name: "2nd Floor Premium Plan", file: "https://drive.google.com/file/d/1p_VNzt5VF02s7lpvYpD55bSlMTP7Bd91/view", size: "7.0 MB" },
+      { name: "Typical Floor Layout Plan", file: "https://drive.google.com/file/d/1H-g3t-tYrg4hydk2Mf1uF3R98XoH6JiY/view", size: "5.9 MB" }
     ],
     video: "/videos/solitaire-plaza-video.mp4",
     mapUrl: "https://maps.app.goo.gl/enux3NZQXSRLgSaLA",
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     priceRange: { min: 2800000, max: 15000000 },
     completionYear: 2023,
     image: "/images/city-center/city-center-1.webp",
-    brochure: "/documents/city-center-brochure.pdf",
+    brochure: "https://drive.google.com/file/d/1xKKx4PbhiDYMG6JceUSpbv9-In26SNci/view",
     gallery: [
       "/images/city-center/03.webp",
       "/images/city-center/04.webp",
@@ -243,9 +243,6 @@ export const projects: Project[] = [
     video: "/videos/city-center/use.mp4",
     mapUrl: "https://maps.app.goo.gl/7Ae4Hvp8iQEayW3m9",
     coordinates: { lat: 21.7036014, lng: 72.9969943 },
-    floorPlans: [
-      { name: "City Center Drawing", file: "/documents/city-center-drawing.pdf", size: "0.3 MB" }
-    ],
   },
   {
     id: "15",
@@ -408,7 +405,9 @@ export const projects: Project[] = [
     priceRange: { min: 0, max: 0 },
     completionYear: 2027,
     image: "/images/eminence/Eminence Bliss_1 - Photo.webp",
-    brochure: "/documents/eminence-floor-plans.pdf",
+    floorPlans: [
+      { name: "Eminence Floor Plans", file: "https://drive.google.com/file/d/1TlYi5zW_zaiQeAmnSwRta8Vc9a2-gkIl/view" }
+    ],
     gallery: [
       "/images/eminence/Eminence Bliss_1 - Photo.webp",
       "/images/eminence/Eminence Bliss_2 - Photo.webp",

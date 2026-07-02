@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MapPin, Home, Calendar, Layers, Phone, Mail, Store } from "lucide-react";
 import { getProjectBySlug, projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
+import { getDocumentUrls } from "@/lib/documents";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import CTABanner from "@/components/home/CTABanner";
 import Button from "@/components/ui/Button";
@@ -303,7 +304,12 @@ export default async function ProjectDetailPage({ params }: Props) {
                   </Button>
                 </Link>
                 {project.brochure && (
-                  <a href={project.brochure} download target="_blank" rel="noreferrer">
+                  <a
+                    href={getDocumentUrls(project.brochure).view}
+                    {...(getDocumentUrls(project.brochure).isDrive ? {} : { download: true })}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <Button
                       variant="outline"
                       size="md"

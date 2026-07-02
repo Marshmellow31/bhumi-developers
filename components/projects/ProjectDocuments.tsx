@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FileText, Download, Eye } from "lucide-react";
 import type { FloorPlan } from "@/data/projects";
+import { getDocumentUrls } from "@/lib/documents";
 
 interface ProjectDocumentsProps {
   brochure?: string;
@@ -37,7 +38,9 @@ export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocume
         Available Downloads
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-        {docs.map((doc, i) => (
+        {docs.map((doc, i) => {
+          const urls = getDocumentUrls(doc.file);
+          return (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 12 }}
@@ -69,7 +72,7 @@ export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocume
             {/* Actions */}
             <div className="flex gap-3 mt-auto">
               <a
-                href={doc.file}
+                href={urls.view}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 border border-border text-xs font-semibold text-charcoal tracking-wide font-body transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary"
@@ -78,8 +81,8 @@ export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocume
                 View
               </a>
               <a
-                href={doc.file}
-                download
+                href={urls.download}
+                {...(urls.isDrive ? { target: "_blank", rel: "noreferrer" } : { download: true })}
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-primary hover:bg-primary/90 text-xs font-semibold text-white tracking-wide font-body transition-all duration-200 border border-primary hover:border-primary"
               >
                 <Download size={14} />
@@ -87,7 +90,8 @@ export default function ProjectDocuments({ brochure, floorPlans }: ProjectDocume
               </a>
             </div>
           </motion.div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

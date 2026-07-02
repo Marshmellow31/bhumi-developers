@@ -75,7 +75,7 @@ export default function AboutSnippet() {
                     className="text-6xl font-bold leading-none text-white"
                     style={{ fontFamily: "var(--font-playfair)" }}
                   >
-                    30
+                    35
                   </p>
                   <p
                     className="text-3xl font-light text-white/70 leading-none"

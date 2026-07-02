@@ -223,7 +223,7 @@ export default function GaclColonyClient() {
                 "RERA-compliant development",
                 "Clear title, approved layouts",
                 "Flexible plot sizes for every budget",
-                "Bhumi Developers' 20+ year legacy",
+                "Bhumi Developers' 35+ year legacy",
               ].map((point) => (
                 <div key={point} className="flex items-start gap-2.5">
                   <CheckCircle2 size={14} className="text-amber-600 shrink-0 mt-0.5" />
