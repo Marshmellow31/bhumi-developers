@@ -114,6 +114,26 @@ type CacheEntry = {
 
 const playerCache = new Map<string, CacheEntry>();
 
+/* Low-priority videos wait for the primary (hero) video to reveal before
+   loading, so they don't compete with it for bandwidth on first visit. */
+let primaryRevealed = false;
+const deferredWaiters: (() => void)[] = [];
+function releaseDeferred() {
+  if (primaryRevealed) return;
+  primaryRevealed = true;
+  deferredWaiters.splice(0).forEach((fn) => fn());
+}
+function whenPrimaryReady(timeoutMs = 12000): Promise<void> {
+  if (primaryRevealed) return Promise.resolve();
+  return new Promise((resolve) => {
+    const fallback = setTimeout(resolve, timeoutMs);
+    deferredWaiters.push(() => {
+      clearTimeout(fallback);
+      resolve();
+    });
+  });
+}
+
 /* YouTube pauses muted embeds in hidden tabs. Resume any attached player
    when the tab becomes visible again, so returning to the tab doesn't
    restart the reveal sequence from scratch. */
@@ -129,7 +149,7 @@ function hookVisibility() {
   });
 }
 
-function ensureEntry(videoId: string): CacheEntry {
+function ensureEntry(videoId: string, defer: boolean): CacheEntry {
   hookVisibility();
   let entry = playerCache.get(videoId);
   if (entry) return entry;
@@ -181,8 +201,10 @@ function ensureEntry(videoId: string): CacheEntry {
   entry = e;
   playerCache.set(videoId, e);
 
-  loadYouTubeAPI().then((YT) => {
-    e.player = new YT.Player(mount, {
+  (defer ? whenPrimaryReady() : Promise.resolve())
+    .then(loadYouTubeAPI)
+    .then((YT) => {
+      e.player = new YT.Player(mount, {
       videoId,
       width: "100%",
       height: "100%",
@@ -231,14 +253,14 @@ function ensureEntry(videoId: string): CacheEntry {
         },
       },
     });
-  });
+    });
 
   return e;
 }
 
 /* Align the fixed layer to the section every frame (Lenis scroll, resize…) */
-function attachEntry(videoId: string, anchor: HTMLElement): CacheEntry {
-  const e = ensureEntry(videoId);
+function attachEntry(videoId: string, anchor: HTMLElement, defer: boolean): CacheEntry {
+  const e = ensureEntry(videoId, defer);
   e.anchor = anchor;
   e.wrapper.style.visibility = "visible";
   e.player?.playVideo();
@@ -271,6 +293,8 @@ type Props = {
   onPlaying?: () => void;
   /** Reports estimated time until reveal (null once revealed) — for countdown UIs */
   onProgress?: (progress: VideoLoadProgress | null) => void;
+  /** "low" defers loading until the primary (hero) video has revealed */
+  priority?: "high" | "low";
 };
 
 /**
@@ -283,7 +307,13 @@ type Props = {
  * Must be placed inside a full-viewport-height section. Overlays that must
  * sit above the video need an explicit z-index of 1 or higher.
  */
-export default function YouTubeBackground({ videoId, poster, onPlaying, onProgress }: Props) {
+export default function YouTubeBackground({
+  videoId,
+  poster,
+  onPlaying,
+  onProgress,
+  priority = "high",
+}: Props) {
   const anchorRef = useRef<HTMLDivElement>(null);
   const onPlayingRef = useRef(onPlaying);
   const onProgressRef = useRef(onProgress);
@@ -296,7 +326,7 @@ export default function YouTubeBackground({ videoId, poster, onPlaying, onProgre
 
   useEffect(() => {
     if (!anchorRef.current) return;
-    const entry = attachEntry(videoId, anchorRef.current);
+    const entry = attachEntry(videoId, anchorRef.current, priority === "low");
 
     let shown = false;
     let announced = false;
@@ -370,6 +400,7 @@ export default function YouTubeBackground({ videoId, poster, onPlaying, onProgre
         if (!shown) {
           shown = true;
           entry.revealedOnce = true;
+          releaseDeferred(); // primary is on screen — let deferred videos load
           setRevealed(true);
           emit(null);
           if (!announced) {
@@ -397,7 +428,7 @@ export default function YouTubeBackground({ videoId, poster, onPlaying, onProgre
       detachEntry(entry);
       onProgressRef.current?.(null);
     };
-  }, [videoId]);
+  }, [videoId, priority]);
 
   return (
     <div ref={anchorRef} className="absolute inset-0 pointer-events-none">

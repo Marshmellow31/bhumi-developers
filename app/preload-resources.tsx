@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
  *  as early as possible (see docs: generate-metadata → Resource hints). */
 export default function PreloadResources() {
   ReactDOM.preload("/images/background.webp", { as: "image" });
+  ReactDOM.preload("/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp", { as: "image" });
   ReactDOM.preconnect("https://www.youtube-nocookie.com");
   ReactDOM.preconnect("https://www.youtube.com");
   ReactDOM.preconnect("https://i.ytimg.com");
