@@ -180,11 +180,11 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="tel:+919879100355"
+                    href="tel:+918511566682"
                     className="flex items-center gap-3 text-white/50 text-sm font-body hover:text-champagne transition-colors"
                   >
                     <Phone size={15} className="text-champagne/60 shrink-0" />
-                    +91 98791 00355
+                    +91 85115 66682
                   </a>
                 </li>
                 <li>

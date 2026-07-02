@@ -107,12 +107,30 @@ type CacheEntry = {
   anchor: HTMLElement | null;
   raf: number;
   required: number;
+  /** Last time we countered YouTube's background-tab auto-pause */
+  lastAutoResume: number;
   subs: Set<() => void>;
 };
 
 const playerCache = new Map<string, CacheEntry>();
 
+/* YouTube pauses muted embeds in hidden tabs. Resume any attached player
+   when the tab becomes visible again, so returning to the tab doesn't
+   restart the reveal sequence from scratch. */
+let visibilityHooked = false;
+function hookVisibility() {
+  if (visibilityHooked) return;
+  visibilityHooked = true;
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    playerCache.forEach((e) => {
+      if (e.anchor && !e.playingSince) e.player?.playVideo();
+    });
+  });
+}
+
 function ensureEntry(videoId: string): CacheEntry {
+  hookVisibility();
   let entry = playerCache.get(videoId);
   if (entry) return entry;
 
@@ -157,6 +175,7 @@ function ensureEntry(videoId: string): CacheEntry {
     anchor: null,
     raf: 0,
     required: requiredBufferSeconds(),
+    lastAutoResume: 0,
     subs: new Set(),
   };
   entry = e;
@@ -199,6 +218,14 @@ function ensureEntry(videoId: string): CacheEntry {
             forceHighestQuality(ev.target);
           } else {
             e.playingSince = 0;
+            /* We didn't pause it and the tab is hidden — YouTube's
+               background auto-pause. Resume right away so the video is
+               already playing (and revealed) when the viewer returns. */
+            const now = performance.now();
+            if (e.anchor && document.hidden && now - e.lastAutoResume > 2000) {
+              e.lastAutoResume = now;
+              ev.target.playVideo();
+            }
           }
           e.subs.forEach((fn) => fn());
         },

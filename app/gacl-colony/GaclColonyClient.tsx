@@ -124,7 +124,7 @@ export default function GaclColonyClient() {
             {/* CTA row */}
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <a
-                href="tel:+919879100355"
+                href="tel:+918511566682"
                 className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 text-[11px] font-semibold tracking-[0.18em] uppercase hover:bg-primary/90 transition-colors duration-200"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
@@ -398,7 +398,7 @@ export default function GaclColonyClient() {
 
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="tel:+919879100355"
+              href="tel:+918511566682"
               className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3.5 text-[11px] font-semibold tracking-[0.18em] uppercase hover:bg-primary/90 transition-colors duration-200"
               style={{ fontFamily: "var(--font-inter)" }}
             >

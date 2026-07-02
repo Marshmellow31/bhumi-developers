@@ -160,7 +160,7 @@ export default function Navbar() {
 
               {/* CTA */}
               <a
-                href="tel:+919879100355"
+                href="tel:+918511566682"
                 className="flex items-center gap-2 bg-white text-primary px-5 py-2.5 text-[10px] font-semibold tracking-[0.18em] uppercase hover:bg-champagne hover:text-primary transition-colors duration-200"
                 style={{ fontFamily: "var(--font-inter)" }}
               >
@@ -238,7 +238,7 @@ export default function Navbar() {
               {/* CTA in mobile menu */}
               <motion.div variants={menuItemVariants} className="mt-8">
                 <a
-                  href="tel:+919879100355"
+                  href="tel:+918511566682"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 bg-champagne text-primary px-6 py-4 text-[10px] font-bold tracking-[0.25em] uppercase"
                   style={{ fontFamily: "var(--font-inter)" }}

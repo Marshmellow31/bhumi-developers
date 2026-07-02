@@ -66,7 +66,7 @@ export default function CTABanner() {
                 Book a Site Visit
               </Button>
             </Link>
-            <a href="tel:+919879100355">
+            <a href="tel:+918511566682">
               <Button size="lg" variant="outline">
                 <Phone size={14} />
                 Call Us Now

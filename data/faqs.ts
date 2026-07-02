@@ -51,7 +51,7 @@ export const contactFaqs: Faq[] = [
   {
     question: "How can I contact Bhumi Developers?",
     answer:
-      "You can call us at +91 98791 00355, email us at contact@bhumidevelopers.co.in, or fill out the enquiry form on our website. We are available Monday to Saturday from 10 AM to 7 PM.",
+      "You can call us at +91 85115 66682, email us at contact@bhumidevelopers.co.in, or fill out the enquiry form on our website. We are available Monday to Saturday from 10 AM to 7 PM.",
   },
   {
     question: "What types of properties does Bhumi Developers offer?",
