@@ -5,6 +5,12 @@ import {
   motion,
   AnimatePresence,
 } from "framer-motion";
+import YouTubeBackground, {
+  type VideoLoadProgress,
+} from "@/components/media/YouTubeBackground";
+
+const RING_RADIUS = 26;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 /* ── Constants ── */
 const TICKER =
@@ -31,23 +37,82 @@ export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
+  /* Estimated time until the background video reveals (null once playing) */
+  const [videoProgress, setVideoProgress] = useState<VideoLoadProgress | null>(null);
+
   return (
     <section
       className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: "#111111" }}
     >
-      {/* ── BG VIDEO ── */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          src="/videos/homepage-video.mp4"
+      {/* ── BG VIDEO (fixed session-persistent layer aligns behind this) ── */}
+      <div className="absolute inset-0 z-[1]">
+        <YouTubeBackground
+          videoId="e5smuG9DGlk"
           poster="/images/background.webp"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
+          onProgress={setVideoProgress}
         />
       </div>
+
+      {/* ── Countdown ring until the video reveals ── */}
+      <AnimatePresence>
+        {videoProgress && (
+          <motion.div
+            key="video-countdown"
+            className="absolute bottom-8 right-5 md:bottom-10 md:right-12 z-20 pointer-events-none flex flex-col items-center gap-2"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            <div className="relative w-[52px] h-[52px] md:w-[60px] md:h-[60px]">
+              <svg viewBox="0 0 60 60" className="w-full h-full -rotate-90">
+                <circle
+                  cx="30"
+                  cy="30"
+                  r={RING_RADIUS}
+                  fill="none"
+                  stroke="rgba(255,255,255,0.12)"
+                  strokeWidth="1.5"
+                />
+                <circle
+                  cx="30"
+                  cy="30"
+                  r={RING_RADIUS}
+                  fill="none"
+                  stroke="rgba(245,158,11,0.9)"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeDasharray={RING_CIRCUMFERENCE}
+                  strokeDashoffset={(1 - videoProgress.fraction) * RING_CIRCUMFERENCE}
+                  style={{ transition: "stroke-dashoffset 250ms linear" }}
+                />
+              </svg>
+              <span
+                className="absolute inset-0 flex items-center justify-center text-white/90"
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "13px",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {videoProgress.seconds}s
+              </span>
+            </div>
+            <span
+              style={{
+                fontFamily: "var(--font-inter)",
+                fontSize: "8px",
+                letterSpacing: "0.4em",
+                color: "rgba(255,255,255,0.35)",
+                textTransform: "uppercase",
+              }}
+            >
+              Video
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Gradient overlay ── */}
       <div

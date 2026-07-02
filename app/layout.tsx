@@ -10,6 +10,7 @@ import ScrollProgress from "@/components/ui/ScrollProgress";
 import ContactPopup from "@/components/ui/ContactPopup";
 import LenisProvider from "@/components/ui/LenisProvider";
 import PageTransition from "@/components/ui/PageTransition";
+import PreloadResources from "@/app/preload-resources";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -161,6 +162,7 @@ export default function RootLayout({
             __html: JSON.stringify([websiteJsonLd, organizationJsonLd]).replace(/</g, "\\u003c"),
           }}
         />
+        <PreloadResources />
         <LenisProvider>
           {/* Gold scroll-progress bar */}
           <ScrollProgress />

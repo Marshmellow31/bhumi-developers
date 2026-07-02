@@ -57,7 +57,7 @@ export default function ProjectGallerySection({
             muted
             loop
             playsInline
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105 pointer-events-none"
           />
         ) : (
           <Image
