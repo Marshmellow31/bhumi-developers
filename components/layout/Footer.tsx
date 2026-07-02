@@ -66,7 +66,7 @@ export default function Footer() {
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
-                { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 1.2 },
+                { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 0.85 },
                 { src: "/images/venus-reality.png", alt: "Venus Reality",              scale: 1.1, noBg: true },
               ].map(({ src, alt, scale, noBg, href }) => {
                 const content = (
