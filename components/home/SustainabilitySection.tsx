@@ -1,27 +1,22 @@
-﻿"use client";
+"use client";
 
 import { motion } from "framer-motion";
 import { Leaf } from "lucide-react";
 import Link from "next/link";
+import YouTubeBackground from "@/components/media/YouTubeBackground";
 
 export default function SustainabilitySection() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
 
       {/* ── Full-screen video ── */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
+      <YouTubeBackground
+        videoId="yKkUt2085Gw"
         poster="/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp"
-      >
-        <source src="/videos/sustainability.mp4" type="video/mp4" />
-      </video>
+      />
 
-      {/* ── Overlay ── */}
-      <div className="absolute inset-0 bg-black/40" />
+      {/* ── Overlay (above the fixed video layer) ── */}
+      <div className="absolute inset-0 z-[1] bg-black/40" />
 
       {/* ── Content ── */}
       <div className="relative z-10 h-full flex items-center">
