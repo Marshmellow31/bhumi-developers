@@ -32,14 +32,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   if (!project) return {};
+  const title =
+    project.seo?.title ?? `${project.name} — ${project.type} Project in ${project.location}`;
   const description =
-    project.description.split("\n").find((p) => p.trim()) ?? project.tagline;
+    project.seo?.description ??
+    project.description.split("\n").find((p) => p.trim()) ??
+    project.tagline;
   return {
-    title: `${project.name} — ${project.type} Project in ${project.location}`,
+    title,
     description,
+    keywords: [
+      project.name,
+      `${project.name} ${project.city}`,
+      ...(project.seo?.keywords ?? []),
+    ],
     alternates: { canonical: `/projects/${slug}` },
     openGraph: {
-      title: `${project.name} | Bhumi Developers`,
+      title: `${title} | Bhumi Developers`,
       description,
       url: `/projects/${slug}`,
       type: "website",
@@ -47,7 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.name} | Bhumi Developers`,
+      title: `${title} | Bhumi Developers`,
       description,
       images: [project.image],
     },

@@ -40,6 +40,12 @@ export interface Project {
   video?: string;
   mapUrl?: string;
   coordinates?: { lat: number; lng: number };
+  /** Hand-written search metadata; falls back to generated values when absent. */
+  seo?: {
+    title: string;
+    description: string;
+    keywords?: string[];
+  };
 }
 
 export const projects: Project[] = [
@@ -48,6 +54,18 @@ export const projects: Project[] = [
     slug: "central-square",
     name: "Central Square",
     tagline: "A Landmark Destination for Healthcare & Business",
+    seo: {
+      title: "Central Square — Shops & Offices for Sale in Bharuch",
+      description:
+        "Commercial shops, clinics & offices for sale at Panchbatti, Bharuch — 110 units from 450–3,500 sq ft starting ₹32 L. Bharuch's only four-side-open commercial project. Possession 2026.",
+      keywords: [
+        "shops for sale in Bharuch",
+        "commercial property in Bharuch",
+        "offices in Panchbatti Bharuch",
+        "clinic space for sale Bharuch",
+        "showroom in Bharuch",
+      ],
+    },
     location: "Panchbatti, Bharuch",
     city: "Bharuch",
     status: "Ongoing",
@@ -95,6 +113,18 @@ export const projects: Project[] = [
     slug: "solitaire-pallazzo",
     name: "Solitaire Pallazzo",
     tagline: "3-BHK Luxury Residence",
+    seo: {
+      title: "Solitaire Pallazzo — 3 BHK Flats in Tavra, Bharuch",
+      description:
+        "Premium 3 BHK flats in Tavra, Bharuch from ₹60 L — G+14 gated community with 168 residences from 1,011 sq ft, Narmada river views, clubhouse & sky deck. Possession 2027.",
+      keywords: [
+        "3 BHK flats in Bharuch",
+        "flats in Tavra Bharuch",
+        "luxury apartments in Bharuch",
+        "new residential projects in Bharuch",
+        "gated community Bharuch",
+      ],
+    },
     location: "Tavra, Bharuch",
     city: "Tavra, Bharuch",
     status: "Ongoing",
@@ -187,6 +217,18 @@ export const projects: Project[] = [
     slug: "city-center",
     name: "City Center",
     tagline: "The Core of Trade and Entertainment",
+    seo: {
+      title: "City Center Bharuch — Shops & Offices on Station Road",
+      description:
+        "Bharuch's landmark 6 lakh sq ft commercial destination on Station Road — 430 shops, offices, food court & multiplex. Shops available for rent and purchase.",
+      keywords: [
+        "shops for rent in Bharuch",
+        "City Center Bharuch",
+        "commercial complex Bharuch",
+        "shops on Station Road Bharuch",
+        "office space in Bharuch",
+      ],
+    },
     location: "Station Road, Bharuch",
     city: "Bharuch",
     status: "Completed",
@@ -249,6 +291,12 @@ export const projects: Project[] = [
     slug: "fern-series",
     name: "The Fern Series by Marriott",
     tagline: "Premium Hospitality and Comfort",
+    seo: {
+      title: "The Fern Series by Marriott — Upcoming Hotel in Bharuch",
+      description:
+        "The Fern Series by Marriott is coming to Bharuch — an upcoming luxury hotel with premium rooms & suites, fine dining, banquet halls, pool & spa by Bhumi Developers.",
+      keywords: ["hotels in Bharuch", "Fern hotel Bharuch", "luxury hotel Bharuch", "banquet hall Bharuch"],
+    },
     location: "Bharuch",
     city: "Bharuch",
     status: "Upcoming",
@@ -277,6 +325,12 @@ export const projects: Project[] = [
     slug: "pritam-residency",
     name: "Pritam Residency",
     tagline: "Refined Living in the Heart of Bharuch",
+    seo: {
+      title: "Pritam Residency — Flats in Maktampur, Bharuch",
+      description:
+        "Completed residential society in Maktampur, Bharuch — 48 spacious homes from 1,050–1,800 sq ft with landscaped gardens, gym & 24/7 security by Bhumi Developers.",
+      keywords: ["flats in Maktampur Bharuch", "residential society in Bharuch", "apartments in Bharuch"],
+    },
     location: "Maktampur, Bharuch",
     city: "Bharuch",
     status: "Completed",
@@ -311,6 +365,12 @@ export const projects: Project[] = [
     slug: "bkc2",
     name: "BKC 2",
     tagline: "Upcoming Landmark Building",
+    seo: {
+      title: "BKC 2 — Upcoming Commercial Project in Mumbai",
+      description:
+        "BKC 2 by Bhumi Developers — an upcoming 17+ lakh sq ft Mumbai landmark with Grade-A corporate offices, IT hub & premium retail outlets. Completion 2028.",
+      keywords: ["commercial project in Mumbai", "Grade A offices Mumbai", "BKC 2"],
+    },
     location: "Mumbai",
     city: "Mumbai",
     status: "Upcoming",
@@ -338,6 +398,12 @@ export const projects: Project[] = [
     slug: "the-resort",
     name: "The Resort",
     tagline: "Your Private Paradise",
+    seo: {
+      title: "The Resort — Luxury Resort near Imagica, Khalapur",
+      description:
+        "Upcoming ultra-luxury resort & wellness retreat near Imagica, Khalapur (Mumbai) — lakefront villas, natural waterfalls, spa & eco-friendly architecture by Bhumi Developers.",
+      keywords: ["resort near Imagica", "luxury resort Khalapur", "resort near Mumbai"],
+    },
     location: "Near Imagica, Mumbai",
     city: "Mumbai",
     status: "Upcoming",
@@ -365,6 +431,12 @@ export const projects: Project[] = [
     slug: "gacl-colony",
     name: "GACL Colony",
     tagline: "108 Homes. 7.62 Acres. Since 1995.",
+    seo: {
+      title: "GACL Colony — Landmark Township in Bharuch (Est. 1995)",
+      description:
+        "One of Bharuch's largest residential townships of its era — 108 quality homes across 7.62 acres with full infrastructure, delivered by Bhumi Developers in 1995.",
+      keywords: ["township in Bharuch", "GACL Colony Bharuch", "residential township Gujarat"],
+    },
     location: "GACL Township Area, Bharuch",
     city: "Bharuch",
     status: "Completed",
@@ -396,6 +468,12 @@ export const projects: Project[] = [
     slug: "eminence",
     name: "Eminence",
     tagline: "Elevated Living in the Heart of Vadodara",
+    seo: {
+      title: "Eminence — Upcoming Premium Flats in Vadodara",
+      description:
+        "Eminence by Bhumi Developers — premium residential flats coming to Vadodara with modern architecture and thoughtfully designed homes. Floor plans available now.",
+      keywords: ["flats in Vadodara", "new residential projects in Vadodara", "apartments in Vadodara"],
+    },
     location: "Vadodara",
     city: "Vadodara",
     status: "Upcoming",

@@ -27,24 +27,34 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Bhumi Developers | Premium Real Estate in Bharuch, Gujarat",
+    default: "Bhumi Developers | Trusted Builders & Real Estate in Bharuch",
     template: "%s | Bhumi Developers",
   },
   description:
-    "Bhumi Developers — Bharuch's most trusted real estate developer since 1995. Explore premium residential flats, commercial shops & offices, villas, and townships across Bharuch and South Gujarat.",
+    "Bhumi Developers — Bharuch's most trusted builders since 1995. Explore premium residential flats, commercial shops & offices, villas, and townships across Bharuch and South Gujarat.",
   keywords: [
     "Bhumi Developers",
     "real estate Bharuch",
     "builders in Bharuch",
+    "real estate developers in Bharuch",
+    "property developers Bharuch",
     "flats in Bharuch",
     "3 BHK flats Bharuch",
+    "2 BHK flats Bharuch",
     "apartments in Bharuch",
+    "new projects in Bharuch",
+    "flats in Tavra Bharuch",
     "shops for sale in Bharuch",
+    "shops for rent in Bharuch",
     "commercial property Bharuch",
     "offices in Bharuch",
     "villas in Bharuch",
+    "plots in Bharuch",
+    "township in Bharuch",
     "property in Bharuch",
+    "property investment Bharuch",
     "real estate Gujarat",
+    "real estate Ankleshwar",
     "RERA approved projects Bharuch",
     "Central Square Bharuch",
     "Solitaire Pallazzo Bharuch",
@@ -64,6 +74,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1,
     },
+  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  }),
+  other: {
+    "geo.region": "IN-GJ",
+    "geo.placename": "Bharuch",
+    "geo.position": "21.710968;72.997883",
+    ICBM: "21.710968, 72.997883",
   },
   openGraph: {
     type: "website",
@@ -105,7 +124,7 @@ const websiteJsonLd = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness"],
+  "@type": ["Organization", "LocalBusiness", "RealEstateAgent"],
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
@@ -116,6 +135,15 @@ const organizationJsonLd = {
   foundingDate: "1995",
   email: "contact@bhumidevelopers.co.in",
   telephone: "+919879100355",
+  priceRange: "₹28 L – ₹2.4 Cr",
+  hasMap: "https://maps.google.com/?q=21.710968,72.997883",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+919879100355",
+    contactType: "sales",
+    areaServed: "IN",
+    availableLanguage: ["English", "Hindi", "Gujarati"],
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress:
