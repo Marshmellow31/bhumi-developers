@@ -13,6 +13,7 @@ export default function SustainabilitySection() {
       <YouTubeBackground
         videoId="yKkUt2085Gw"
         poster="/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp"
+        priority="low"
       />
 
       {/* ── Overlay (above the fixed video layer) ── */}
