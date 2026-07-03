@@ -14,6 +14,9 @@ export default function PageLoader() {
     const seen = sessionStorage.getItem("bhumi_loaded");
     if (seen) return;
 
+    // Phones skip the cinematic loader — first paint matters more on 4G.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+
     // Initial render is empty so SSR/client match — show the loader only after
     // confirming first-time visit on the client.
     // eslint-disable-next-line react-hooks/set-state-in-effect

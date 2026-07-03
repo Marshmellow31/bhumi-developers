@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, ZoomIn, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -31,6 +31,13 @@ export default function ProjectGallerySection({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
 
+  /* Videos are multi-MB — play them on desktop only. SSR and mobile render
+     the optimized poster image instead. */
+  const [allowVideo, setAllowVideo] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia("(min-width: 768px)").matches) setAllowVideo(true);
+  }, []);
+
   return (
     <>
       <div
@@ -50,9 +57,11 @@ export default function ProjectGallerySection({
             <span>Back to Projects</span>
           </Link>
         </div>
-        {video ? (
+        {video && allowVideo ? (
           <video
             src={video}
+            poster={image}
+            preload="metadata"
             autoPlay
             muted
             loop

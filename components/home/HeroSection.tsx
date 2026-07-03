@@ -248,10 +248,7 @@ export default function HeroSection() {
         className="relative z-10 overflow-hidden pointer-events-none"
         style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        <div
-          className="flex whitespace-nowrap py-2"
-          style={{ animation: "marquee 45s linear infinite" }}
-        >
+        <div className="flex whitespace-nowrap py-2 marquee-track">
           {[0, 1, 2].map((n) => (
             <span
               key={n}

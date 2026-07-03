@@ -88,6 +88,16 @@ body.cursor-active * {
   }
 }
 
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
 
 
 

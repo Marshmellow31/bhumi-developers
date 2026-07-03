@@ -1,6 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+/* Phones / Save-Data connections skip the YouTube player entirely and keep
+   the poster — the embed costs ~1 MB of iframe JS plus video streaming. */
+function videoDisabled() {
+  return (
+    window.matchMedia("(max-width: 767px)").matches ||
+    ((navigator as { connection?: { saveData?: boolean } }).connection?.saveData ?? false)
+  );
+}
 
 /* Minimal typings for the YouTube IFrame Player API */
 type YTPlayer = {
@@ -296,6 +306,7 @@ export default function YouTubeBackground({ videoId, poster, onPlaying, onProgre
 
   useEffect(() => {
     if (!anchorRef.current) return;
+    if (videoDisabled()) return; // poster-only: never boot the player
     const entry = attachEntry(videoId, anchorRef.current);
 
     let shown = false;
@@ -411,11 +422,19 @@ export default function YouTubeBackground({ videoId, poster, onPlaying, onProgre
           transitionDuration: revealed ? "700ms" : "150ms",
           opacity: revealed ? 0 : 1,
           backgroundColor: "#111111",
-          backgroundImage: poster ? `url(${poster})` : undefined,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
-      />
+      >
+        {poster && (
+          <Image
+            src={poster}
+            alt=""
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        )}
+      </div>
     </div>
   );
 }

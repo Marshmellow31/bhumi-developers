@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Download, Eye, MapPin, ChevronRight, SlidersHorizontal } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import type { Project, ProjectType } from "@/data/projects";
 import { getDocumentUrls } from "@/lib/documents";
@@ -156,9 +157,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
     >
       {/* Banner */}
       <div className="relative h-56 md:h-64 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.03]"
-          style={{ backgroundImage: `url('${project.image}')` }}
+        <Image
+          src={project.image}
+          alt={`${project.name} — brochures and floor plans by Bhumi Developers`}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/92 via-primary/65 to-primary/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent" />

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -36,14 +37,12 @@ export default function AboutSnippet() {
             <div className="relative">
               {/* Portrait frame */}
               <div className="relative aspect-[4/5] overflow-hidden group">
-                <motion.div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: "url('/images/owner.webp')",
-                    filter: "grayscale(20%)",
-                  }}
-                  whileHover={{ scale: 1.03, filter: "grayscale(0%)" }}
-                  transition={{ duration: 1.4, ease }}
+                <Image
+                  src="/images/owner.webp"
+                  alt="Kiran Majmudar — Chairman & Founder of Bhumi Developers, Bharuch"
+                  fill
+                  className="object-cover grayscale-[20%] transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/15 via-transparent to-transparent pointer-events-none" />
               </div>

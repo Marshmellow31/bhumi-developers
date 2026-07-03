@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import CustomCursor from "@/components/ui/CustomCursor";
 import PageLoader from "@/components/ui/PageLoader";
 import ScrollProgress from "@/components/ui/ScrollProgress";
-import ContactPopup from "@/components/ui/ContactPopup";
+import ClientEnhancements from "@/components/ui/ClientEnhancements";
 import LenisProvider from "@/components/ui/LenisProvider";
 import PageTransition from "@/components/ui/PageTransition";
 import PreloadResources from "@/app/preload-resources";
 
+// Playfair Display is a variable font — omitting `weight` loads one variable
+// file covering 400–900 instead of six static files.
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -195,19 +196,17 @@ export default function RootLayout({
           {/* Gold scroll-progress bar */}
           <ScrollProgress />
 
-          {/* Lead Generation Popup */}
-          <ContactPopup />
-
-          {/* First-load cinematic loader */}
+          {/* First-load cinematic loader (desktop only) */}
           <PageLoader />
 
-          {/* Magnetic dual-ring cursor (desktop only) */}
-          <CustomCursor />
+          {/* Lead popup + custom cursor — lazy, split out of the main bundle */}
+          <ClientEnhancements />
 
           <Navbar />
           <PageTransition>{children}</PageTransition>
           <Footer />
         </LenisProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

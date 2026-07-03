@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, ArrowUpRight, Compass } from "lucide-react";
 import { projects } from "@/data/projects";
 
@@ -64,9 +65,12 @@ export default function HotelsClient() {
                 href={`/projects/${project.slug}`}
                 className="relative overflow-hidden aspect-[16/10] bg-surface border border-border"
               >
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{ backgroundImage: `url('${project.image}')` }}
+                <Image
+                  src={project.image}
+                  alt={`${project.name} — hospitality project in ${project.location} by Bhumi Developers`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 {/* Overlays */}
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />

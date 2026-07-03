@@ -151,7 +151,7 @@ export default function ContactClient() {
                     <input
                       {...register("name")}
                       placeholder="John Doe"
-                      className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
+                      className="w-full border border-border px-4 py-3 text-base font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
                     />
                     {errors.name && (
                       <p className="text-red-500 text-xs mt-1 font-body">{errors.name.message}</p>
@@ -164,7 +164,7 @@ export default function ContactClient() {
                     <input
                       {...register("phone")}
                       placeholder="9876543210"
-                      className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
+                      className="w-full border border-border px-4 py-3 text-base font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
                     />
                     {errors.phone && (
                       <p className="text-red-500 text-xs mt-1 font-body">{errors.phone.message}</p>
@@ -178,7 +178,7 @@ export default function ContactClient() {
                   </label>
                   <select
                     {...register("interest")}
-                    className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal focus:outline-none focus:border-primary transition-colors bg-background"
+                    className="w-full border border-border px-4 py-3 text-base font-body text-charcoal focus:outline-none focus:border-primary transition-colors bg-background"
                   >
                     <option value="Residential">Residential</option>
                     <option value="Commercial">Commercial</option>
@@ -196,7 +196,7 @@ export default function ContactClient() {
                     {...register("message")}
                     rows={5}
                     placeholder="Tell us about what you're looking for..."
-                    className="w-full border border-border px-4 py-3 text-sm font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
+                    className="w-full border border-border px-4 py-3 text-base font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none"
                   />
                   {errors.message && (
                     <p className="text-red-500 text-xs mt-1 font-body">{errors.message.message}</p>

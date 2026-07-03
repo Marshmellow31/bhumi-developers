@@ -18,10 +18,11 @@ export default function ContactPopup() {
     const hasSeenPopup = localStorage.getItem("hasSeenContactPopup");
     if (hasSeenPopup === "true") return;
 
-    // Show popup after 15 seconds
+    // Show popup after 15 s on desktop; give phones 30 s of undisturbed browsing
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 15000);
+    }, isMobile ? 30000 : 15000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -119,7 +120,7 @@ export default function ContactPopup() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. John Doe"
-                      className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/20 focus:border-white/30 focus:outline-none transition-colors duration-250 font-body"
+                      className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white placeholder-white/20 focus:border-white/30 focus:outline-none transition-colors duration-250 font-body"
                     />
                   </div>
 
@@ -135,7 +136,7 @@ export default function ContactPopup() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="e.g. +91 98765 43210"
-                      className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-white/20 focus:border-white/30 focus:outline-none transition-colors duration-250 font-body"
+                      className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white placeholder-white/20 focus:border-white/30 focus:outline-none transition-colors duration-250 font-body"
                     />
                   </div>
 
@@ -149,7 +150,7 @@ export default function ContactPopup() {
                         disabled={isSubmitting}
                         value={project}
                         onChange={(e) => setProject(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 px-4 py-3 text-sm text-white focus:border-white/30 focus:outline-none transition-colors duration-250 font-body appearance-none cursor-pointer"
+                        className="w-full bg-white/5 border border-white/10 px-4 py-3 text-base text-white focus:border-white/30 focus:outline-none transition-colors duration-250 font-body appearance-none cursor-pointer"
                       >
                         <option value="" className="bg-[#121212] text-white/30">Select project...</option>
                         <option value="solitaire-pallazzo" className="bg-[#121212] text-white">Solitaire Pallazzo</option>

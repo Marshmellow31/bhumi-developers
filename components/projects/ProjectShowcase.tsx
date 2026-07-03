@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, ArrowUpRight } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
@@ -43,14 +44,13 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
           data-cursor-label="VIEW"
           className="block relative overflow-hidden aspect-[4/3] lg:aspect-[5/4]"
         >
-          <motion.div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('${project.image}')`,
-              filter: "grayscale(15%)",
-            }}
-            whileHover={{ scale: 1.04, filter: "grayscale(0%)" }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          <Image
+            src={project.image}
+            alt={`${project.name} — ${project.type} project in ${project.location} by Bhumi Developers`}
+            fill
+            priority={index === 0}
+            className="object-cover grayscale-[15%] transition-[transform,filter] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+            sizes="(max-width: 1024px) 100vw, 58vw"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />

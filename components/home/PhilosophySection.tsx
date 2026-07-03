@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface SlideData {
@@ -137,11 +138,12 @@ export default function PhilosophySection() {
                 className="relative w-[90vw] md:w-[75vw] lg:w-[68vw] h-[64vh] md:h-[66vh] lg:h-[66vh] shrink-0 overflow-hidden group border border-white/10"
               >
                 {/* Image background */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url('${slide.image}')`,
-                  }}
+                <Image
+                  src={slide.image}
+                  alt={`${slide.projectTag} — ${slide.regularText} ${slide.italicWord} by Bhumi Developers`}
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  sizes="(max-width: 768px) 90vw, 75vw"
                 />
                 {/* Elegant dark overlays for contrast */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
