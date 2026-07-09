@@ -183,7 +183,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en-IN" suppressHydrationWarning className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col bg-background text-charcoal antialiased">
         <script
           type="application/ld+json"
