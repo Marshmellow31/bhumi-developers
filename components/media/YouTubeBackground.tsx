@@ -21,9 +21,6 @@ type YTPlayer = {
   getIframe: () => HTMLIFrameElement;
   getAvailableQualityLevels?: () => string[];
   setPlaybackQuality?: (q: string) => void;
-  getDuration?: () => number;
-  getCurrentTime?: () => number;
-  getVideoLoadedFraction?: () => number;
 };
 
 declare global {
@@ -35,13 +32,6 @@ declare global {
     onYouTubeIframeAPIReady?: () => void;
   }
 }
-
-export type VideoLoadProgress = {
-  /** Estimated whole seconds until the video is revealed */
-  seconds: number;
-  /** 0 → 1 progress toward the reveal */
-  fraction: number;
-};
 
 /* Load the IFrame API once, shared across all instances */
 let apiPromise: Promise<NonNullable<Window["YT"]>> | null = null;
@@ -70,32 +60,12 @@ function forceHighestQuality(player: YTPlayer) {
 }
 
 /* YouTube's center control overlay stays on screen for ~3s after playback
-   starts before auto-hiding; the video can never be revealed sooner. */
+   starts before auto-hiding; the video can never be revealed sooner. Once
+   revealed, we never re-cover it again (see revealedOnce), so a tab switch
+   or a mid-playback buffer stall can't bring the overlay-wait back. */
 const OVERLAY_HIDE_MS = 3500;
 
-/* If playback has run this long without stalling, reveal regardless of the
-   buffer estimate — it is evidently smooth on this connection. */
-const STABLE_PLAY_MS = 8000;
-
-/* Typical time for the IFrame API + player to boot, used for the countdown
-   estimate before playback has started. */
-const BOOT_ESTIMATE_MS = 2000;
-
 const TICK_MS = 200;
-
-/* How many seconds of video must be buffered ahead before revealing,
-   picked from the viewer's connection speed (Network Information API).
-   Fast connections reveal almost immediately after the overlay hides;
-   slow ones wait for more runway so playback doesn't stall mid-view. */
-function requiredBufferSeconds(): number {
-  const conn = (navigator as { connection?: { effectiveType?: string; downlink?: number } })
-    .connection;
-  if (!conn) return 5; // API unavailable (Firefox/Safari) — sensible middle ground
-  if (conn.effectiveType === "slow-2g" || conn.effectiveType === "2g") return 10;
-  if (conn.effectiveType === "3g" || (conn.downlink !== undefined && conn.downlink < 2)) return 8;
-  if (conn.downlink !== undefined && conn.downlink < 5) return 5;
-  return 2;
-}
 
 /* ────────────────────────────────────────────────────────────────────────
    Session player cache.
@@ -116,7 +86,6 @@ type CacheEntry = {
   /** Section element the layer is currently aligned to (null = parked) */
   anchor: HTMLElement | null;
   raf: number;
-  required: number;
   /** Last time we countered YouTube's background-tab auto-pause */
   lastAutoResume: number;
   subs: Set<() => void>;
@@ -204,7 +173,6 @@ function ensureEntry(videoId: string, defer: boolean): CacheEntry {
     revealedOnce: false,
     anchor: null,
     raf: 0,
-    required: requiredBufferSeconds(),
     lastAutoResume: 0,
     subs: new Set(),
   };
@@ -301,8 +269,8 @@ type Props = {
   poster?: string;
   /** Fires once, the first time the video is revealed */
   onPlaying?: () => void;
-  /** Reports estimated time until reveal (null once revealed) — for countdown UIs */
-  onProgress?: (progress: VideoLoadProgress | null) => void;
+  /** true while the poster/cover is showing, false once the video is revealed */
+  onProgress?: (loading: boolean) => void;
   /** "low" defers loading until the primary (hero) video has revealed */
   priority?: "high" | "low";
 };
@@ -310,10 +278,12 @@ type Props = {
 /**
  * Full-bleed muted looping YouTube background with no visible player UI.
  * The video renders in a session-persistent fixed layer (see cache above)
- * aligned behind this component; this component draws the cover on top:
- * poster or solid dark until playback has been running long enough for
- * YouTube's control overlay to auto-hide and enough video is buffered for
- * the viewer's connection speed, re-covering during pauses/buffering.
+ * aligned behind this component; this component draws the cover on top
+ * (poster or solid dark) until playback has run long enough for YouTube's
+ * control overlay to auto-hide. Once revealed for the first time, the cover
+ * never comes back for that video's session-lifetime — so pausing/buffering
+ * from a background-tab auto-pause, or any other transient state change,
+ * can't re-trigger the cover and cause a visible glitch on tab return.
  * Must be placed inside a full-viewport-height section. Overlays that must
  * sit above the video need an explicit z-index of 1 or higher.
  */
@@ -341,95 +311,48 @@ export default function YouTubeBackground({
 
     let shown = false;
     let announced = false;
-    const mountedAt = performance.now();
-    let maxRemaining = 0;
-    let lastEmit: VideoLoadProgress | null = null;
-    /* buffer-rate sampling, reset whenever a new playback run starts */
-    let sampleRun = 0;
-    let baseAhead = 0;
-    let baseAt = 0;
 
-    const conceal = () => {
-      if (shown) {
-        shown = false;
-        setRevealed(false);
+    const reveal = () => {
+      if (shown) return;
+      shown = true;
+      entry.revealedOnce = true;
+      releaseDeferred(); // primary is on screen — let deferred videos load
+      setRevealed(true);
+      onProgressRef.current?.(false);
+      if (!announced) {
+        announced = true;
+        onPlayingRef.current?.();
       }
     };
-    /* mask instantly when playback stops (the overlay comes back) */
+    const conceal = () => {
+      if (entry.revealedOnce || !shown) return; // never re-cover once revealed
+      shown = false;
+      setRevealed(false);
+      onProgressRef.current?.(true);
+    };
+
+    /* already revealed earlier this session (e.g. remount) — skip the wait */
+    if (entry.revealedOnce) {
+      reveal();
+      return () => detachEntry(entry);
+    }
+
+    /* mask instantly when playback stops before the first reveal */
     const onPlayerState = () => {
       if (!entry.playingSince) conceal();
     };
     entry.subs.add(onPlayerState);
 
-    const emit = (p: VideoLoadProgress | null) => {
-      if (
-        p === lastEmit ||
-        (p && lastEmit && p.seconds === lastEmit.seconds && Math.abs(p.fraction - lastEmit.fraction) < 0.01)
-      )
-        return;
-      lastEmit = p;
-      onProgressRef.current?.(p);
-    };
-
     const tick = () => {
-      const p = entry.player;
-      const now = performance.now();
-      let remaining: number;
-
-      if (!entry.playingSince) {
-        /* still booting (or paused) — estimate boot + overlay window */
-        remaining = Math.max(0, BOOT_ESTIMATE_MS - (now - mountedAt)) + OVERLAY_HIDE_MS + 500;
-      } else {
-        const sincePlay = now - entry.playingSince;
-        const overlayLeft = Math.max(0, OVERLAY_HIDE_MS - sincePlay);
-        let bufferLeft = 0;
-
-        if (!entry.revealedOnce && p) {
-          const duration = p.getDuration?.() ?? 0;
-          const fraction = p.getVideoLoadedFraction?.() ?? 0;
-          if (duration > 0 && fraction < 0.99) {
-            const ahead = fraction * duration - (p.getCurrentTime?.() ?? 0);
-            if (sampleRun !== entry.playingSince) {
-              sampleRun = entry.playingSince;
-              baseAhead = ahead;
-              baseAt = now;
-            }
-            const deficit = entry.required - ahead;
-            if (deficit > 0) {
-              const dt = (now - baseAt) / 1000;
-              const rate = dt > 0.4 ? (ahead - baseAhead) / dt : 0; // s of video per s
-              const eta = rate > 0.05 ? (deficit / rate) * 1000 : Infinity;
-              /* the stable-play fallback bounds how long buffering can gate us */
-              bufferLeft = Math.min(eta, Math.max(0, STABLE_PLAY_MS - sincePlay));
-            }
-          }
-        }
-        remaining = Math.max(overlayLeft, bufferLeft);
-      }
-
-      if (remaining <= 0) {
-        if (!shown) {
-          shown = true;
-          entry.revealedOnce = true;
-          releaseDeferred(); // primary is on screen — let deferred videos load
-          setRevealed(true);
-          emit(null);
-          if (!announced) {
-            announced = true;
-            onPlayingRef.current?.();
-          }
-        }
+      if (entry.revealedOnce) return; // reveal() already ran via another tab/instance
+      if (entry.playingSince && performance.now() - entry.playingSince >= OVERLAY_HIDE_MS) {
+        reveal();
         return;
       }
-
       conceal();
-      maxRemaining = Math.max(maxRemaining, remaining);
-      emit({
-        seconds: Math.max(1, Math.ceil(remaining / 1000)),
-        fraction: Math.min(1, Math.max(0, 1 - remaining / maxRemaining)),
-      });
     };
 
+    onProgressRef.current?.(true);
     tick();
     const iv = setInterval(tick, TICK_MS);
 
@@ -437,7 +360,7 @@ export default function YouTubeBackground({
       clearInterval(iv);
       entry.subs.delete(onPlayerState);
       detachEntry(entry);
-      onProgressRef.current?.(null);
+      if (!entry.revealedOnce) onProgressRef.current?.(false);
     };
   }, [videoId, priority]);
 

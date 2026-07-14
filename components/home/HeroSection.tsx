@@ -5,12 +5,7 @@ import {
   motion,
   AnimatePresence,
 } from "framer-motion";
-import YouTubeBackground, {
-  type VideoLoadProgress,
-} from "@/components/media/YouTubeBackground";
-
-const RING_RADIUS = 26;
-const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
+import YouTubeBackground from "@/components/media/YouTubeBackground";
 
 /* ── Constants ── */
 const TICKER =
@@ -37,8 +32,8 @@ export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  /* Estimated time until the background video reveals (null once playing) */
-  const [videoProgress, setVideoProgress] = useState<VideoLoadProgress | null>(null);
+  /* Whether the background video is still loading (poster showing) */
+  const [videoLoading, setVideoLoading] = useState(false);
 
   return (
     <section
@@ -50,55 +45,27 @@ export default function HeroSection() {
         <YouTubeBackground
           videoId="e5smuG9DGlk"
           poster="/images/background.webp"
-          onProgress={setVideoProgress}
+          onProgress={setVideoLoading}
         />
       </div>
 
-      {/* ── Countdown ring until the video reveals ── */}
+      {/* ── Simple loading indicator until the video reveals ── */}
       <AnimatePresence>
-        {videoProgress && (
+        {videoLoading && (
           <motion.div
-            key="video-countdown"
-            className="absolute bottom-8 right-5 md:bottom-10 md:right-12 z-20 pointer-events-none flex flex-col items-center gap-2"
+            key="video-loading"
+            className="absolute bottom-8 right-5 md:bottom-10 md:right-12 z-20 pointer-events-none flex items-center gap-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
           >
-            <div className="relative w-[52px] h-[52px] md:w-[60px] md:h-[60px]">
-              <svg viewBox="0 0 60 60" className="w-full h-full -rotate-90">
-                <circle
-                  cx="30"
-                  cy="30"
-                  r={RING_RADIUS}
-                  fill="none"
-                  stroke="rgba(255,255,255,0.12)"
-                  strokeWidth="1.5"
-                />
-                <circle
-                  cx="30"
-                  cy="30"
-                  r={RING_RADIUS}
-                  fill="none"
-                  stroke="rgba(245,158,11,0.9)"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeDasharray={RING_CIRCUMFERENCE}
-                  strokeDashoffset={(1 - videoProgress.fraction) * RING_CIRCUMFERENCE}
-                  style={{ transition: "stroke-dashoffset 250ms linear" }}
-                />
-              </svg>
-              <span
-                className="absolute inset-0 flex items-center justify-center text-white/90"
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "13px",
-                  fontVariantNumeric: "tabular-nums",
-                }}
-              >
-                {videoProgress.seconds}s
-              </span>
-            </div>
+            <motion.span
+              className="block rounded-full"
+              style={{ width: 6, height: 6, backgroundColor: "rgba(245,158,11,0.9)" }}
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            />
             <span
               style={{
                 fontFamily: "var(--font-inter)",
@@ -108,7 +75,7 @@ export default function HeroSection() {
                 textTransform: "uppercase",
               }}
             >
-              Video
+              Loading
             </span>
           </motion.div>
         )}

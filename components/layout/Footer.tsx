@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="flex flex-col items-center gap-6">
             <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 w-full">
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
@@ -71,7 +71,7 @@ export default function Footer() {
               ].map(({ src, alt, scale, noBg, href }) => {
                 const content = (
                   <div
-                    className={`h-24 w-24 shrink-0 flex items-center justify-center overflow-hidden p-2 transition-transform duration-300 hover:scale-[1.03] ${noBg ? "" : "bg-white/90"}`}
+                    className={`w-[70px] h-[70px] sm:w-20 sm:h-20 md:w-24 md:h-24 shrink-0 flex items-center justify-center overflow-hidden p-1 sm:p-2 transition-transform duration-300 hover:scale-[1.03] ${noBg ? "" : "bg-white/90"}`}
                     title={alt}
                   >
                     <Image
