@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <div className="flex flex-col items-center gap-6">
             <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
-            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+            <div className="grid grid-cols-2 place-items-center gap-6 md:flex md:flex-wrap md:justify-center md:gap-8">
               {[
                 { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
