@@ -9,7 +9,8 @@ This application is built using the latest web technologies to provide an immers
 - **Project Portfolio:** Detailed showcasing of ongoing, completed, and upcoming real estate projects (e.g., Central Square, Solitaire Pallazzo, City Center).
 - **Smooth Scrolling:** Integrated Lenis for seamless and fluid scrolling experiences.
 - **Premium Aesthetics:** Modern UI/UX built with Tailwind CSS v4 and Framer Motion for elegant animations.
-- **Performance Optimized:** Utilizing Next.js App Router, optimized images, and fonts for maximum speed and SEO.
+- **Mobile Optimized & High Performance:** Next.js image pipeline optimization, video deferral on mobile devices, touch tuning, and integration with `@vercel/speed-insights` for tracking Core Web Vitals.
+- **SEO Ready:** Complete built-in SEO metadata and structured data schema markup.
 
 ## 🛠️ Tech Stack
 
