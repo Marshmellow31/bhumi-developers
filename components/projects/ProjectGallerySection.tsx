@@ -31,11 +31,10 @@ export default function ProjectGallerySection({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
 
-  /* Videos are multi-MB — play them on desktop only. SSR and mobile render
-     the optimized poster image instead. */
-  const [allowVideo, setAllowVideo] = useState(false);
+  /* Videos are now set to load on all devices, including mobile. */
+  const [allowVideo, setAllowVideo] = useState(true);
   useEffect(() => {
-    if (window.matchMedia("(min-width: 768px)").matches) setAllowVideo(true);
+    setAllowVideo(true);
   }, []);
 
   return (
