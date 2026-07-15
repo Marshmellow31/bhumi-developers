@@ -3,12 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-/* Phones / Save-Data connections skip the YouTube player entirely and keep
-   the poster — the embed costs ~1 MB of iframe JS plus video streaming. */
+/* Only skip video for Save-Data connections — play on all screen sizes. */
 function videoDisabled() {
   return (
-    window.matchMedia("(max-width: 767px)").matches ||
-    ((navigator as { connection?: { saveData?: boolean } }).connection?.saveData ?? false)
+    (navigator as { connection?: { saveData?: boolean } }).connection?.saveData ?? false
   );
 }
 

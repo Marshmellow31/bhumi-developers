@@ -192,7 +192,7 @@ export default function ContactClient() {
                     </label>
                     <input
                       {...register("name")}
-                      placeholder="John Doe"
+                      placeholder="Harshil Patel"
                       className="w-full border border-border px-4 py-3 text-base font-body text-charcoal placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors"
                     />
                     {errors.name && (
