@@ -156,10 +156,10 @@ function ensureEntry(videoId: string, defer: boolean): CacheEntry {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "calc(177.78vh + 120px)",
-    height: "calc(56.25vw + 120px)",
-    minWidth: "calc(100% + 120px)",
-    minHeight: "calc(100% + 120px)",
+    width: "calc(177.78vh + 300px)",
+    height: "calc(56.25vw + 300px)",
+    minWidth: "calc(100% + 300px)",
+    minHeight: "calc(100% + 300px)",
   });
   const mount = document.createElement("div");
   sizer.appendChild(mount);

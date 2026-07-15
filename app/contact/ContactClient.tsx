@@ -11,7 +11,7 @@ import Button from "@/components/ui/Button";
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  phone: z.string().regex(/^[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number"),
+  phone: z.string().regex(/^(?:\+?91[\-\s]?)?0?(?:\d[\-\s]?){10}$/, "Enter a valid 10-digit mobile number"),
   interest: z.enum(["Residential", "Commercial", "Villa", "Mixed Use", "General Enquiry"]).optional(),
   message: z.string().optional(),
 });
@@ -168,9 +168,9 @@ export default function ContactClient() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 text-sm font-body mb-6"
+                  className="bg-surface border border-border text-charcoal px-4 py-4 text-sm font-body mb-6 shadow-sm"
                 >
-                  Thank you! We&apos;ll get back to you within 24 hours.
+                  <span className="font-semibold text-primary">Thank you!</span> We&apos;ll get back to you within 24 hours.
                 </motion.div>
               )}
 
@@ -178,7 +178,7 @@ export default function ContactClient() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm font-body mb-6"
+                  className="bg-surface border border-red-900/20 text-red-900 px-4 py-4 text-sm font-body mb-6 shadow-sm"
                 >
                   {errorMessage}
                 </motion.div>

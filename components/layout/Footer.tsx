@@ -64,14 +64,21 @@ export default function Footer() {
             <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
             <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 w-full">
               {[
-                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.1, noBg: true, href: "https://bdbuildcon.com/" },
+                { 
+                  src: "/images/BD Buildcon.png",  
+                  alt: "BD Buildcon LLP",           
+                  scale: 1.3, 
+                  noBg: true, 
+                  href: "https://bdbuildcon.com/",
+                  allowOverflow: true
+                },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
                 { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 0.85 },
                 { src: "/images/venus-reality.png", alt: "Venus Reality",              scale: 1.1, noBg: true },
-              ].map(({ src, alt, scale, noBg, href }) => {
+              ].map(({ src, alt, scale, noBg, href, allowOverflow }) => {
                 const content = (
                   <div
-                    className={`w-[70px] h-[70px] sm:w-20 sm:h-20 md:w-24 md:h-24 shrink-0 flex items-center justify-center overflow-hidden p-1 sm:p-2 transition-transform duration-300 hover:scale-[1.03] ${noBg ? "" : "bg-white/90"}`}
+                    className={`w-[70px] h-[70px] sm:w-20 sm:h-20 md:w-24 md:h-24 shrink-0 flex items-center justify-center p-1 sm:p-2 transition-transform duration-300 hover:scale-[1.03] ${noBg ? "" : "bg-white/90"} ${allowOverflow ? "overflow-visible" : "overflow-hidden"}`}
                     title={alt}
                   >
                     <Image
@@ -80,7 +87,7 @@ export default function Footer() {
                       width={80}
                       height={80}
                       className="object-contain"
-                      style={{ transform: `scale(${scale})`, width: "auto", height: "auto" }}
+                      style={{ transform: `scale(${scale})`, width: "auto", height: "auto", maxWidth: allowOverflow ? "none" : "100%", maxHeight: allowOverflow ? "none" : "100%" }}
                     />
                   </div>
                 );
