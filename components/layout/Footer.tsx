@@ -64,7 +64,7 @@ export default function Footer() {
             <span className="text-[10px] tracking-[0.35em] uppercase text-white/40 font-body font-semibold text-center">Associated Companies</span>
             <div className="flex items-center justify-center gap-3 sm:gap-6 md:gap-8 w-full">
               {[
-                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.6, noBg: true, href: "https://bdbuildcon.com/" },
+                { src: "/images/BD Buildcon.png",  alt: "BD Buildcon LLP",           scale: 1.1, noBg: true, href: "https://bdbuildcon.com/" },
                 { src: "/images/kiranveda.png",     alt: "Kiranveda Hospitality LLP",  scale: 1.5, noBg: true },
                 { src: "/images/dra-narmada.jpeg",  alt: "DRA Narmada",                scale: 0.85 },
                 { src: "/images/venus-reality.png", alt: "Venus Reality",              scale: 1.1, noBg: true },

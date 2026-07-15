@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -43,17 +44,48 @@ const contactInfo = [
 ];
 
 export default function ContactClient() {
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((r) => setTimeout(r, 1000));
-    console.log("Form submitted:", data);
-    reset();
+    setSubmitStatus("idle");
+    setErrorMessage("");
+    
+    try {
+      const formData = new window.FormData();
+      formData.append("access_key", "2695f293-8c0d-4b03-922f-d4f5b30dca51");
+      formData.append("name", data.name);
+      formData.append("phone", data.phone);
+      if (data.interest) formData.append("interest", data.interest);
+      if (data.message) formData.append("message", data.message);
+      formData.append("subject", "New Contact Form Submission from Bhumi Developers");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        reset();
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(result.message || "Failed to submit form");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setErrorMessage("An error occurred. Please try again.");
+      console.error("Submission error:", error);
+    }
   };
 
   return (
@@ -132,13 +164,23 @@ export default function ContactClient() {
                 Send Us a Message
               </h2>
 
-              {isSubmitSuccessful && (
+              {submitStatus === "success" && (
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-3 text-sm font-body mb-6"
                 >
                   Thank you! We&apos;ll get back to you within 24 hours.
+                </motion.div>
+              )}
+
+              {submitStatus === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm font-body mb-6"
+                >
+                  {errorMessage}
                 </motion.div>
               )}
 

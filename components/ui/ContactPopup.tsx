@@ -38,16 +38,32 @@ export default function ContactPopup() {
 
     setIsSubmitting(true);
 
-    // Simulate API submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSubmitted(true);
-      localStorage.setItem("hasSeenContactPopup", "true");
+      const formData = new FormData();
+      formData.append("access_key", "2695f293-8c0d-4b03-922f-d4f5b30dca51");
+      formData.append("name", name);
+      formData.append("phone", phone);
+      if (project) formData.append("project", project);
+      formData.append("subject", "New Callback Request from Bhumi Developers");
 
-      // Auto-close after success message
-      setTimeout(() => {
-        setIsOpen(false);
-      }, 3000);
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        localStorage.setItem("hasSeenContactPopup", "true");
+
+        // Auto-close after success message
+        setTimeout(() => {
+          setIsOpen(false);
+        }, 3000);
+      } else {
+        console.error("Submission error:", data.message);
+      }
     } catch (error) {
       console.error("Submission failed", error);
     } finally {
