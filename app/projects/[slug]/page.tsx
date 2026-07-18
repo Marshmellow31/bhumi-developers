@@ -242,6 +242,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     fill
                     className="object-contain"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                   />
                 </div>
                 

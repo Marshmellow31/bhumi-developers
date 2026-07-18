@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { MapPin, ZoomIn, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -31,11 +31,13 @@ export default function ProjectGallerySection({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
 
-  /* Videos are now set to load on all devices, including mobile. */
-  const [allowVideo, setAllowVideo] = useState(true);
-  useEffect(() => {
-    setAllowVideo(true);
-  }, []);
+  /* Videos are multi-MB — play them on desktop only. SSR and mobile render
+     the optimized poster image instead. */
+  const allowVideo = useSyncExternalStore(
+    () => () => {},
+    () => window.matchMedia("(min-width: 768px)").matches,
+    () => false
+  );
 
   return (
     <>

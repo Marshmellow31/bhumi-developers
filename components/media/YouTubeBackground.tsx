@@ -216,6 +216,9 @@ function ensureEntry(videoId: string, defer: boolean): CacheEntry {
             forceHighestQuality(ev.target);
           } else {
             e.playingSince = 0;
+            /* Reset revealedOnce so the OVERLAY_HIDE_MS cover fires again
+               on loop — the controls flash briefly during loop transitions. */
+            e.revealedOnce = false;
             /* We didn't pause it and the tab is hidden — YouTube's
                background auto-pause. Resume right away so the video is
                already playing (and revealed) when the viewer returns. */
@@ -323,7 +326,7 @@ export default function YouTubeBackground({
       }
     };
     const conceal = () => {
-      if (entry.revealedOnce || !shown) return; // never re-cover once revealed
+      if (!shown) return;
       shown = false;
       setRevealed(false);
       onProgressRef.current?.(true);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -90,7 +90,11 @@ export default function Navbar() {
   const isHome   = pathname === "/";
 
   /* Close mobile menu on route change */
-  useEffect(() => setIsOpen(false), [pathname]);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setIsOpen(false);
+  }
 
   /* ── Scroll-driven navbar background ── */
   const { scrollY } = useScroll();

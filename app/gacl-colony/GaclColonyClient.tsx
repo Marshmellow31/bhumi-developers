@@ -115,7 +115,7 @@ export default function GaclColonyClient() {
 
             {/* Sub-copy */}
             <p className="text-muted text-sm md:text-base font-body max-w-xl leading-relaxed">
-              Sprawling over 50 acres in the heart of Bharuch's GACL corridor,
+              Sprawling over 50 acres in the heart of Bharuch&apos;s GACL corridor,
               GACL Colony is a meticulously planned township offering
               plot-based living with world-class infrastructure, lush green
               open spaces, and a thriving community spirit.

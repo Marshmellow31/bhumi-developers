@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   motion,
   AnimatePresence,
@@ -29,8 +29,12 @@ const fadeRise = (delay: number) => ({
 });
 
 export default function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  /* True once hydrated on the client — enables particle animation without an SSR mismatch */
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   /* Whether the background video is still loading (poster showing) */
   const [videoLoading, setVideoLoading] = useState(false);

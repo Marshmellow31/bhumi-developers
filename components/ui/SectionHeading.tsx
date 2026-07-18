@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface SectionHeadingProps {
   eyebrow?: string;
@@ -13,7 +13,7 @@ interface SectionHeadingProps {
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const itemVariants: any = {
+const itemVariants: Variants = {
   hidden: { y: "110%" },
   visible: {
     y: "0%",
@@ -21,7 +21,7 @@ const itemVariants: any = {
   }
 };
 
-const lineVariants: any = {
+const lineVariants: Variants = {
   hidden: { scaleX: 0 },
   visible: {
     scaleX: 1,
@@ -29,7 +29,7 @@ const lineVariants: any = {
   }
 };
 
-const subtitleVariants: any = {
+const subtitleVariants: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
