@@ -274,12 +274,14 @@ export default async function ProjectDetailPage({ params }: Props) {
                       <p className="text-white/50 text-xs tracking-widest uppercase font-body mb-2">
                         Starts From
                       </p>
-                      <p
-                        className="text-3xl font-bold text-white mb-1"
+                      <a
+                        href="tel:+918511566682"
+                        className="flex items-center gap-3 text-3xl font-bold text-white mb-1 hover:text-amber-500 transition-colors"
                         style={{ fontFamily: "var(--font-playfair)" }}
                       >
-                        {formatPrice(project.priceRange.min)}
-                      </p>
+                        <Phone className="w-6 h-6 text-amber-500" />
+                        Call Now
+                      </a>
                       <p className="text-white/40 text-xs font-body mt-2">{project.area}</p>
                     </>
                   )}
@@ -329,15 +331,6 @@ export default async function ProjectDetailPage({ params }: Props) {
                     </Button>
                   </a>
                 )}
-                <a href="tel:+918511566682">
-                  <Button
-                    variant="outline"
-                    size="md"
-                    className="w-full justify-center border-white/30 text-white hover:bg-white hover:text-primary"
-                  >
-                    Call Us
-                  </Button>
-                </a>
               </div>
             </div>
 
