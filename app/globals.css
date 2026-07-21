@@ -92,6 +92,16 @@ body.cursor-active * {
   animation: marquee 45s linear infinite;
 }
 
+/* ── Hide scrollbar on touch carousels ──────── */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;

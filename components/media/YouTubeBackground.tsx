@@ -58,9 +58,9 @@ function forceHighestQuality(player: YTPlayer) {
 }
 
 /* YouTube's center control overlay stays on screen for ~3s after playback
-   starts before auto-hiding; the video can never be revealed sooner. Once
-   revealed, we never re-cover it again (see revealedOnce), so a tab switch
-   or a mid-playback buffer stall can't bring the overlay-wait back. */
+   starts before auto-hiding; the video can never be revealed sooner. The
+   cover re-activates on any pause (loop transitions, tab switches, buffering)
+   and waits the full OVERLAY_HIDE_MS again before revealing. */
 const OVERLAY_HIDE_MS = 3500;
 
 const TICK_MS = 200;

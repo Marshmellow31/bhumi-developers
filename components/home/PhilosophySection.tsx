@@ -78,7 +78,57 @@ const slides: SlideData[] = [
   },
 ];
 
+function PhilosophyCard({ slide }: { slide: SlideData }) {
+  return (
+    <div className="relative w-full h-[64vh] md:h-[66vh] overflow-hidden group border border-white/10">
+      {/* Image background */}
+      <Image
+        src={slide.image}
+        alt={`${slide.projectTag} — ${slide.regularText} ${slide.italicWord} by Bhumi Developers`}
+        fill
+        className="object-cover transition-transform duration-1000 group-hover:scale-105"
+        sizes="(max-width: 768px) 90vw, 75vw"
+      />
+      {/* Elegant dark overlays for contrast */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/70 to-transparent" />
+
+      {/* Top-left building name */}
+      <div className="absolute top-6 md:top-8 left-6 md:left-8 z-10">
+        <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/60 font-body font-semibold">
+          {slide.projectTag}
+        </span>
+      </div>
+
+      {/* Bottom content: Title */}
+      <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 text-white">
+        <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold font-body leading-tight">
+          {slide.regularText} <br />
+          <span className="font-heading italic font-light text-white/80">
+            {slide.italicWord}
+          </span>
+        </h3>
+      </div>
+    </div>
+  );
+}
+
+/* Phones get a native swipe carousel instead of the scroll-jacked track —
+   converting vertical scroll into horizontal motion is disorienting on touch. */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return isMobile;
+}
+
 export default function PhilosophySection() {
+  const isMobile = useIsMobile();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -108,11 +158,42 @@ export default function PhilosophySection() {
       clearTimeout(timer);
       window.removeEventListener("resize", calculateScrollRange);
     };
-  }, []);
+  }, [isMobile]);
 
   // Translate the horizontal track dynamically based on measured pixels
   const xRaw = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const x = useTransform(xRaw, (v) => -v * scrollRange);
+
+  /* ── Mobile: native swipe carousel, page scrolls vertically as normal ── */
+  if (isMobile) {
+    return (
+      <section className="relative bg-[#111111] z-10 py-16">
+        <div className="px-6 mb-8">
+          <h2 className="text-3xl font-bold text-white leading-tight font-body">
+            Creating <span className="font-heading italic font-light text-white/70">Landmarks.</span> <br />
+            Building <span className="font-heading italic font-light text-white/70">Trust.</span>
+          </h2>
+        </div>
+
+        <div className="no-scrollbar flex gap-3 overflow-x-auto snap-x snap-mandatory px-6 pb-4">
+          {slides.map((slide, index) => (
+            <div key={index} className="snap-center shrink-0 w-[85vw]">
+              <PhilosophyCard slide={slide} />
+            </div>
+          ))}
+        </div>
+
+        {/* Swipe hint */}
+        <div className="flex items-center justify-center gap-2 mt-4">
+          <span className="w-6 h-px bg-white/20" />
+          <span className="text-[9px] tracking-[0.4em] uppercase text-white/40 font-body">
+            Swipe
+          </span>
+          <span className="w-6 h-px bg-white/20" />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div ref={containerRef} className="relative h-[500vh] bg-[#111111] z-10">
@@ -135,36 +216,9 @@ export default function PhilosophySection() {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="relative w-[90vw] md:w-[75vw] lg:w-[68vw] h-[64vh] md:h-[66vh] lg:h-[66vh] shrink-0 overflow-hidden group border border-white/10"
+                className="w-[90vw] md:w-[75vw] lg:w-[68vw] shrink-0"
               >
-                {/* Image background */}
-                <Image
-                  src={slide.image}
-                  alt={`${slide.projectTag} — ${slide.regularText} ${slide.italicWord} by Bhumi Developers`}
-                  fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                  sizes="(max-width: 768px) 90vw, 75vw"
-                />
-                {/* Elegant dark overlays for contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/70 to-transparent" />
-
-                {/* Top-left building name */}
-                <div className="absolute top-6 md:top-8 left-6 md:left-8 z-10">
-                  <span className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/60 font-body font-semibold">
-                    {slide.projectTag}
-                  </span>
-                </div>
-
-                {/* Bottom content: Title */}
-                <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8 right-6 md:right-8 text-white">
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold font-body leading-tight">
-                    {slide.regularText} <br />
-                    <span className="font-heading italic font-light text-white/80">
-                      {slide.italicWord}
-                    </span>
-                  </h3>
-                </div>
+                <PhilosophyCard slide={slide} />
               </div>
             ))}
           </motion.div>
