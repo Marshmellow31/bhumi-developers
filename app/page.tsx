@@ -4,6 +4,8 @@ import PhilosophySection from "@/components/home/PhilosophySection";
 import AboutSnippet from "@/components/home/AboutSnippet";
 import SustainabilitySection from "@/components/home/SustainabilitySection";
 import CTABanner from "@/components/home/CTABanner";
+import FaqSection from "@/components/ui/FaqSection";
+import { homeFaqs, buildFaqJsonLd } from "@/data/faqs";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -51,13 +53,19 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify([webPageJsonLd]).replace(/</g, "\\u003c"),
+          __html: JSON.stringify([webPageJsonLd, buildFaqJsonLd(homeFaqs)]).replace(/</g, "\\u003c"),
         }}
       />
       <HeroSection />
       <PhilosophySection />
       <AboutSnippet />
       <SustainabilitySection />
+      <FaqSection
+        eyebrow="Common Questions"
+        title="Buying Property in Bharuch"
+        subtitle="Answers to the questions home buyers and investors ask us most often."
+        faqs={homeFaqs}
+      />
       <CTABanner />
     </>
   );

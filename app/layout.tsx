@@ -177,6 +177,16 @@ const organizationJsonLd = {
   ],
   sameAs: ["https://www.instagram.com/bd_buildcon/"],
   areaServed: ["Bharuch", "South Gujarat", "Vadodara", "Mumbai"],
+  slogan: "Shaping Modern Spaces",
+  knowsAbout: [
+    "Real estate development in Bharuch",
+    "Residential flats and apartments",
+    "Commercial shops and offices",
+    "RERA compliant construction",
+    "Township development",
+    "Hotel and hospitality projects",
+    "Property investment in Gujarat",
+  ],
 };
 
 export default function RootLayout({
