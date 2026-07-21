@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, ArrowUpRight } from "lucide-react";
+import { MapPin, ArrowUpRight, Phone } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
 import { formatPrice } from "@/lib/utils";
 
@@ -113,12 +113,23 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
             <p className="text-[9px] tracking-[0.3em] uppercase text-muted/70 font-body mb-1.5">
               {project.priceRange.min === 0 ? "Status" : "Starting From"}
             </p>
-            <p
-              className="text-lg font-bold text-primary leading-none"
-              style={{ fontFamily: "var(--font-playfair)" }}
-            >
-              {project.priceRange.min === 0 ? (project.status === "Completed" ? "Completed" : "Coming Soon") : formatPrice(project.priceRange.min)}
-            </p>
+            {project.priceRange.min === 0 ? (
+              <p
+                className="text-lg font-bold text-primary leading-none"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                {project.status === "Completed" ? "Completed" : "Coming Soon"}
+              </p>
+            ) : (
+              <a
+                href="tel:+918511566682"
+                className="flex items-center gap-2 text-lg font-bold text-primary leading-none hover:text-amber-600 transition-colors"
+                style={{ fontFamily: "var(--font-playfair)" }}
+              >
+                <Phone className="w-4 h-4 text-amber-600" />
+                Call to Enquire
+              </a>
+            )}
           </div>
         </div>
 
