@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     "Bhumi Developers",
     "real estate Bharuch",
     "builders in Bharuch",
+    "best builders in Bharuch",
+    "construction company in Bharuch",
+    "contractors in Bharuch",
+    "best construction company Bharuch",
+    "building contractors Bharuch",
     "real estate developers in Bharuch",
     "property developers Bharuch",
     "flats in Bharuch",
@@ -126,7 +131,7 @@ const websiteJsonLd = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": ["Organization", "LocalBusiness", "RealEstateAgent"],
+  "@type": ["Organization", "LocalBusiness", "RealEstateAgent", "GeneralContractor", "HomeBuilder"],
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
   url: SITE_URL,
@@ -177,6 +182,16 @@ const organizationJsonLd = {
   ],
   sameAs: ["https://www.instagram.com/bd_buildcon/"],
   areaServed: ["Bharuch", "South Gujarat", "Vadodara", "Mumbai"],
+  slogan: "Shaping Modern Spaces",
+  knowsAbout: [
+    "Real estate development in Bharuch",
+    "Residential flats and apartments",
+    "Commercial shops and offices",
+    "RERA compliant construction",
+    "Township development",
+    "Hotel and hospitality projects",
+    "Property investment in Gujarat",
+  ],
 };
 
 export default function RootLayout({

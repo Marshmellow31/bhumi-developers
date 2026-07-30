@@ -36,6 +36,16 @@ export const homeFaqs: Faq[] = [
       "Yes. Our projects are RERA-compliant with clear land titles, approved layouts, transparent pricing, and a 35+ year record of on-time delivery in Gujarat.",
   },
   {
+    question: "Which is the best construction company in Bharuch?",
+    answer:
+      "Bhumi Developers is among Bharuch's leading construction companies, building since 1995 with in-house engineering and international construction standards. With 50+ delivered projects and 72 lakh+ sq ft constructed — from high-rise flats to commercial complexes and townships — it is one of the most experienced builders in South Gujarat.",
+  },
+  {
+    question: "Who builds commercial complexes and shops in Bharuch?",
+    answer:
+      "Bhumi Developers has built some of Bharuch's biggest commercial landmarks, including City Center on Station Road (6 lakh sq ft) and the upcoming Central Square at Panchbatti with 110 shops, clinics, and offices. It is the go-to developer for commercial construction in Bharuch.",
+  },
+  {
     question: "Why invest in property in Bharuch?",
     answer:
       "Bharuch sits on one of Gujarat's fastest-growing industrial corridors — surrounded by Ankleshwar GIDC, the Dahej PCPIR, and major chemical and manufacturing hubs — driving steady housing demand, rental income, and long-term appreciation for both residential and commercial property.",
