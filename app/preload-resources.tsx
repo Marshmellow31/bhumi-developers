@@ -1,13 +1,6 @@
 "use client";
 
-import ReactDOM from "react-dom";
-
-/** Resource hints so the hero video player and its poster start loading
- *  as early as possible (see docs: generate-metadata → Resource hints). */
+/** Resource hints for early resource loading. */
 export default function PreloadResources() {
-
-  ReactDOM.preconnect("https://www.youtube-nocookie.com");
-  ReactDOM.preconnect("https://www.youtube.com");
-  ReactDOM.preconnect("https://i.ytimg.com");
   return null;
 }

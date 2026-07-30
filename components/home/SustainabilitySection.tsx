@@ -3,17 +3,16 @@
 import { motion } from "framer-motion";
 import { Leaf } from "lucide-react";
 import Link from "next/link";
-import YouTubeBackground from "@/components/media/YouTubeBackground";
+import VideoBackground from "@/components/media/VideoBackground";
 
 export default function SustainabilitySection() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
 
       {/* ── Full-screen video ── */}
-      <YouTubeBackground
-        videoId="yKkUt2085Gw"
+      <VideoBackground
+        src="/videos/sustainability.mp4"
         poster="/images/solitaire-plaza/Tavra Gazibo Sitting Cam-v01.webp"
-        priority="low"
       />
 
       {/* ── Overlay (above the fixed video layer) ── */}

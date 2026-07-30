@@ -44,14 +44,27 @@ function ProjectRow({ project, index, total }: ProjectRowProps) {
           data-cursor-label="VIEW"
           className="block relative overflow-hidden aspect-[4/3] lg:aspect-[5/4]"
         >
-          <Image
-            src={project.image}
-            alt={`${project.name} — ${project.type} project in ${project.location} by Bhumi Developers`}
-            fill
-            priority={index === 0}
-            className="object-cover grayscale-[15%] transition-[transform,filter] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
-            sizes="(max-width: 1024px) 100vw, 58vw"
-          />
+          {project.video ? (
+            <video
+              src={project.video}
+              poster={project.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover grayscale-[15%] transition-[transform,filter] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+            />
+          ) : (
+            <Image
+              src={project.image}
+              alt={`${project.name} — ${project.type} project in ${project.location} by Bhumi Developers`}
+              fill
+              priority={index === 0}
+              className="object-cover grayscale-[15%] transition-[transform,filter] duration-500 group-hover:scale-[1.04] group-hover:grayscale-0"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+          )}
 
           <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent pointer-events-none" />
 

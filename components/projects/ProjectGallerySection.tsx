@@ -31,14 +31,6 @@ export default function ProjectGallerySection({
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const galleryImages = gallery.length > 0 ? gallery : [image];
 
-  /* Videos are multi-MB — play them on desktop only. SSR and mobile render
-     the optimized poster image instead. */
-  const allowVideo = useSyncExternalStore(
-    () => () => {},
-    () => window.matchMedia("(min-width: 768px)").matches,
-    () => false
-  );
-
   return (
     <>
       <div
@@ -58,11 +50,11 @@ export default function ProjectGallerySection({
             <span>Back to Projects</span>
           </Link>
         </div>
-        {video && allowVideo ? (
+        {video ? (
           <video
             src={video}
             poster={image}
-            preload="metadata"
+            preload="auto"
             autoPlay
             muted
             loop

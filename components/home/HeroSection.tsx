@@ -5,7 +5,7 @@ import {
   motion,
   AnimatePresence,
 } from "framer-motion";
-import YouTubeBackground from "@/components/media/YouTubeBackground";
+import VideoBackground from "@/components/media/VideoBackground";
 
 /* ── Constants ── */
 const TICKER =
@@ -37,19 +37,19 @@ export default function HeroSection() {
   );
 
   /* Whether the background video is still loading (poster showing) */
-  const [videoLoading, setVideoLoading] = useState(false);
+  const [videoLoading, setVideoLoading] = useState(true);
 
   return (
     <section
       className="relative min-h-screen flex flex-col overflow-hidden"
       style={{ backgroundColor: "#111111" }}
     >
-      {/* ── BG VIDEO (fixed session-persistent layer aligns behind this) ── */}
+      {/* ── BG VIDEO ── */}
       <div className="absolute inset-0 z-[1]">
-        <YouTubeBackground
-          videoId="e5smuG9DGlk"
+        <VideoBackground
+          src="/videos/homepage-video.mp4"
           poster="/images/background.webp"
-          onProgress={setVideoLoading}
+          onLoaded={() => setVideoLoading(false)}
         />
       </div>
 
