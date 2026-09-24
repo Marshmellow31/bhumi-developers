@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import PageLoader from "@/components/ui/PageLoader";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import ClientEnhancements from "@/components/ui/ClientEnhancements";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import LenisProvider from "@/components/ui/LenisProvider";
 import PageTransition from "@/components/ui/PageTransition";
 import PreloadResources from "@/app/preload-resources";
@@ -216,6 +217,9 @@ export default function RootLayout({
 
           {/* Lead popup + custom cursor — lazy, split out of the main bundle */}
           <ClientEnhancements />
+
+          {/* Floating WhatsApp enquiry button (responsive, dynamic route message) */}
+          <FloatingWhatsApp />
 
           <Navbar />
           <PageTransition>{children}</PageTransition>
