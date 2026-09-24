@@ -17,7 +17,7 @@ export default function FloatingWhatsApp() {
     >
       {/* Interactive Tooltip Badge (Visible on desktop / md+ screens on hover) */}
       <div
-        className="hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-md text-primary text-xs font-medium px-3.5 py-2 rounded-full border border-border shadow-xl opacity-0 translate-x-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+        className="hidden md:flex items-center gap-2 bg-background backdrop-blur-md text-primary text-xs font-medium px-3.5 py-2 rounded-full border border-border shadow-xl opacity-0 translate-x-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
         role="tooltip"
         id="whatsapp-tooltip"
       >
