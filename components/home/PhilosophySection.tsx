@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 
 interface SlideData {
   number: string;
@@ -137,32 +137,39 @@ export default function PhilosophySection() {
   });
 
   // Calculate dynamic scroll distance in pixels to align the last card perfectly
-  const [scrollRange, setScrollRange] = useState(0);
   const trackRef = useRef<HTMLDivElement>(null);
-  const rightColRef = useRef<HTMLDivElement>(null);
+  const scrollRange = useMotionValue(0);
 
   useEffect(() => {
     const calculateScrollRange = () => {
-      if (trackRef.current && rightColRef.current) {
-        const trackWidth = trackRef.current.scrollWidth;
-        const containerWidth = rightColRef.current.clientWidth;
-        setScrollRange(Math.max(0, trackWidth - containerWidth));
+      if (trackRef.current) {
+        const trackWidth = Math.max(
+          trackRef.current.scrollWidth,
+          trackRef.current.getBoundingClientRect().width
+        );
+        const containerWidth = window.innerWidth;
+        const range = Math.max(0, trackWidth - containerWidth);
+        scrollRange.set(range);
       }
     };
 
     calculateScrollRange();
-    const timer = setTimeout(calculateScrollRange, 150);
+    const timer1 = setTimeout(calculateScrollRange, 100);
+    const timer2 = setTimeout(calculateScrollRange, 500);
 
     window.addEventListener("resize", calculateScrollRange);
     return () => {
-      clearTimeout(timer);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
       window.removeEventListener("resize", calculateScrollRange);
     };
-  }, [isMobile]);
+  }, [isMobile, scrollRange]);
 
   // Translate the horizontal track dynamically based on measured pixels
-  const xRaw = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const x = useTransform(xRaw, (v) => -v * scrollRange);
+  const x = useTransform(
+    [scrollYProgress, scrollRange],
+    ([progress, range]: number[]) => -progress * range
+  );
 
   /* ── Mobile: native swipe carousel, page scrolls vertically as normal ── */
   if (isMobile) {
@@ -198,11 +205,11 @@ export default function PhilosophySection() {
   return (
     <div ref={containerRef} className="relative h-[500vh] bg-[#111111] z-10">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        <div ref={rightColRef} className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
+        <div className="w-full overflow-hidden h-[75vh] md:h-[70vh] flex items-center relative">
           <motion.div
             ref={trackRef}
             style={{ x }}
-            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24 pr-6 md:pr-16 lg:pr-24 w-max"
+            className="flex gap-2 md:gap-3 lg:gap-4 items-center absolute left-0 pl-6 md:pl-16 lg:pl-24 pr-6 md:pr-16 lg:pr-24 w-max will-change-transform"
           >
             {/* Left Column Text Block (First item in the horizontal scroll track) */}
             <div className="w-[80vw] md:w-[45vw] lg:w-[30vw] shrink-0 flex flex-col justify-center gap-6 pr-8">

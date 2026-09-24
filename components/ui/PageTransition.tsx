@@ -27,7 +27,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       });
 
       // New page already rendered beneath — reset content to entry state
-      content.set({ opacity: 0, y: 30 });
+      content.set({ opacity: 0 });
 
       // Simultaneously: curtain exits to right, content rises up
       curtain.start({
@@ -36,7 +36,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
       });
       content.start({
         opacity: 1,
-        y: 0,
         transition: { duration: 0.6, ease: EASE },
       });
     })();
@@ -55,7 +54,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
       {/* Page content */}
       <motion.main
         className="flex-1 flex flex-col"
-        initial={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 1 }}
         animate={content}
       >
         {children}
