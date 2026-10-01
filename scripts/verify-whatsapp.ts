@@ -92,7 +92,7 @@ const testCases = [
 
 console.log(`\n========================================`);
 console.log(`WhatsApp Floating Button Verification`);
-console.log(`Official Number: +91 99980 16244 (API: ${WHATSAPP_PHONE_NUMBER})`);
+console.log(`Official Number: +91 85115 66682 (API: ${WHATSAPP_PHONE_NUMBER})`);
 console.log(`========================================\n`);
 
 let passed = 0;

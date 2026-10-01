@@ -4,8 +4,8 @@ import { projects } from "../data/projects";
  * Official Bhumi Developers Sales WhatsApp number.
  * International format without symbols for WhatsApp universal links.
  */
-export const WHATSAPP_PHONE_NUMBER = "919998016244";
-export const WHATSAPP_DISPLAY_NUMBER = "+91 99980 16244";
+export const WHATSAPP_PHONE_NUMBER = "918511566682";
+export const WHATSAPP_DISPLAY_NUMBER = "+91 85115 66682";
 
 /**
  * Default pre-filled message for general website pages.

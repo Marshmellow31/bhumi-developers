@@ -195,7 +195,7 @@ export const projects: Project[] = [
     brochure: "https://drive.google.com/file/d/1I5U2tBA4nTIkjfR7Q3RW1zC2IxP__O3e/view",
     contact: {
       phones: [
-        { number: "+919998016244", label: "+91 99980 16244" },
+        { number: "+918511566682", label: "+91 85115 66682" },
         { number: "+918511343554", label: "+91 85113 43554" },
       ],
       email: "sp.info.tavra@gmail.com",
